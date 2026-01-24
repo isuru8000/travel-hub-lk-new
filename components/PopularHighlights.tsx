@@ -3,10 +3,10 @@ import React, { useState, useRef } from 'react';
 import { Language, Destination } from '../types.ts';
 import { DESTINATIONS, UI_STRINGS } from '../constants.tsx';
 import { MapPin, History, Sparkles, Compass, ArrowRight, ShieldCheck, Box } from 'lucide-react';
-import DestinationModal from './DestinationModal.tsx';
 
 interface PopularHighlightsProps {
   language: Language;
+  onSelectDestination: (dest: Destination) => void;
   setView: (view: any) => void;
 }
 
@@ -16,7 +16,7 @@ const HighlightCard: React.FC<{ dest: Destination; index: number; language: Lang
   const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (window.innerWidth < 1024) return; // Disable tilt on mobile for performance
+    if (window.innerWidth < 1024) return;
     if (!cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width - 0.5;
@@ -34,7 +34,6 @@ const HighlightCard: React.FC<{ dest: Destination; index: number; language: Lang
       className={`flex flex-col lg:flex-row gap-12 lg:gap-24 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''} transition-all duration-1000 ${!isHovered && window.innerWidth > 1024 ? 'blur-[0.5px] grayscale-[0.2]' : 'blur-0 grayscale-0 lg:scale-[1.02]'}`}
       style={{ perspective: '2000px' }}
     >
-      {/* 3D Visual Slab */}
       <div 
         className="w-full lg:w-3/5 group relative cursor-pointer transition-transform duration-300 ease-out"
         style={{ 
@@ -42,11 +41,9 @@ const HighlightCard: React.FC<{ dest: Destination; index: number; language: Lang
           transform: `rotateY(${tilt.x}deg) rotateX(${tilt.y}deg)`
         }}
       >
-        {/* Spatial Glint Border */}
         <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-black/5 rounded-[2.5rem] md:rounded-[4.5rem] p-1 shadow-2xl" />
         
         <div className="relative p-1.5 md:p-2 bg-white rounded-[2.3rem] md:rounded-[4.2rem] shadow-[0_40px_80px_rgba(0,0,0,0.1)] overflow-hidden">
-          {/* Refractive Sweep */}
           <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-[1500ms]" />
           
           <div className="relative aspect-[16/10] rounded-[2rem] md:rounded-[3.8rem] overflow-hidden bg-gray-100 border border-white/60">
@@ -57,7 +54,6 @@ const HighlightCard: React.FC<{ dest: Destination; index: number; language: Lang
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 md:group-hover:opacity-30 transition-opacity" />
             
-            {/* Floating 3D Metadata */}
             <div className="absolute top-6 right-6 md:top-10 md:right-10 w-16 h-16 md:w-28 md:h-28 bg-white/10 backdrop-blur-3xl rounded-[1.2rem] md:rounded-[2.2rem] border border-white/20 flex items-center justify-center shadow-2xl transform translateZ(40px) md:translateZ(80px) rotate-12">
               <div className="text-white font-heritage font-bold text-3xl md:text-6xl">0{index + 1}</div>
             </div>
@@ -70,7 +66,6 @@ const HighlightCard: React.FC<{ dest: Destination; index: number; language: Lang
           </div>
         </div>
 
-        {/* 3D Satellite Icon */}
         <div 
           className="absolute -bottom-8 -right-8 md:-bottom-12 md:-right-12 w-20 h-20 md:w-36 md:h-36 bg-white rounded-full shadow-[0_20px_60px_rgba(0,0,0,0.15)] flex items-center justify-center border border-gray-100 transition-all duration-700 group-hover:scale-110 transform translateZ(60px) md:translateZ(120px) hidden sm:flex"
         >
@@ -81,7 +76,6 @@ const HighlightCard: React.FC<{ dest: Destination; index: number; language: Lang
         </div>
       </div>
 
-      {/* Data Panel */}
       <div className="w-full lg:w-2/5 space-y-6 md:space-y-12" style={{ transform: 'translateZ(40px)' }}>
         <div className="space-y-4 md:space-y-6">
           <div className="flex items-center gap-4 text-[#E1306C] font-black text-[9px] md:text-[11px] tracking-[0.5em] md:tracking-[0.7em] uppercase">
@@ -119,15 +113,13 @@ const HighlightCard: React.FC<{ dest: Destination; index: number; language: Lang
   );
 };
 
-const PopularHighlights: React.FC<PopularHighlightsProps> = ({ language, setView }) => {
-  const [selectedDest, setSelectedDest] = useState<Destination | null>(null);
+const PopularHighlights: React.FC<PopularHighlightsProps> = ({ language, onSelectDestination, setView }) => {
   const popularIds = ['sigiriya', 'kandy-temple', 'ella'];
   const highlights = DESTINATIONS.filter(d => popularIds.includes(d.id));
 
   return (
     <section className="py-20 md:py-32 bg-white overflow-hidden" style={{ perspective: '3000px' }}>
       <div className="max-w-7xl mx-auto px-6">
-        {/* Cinematic Header */}
         <div className="text-center mb-16 md:mb-24 space-y-6 md:space-y-10 relative">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-24 md:-translate-y-32 opacity-[0.02] text-black scale-[1.2] md:scale-[2]">
              <Compass size={250} className="md:w-[400px] md:h-[400px] animate-spin-slow" />
@@ -142,7 +134,6 @@ const PopularHighlights: React.FC<PopularHighlightsProps> = ({ language, setView
           <div className="w-24 md:w-40 h-1 md:h-2 insta-gradient mx-auto rounded-full shadow-3xl mt-6 md:mt-10" />
         </div>
 
-        {/* 3D Grid */}
         <div className="space-y-24 md:space-y-48">
           {highlights.map((dest, index) => (
             <HighlightCard 
@@ -150,12 +141,11 @@ const PopularHighlights: React.FC<PopularHighlightsProps> = ({ language, setView
               dest={dest} 
               index={index} 
               language={language} 
-              onClick={() => setSelectedDest(dest)} 
+              onClick={() => onSelectDestination(dest)} 
             />
           ))}
         </div>
         
-        {/* Global Call to Action */}
         <div className="mt-24 md:mt-48 relative" style={{ perspective: '1500px' }}>
            <div className="absolute inset-0 bg-black/[0.04] rounded-[3rem] md:rounded-[8rem] blur-[80px] md:blur-[150px] opacity-70" />
            <div className="relative p-12 md:p-32 bg-white rounded-[3rem] md:rounded-[8rem] text-center space-y-12 md:space-y-16 shadow-[0_50px_100px_rgba(0,0,0,0.1)] border border-gray-50 overflow-hidden group transform lg:hover:-translate-y-8 transition-all duration-1000">
@@ -185,12 +175,6 @@ const PopularHighlights: React.FC<PopularHighlightsProps> = ({ language, setView
            </div>
         </div>
       </div>
-
-      <DestinationModal 
-        destination={selectedDest}
-        onClose={() => setSelectedDest(null)}
-        language={language}
-      />
     </section>
   );
 };

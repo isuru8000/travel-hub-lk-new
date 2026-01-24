@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
-import { Language, User } from './types.ts';
+import { Language, User, Destination } from './types.ts';
 import Layout from './components/Layout.tsx';
 import Hero from './components/Hero.tsx';
 import PopularHighlights from './components/PopularHighlights.tsx';
@@ -30,10 +30,11 @@ import Marketplace from './components/Marketplace.tsx';
 import NexusRewards from './components/NexusRewards.tsx';
 import ScrollControls from './components/ScrollControls.tsx';
 import TravelStore from './components/TravelStore.tsx';
+import DestinationDetail from './components/DestinationDetail.tsx';
 import { supabase } from './lib/supabase.ts';
 import { Sparkles, Compass, ShieldCheck, Star, MapPin, ArrowRight, Database, Box, Layers, Zap } from 'lucide-react';
 
-type View = 'home' | 'destinations' | 'about' | 'foods' | 'music' | 'interests' | 'medicine' | 'tea' | 'hiking' | 'phrases' | 'essentials' | 'festivals' | 'memories' | 'quiz' | 'vr-experience' | 'vr-showcase' | 'search' | 'contact' | 'marketplace' | 'community' | 'shop';
+type View = 'home' | 'destinations' | 'about' | 'foods' | 'music' | 'interests' | 'medicine' | 'tea' | 'hiking' | 'phrases' | 'essentials' | 'festivals' | 'memories' | 'quiz' | 'vr-experience' | 'vr-showcase' | 'search' | 'contact' | 'marketplace' | 'community' | 'shop' | 'destination-detail';
 
 const App: React.FC = () => {
   const [language, setLanguage] = useState<Language>('EN');
@@ -43,6 +44,7 @@ const App: React.FC = () => {
   const [isSiteEntered, setIsSiteEntered] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [scrollPos, setScrollPos] = useState(0);
+  const [selectedDestinationData, setSelectedDestinationData] = useState<Destination | null>(null);
 
   // Global scroll-to-top on view change
   useEffect(() => {
@@ -53,7 +55,6 @@ const App: React.FC = () => {
     const handleScroll = () => setScrollPos(window.scrollY);
     window.addEventListener('scroll', handleScroll, { passive: true });
     
-    // Simulate background sync check + user auth
     const initTimer = setTimeout(() => {
         supabase.auth.getSession().then(({ data: { session } }) => {
           if (session?.user) {
@@ -65,7 +66,7 @@ const App: React.FC = () => {
           }
           setIsDataReady(true);
         });
-    }, 3000); // Minimum 3s for cinematic effect
+    }, 3000);
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       if (session?.user) {
@@ -142,6 +143,11 @@ const App: React.FC = () => {
     setUser(null);
   };
 
+  const navigateToDestination = (dest: Destination) => {
+    setSelectedDestinationData(dest);
+    setView('destination-detail');
+  };
+
   const renderContent = () => {
     switch (view) {
       case 'community':
@@ -151,7 +157,9 @@ const App: React.FC = () => {
       case 'shop':
         return <div className="pt-24"><TravelStore language={language} /></div>;
       case 'destinations':
-        return <div className="pt-24"><Destinations language={language} /></div>;
+        return <div className="pt-24"><Destinations language={language} onSelectDestination={navigateToDestination} /></div>;
+      case 'destination-detail':
+        return <DestinationDetail destination={selectedDestinationData} language={language} onBack={() => setView('destinations')} onSelect={navigateToDestination} />;
       case 'foods':
         return <div className="pt-24"><Foods language={language} /></div>;
       case 'music':
@@ -274,7 +282,7 @@ const App: React.FC = () => {
                     ))}
                  </div>
               </div>
-              <PopularHighlights language={language} setView={setView} />
+              <PopularHighlights language={language} onSelectDestination={navigateToDestination} setView={setView} />
               <div id="heritage-hub">
                 <HeritageHub language={language} setView={setView} />
               </div>

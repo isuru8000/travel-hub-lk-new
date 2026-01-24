@@ -45,8 +45,8 @@ interface NavbarProps {
 }
 
 export const TravelHubLogo = ({ size = 48, className = "" }) => (
-  <div className={`relative group/logo-svg ${className}`}>
-    <svg width={size} height={size} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="drop-shadow-[0_0_30px_rgba(40,90,235,0.6)] transition-all duration-700 group-hover/logo-svg:scale-110">
+  <div className={`relative group/logo-svg ${className}`} role="img" aria-label="Travel Hub Sri Lanka Logo - Neural Network Design">
+    <svg width={size} height={size} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="drop-shadow-[0_0_30px_rgba(40,90,235,0.6)] transition-all duration-700 group-hover/logo-svg:scale-110" aria-hidden="true">
       {/* Outer Tech Rings - Expanded */}
       <circle cx="50" cy="50" r="49" stroke="currentColor" strokeWidth="0.5" className="text-gray-200/10" />
       <circle cx="50" cy="50" r="47" stroke="rgba(255,255,255,0.1)" strokeWidth="0.8" strokeDasharray="4 12" className="animate-spin-slow" />
@@ -238,9 +238,13 @@ const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <div className={`fixed left-0 right-0 z-[70] transition-all duration-1000 flex justify-center pointer-events-none ${scrolled ? 'top-2' : 'top-6'}`}>
-      <nav className={`transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)] relative flex items-center justify-between px-4 md:px-8 w-[96%] max-w-[1700px] py-3 bg-black/70 backdrop-blur-[60px] rounded-full border border-white/10 shadow-[0_30px_100px_rgba(0,0,0,0.6)] pointer-events-auto group/nav ${
-        scrolled ? 'scale-100 py-2.5 bg-black/85' : 'scale-[1.01] py-4'
-      }`}>
+      <nav 
+        role="navigation" 
+        aria-label="Main Navigation"
+        className={`transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)] relative flex items-center justify-between px-4 md:px-8 w-[96%] max-w-[1700px] py-3 bg-black/70 backdrop-blur-[60px] rounded-full border border-white/10 shadow-[0_30px_100px_rgba(0,0,0,0.6)] pointer-events-auto group/nav ${
+          scrolled ? 'scale-100 py-2.5 bg-black/85' : 'scale-[1.01] py-4'
+        }`}
+      >
         <div className="absolute inset-0 rounded-full border-t border-white/25 pointer-events-none" />
         <div className="absolute inset-0 rounded-full border-b border-black/40 pointer-events-none" />
         <div className="absolute top-0 left-1/4 w-1/2 h-[1px] bg-gradient-to-r from-transparent via-[#E1306C] to-transparent opacity-0 group-hover/nav:opacity-100 transition-opacity duration-1000 animate-nav-scan" />
@@ -248,6 +252,7 @@ const Navbar: React.FC<NavbarProps> = ({
         <div className="flex items-center gap-5">
           <button 
             onClick={() => handleNav('home')}
+            aria-label="Go to Home Registry"
             className={`flex items-center gap-4 group/logo transition-transform ${lastClicked === 'home' ? 'animate-nav-bounce' : ''}`}
           >
             <TravelHubLogo />
@@ -272,6 +277,9 @@ const Navbar: React.FC<NavbarProps> = ({
             >
               <button 
                 onClick={() => handleNav(link.anchor ? 'home' : link.id, link.anchor)} 
+                aria-haspopup={link.hasDropdown ? "true" : undefined}
+                aria-expanded={link.hasDropdown ? (activeDropdown === link.id) : undefined}
+                aria-current={currentView === link.id ? "page" : undefined}
                 className={`px-6 py-2.5 rounded-full flex items-center gap-3 transition-all duration-500 relative group/link ${
                   currentView === link.id ? 'text-white' : 'text-white/60 hover:text-white'
                 }`}
@@ -285,7 +293,7 @@ const Navbar: React.FC<NavbarProps> = ({
                 }`}>
                   {link.premium && <Zap size={11} className={`${currentView === link.id ? 'text-yellow-400 drop-shadow-[0_0_10px_#facc15]' : 'text-yellow-400/50 group-hover:text-yellow-400'}`} />}
                   {link.highlight && <Signal size={11} className={`${currentView === link.id ? 'text-[#E1306C] drop-shadow-[0_0_10px_#E1306C]' : 'text-[#E1306C]/50 group-hover:text-[#E1306C]'}`} />}
-                  {link.icon && <span className="text-[#E1306C]">{link.icon}</span>}
+                  {link.icon && <span className="text-[#E1306C]" aria-hidden="true">{link.icon}</span>}
                   {link.label}
                   {link.hasDropdown && (
                     <ChevronDown size={14} className={`transition-transform duration-500 ${activeDropdown === link.id ? 'rotate-180 text-white' : 'opacity-40'} group-hover:opacity-100`} />
@@ -304,7 +312,7 @@ const Navbar: React.FC<NavbarProps> = ({
                         className="w-full flex items-center gap-6 px-6 py-5 hover:bg-white/10 rounded-3xl transition-all group/item text-left border border-transparent hover:border-white/10"
                       >
                         <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-white/60 group-hover/item:bg-[#E1306C] group-hover/item:text-white transition-all shadow-inner border border-white/10 group-hover/item:shadow-[0_0_20px_rgba(225,48,108,0.4)]">
-                          {item.icon}
+                          <span aria-hidden="true">{item.icon}</span>
                         </div>
                         <span className="text-[11px] font-black uppercase tracking-[0.2em] text-white/80 group-hover/item:text-white group-hover/item:translate-x-2 transition-all drop-shadow-lg">
                           {item.label}
@@ -321,6 +329,7 @@ const Navbar: React.FC<NavbarProps> = ({
         <div className="flex items-center gap-3 md:gap-6">
           <button 
             onClick={() => setLanguage(language === 'EN' ? 'SI' : 'EN')}
+            aria-label={`Switch language to ${language === 'EN' ? 'Sinhala' : 'English'}`}
             className="hidden sm:flex items-center gap-3 px-6 py-3 rounded-2xl transition-all text-[11px] font-black uppercase tracking-[0.4em] bg-white/10 hover:bg-white/25 text-white border border-white/20 active:scale-90 shadow-xl drop-shadow-xl"
           >
             <Globe size={16} className="text-[#E1306C] drop-shadow-[0_0_8px_#E1306C]" />
@@ -331,10 +340,13 @@ const Navbar: React.FC<NavbarProps> = ({
             <div className="relative">
               <button 
                 onClick={() => setShowUserMenu(!showUserMenu)}
+                aria-haspopup="true"
+                aria-expanded={showUserMenu}
+                aria-label="User Account Menu"
                 className="flex items-center gap-4 p-2 pr-8 rounded-full bg-white/15 border border-white/30 hover:border-white/50 hover:bg-white/20 transition-all active:scale-95 group/user shadow-2xl"
               >
                 <div className="w-10 h-10 rounded-full border border-[#E1306C] shadow-[0_0_20px_rgba(225,48,108,0.5)] overflow-hidden group-hover/user:scale-110 transition-transform">
-                  <img src={user.photo} alt={user.name} className="w-full h-full object-cover" />
+                  <img src={user.photo} alt={`${user.name}'s profile avatar`} className="w-full h-full object-cover" />
                 </div>
                 <div className="hidden sm:flex flex-col items-start drop-shadow-lg">
                    <span className="text-[10px] font-black uppercase tracking-widest text-white brightness-125">{user.name.split(' ')[0]}</span>
@@ -360,6 +372,7 @@ const Navbar: React.FC<NavbarProps> = ({
           ) : (
             <button 
               onClick={onLogin}
+              aria-label={language === 'EN' ? "Portal Login" : "පිවිසුමට"}
               title={language === 'EN' ? "Portal Login" : "පිවිසුමට"}
               className="relative w-12 h-12 md:w-16 md:h-16 flex items-center justify-center bg-white text-black rounded-full transition-all duration-700 hover:scale-115 active:scale-90 shadow-[0_0_50px_rgba(255,255,255,0.5)] group/login overflow-hidden border border-white/60"
             >
@@ -370,6 +383,8 @@ const Navbar: React.FC<NavbarProps> = ({
 
           <button 
             onClick={() => setIsOpen(!isOpen)} 
+            aria-label={isOpen ? "Close Main Menu" : "Open Main Menu"}
+            aria-expanded={isOpen}
             className="lg:hidden w-12 h-12 md:w-14 md:h-14 flex items-center justify-center rounded-2xl bg-white/15 border border-white/30 text-white transition-all active:scale-90 hover:bg-white/25 shadow-xl"
           >
             {isOpen ? <X size={28} className="drop-shadow-xl" /> : (
@@ -393,6 +408,8 @@ const Navbar: React.FC<NavbarProps> = ({
               <div key={link.id} className="space-y-8">
                 <button 
                   onClick={() => !link.hasDropdown ? handleNav(link.id) : setActiveDropdown(activeDropdown === link.id ? null : link.id)} 
+                  aria-haspopup={link.hasDropdown ? "true" : undefined}
+                  aria-expanded={link.hasDropdown ? (activeDropdown === link.id) : undefined}
                   className={`group flex items-center justify-between w-full transition-all duration-700 ${
                     currentView === link.id ? 'translate-x-6' : ''
                   }`}
@@ -401,7 +418,7 @@ const Navbar: React.FC<NavbarProps> = ({
                   <span className={`text-4xl sm:text-7xl font-heritage font-bold transition-all flex items-center gap-8 drop-shadow-[0_10px_40px_rgba(0,0,0,0.5)] ${
                     currentView === link.id ? 'text-white brightness-150' : 'text-white/30 hover:text-white/50'
                   }`}>
-                    {link.premium && <Zap size={32} className="text-yellow-400 animate-pulse shadow-yellow-400" />}
+                    {link.premium && <Zap size={32} className="text-yellow-400 animate-pulse shadow-yellow-400" aria-hidden="true" />}
                     {link.label}
                   </span>
                   {link.hasDropdown && <ChevronDown size={32} className={`text-white/30 transition-transform duration-500 ${activeDropdown === link.id ? 'rotate-180 text-[#E1306C]' : ''}`} />}
@@ -428,6 +445,7 @@ const Navbar: React.FC<NavbarProps> = ({
           <div className="mt-auto space-y-8 pb-12 relative z-10">
             <button 
               onClick={() => setLanguage(language === 'EN' ? 'SI' : 'EN')}
+              aria-label={`Switch language to ${language === 'EN' ? 'Sinhala' : 'English'}`}
               className="w-full py-10 rounded-[3rem] text-[13px] font-black uppercase tracking-[0.7em] text-white border border-white/20 flex items-center justify-center gap-8 bg-white/5 active:scale-95 transition-all shadow-[0_30px_80px_rgba(0,0,0,0.8)]"
             >
               <Globe size={32} className="text-[#E1306C] animate-spin-slow drop-shadow-[0_0_15px_#E1306C]" />

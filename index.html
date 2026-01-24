@@ -73,6 +73,23 @@
       .animate-float {
         animation: float 4s ease-in-out infinite;
       }
+
+      /* Accessibility Focus States */
+      :focus-visible {
+        outline: 3px solid #E1306C;
+        outline-offset: 4px;
+        border-radius: 4px;
+      }
+
+      /* Reduced Motion Support */
+      @media (prefers-reduced-motion: reduce) {
+        *, ::before, ::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
     </style>
   <script type="importmap">
 {

@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { TravelHubLogo } from './Navbar.tsx';
-import { ShieldCheck, Activity, Zap, Loader2 } from 'lucide-react';
+import { ShieldCheck, Activity, Zap, Loader2, CheckCircle2 } from 'lucide-react';
 
 interface LoadingScreenProps {
   onEnter: () => void;
@@ -144,9 +144,5 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onEnter, language }) => {
     </div>
   );
 };
-
-// Added missing import for CheckCircle2
-import { CheckCircle2 as CheckIcon } from 'lucide-react';
-const CheckCircle2 = CheckIcon;
 
 export default LoadingScreen;
