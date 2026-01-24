@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Language } from '../types.ts';
 import { HIKING_DATA } from '../constants.tsx';
@@ -15,7 +16,7 @@ const Hiking: React.FC<HikingProps> = ({ language, setView }) => {
       <div className="relative h-[80vh] flex items-center justify-center overflow-hidden bg-[#0a0a0a]">
         <div 
           className="absolute inset-0 bg-cover bg-fixed bg-center opacity-60 transition-transform duration-[20000ms] animate-slow-zoom" 
-          style={{ backgroundImage: `url('https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=1920&q=80')` }}
+          style={{ backgroundImage: `url('https://cdn.pixabay.com/photo/2023/07/04/10/30/mountains-8105952_1280.jpg')` }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0a0a0a]/90 to-white" />
         

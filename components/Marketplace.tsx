@@ -1,3 +1,4 @@
+
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { Language } from '../types.ts';
 import { 
@@ -44,7 +45,8 @@ import {
   Download,
   Printer,
   ExternalLink,
-  QrCode
+  QrCode,
+  PawPrint
 } from 'lucide-react';
 import HotelModal from './HotelModal.tsx';
 
@@ -76,6 +78,24 @@ const PREMIUM_PACKAGES = [
     type: 'WELLNESS',
     image: 'https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=800&q=80',
     features: { EN: ['Tea Factory Stay', 'Ayurvedic Spa', 'Scenic Train VIP'], SI: ['තේ වතු හෝටල්', 'ආයුර්වේද ප්‍රතිකාර', 'දුම්රිය විශේෂ පහසුකම්'] }
+  },
+  {
+    id: 'p3',
+    title: { EN: 'Wild Blue Whale Safari', SI: 'නිල් තල්මසුන් ගවේෂණය' },
+    price: 450,
+    duration: '2 Days',
+    type: 'EXPEDITION',
+    image: 'https://cdn.pixabay.com/photo/2016/11/29/04/19/ocean-1867285_1280.jpg',
+    features: { EN: ['Luxury Yacht Charter', 'Marine Biologist Guide', 'Mirissa Coast Villa'], SI: ['සුඛෝපභෝගී යාත්‍රාව', 'ජීව විද්‍යාඥ මගපෙන්වීම', 'මිරිස්ස වෙරළ විවේකය'] }
+  },
+  {
+    id: 'p4',
+    title: { EN: 'Hela Wisdom Wellness', SI: 'හෙළ සුවය සුවතාවය' },
+    price: 720,
+    duration: '5 Days',
+    type: 'RETREAT',
+    image: 'https://cdn.pixabay.com/photo/2016/07/26/16/16/neem-1543161_1280.jpg',
+    features: { EN: ['Detox Rituals', 'Jungle Meditation', 'Herbal Buffet'], SI: ['සුවකිරීමේ චාරිත්‍ර', 'වනගත භාවනාව', 'ඖෂධීය ආහාර වේල'] }
   }
 ];
 
@@ -545,7 +565,7 @@ const Marketplace: React.FC<MarketplaceProps> = ({ language }) => {
                       {PREMIUM_PACKAGES.map(p => <option key={p.id} value={p.title.EN}>{p.title[language]} — ${p.price}</option>)}
                     </optgroup>
                   </select>
-                  <ChevronDown size={28} className="absolute right-10 top-1/2 -translate-y-1/2 text-gray-200 pointer-events-none group-hover/select:text-[#E1306C] transition-colors" />
+                  <ChevronDown size={28} className="absolute right-10 top-1/2 -translate-y-1/2 text-gray-200 pointer-events-none group/select:text-[#E1306C] transition-colors" />
                 </div>
               </div>
 

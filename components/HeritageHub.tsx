@@ -1,7 +1,6 @@
 
 import React, { useState, useRef } from 'react';
 import { Language } from '../types.ts';
-// Added missing Layers and Target icon imports to resolve compilation errors
 import { Mountain, Utensils, Music, Activity, ArrowRight, Sparkles, Database, Box, Layers, Target } from 'lucide-react';
 
 interface HeritageHubProps {
@@ -99,7 +98,7 @@ const HeritageHub: React.FC<HeritageHubProps> = ({ language, setView }) => {
       title: language === 'EN' ? 'Heritage Hiking' : 'උරුම කඳු තරණය',
       subtitle: language === 'EN' ? 'Scale the cloud forests where kings once meditated.' : 'රජවරුන් භාවනා කළ මීදුමෙන් වැසුණු කඳු මුදුන් කරා.',
       icon: <Mountain size={28} />,
-      image: 'https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=800&q=80',
+      image: 'https://cdn.pixabay.com/photo/2021/08/17/14/23/mountain-6553198_1280.jpg',
       color: '#2ecc71',
       refId: 'H01'
     },
@@ -108,7 +107,7 @@ const HeritageHub: React.FC<HeritageHubProps> = ({ language, setView }) => {
       title: language === 'EN' ? 'Food Heritage' : 'ආහාර උරුමය',
       subtitle: language === 'EN' ? 'Taste the ancient spices of an island civilization.' : 'දිවයිනේ පැරණි කුළුබඩු රසයෙන් පිරි ආහාර සංස්කෘතිය.',
       icon: <Utensils size={28} />,
-      image: 'https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=800&q=80',
+      image: 'https://cdn.pixabay.com/photo/2021/01/21/01/24/food-5936087_1280.jpg',
       color: '#f39c12',
       refId: 'F01'
     },
@@ -117,7 +116,7 @@ const HeritageHub: React.FC<HeritageHubProps> = ({ language, setView }) => {
       title: language === 'EN' ? 'Ancient Music' : 'පැරණි සංගීතය',
       subtitle: language === 'EN' ? 'Listen to the rhythmic heartbeat of a nation.' : 'ජාතියක හදගැස්ම බඳු වූ පාරම්පරික රිද්මයන්.',
       icon: <Music size={28} />,
-      image: 'https://images.unsplash.com/photo-1514525253361-b83f85df0f5c?auto=format&fit=crop&w=800&q=80',
+      image: 'https://cdn.pixabay.com/photo/2016/11/29/04/19/ocean-1867285_1280.jpg',
       color: '#3498db',
       refId: 'M01'
     },
@@ -126,16 +125,16 @@ const HeritageHub: React.FC<HeritageHubProps> = ({ language, setView }) => {
       title: language === 'EN' ? 'Hela Wedakama' : 'හෙළ වෙදකම',
       subtitle: language === 'EN' ? '5000 years of indigenous neural healing.' : 'වසර 5000 ක් පැරණි දේශීය සුව කිරීමේ ප්‍රඥාව.',
       icon: <Activity size={28} />,
-      image: 'https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=800&q=80',
+      image: 'https://cdn.pixabay.com/photo/2016/07/26/16/16/neem-1543161_1280.jpg',
       color: '#1abc9c',
       refId: 'W01'
     }
   ];
 
   return (
-    <section className="py-32 bg-[#02040a] relative overflow-hidden">
+    <section className="py-32 bg-white relative overflow-hidden border-y border-gray-50">
       {/* Background Ambience */}
-      <div className="absolute top-0 right-0 p-48 opacity-[0.02] text-white rotate-12 pointer-events-none">
+      <div className="absolute top-0 right-0 p-48 opacity-[0.015] text-[#0a0a0a] rotate-12 pointer-events-none">
          <Database size={500} />
       </div>
 
@@ -143,12 +142,12 @@ const HeritageHub: React.FC<HeritageHubProps> = ({ language, setView }) => {
         
         {/* Hub Header */}
         <div className="flex flex-col items-center text-center space-y-10">
-           <div className="inline-flex items-center gap-4 px-6 py-2 rounded-full bg-white/5 border border-white/10 text-gray-400 text-[10px] font-black uppercase tracking-[0.5em] shadow-3xl">
+           <div className="inline-flex items-center gap-4 px-6 py-2 rounded-full bg-black/5 border border-black/10 text-gray-500 text-[10px] font-black uppercase tracking-[0.5em] shadow-sm">
               <Sparkles size={16} className="text-[#E1306C] animate-pulse" />
               Primary_Archive_Core
            </div>
            
-           <h2 className="text-6xl md:text-9xl font-heritage font-bold text-white tracking-tighter uppercase leading-[0.8] drop-shadow-glow">
+           <h2 className="text-6xl md:text-9xl font-heritage font-bold text-[#0a0a0a] tracking-tighter uppercase leading-[0.8] drop-shadow-sm">
              CORE <br/><span className="italic insta-text-gradient">HERITAGE.</span>
            </h2>
            
@@ -177,12 +176,11 @@ const HeritageHub: React.FC<HeritageHubProps> = ({ language, setView }) => {
 
         {/* Global Hub Footer */}
         <div className="pt-20 flex flex-col items-center gap-10">
-           <div className="h-20 w-[1px] bg-gradient-to-b from-white/10 to-transparent"></div>
-           <div className="flex items-center gap-10 opacity-20">
-              <Box size={24} className="text-white" />
-              {/* Fix: Standardized icon usage and ensured imports are present */}
-              <Layers size={24} className="text-white" />
-              <Target size={24} className="text-white" />
+           <div className="h-20 w-[1px] bg-gradient-to-b from-black/10 to-transparent"></div>
+           <div className="flex items-center gap-10 opacity-10">
+              <Box size={24} className="text-black" />
+              <Layers size={24} className="text-black" />
+              <Target size={24} className="text-black" />
            </div>
         </div>
       </div>
@@ -196,9 +194,6 @@ const HeritageHub: React.FC<HeritageHubProps> = ({ language, setView }) => {
         }
         .animate-scan-slow {
           animation: scan-slow 6s linear infinite;
-        }
-        .drop-shadow-glow {
-          filter: drop-shadow(0 0 20px rgba(225,48,108,0.2));
         }
       `}} />
     </section>

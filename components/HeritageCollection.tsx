@@ -8,21 +8,21 @@ const HIDDEN_GEMS = [
     id: 'ritigala',
     name: { EN: 'Ritigala Monastery', SI: 'රිටිගල ආරණ්‍යය' },
     tag: { EN: 'Mystic Forest', SI: 'අද්භූත වනාන්තරය' },
-    image: 'https://images.unsplash.com/photo-1546708973-b339540b5162?q=80&w=1200&auto=format&fit=crop',
+    image: 'https://cdn.pixabay.com/photo/2020/02/10/08/33/mountain-4835694_1280.jpg',
     rating: '4.9'
   },
   {
     id: 'yapahuwa',
     name: { EN: 'Yapahuwa Rock Fortress', SI: 'යාපහුව බලකොටුව' },
     tag: { EN: 'Architectural Marvel', SI: 'නිර්මාණාත්මක ආශ්චර්යය' },
-    image: 'https://images.unsplash.com/photo-1580794749460-76f97b7180d8?q=80&w=1200&auto=format&fit=crop',
+    image: 'https://cdn.pixabay.com/photo/2016/11/21/13/46/background-1845479_1280.jpg',
     rating: '4.8'
   },
   {
     id: 'kalpitiya',
     name: { EN: 'Kalpitiya Peninsula', SI: 'කල්පිටිය අර්ධද්වීපය' },
     tag: { EN: 'Oceanic Serenity', SI: 'සාගර නිශ්ශබ්දතාවය' },
-    image: 'https://images.unsplash.com/photo-1558446791-ac5fec3caddf?q=80&w=1200&auto=format&fit=crop',
+    image: 'https://cdn.pixabay.com/photo/2016/11/29/04/19/ocean-1867285_1280.jpg',
     rating: '5.0'
   }
 ];

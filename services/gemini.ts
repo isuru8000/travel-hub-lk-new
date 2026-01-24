@@ -14,6 +14,15 @@ export interface AIResponse {
 }
 
 /**
+ * Initializes the GoogleGenAI client using process.env.API_KEY directly.
+ * Adheres to strict guidelines for API key handling.
+ */
+const getAIClient = () => {
+  // Fix: Strictly use process.env.API_KEY as per coding guidelines
+  return new GoogleGenAI({ apiKey: process.env.API_KEY });
+};
+
+/**
  * Decodes a base64 string into a Uint8Array.
  */
 export function decode(base64: string): Uint8Array {
@@ -43,6 +52,42 @@ export function encode(bytes: Uint8Array): string {
   }
   return btoa(binary);
 }
+
+/**
+ * Vision-based Food Identification.
+ */
+export const analyzeFoodImage = async (base64Image: string, language: Language): Promise<string> => {
+  try {
+    const ai = getAIClient();
+    const model = 'gemini-3-flash-preview';
+    
+    const prompt = `
+      You are the "Lanka Culinary Archivist". 
+      Identify the Sri Lankan dish in this image. 
+      If it is not food or not Sri Lankan, state it clearly but politely.
+      If identified, provide:
+      1. Name of the dish (English and Sinhala transliterated).
+      2. A 2-sentence poetic description of its history/significance.
+      3. A list of 3 key ingredients.
+      Language: ${language === 'SI' ? 'Sinhala' : 'English'}.
+    `;
+
+    const result = await ai.models.generateContent({
+      model,
+      contents: {
+        parts: [
+          { inlineData: { data: base64Image, mimeType: 'image/jpeg' } },
+          { text: prompt }
+        ]
+      }
+    });
+
+    return result.text || "Identification failed.";
+  } catch (error) {
+    console.error("Vision API Error:", error);
+    return "Error: Neural link to the kitchen archives was interrupted.";
+  }
+};
 
 /**
  * Decodes raw PCM audio data into an AudioBuffer manually.
@@ -91,8 +136,7 @@ export const getLankaGuideResponse = async (
   isThinkingMode: boolean = false
 ): Promise<AIResponse | string> => {
   try {
-    // Fix: Initialization now uses process.env.API_KEY directly as required by standard guidelines
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    const ai = getAIClient();
     
     const systemInstruction = `
       You are "Lanka Guide AI", a prestige travel intelligence unit for "Travel Hub Sri Lanka". 
@@ -141,6 +185,7 @@ export const getLankaGuideResponse = async (
   } catch (error: any) {
     console.error("Gemini API Error:", error);
     const errMsg = error.message || "";
+    // Fix: Streamlined error check logic as per guidelines
     if (errMsg.includes("Requested entity was not found.") || errMsg.includes("API key not found") || errMsg.includes("403")) {
       return { text: "API_KEY_REQUIRED", links: [], error: "API_KEY_REQUIRED" };
     }
@@ -155,8 +200,7 @@ export const getLankaGuideResponse = async (
  */
 export const searchGrounding = async (query: string, language: Language, isThinkingMode: boolean = true): Promise<AIResponse> => {
   try {
-    // Fix: Initialization now uses process.env.API_KEY directly as required by standard guidelines
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    const ai = getAIClient();
     
     const response = await ai.models.generateContent({
       model: "gemini-3-pro-preview",
@@ -196,8 +240,7 @@ export const searchGrounding = async (query: string, language: Language, isThink
     
     // Fallback: try standard generation without search tool if it fails
     try {
-      // Fix: Initialization now uses process.env.API_KEY directly as required by standard guidelines
-      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+      const ai = getAIClient();
       const fallback = await ai.models.generateContent({
         model: "gemini-3-flash-preview",
         contents: `Provide general information about: ${query}. (Note: Search registry offline, providing archival data.) Language: ${language === 'SI' ? 'Sinhala' : 'English'}`
@@ -214,8 +257,7 @@ export const searchGrounding = async (query: string, language: Language, isThink
  */
 export const refineTravelStory = async (story: string, language: Language): Promise<string> => {
   try {
-    // Fix: Initialization now uses process.env.API_KEY directly as required by standard guidelines
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    const ai = getAIClient();
     const prompt = `Refine this travel story to be more poetic and atmospheric. Return ONLY the text. Language: ${language === 'SI' ? 'Sinhala' : 'English'}. Story: "${story}"`;
     
     const response = await ai.models.generateContent({
@@ -233,8 +275,7 @@ export const refineTravelStory = async (story: string, language: Language): Prom
  */
 export const generateDetailedItinerary = async (destination: string, language: Language): Promise<string> => {
   try {
-    // Fix: Initialization now uses process.env.API_KEY directly as required by standard guidelines
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    const ai = getAIClient();
     const systemInstruction = `You are an elite travel planner. Create high-end 3-day itineraries. Language: ${language === 'SI' ? 'Sinhala' : 'English'}. Use deep reasoning for logistics.`;
     
     const response = await ai.models.generateContent({

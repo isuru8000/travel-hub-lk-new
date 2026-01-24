@@ -56,7 +56,7 @@ const TeaCulture: React.FC<TeaCultureProps> = ({ language }) => {
       <div className="relative h-[70vh] flex items-center justify-center overflow-hidden bg-black">
         <div 
           className="absolute inset-0 bg-cover bg-fixed bg-center opacity-60 transition-transform duration-10000 hover:scale-110" 
-          style={{ backgroundImage: `url('https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=1920&q=80')` }}
+          style={{ backgroundImage: `url('https://cdn.pixabay.com/photo/2016/01/19/17/15/tea-1149495_1280.jpg')` }}
         />
         <div className="absolute inset-0 bg-green-900/20 opacity-30" />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />

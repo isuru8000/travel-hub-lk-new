@@ -29,10 +29,10 @@ const QUIZ_QUESTIONS: QuizQuestion[] = [
       SI: "ඔබ වඩාත්ම ප්‍රිය කරන උදෑසන දර්ශනය කුමක්ද?" 
     },
     options: [
-      { id: 'ruins', text: { EN: 'Sacred Ancient Ruins', SI: 'පූජනීය පුරාණ නටබුන්' }, image: 'https://images.unsplash.com/photo-1621393614326-2f9ed389ce02?auto=format&fit=crop&w=400&q=80', profileScore: 'ancient' },
-      { id: 'mist', text: { EN: 'Misty Mountains', SI: 'මීදුමෙන් වැසුණු කඳු' }, image: 'https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=400&q=80', profileScore: 'mountains' },
-      { id: 'waves', text: { EN: 'Turquoise Ocean Waves', SI: 'නිල්වන් සාගර රළ' }, image: 'https://images.unsplash.com/photo-1558446791-ac5fec3caddf?auto=format&fit=crop&w=400&q=80', profileScore: 'beach' },
-      { id: 'jungle', text: { EN: 'Wild Jungle Canopy', SI: 'වනගත තුරු වියන' }, image: 'https://images.unsplash.com/photo-1671432751719-d1a032c1a369?auto=format&fit=crop&w=400&q=80', profileScore: 'wildlife' },
+      { id: 'ruins', text: { EN: 'Sacred Ancient Ruins', SI: 'පූජනීය පුරාණ නටබුන්' }, image: 'https://cdn.pixabay.com/photo/2016/11/21/13/46/background-1845479_1280.jpg', profileScore: 'ancient' },
+      { id: 'mist', text: { EN: 'Misty Mountains', SI: 'මීදුමෙන් වැසුණු කඳු' }, image: 'https://cdn.pixabay.com/photo/2023/07/04/10/30/mountains-8105952_1280.jpg', profileScore: 'mountains' },
+      { id: 'waves', text: { EN: 'Turquoise Ocean Waves', SI: 'නිල්වන් සාගර රළ' }, image: 'https://cdn.pixabay.com/photo/2016/11/29/04/19/ocean-1867285_1280.jpg', profileScore: 'beach' },
+      { id: 'jungle', text: { EN: 'Wild Jungle Canopy', SI: 'වනගත තුරු වියන' }, image: 'https://cdn.pixabay.com/photo/2018/11/15/22/41/sri-lanka-3818318_1280.jpg', profileScore: 'wildlife' },
     ]
   },
   {
@@ -42,10 +42,10 @@ const QUIZ_QUESTIONS: QuizQuestion[] = [
       SI: "ඔබේ කුතුහලය අවදි කරන රසය කුමක්ද?" 
     },
     options: [
-      { id: 'spicy', text: { EN: 'Fiery Black Pepper Curries', SI: 'සැර ගම්මිරිස් ව්‍යංජන' }, image: 'https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=400&q=80', profileScore: 'ancient' },
-      { id: 'tea', text: { EN: 'Fragrant Highland Tea', SI: 'සුවඳවත් කඳුකර තේ' }, image: 'https://images.unsplash.com/photo-1594631252845-29fc45865157?auto=format&fit=crop&w=400&q=80', profileScore: 'mountains' },
-      { id: 'coconut', text: { EN: 'Sweet Fresh Coconut', SI: 'පැණිරස නැවුම් කුරුම්බා' }, image: 'https://images.unsplash.com/photo-1626777552726-4a6b547b4e5c?auto=format&fit=crop&w=400&q=80', profileScore: 'beach' },
-      { id: 'wild', text: { EN: 'Zesty Tropical Fruits', SI: 'නැවුම් නිවර්තන පළතුරු' }, image: 'https://images.unsplash.com/photo-1563811809228-3e4e6f9877b0?auto=format&fit=crop&w=400&q=80', profileScore: 'wildlife' },
+      { id: 'spicy', text: { EN: 'Fiery Black Pepper Curries', SI: 'සැර ගම්මිරිස් ව්‍යංජන' }, image: 'https://cdn.pixabay.com/photo/2016/03/12/15/34/turmeric-1252159_1280.jpg', profileScore: 'ancient' },
+      { id: 'tea', text: { EN: 'Fragrant Highland Tea', SI: 'සුවඳවත් කඳුකර තේ' }, image: 'https://cdn.pixabay.com/photo/2015/07/02/20/37/cup-829527_1280.jpg', profileScore: 'mountains' },
+      { id: 'coconut', text: { EN: 'Sweet Fresh Coconut', SI: 'පැණිරස නැවුම් කුරුම්බා' }, image: 'https://cdn.pixabay.com/photo/2016/06/25/11/50/coconut-1478716_1280.jpg', profileScore: 'beach' },
+      { id: 'wild', text: { EN: 'Zesty Tropical Fruits', SI: 'නැවුම් නිවර්තන පළතුරු' }, image: 'https://cdn.pixabay.com/photo/2018/06/13/11/32/rice-3472591_1280.jpg', profileScore: 'wildlife' },
     ]
   },
   {
@@ -55,10 +55,10 @@ const QUIZ_QUESTIONS: QuizQuestion[] = [
       SI: "ඔබේ වික්‍රමාන්විත හැඟීම අවදි කරන්නේ කුමක්ද?" 
     },
     options: [
-      { id: 'climb', text: { EN: 'Climbing Sacred Peaks', SI: 'පූජනීය කඳු තරණය' }, image: 'https://images.unsplash.com/photo-1580794749460-76f97b7180d8?auto=format&fit=crop&w=400&q=80', profileScore: 'ancient' },
-      { id: 'trek', text: { EN: 'Trekking Through Clouds', SI: 'වලාකුළු අතරින් ඇවිදීම' }, image: 'https://images.unsplash.com/photo-1578519050142-afb511e518de?auto=format&fit=crop&w=400&q=80', profileScore: 'mountains' },
-      { id: 'surf', text: { EN: 'Surfing Endless Waves', SI: 'රළ මත ක්‍රීඩා කිරීම' }, image: 'https://images.unsplash.com/photo-1502680390469-be75c86b636f?auto=format&fit=crop&w=400&q=80', profileScore: 'beach' },
-      { id: 'safari', text: { EN: 'Tracking Elusive Leopards', SI: 'දිවියන් සොයා යෑම' }, image: 'https://images.unsplash.com/photo-1590766940554-634a7ed41450?auto=format&fit=crop&w=400&q=80', profileScore: 'wildlife' },
+      { id: 'climb', text: { EN: 'Climbing Sacred Peaks', SI: 'පූජනීය කඳු තරණය' }, image: 'https://cdn.pixabay.com/photo/2021/01/17/14/40/mountain-5925345_1280.jpg', profileScore: 'ancient' },
+      { id: 'trek', text: { EN: 'Trekking Through Clouds', SI: 'වලාකුළු අතරින් ඇවිදීම' }, image: 'https://cdn.pixabay.com/photo/2020/02/10/08/33/mountain-4835694_1280.jpg', profileScore: 'mountains' },
+      { id: 'surf', text: { EN: 'Surfing Endless Waves', SI: 'රළ මත ක්‍රීඩා කිරීම' }, image: 'https://cdn.pixabay.com/photo/2016/11/29/04/19/ocean-1867285_1280.jpg', profileScore: 'beach' },
+      { id: 'safari', text: { EN: 'Tracking Elusive Leopards', SI: 'දිවියන් සොයා යෑම' }, image: 'https://cdn.pixabay.com/photo/2018/11/15/22/41/sri-lanka-3818318_1280.jpg', profileScore: 'wildlife' },
     ]
   },
   {
@@ -68,10 +68,10 @@ const QUIZ_QUESTIONS: QuizQuestion[] = [
       SI: "ඔබ ආපසු ගෙදර රැගෙන යන්නේ කුමක්ද?" 
     },
     options: [
-      { id: 'mask', text: { EN: 'Hand-carved Heritage Mask', SI: 'අතින් කැටයම් කළ වෙස් මුහුණක්' }, image: 'https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=400&q=80', profileScore: 'ancient' },
-      { id: 'leaf', text: { EN: 'Estate-fresh Tea Leaves', SI: 'වතුයායෙන් නෙලූ නැවුම් තේ' }, image: 'https://images.unsplash.com/photo-1558446791-ac5fec3caddf?auto=format&fit=crop&w=400&q=80', profileScore: 'mountains' },
-      { id: 'shell', text: { EN: 'Seashells & Ocean Memories', SI: 'මුහුදු බෙල්ලන් සහ මතකයන්' }, image: 'https://images.unsplash.com/photo-1578405827843-dba01140f07c?auto=format&fit=crop&w=400&q=80', profileScore: 'beach' },
-      { id: 'spice', text: { EN: 'Aromatic Pure Spices', SI: 'සුවඳවත් පිරිසිදු කුළුබඩු' }, image: 'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=400&q=80', profileScore: 'wildlife' },
+      { id: 'mask', text: { EN: 'Hand-carved Heritage Mask', SI: 'අතින් කැටයම් කළ වෙස් මුහුණක්' }, image: 'https://cdn.pixabay.com/photo/2021/01/17/14/40/mountain-5925345_1280.jpg', profileScore: 'ancient' },
+      { id: 'leaf', text: { EN: 'Estate-fresh Tea Leaves', SI: 'වතුයායෙන් නෙලූ නැවුම් තේ' }, image: 'https://cdn.pixabay.com/photo/2016/01/19/17/15/tea-1149495_1280.jpg', profileScore: 'mountains' },
+      { id: 'shell', text: { EN: 'Seashells & Ocean Memories', SI: 'මුහුදු බෙල්ලන් සහ මතකයන්' }, image: 'https://cdn.pixabay.com/photo/2016/11/29/04/19/ocean-1867285_1280.jpg', profileScore: 'beach' },
+      { id: 'spice', text: { EN: 'Aromatic Pure Spices', SI: 'සුවඳවත් පිරිසිදු කුළුබඩු' }, image: 'https://cdn.pixabay.com/photo/2016/07/06/13/29/cinnamon-1500508_1280.jpg', profileScore: 'wildlife' },
     ]
   }
 ];
@@ -84,7 +84,7 @@ const EXPLORER_PROFILES: Record<string, ExplorerProfile> = {
       EN: "You are drawn to the whispers of history. Your soul finds peace among ancient stones and sacred ruins where kings once walked.", 
       SI: "ඔබ ඉතිහාසයේ හඬට ඇදී යයි. රජවරුන් ඇවිද ගිය පැරණි ගල් පර්වත සහ පූජනීය නටබුන් අතර ඔබේ ආත්මයට සාමය ලැබේ." 
     },
-    image: 'https://images.unsplash.com/photo-1580794749460-76f97b7180d8?auto=format&fit=crop&w=800&q=80',
+    image: 'https://cdn.pixabay.com/photo/2017/08/04/17/39/sigiriya-2580795_1280.jpg',
     recommendations: ['sigiriya', 'polonnaruwa', 'dambulla']
   },
   mountains: {
@@ -94,7 +94,7 @@ const EXPLORER_PROFILES: Record<string, ExplorerProfile> = {
       EN: "You seek the heights and the mist. Your spirit soars in the cool mountain air, where tea estates blanket the hills like emerald velvet.", 
       SI: "ඔබ මීදුම සහ කඳු මුදුන් සොයන්නෙකි. හරිත පැහැ තේ වතුවලින් වැසුණු කඳුකරයේ සිසිල් සුළඟ ඔබේ ජවයයි." 
     },
-    image: 'https://images.unsplash.com/photo-1578519050142-afb511e518de?auto=format&fit=crop&w=800&q=80',
+    image: 'https://cdn.pixabay.com/photo/2023/07/04/10/30/mountains-8105952_1280.jpg',
     recommendations: ['ella', 'adams-peak', 'knuckles']
   },
   beach: {
@@ -104,7 +104,7 @@ const EXPLORER_PROFILES: Record<string, ExplorerProfile> = {
       EN: "The rhythm of the tide is your heartbeat. You find joy on golden shores and in the turquoise depths of the Indian Ocean.", 
       SI: "සාගර රළේ රිද්මය ඔබේ හදගැස්මයි. රන්වන් වෙරළ තීරයන් සහ ඉන්දියන් සාගරයේ නිල්වන් ගැඹුර ඔබව සතුටු කරයි." 
     },
-    image: 'https://images.unsplash.com/photo-1502680390469-be75c86b636f?auto=format&fit=crop&w=800&q=80',
+    image: 'https://cdn.pixabay.com/photo/2016/11/29/04/19/ocean-1867285_1280.jpg',
     recommendations: ['galle-fort', 'trincomalee', 'hikkaduwa']
   },
   wildlife: {
@@ -114,7 +114,7 @@ const EXPLORER_PROFILES: Record<string, ExplorerProfile> = {
       EN: "You are one with nature. Your adventure lies in the deep bush, where wild elephants roam and the leopard's eyes gleam in the shadows.", 
       SI: "ඔබ සොබාදහම සමඟ බැඳී සිටින්නෙකි. වන අලි සැරිසරන සහ දිවියන්ගේ දෑස් දිලිසෙන ඝන වනාන්තරය ඔබේ වික්‍රමයයි." 
     },
-    image: 'https://images.unsplash.com/photo-1590766940554-634a7ed41450?auto=format&fit=crop&w=800&q=80',
+    image: 'https://cdn.pixabay.com/photo/2018/11/15/22/41/sri-lanka-3818318_1280.jpg',
     recommendations: ['horton-plains', 'knuckles', 'sigiriya']
   }
 };

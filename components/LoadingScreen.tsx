@@ -31,16 +31,17 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onEnter, language }) => {
       setProgress(prev => {
         if (prev >= 100) {
           clearInterval(interval);
-          // Automatic transition after a brief pause for cinematic stability
+          // Faster transition after completion
           setTimeout(() => {
             onEnter();
-          }, 1000);
+          }, 500);
           return 100;
         }
-        const step = Math.floor(Math.random() * 10) + 5;
+        // Increased step for faster loading
+        const step = Math.floor(Math.random() * 15) + 10;
         return Math.min(prev + step, 100);
       });
-    }, 400);
+    }, 120); // Faster interval
 
     return () => clearInterval(interval);
   }, [onEnter]);
@@ -51,7 +52,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onEnter, language }) => {
   }, [progress, language]);
 
   return (
-    <div className="fixed inset-0 z-[100] bg-white flex flex-col items-center justify-center p-8 overflow-hidden animate-out fade-out duration-1000">
+    <div className="fixed inset-0 z-[100] bg-white flex flex-col items-center justify-center p-8 overflow-hidden animate-out fade-out duration-700">
       <div className="absolute inset-0 pattern-overlay opacity-5 pointer-events-none"></div>
       
       <div className="relative mb-20">
@@ -90,7 +91,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onEnter, language }) => {
            
            <div className="h-2 w-full bg-gray-100 rounded-full overflow-hidden p-[1px] border border-gray-50 shadow-inner">
              <div 
-               className={`h-full rounded-full transition-all duration-500 ease-out ${progress === 100 ? 'bg-green-500' : 'insta-gradient'}`}
+               className={`h-full rounded-full transition-all duration-300 ease-out ${progress === 100 ? 'bg-green-500' : 'insta-gradient'}`}
                style={{ 
                  width: `${progress}%`,
                  boxShadow: progress === 100 ? '0 0 20px rgba(34,197,94,0.5)' : '0 0 20px rgba(225,48,108,0.5)'

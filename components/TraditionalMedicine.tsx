@@ -78,7 +78,7 @@ const TraditionalMedicine: React.FC<TraditionalMedicineProps> = ({ language }) =
       <div className="relative h-[70vh] flex items-center justify-center overflow-hidden bg-black">
         <div 
           className="absolute inset-0 bg-cover bg-fixed bg-center opacity-60 transition-transform duration-10000 hover:scale-110" 
-          style={{ backgroundImage: `url('https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=1920&q=80')` }}
+          style={{ backgroundImage: `url('https://cdn.pixabay.com/photo/2016/07/26/16/16/neem-1543161_1280.jpg')` }}
         />
         <div className="absolute inset-0 bg-green-900/20 opacity-40" />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />

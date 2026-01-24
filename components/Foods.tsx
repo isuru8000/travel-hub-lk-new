@@ -15,7 +15,7 @@ const Foods: React.FC<FoodsProps> = ({ language }) => {
       <div className="relative h-[65vh] flex items-center justify-center overflow-hidden bg-black">
         <div 
           className="absolute inset-0 bg-cover bg-fixed bg-center opacity-70 transition-transform duration-[20000ms] animate-slow-zoom" 
-          style={{ backgroundImage: `url('https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=1920&q=80')` }}
+          style={{ backgroundImage: `url('https://cdn.pixabay.com/photo/2016/01/21/01/24/food-5936087_1280.jpg')` }}
         />
         <div className="absolute inset-0 story-ring opacity-20" />
         <div className="absolute inset-0 bg-gradient-to-t from-white via-black/40 to-transparent" />
@@ -42,6 +42,7 @@ const Foods: React.FC<FoodsProps> = ({ language }) => {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 -mt-20 relative z-10 space-y-32">
+        {/* Curated Food Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-24 gap-x-12">
           {FOODS_DATA.map((food, idx) => (
             <div 
@@ -53,6 +54,10 @@ const Foods: React.FC<FoodsProps> = ({ language }) => {
                   src={food.image} 
                   alt={food.name[language]} 
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[4000ms]"
+                  loading="lazy"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = "https://cdn.pixabay.com/photo/2016/01/21/01/24/food-5936087_1280.jpg";
+                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-40" />
                 

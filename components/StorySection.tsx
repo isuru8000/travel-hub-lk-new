@@ -41,7 +41,6 @@ const StorySection: React.FC<StorySectionProps> = ({ language, setView }) => {
               ))}
             </div>
             
-            {/* Redesigned Story CTA Button */}
             <button 
               onClick={() => setView('destinations')}
               className="group relative flex items-center gap-6 px-10 py-5 bg-white rounded-3xl border-2 border-gray-100 shadow-2xl transition-all duration-500 hover:scale-105 active:scale-95 hover:border-[#E1306C]/30"
@@ -62,18 +61,18 @@ const StorySection: React.FC<StorySectionProps> = ({ language, setView }) => {
           <div className="grid grid-cols-2 gap-6">
             <div className="space-y-6 pt-12">
               <div className="story-ring p-1 rounded-3xl shadow-xl">
-                 <img src="https://images.unsplash.com/photo-1590766940554-634a7ed41450?auto=format&fit=crop&w=400&q=80" className="rounded-[22px] w-full grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" alt="Temple" />
+                 <img src="https://cdn.pixabay.com/photo/2017/08/04/17/39/sigiriya-2580795_1280.jpg" className="rounded-[22px] w-full grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" alt="Temple" />
               </div>
               <div className="story-ring p-1 rounded-3xl shadow-xl">
-                 <img src="https://images.unsplash.com/photo-1578503117502-3162799f9392?auto=format&fit=crop&w=400&q=80" className="rounded-[22px] w-full grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" alt="Statue" />
+                 <img src="https://cdn.pixabay.com/photo/2021/01/17/14/40/mountain-5925345_1280.jpg" className="rounded-[22px] w-full grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" alt="Statue" />
               </div>
             </div>
             <div className="space-y-6">
               <div className="story-ring p-1 rounded-3xl shadow-xl">
-                 <img src="https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=400&q=80" className="rounded-[22px] w-full grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" alt="Culture" />
+                 <img src="https://cdn.pixabay.com/photo/2016/11/21/13/46/background-1845479_1280.jpg" className="rounded-[22px] w-full grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" alt="Culture" />
               </div>
               <div className="story-ring p-1 rounded-3xl shadow-xl">
-                 <img src="https://images.unsplash.com/photo-1580221376840-a151b5c2d3a3?auto=format&fit=crop&w=400&q=80" className="rounded-[22px] w-full grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" alt="Nature" />
+                 <img src="https://cdn.pixabay.com/photo/2018/11/15/22/41/sri-lanka-3818318_1280.jpg" className="rounded-[22px] w-full grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" alt="Nature" />
               </div>
             </div>
           </div>

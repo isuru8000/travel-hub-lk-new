@@ -27,6 +27,9 @@ import SearchPortal from './components/SearchPortal.tsx';
 import LoginModal from './components/LoginModal.tsx';
 import Contact from './components/Contact.tsx';
 import Marketplace from './components/Marketplace.tsx';
+import Hotels from './components/Hotels.tsx';
+import Transport from './components/Transport.tsx';
+import BookingDestinations from './components/BookingDestinations.tsx';
 import NexusRewards from './components/NexusRewards.tsx';
 import ScrollControls from './components/ScrollControls.tsx';
 import TravelStore from './components/TravelStore.tsx';
@@ -34,7 +37,7 @@ import DestinationDetail from './components/DestinationDetail.tsx';
 import { supabase } from './lib/supabase.ts';
 import { Sparkles, Compass, ShieldCheck, Star, MapPin, ArrowRight, Database, Box, Layers, Zap } from 'lucide-react';
 
-type View = 'home' | 'destinations' | 'about' | 'foods' | 'music' | 'interests' | 'medicine' | 'tea' | 'hiking' | 'phrases' | 'essentials' | 'festivals' | 'memories' | 'quiz' | 'vr-experience' | 'vr-showcase' | 'search' | 'contact' | 'marketplace' | 'community' | 'shop' | 'destination-detail';
+type View = 'home' | 'destinations' | 'hotels' | 'transport' | 'booking-destinations' | 'about' | 'foods' | 'music' | 'interests' | 'medicine' | 'tea' | 'hiking' | 'phrases' | 'essentials' | 'festivals' | 'memories' | 'quiz' | 'vr-experience' | 'vr-showcase' | 'search' | 'contact' | 'marketplace' | 'community' | 'shop' | 'destination-detail';
 
 const App: React.FC = () => {
   const [language, setLanguage] = useState<Language>('EN');
@@ -55,18 +58,24 @@ const App: React.FC = () => {
     const handleScroll = () => setScrollPos(window.scrollY);
     window.addEventListener('scroll', handleScroll, { passive: true });
     
-    const initTimer = setTimeout(() => {
-        supabase.auth.getSession().then(({ data: { session } }) => {
-          if (session?.user) {
-            setUser({
-              name: session.user.user_metadata.full_name || session.user.email?.split('@')[0] || 'Explorer',
-              email: session.user.email || '',
-              photo: session.user.user_metadata.avatar_url || `https://ui-avatars.com/api/?name=${session.user.email}`
-            });
-          }
-          setIsDataReady(true);
+    if (!supabase || !supabase.auth) {
+      setIsDataReady(true);
+      return;
+    }
+
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session?.user) {
+        setUser({
+          name: session.user.user_metadata.full_name || session.user.email?.split('@')[0] || 'Explorer',
+          email: session.user.email || '',
+          photo: session.user.user_metadata.avatar_url || `https://ui-avatars.com/api/?name=${session.user.email}`
         });
-    }, 3000);
+      }
+      setIsDataReady(true);
+    }).catch(err => {
+      console.warn("Session check failed:", err);
+      setIsDataReady(true);
+    });
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       if (session?.user) {
@@ -82,9 +91,8 @@ const App: React.FC = () => {
     });
 
     return () => {
-      subscription.unsubscribe();
+      if (subscription) subscription.unsubscribe();
       window.removeEventListener('scroll', handleScroll);
-      clearTimeout(initTimer);
     };
   }, []);
 
@@ -139,7 +147,9 @@ const App: React.FC = () => {
   };
 
   const handleLogout = async () => {
-    await supabase.auth.signOut();
+    if (supabase?.auth) {
+      await supabase.auth.signOut();
+    }
     setUser(null);
   };
 
@@ -154,6 +164,12 @@ const App: React.FC = () => {
         return <NexusRewards language={language} user={user} onLogin={handleLogin} setView={setView} />;
       case 'marketplace':
         return <div className="pt-24"><Marketplace language={language} /></div>;
+      case 'hotels':
+        return <div className="pt-24"><Hotels language={language} /></div>;
+      case 'transport':
+        return <div className="pt-24"><Transport language={language} /></div>;
+      case 'booking-destinations':
+        return <div className="pt-24"><BookingDestinations language={language} setView={setView} /></div>;
       case 'shop':
         return <div className="pt-24"><TravelStore language={language} /></div>;
       case 'destinations':

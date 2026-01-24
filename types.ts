@@ -21,6 +21,16 @@ export interface Destination {
   location: string;
 }
 
+export interface Transport {
+  id: string;
+  name: { EN: string; SI: string };
+  type: 'air' | 'rail' | 'road' | 'sea';
+  price: number;
+  description: { EN: string; SI: string };
+  image: string;
+  features: { EN: string[]; SI: string[] };
+}
+
 export interface Food {
   id: string;
   name: { EN: string; SI: string };
