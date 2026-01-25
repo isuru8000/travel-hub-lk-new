@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useMemo } from 'react';
 import { Language, User, Destination } from './types.ts';
 import Layout from './components/Layout.tsx';
@@ -137,10 +136,6 @@ const App: React.FC = () => {
   const handleEnterSite = () => {
     setIsSiteEntered(true);
   };
-
-  if (!isSiteEntered) {
-    return <LoadingScreen onEnter={handleEnterSite} language={language} />;
-  }
 
   const handleLogin = () => {
     setIsLoginModalOpen(true);
