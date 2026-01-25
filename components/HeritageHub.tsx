@@ -98,7 +98,7 @@ const HeritageHub: React.FC<HeritageHubProps> = ({ language, setView }) => {
       title: language === 'EN' ? 'Heritage Hiking' : 'උරුම කඳු තරණය',
       subtitle: language === 'EN' ? 'Scale the cloud forests where kings once meditated.' : 'රජවරුන් භාවනා කළ මීදුමෙන් වැසුණු කඳු මුදුන් කරා.',
       icon: <Mountain size={28} />,
-      image: 'https://cdn.pixabay.com/photo/2021/08/17/14/23/mountain-6553198_1280.jpg',
+      image: 'https://images.unsplash.com/photo-1563297054-94676106c59b?auto=format&fit=crop&w=800&q=80',
       color: '#2ecc71',
       refId: 'H01'
     },
@@ -107,7 +107,7 @@ const HeritageHub: React.FC<HeritageHubProps> = ({ language, setView }) => {
       title: language === 'EN' ? 'Food Heritage' : 'ආහාර උරුමය',
       subtitle: language === 'EN' ? 'Taste the ancient spices of an island civilization.' : 'දිවයිනේ පැරණි කුළුබඩු රසයෙන් පිරි ආහාර සංස්කෘතිය.',
       icon: <Utensils size={28} />,
-      image: 'https://cdn.pixabay.com/photo/2021/01/21/01/24/food-5936087_1280.jpg',
+      image: 'https://images.unsplash.com/photo-1616070152767-3eb99cf10509?auto=format&fit=crop&w=800&q=80',
       color: '#f39c12',
       refId: 'F01'
     },
@@ -116,7 +116,7 @@ const HeritageHub: React.FC<HeritageHubProps> = ({ language, setView }) => {
       title: language === 'EN' ? 'Ancient Music' : 'පැරණි සංගීතය',
       subtitle: language === 'EN' ? 'Listen to the rhythmic heartbeat of a nation.' : 'ජාතියක හදගැස්ම බඳු වූ පාරම්පරික රිද්මයන්.',
       icon: <Music size={28} />,
-      image: 'https://cdn.pixabay.com/photo/2016/11/29/04/19/ocean-1867285_1280.jpg',
+      image: 'https://images.unsplash.com/photo-1665849050332-8d5d7e59afb6?auto=format&fit=crop&w=800&q=80',
       color: '#3498db',
       refId: 'M01'
     },
@@ -125,7 +125,7 @@ const HeritageHub: React.FC<HeritageHubProps> = ({ language, setView }) => {
       title: language === 'EN' ? 'Hela Wedakama' : 'හෙළ වෙදකම',
       subtitle: language === 'EN' ? '5000 years of indigenous neural healing.' : 'වසර 5000 ක් පැරණි දේශීය සුව කිරීමේ ප්‍රඥාව.',
       icon: <Activity size={28} />,
-      image: 'https://cdn.pixabay.com/photo/2016/07/26/16/16/neem-1543161_1280.jpg',
+      image: 'https://images.unsplash.com/photo-1546271876-af6caec5fae5?auto=format&fit=crop&w=800&q=80',
       color: '#1abc9c',
       refId: 'W01'
     }

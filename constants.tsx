@@ -158,7 +158,7 @@ export const HIKING_DATA: HikingSpot[] = [
     duration: { EN: "5-7 Hours", SI: "පැය 5-7" },
     elevation: "2,243m",
     description: { EN: "A sacred pilgrimage site with 5,000+ steps, famous for the sunrise and the 'Ira Sewaya'.", SI: "පඩිපෙළ 5,000 කට වඩා වැඩි ප්‍රමාණයක් සහිත පූජනීය කඳු මුදුනකි. මෙහි හිරු උදාව ඉතා ප්‍රසිද්ධය." },
-    image: "https://cdn.pixabay.com/photo/2023/07/04/10/30/mountains-8105952_1280.jpg"
+    image: "https://images.unsplash.com/photo-1563297054-94676106c59b?auto=format&fit=crop&w=1200&q=80"
   },
   {
     id: "h-2",
@@ -168,7 +168,7 @@ export const HIKING_DATA: HikingSpot[] = [
     duration: { EN: "3-4 Hours", SI: "පැය 3-4" },
     elevation: "1,350m",
     description: { EN: "A popular trek through rail tracks and tea estates offering panoramic views of Ella Gap.", SI: "දුම්රිය මාර්ග සහ තේ වතු හරහා දිවෙන, ඇල්ල කපොල්ලේ අලංකාර දසුන් නැරඹිය හැකි සංචාරයකි." },
-    image: "https://cdn.pixabay.com/photo/2016/11/21/13/46/background-1845479_1280.jpg"
+    image: "https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=1200&q=80"
   },
   {
     id: "h-3",
@@ -178,7 +178,7 @@ export const HIKING_DATA: HikingSpot[] = [
     duration: { EN: "1-3 Days", SI: "දින 1-3" },
     elevation: "1,863m",
     description: { EN: "A UNESCO World Heritage site with diverse climates and hidden waterfalls.", SI: "යුනෙස්කෝ ලෝක උරුමයක් වන මෙම කඳු පන්තිය ජෛව විවිධත්වයෙන් සහ සැඟවුණු දිය ඇලිවලින් පිරි ඉසව්වකි." },
-    image: "https://cdn.pixabay.com/photo/2018/11/15/22/41/sri-lanka-3818318_1280.jpg"
+    image: "https://images.unsplash.com/photo-1580794749460-76f97b7180d8?auto=format&fit=crop&w=1200&q=80"
   },
   {
     id: "h-4",
@@ -188,7 +188,7 @@ export const HIKING_DATA: HikingSpot[] = [
     duration: { EN: "3-4 Hours", SI: "පැය 3-4" },
     elevation: "2,100m",
     description: { EN: "A high-altitude plateau trek ending at a 880m vertical drop known as World's End.", SI: "ලෝකාන්තය ලෙස හැඳින්වෙන අඩි 2,800 ක ප්‍රපාතයකින් අවසන් වන සානුමය ගමන් පථයකි." },
-    image: "https://cdn.pixabay.com/photo/2014/11/14/03/57/mountain-530188_1280.jpg"
+    image: "https://images.unsplash.com/photo-1671432751719-d1a032c1a369?auto=format&fit=crop&w=1200&q=80"
   }
 ];
 
@@ -197,7 +197,7 @@ export const FOODS_DATA: Food[] = [
     id: "hoppers",
     name: { EN: "Hoppers (Appa)", SI: "ආප්ප" },
     description: { EN: "Bowl-shaped pancakes made from fermented rice flour and coconut milk, often served with a whole egg in the middle.", SI: "හාල් පිටි සහ පොල් කිරි වලින් සාදන ලද බඳුනක හැඩැති මෘදු ආහාරයකි." },
-    image: "https://cdn.pixabay.com/photo/2016/09/01/01/08/pancakes-1634991_1280.jpg",
+    image: "https://images.unsplash.com/photo-1616070152767-3eb99cf10509?auto=format&fit=crop&w=1200&q=80",
     spiciness: 1,
     tasteProfile: { EN: "Crispy edges with a soft, creamy center.", SI: "දාරයේ කරකුටු ගතිය සහ මැද මෘදු බව." },
     ingredients: [{ EN: "Rice flour", SI: "හාල් පිටි" }, { EN: "Coconut milk", SI: "පොල් කිරි" }, { EN: "Toddy (for fermentation)", SI: "රා" }]
@@ -205,8 +205,8 @@ export const FOODS_DATA: Food[] = [
   {
     id: "kottu",
     name: { EN: "Kottu Roti", SI: "කොත්තු රොටි" },
-    description: { EN: "The ultimate street food: chopped Godamba roti mixed with vegetables, egg, spices, and your choice of meat.", SI: "ගෝදම්බ රොටි කැබලි වලට කපා එළවළු, බිත්තර සහ කුළුබඩු සමඟ මිශ්‍ර කර සාදන ජනප්‍රිය ආහාරයකි." },
-    image: "https://cdn.pixabay.com/photo/2021/05/25/12/57/kottu-6282361_1280.jpg",
+    description: { EN: "The ultimate street food: chopped Godamba roti mixed with vegetables, egg, spices, and your choice of meat.", SI: "ගෝදම්බ රොටි kැබලි වලට කපා එළවළු, බිත්තර සහ කුළුබඩු සමඟ මිශ්‍ර කර සාදන ජනප්‍රිය ආහාරයකි." },
+    image: "https://images.unsplash.com/photo-1628236113113-1280392c695c?auto=format&fit=crop&w=1200&q=80",
     spiciness: 4,
     tasteProfile: { EN: "Hearty, spicy, and full of aromatic textures.", SI: "කුළුබඩු සුවඳ රැඳුණු තෘප්තිමත් ආහාරයකි." },
     ingredients: [{ EN: "Godamba Roti", SI: "රොටි" }, { EN: "Curry", SI: "හොදි" }, { EN: "Ginger/Garlic", SI: "ඉඟුරු/සුදුළුණු" }]
@@ -215,7 +215,7 @@ export const FOODS_DATA: Food[] = [
     id: "pol-sambol",
     name: { EN: "Pol Sambol", SI: "පොල් සම්බෝල" },
     description: { EN: "A fiery relish made of freshly grated coconut, chilies, onion, lime juice, and Maldive fish.", SI: "පොල්, මිරිස්, ලූණු සහ දෙහි යුෂ මිශ්‍ර කර සාදන ලද රසවත් සම්බෝලයකි." },
-    image: "https://cdn.pixabay.com/photo/2016/06/25/11/50/coconut-1478716_1280.jpg",
+    image: "https://images.unsplash.com/photo-1546271876-af6caec5fae5?auto=format&fit=crop&w=1200&q=80",
     spiciness: 5,
     tasteProfile: { EN: "Zesty, spicy, and tropical.", SI: "දැවෙන මිරිස් රස සහ දෙහි ඇඹුල් රසය." },
     ingredients: [{ EN: "Fresh Coconut", SI: "නැවුම් පොල්" }, { EN: "Red Chili", SI: "රතු මිරිස්" }, { EN: "Lime", SI: "දෙහි" }]
@@ -224,7 +224,7 @@ export const FOODS_DATA: Food[] = [
     id: "kiribath",
     name: { EN: "Kiribath (Milk Rice)", SI: "කිරි බත්" },
     description: { EN: "Rice cooked with thick coconut milk, a ceremonial dish served at every auspicious moment in Sri Lanka.", SI: "පොල් කිරි යොදා පිසින ලද බත්, ලාංකීය සංස්කෘතික උත්සව වලදී නැතිවම බැරි ආහාරයකි." },
-    image: "https://cdn.pixabay.com/photo/2018/06/13/11/32/rice-3472591_1280.jpg",
+    image: "https://images.unsplash.com/photo-1616070152767-3eb99cf10509?auto=format&fit=crop&w=1200&q=80",
     spiciness: 1,
     tasteProfile: { EN: "Creamy, mild, and comforting.", SI: "පොල් කිරි රසයෙන් පිරි මෘදු ආහාරයකි." },
     ingredients: [{ EN: "White Rice", SI: "සුදු හාල්" }, { EN: "Thick Coconut Milk", SI: "උකු පොල් කිරි" }, { EN: "Salt", SI: "ලුණු" }]
@@ -233,7 +233,7 @@ export const FOODS_DATA: Food[] = [
     id: "ambul-thiyal",
     name: { EN: "Fish Ambul Thiyal", SI: "මාළු ඇඹුල් තියල්" },
     description: { EN: "A unique sour fish curry made with firm fish, heavily spiced with black pepper and dried Goraka for its signature tangy flavor.", SI: "ගම්මිරිස් සහ ගොරකා යොදා සාදන ලද ලාංකීය අනන්‍යතාවය විදහා දක්වන මාළු ව්‍යංජනයකි." },
-    image: "https://cdn.pixabay.com/photo/2014/11/05/15/57/fish-518022_1280.jpg",
+    image: "https://images.unsplash.com/photo-1546271876-af6caec5fae5?auto=format&fit=crop&w=1200&q=80",
     spiciness: 4,
     tasteProfile: { EN: "Sour, spicy, and peppery.", SI: "ඇඹුල් සහ ගම්මිරිස් රස මුසු වූ විශේෂිත රසය." },
     ingredients: [{ EN: "Tuna or Bonito", SI: "කෙලවල්ලා හෝ බලයා" }, { EN: "Goraka", SI: "ගොරකා" }, { EN: "Black Pepper", SI: "ගම්මිරිස්" }]
@@ -245,7 +245,7 @@ export const TEA_DATA: TeaExperience[] = [
     id: "black-tea",
     name: { EN: "Ceylon Black Tea", SI: "ලංකා කළු තේ" },
     description: { EN: "The world-famous full-bodied tea known for its crisp, citrusy aroma.", SI: "මුළු ලොවම දන්නා ලාංකීය අනන්‍යතාවය විදහා දක්වන කළු තේ." },
-    image: "https://cdn.pixabay.com/photo/2015/07/02/20/37/cup-829527_1280.jpg",
+    image: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=1200&q=80",
     type: 'variety',
     fact: { EN: "Sri Lanka is the world's 4th largest tea producer.", SI: "ශ්‍රී ලංකාව ලොව සිව්වන විශාලතම තේ නිෂ්පාදකයා වේ." }
   }
@@ -262,7 +262,7 @@ export const MEDICINE_DATA: TraditionalMedicine[] = [
     type: 'herb',
     name: { EN: "Kohomba (Neem)", SI: "කොහොඹ" },
     description: { EN: "Known as the 'Village Pharmacy', Neem is revered for its potent antibacterial and antifungal properties.", SI: "මෙය දේශීය වෛද්‍ය විද්‍යාවේදී විෂබීජ නාශකයක් ලෙස ඉතාමත් වැදගත් ශාකයකි." },
-    image: "https://cdn.pixabay.com/photo/2016/07/26/16/16/neem-1543161_1280.jpg",
+    image: "https://images.unsplash.com/photo-1546271876-af6caec5fae5?auto=format&fit=crop&w=1200&q=80",
     benefits: { EN: "Treats skin conditions and detoxifies the blood.", SI: "චර්ම රෝග සමනය කරන අතර රුධිරය පිරිසිදු කරයි." },
     usage: { EN: "Oil, leaf paste, or decoctions.", SI: "තෙල්, කොළ මැල්ලුම හෝ කසාය ලෙස." }
   }
@@ -273,43 +273,302 @@ export const DESTINATIONS: Destination[] = [
     id: "sigiriya",
     name: { EN: "Sigiriya Lion Rock", SI: "සීගිරිය සිංහගිරිය" },
     category: "ancient",
-    image: "https://cdn.pixabay.com/photo/2017/08/04/17/39/sigiriya-2580795_1280.jpg",
-    gallery: [
-      "https://cdn.pixabay.com/photo/2021/01/17/14/40/mountain-5925345_1280.jpg",
-      "https://cdn.pixabay.com/photo/2018/11/15/22/41/sri-lanka-3818318_1280.jpg"
-    ],
+    image: "https://images.unsplash.com/photo-1580794749460-76f97b7180d8?auto=format&fit=crop&w=1920&q=80",
+    gallery: ["https://images.unsplash.com/photo-1620054604245-566083771259?auto=format&fit=crop&w=1200&q=80", "https://images.unsplash.com/photo-1580794749460-76f97b7180d8?auto=format&fit=crop&w=1200&q=80"],
     videoUrl: "https://www.youtube.com/shorts/j4ln2UNOnZk",
-    history: {
-      EN: "Sigiriya, the 'Lion Rock', is a UNESCO World Heritage site and one of the best-preserved examples of ancient urban planning.",
-      SI: "සීගිරිය හෙවත් 'සිංහගිරිය' යනු යුනෙස්කෝ ලෝක උරුම අඩවියක් වන අතර පැරණි නගර නිර්මාණකරණයේ විශිෂ්ටතම නිදසුනකි."
-    },
-    shortStory: {
-      EN: "The 8th Wonder of the World – A fortress in the sky.",
-      SI: "ලොව අටවන පුදුමය - අහස උසට විහිදුණු බලකොටුවකි."
-    },
+    history: { EN: "Sigiriya, the 'Lion Rock', is a UNESCO World Heritage site and one of the best-preserved examples of ancient urban planning.", SI: "සීගිරිය හෙවත් 'සිංහගිරිය' යනු යුනෙස්කෝ ලෝක උරුම අඩවියක් වන අතර පැරණි නගර නිර්මාණකරණයේ විශිෂ්ටතම නිදසුනකි." },
+    shortStory: { EN: "The 8th Wonder of the World – A fortress in the sky.", SI: "ලොව අටවන පුදුමය - අහස උසට විහිදුණු බලකොටුවකි." },
     bestTime: { EN: "December to April", SI: "දෙසැම්බර් සිට අප්‍රේල් දක්වා" },
-    tips: [
-      { EN: "Climb early morning to avoid the heat.", SI: "රස්නය මග හැරීමට උදෑසන කාලයේ නැගීම ආරම්භ කරන්න." }
-    ],
+    tips: [{ EN: "Climb early morning to avoid the heat.", SI: "රස්නය මග හැරීමට උදෑසන කාලයේ නැගීම ආරම්භ කරන්න." }],
     location: "Matale District"
+  },
+  {
+    id: "polonnaruwa",
+    name: { EN: "Ancient City of Polonnaruwa", SI: "පොළොන්නරුව පැරණි නගරය" },
+    category: "ancient",
+    image: "https://images.unsplash.com/photo-1656339952847-a360aee9273b?auto=format&fit=crop&w=1200&q=80",
+    gallery: ["https://images.unsplash.com/photo-1656339952847-a360aee9273b?auto=format&fit=crop&w=1200&q=80"],
+    history: { EN: "The second most ancient kingdom of Sri Lanka, Polonnaruwa features remains of garden-cities and incredible stone sculptures.", SI: "ශ්‍රී ලංකාවේ දෙවන පැරණිතම රාජධානිය වන පොළොන්නරුව, උද්‍යාන නගරවල ශේෂයන් සහ විස්මිත ගල් කැටයම් වලින් සමන්විත වේ." },
+    shortStory: { EN: "Where stone tells the story of an empire.", SI: "ගල් කැටයම් අධිරාජ්‍යයක කතාව පවසන තැන." },
+    bestTime: { EN: "July to September", SI: "ජූලි සිට සැප්තැම්බර් දක්වා" },
+    tips: [{ EN: "Rent a bicycle to explore the massive ruins.", SI: "නටබුන් නැරඹීමට බයිසිකලයක් කුලියට ගන්න." }],
+    location: "Polonnaruwa District"
+  },
+  {
+    id: "anuradhapura",
+    name: { EN: "Sacred City of Anuradhapura", SI: "අනුරාධපුර පූජනීය නගරය" },
+    category: "ancient",
+    image: "https://images.unsplash.com/photo-1621393614326-2f9ed389ce02?auto=format&fit=crop&w=1200&q=80",
+    gallery: ["https://images.unsplash.com/photo-1621393614326-2f9ed389ce02?auto=format&fit=crop&w=1200&q=80"],
+    history: { EN: "The first capital and a beacon of Buddhist civilization for over a millennium.", SI: "වසර දහසකට වැඩි කාලයක් බෞද්ධ ශිෂ්ටාචාරයේ කේන්ද්‍රස්ථානය වූ ප්‍රථම අගනුවරයි." },
+    shortStory: { EN: "The heart of Sri Lanka's spiritual history.", SI: "ශ්‍රී ලංකාවේ ආධ්‍යාත්මික ඉතිහාසයේ හදවත." },
+    bestTime: { EN: "January to May", SI: "ජනවාරි සිට මැයි දක්වා" },
+    tips: [{ EN: "Remove shoes and hats when entering temples.", SI: "පන්සල් වලට ඇතුළු වන විට සපත්තු සහ තොප්පි ගලවන්න." }],
+    location: "Anuradhapura District"
+  },
+  {
+    id: "dambulla",
+    name: { EN: "Dambulla Cave Temple", SI: "දඹුල්ල රන් විහාරය" },
+    category: "ancient",
+    image: "https://images.unsplash.com/photo-1546271876-af6caec5fae5?auto=format&fit=crop&w=1200&q=80",
+    gallery: ["https://images.unsplash.com/photo-1546271876-af6caec5fae5?auto=format&fit=crop&w=1200&q=80"],
+    history: { EN: "The largest and best-preserved cave temple complex in Sri Lanka, housing 153 Buddha statues.", SI: "බුදු පිළිම 153 කින් සමන්විත ශ්‍රී ලංකාවේ විශාලතම සහ හොඳින්ම සංරක්ෂණය කර ඇති ලෙන් විහාර සංකීර්ණයයි." },
+    shortStory: { EN: "Five caves, 150 Buddhas, and a mountain of gold.", SI: "ලෙන් පහක්, බුදු පිළිම 150ක් සහ රන් පර්වතයක්." },
+    bestTime: { EN: "Year-round", SI: "වසර පුරා" },
+    tips: [{ EN: "Beware of monkeys around the temple entrance.", SI: "විහාර ද්වාරය අසල සිටින රිලවුන්ගෙන් ප්‍රවේශම් වන්න." }],
+    location: "Matale District"
+  },
+  {
+    id: "kandy-temple",
+    name: { EN: "Temple of the Sacred Tooth Relic", SI: "ශ්‍රී දළදා මාළිගාව" },
+    category: "ancient",
+    image: "https://images.unsplash.com/photo-1665849050332-8d5d7e59afb6?auto=format&fit=crop&w=1200&q=80",
+    gallery: ["https://images.unsplash.com/photo-1665849050332-8d5d7e59afb6?auto=format&fit=crop&w=1200&q=80"],
+    history: { EN: "Located in the royal palace complex of the former Kingdom of Kandy, it houses the relic of the tooth of the Buddha.", SI: "මහනුවර රාජධානියේ රාජකීය මාළිගා සංකීර්ණයේ පිහිටි මෙය බුදුන් වහන්සේගේ දන්ත ධාතූන් වහන්සේ වැඩසිටින ස්ථානයයි." },
+    shortStory: { EN: "The holiest shrine in the island.", SI: "දිවයිනේ පූජනීයම සිද්ධස්ථානය." },
+    bestTime: { EN: "August (during Perahera)", SI: "අගෝස්තු (පෙරහැර කාලයේ)" },
+    tips: [{ EN: "Dress in white for a traditional experience.", SI: "සාම්ප්‍රදායික අත්දැකීමක් සඳහා සුදු පැහැති ඇඳුමින් සැරසෙන්න." }],
+    location: "Kandy District"
+  },
+  {
+    id: "yapahuwa",
+    name: { EN: "Yapahuwa Rock Fortress", SI: "යාපහුව බලකොටුව" },
+    category: "ancient",
+    image: "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=1200&q=80",
+    gallery: ["https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=1200&q=80"],
+    history: { EN: "A massive rock citadel rising 300 feet above the plain, served as the capital of the 13th-century kingdom.", SI: "තැනිතලාවෙන් අඩි 300 ක් ඉහළට විහිදුණු දැවැන්ත පර්වත බලකොටුවක් වන අතර 13 වන සියවසේ රාජධානියේ අගනුවර විය." },
+    shortStory: { EN: "The lion portal to a forgotten throne.", SI: "අමතක වූ සිංහාසනයකට යන සිංහ ද්වාරය." },
+    bestTime: { EN: "January to March", SI: "ජනවාරි සිට මාර්තු දක්වා" },
+    tips: [{ EN: "Prepare for a very steep climb up the stone stairs.", SI: "ගල් පඩිපෙළේ ඉතා බෑවුම් සහිත නැගීමකට සූදානම් වන්න." }],
+    location: "Kurunegala District"
+  },
+  {
+    id: "galle-fort",
+    name: { EN: "Galle Dutch Fort", SI: "ගාල්ල ලන්දේසි කොටුව" },
+    category: "ancient",
+    image: "https://images.unsplash.com/photo-1654561773591-57b9413c45c0?auto=format&fit=crop&w=1200&q=80",
+    gallery: ["https://images.unsplash.com/photo-1654561773591-57b9413c45c0?auto=format&fit=crop&w=1200&q=80"],
+    history: { EN: "A UNESCO World Heritage site, first built by the Portuguese in 1588 and extensively fortified by the Dutch.", SI: "යුනෙස්කෝ ලෝක උරුමයක් වන මෙය, 1588 දී පෘතුගීසීන් විසින් ඉදිකර පසුව ලන්දේසීන් විසින් ශක්තිමත් කරන ලදී." },
+    shortStory: { EN: "Europe in the Tropics.", SI: "නිවර්තන කලාපයේ යුරෝපය." },
+    bestTime: { EN: "November to April", SI: "නොවැම්බර් සිට අප්‍රේල් දක්වා" },
+    tips: [{ EN: "Walk the ramparts at sunset for the best views.", SI: "අලංකාර දර්ශන සඳහා හිරු බැස යන විට කොටු බැම්ම මත ඇවිදින්න." }],
+    location: "Galle District"
   },
   {
     id: "mirissa",
     name: { EN: "Mirissa Beach", SI: "මිරිස්ස වෙරළ" },
     category: "beach",
-    image: "https://cdn.pixabay.com/photo/2016/11/29/04/19/ocean-1867285_1280.jpg",
-    gallery: [],
-    history: {
-      EN: "Mirissa is a small town on the south coast, famous for its crescent-shaped beach and whale watching.",
-      SI: "මිරිස්ස යනු දකුණු වෙරළ තීරයේ පිහිටි කුඩා නගරයකි. එහි අඩසඳ හැඩැති වෙරළ සහ තල්මසුන් නැරඹීම සඳහා මෙය ඉතා ප්‍රසිද්ධය."
-    },
-    shortStory: {
-      EN: "Turquoise waters and legendary sunsets.",
-      SI: "නිල්වන් සාගරය සහ අලංකාර හිරු බැස යාම් සහිත වෙරළ තීරයකි."
-    },
+    image: "https://images.unsplash.com/photo-1544921603-91185f0962b1?auto=format&fit=crop&w=1200&q=80",
+    gallery: ["https://images.unsplash.com/photo-1544921603-91185f0962b1?auto=format&fit=crop&w=1200&q=80"],
+    history: { EN: "Mirissa is a small town on the south coast, famous for its crescent-shaped beach and whale watching.", SI: "මිරිස්ස යනු දකුණු වෙරළ තීරයේ පිහිටි කුඩා නගරයකි. එහි අඩසඳ හැඩැති වෙරළ සහ තල්මසුන් නැරඹීම සඳහා මෙය ඉතා ප්‍රසිද්ධය." },
+    shortStory: { EN: "Turquoise waters and legendary sunsets.", SI: "නිල්වන් සාගරය සහ අලංකාර හිරු බැස යාම් සහිත වෙරළ තීරයකි." },
     bestTime: { EN: "November to April", SI: "නොවැම්බර් සිට අප්‍රේල් දක්වා" },
-    tips: [],
+    tips: [{ EN: "Book whale watching trips in advance during peak season.", SI: "සංචාරක සමයේදී තල්මසුන් නැරඹීමේ චාරිකා කල්තියා වෙන්කරවා ගන්න." }],
     location: "Matara District"
+  },
+  {
+    id: "unawatuna",
+    name: { EN: "Unawatuna Beach", SI: "උණවටුන වෙරළ" },
+    category: "beach",
+    image: "https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=1200&q=80",
+    gallery: ["https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=1200&q=80"],
+    history: { EN: "Known for its coral reefs and palm-fringed beaches, Unawatuna is a prime spot for relaxation and snorkeling.", SI: "කොරල් පර සහ තල් ගස් වලින් වට වූ වෙරළ තීරය නිසා ප්‍රසිද්ධ උණවටුන, විවේකය සහ කිමිදුම් ක්‍රීඩා සඳහා සුදුසුම ස්ථානයකි." },
+    shortStory: { EN: "A paradise for ocean lovers.", SI: "සාගර ලෝලීන් සඳහා වූ පාරාදීසයකි." },
+    bestTime: { EN: "December to April", SI: "දෙසැම්බර් සිට අප්‍රේල් දක්වා" },
+    tips: [{ EN: "Visit the Japanese Peace Pagoda nearby for a great view.", SI: "අලංකාර දර්ශනයක් සඳහා අසල ඇති ජපන් සාම චෛත්‍යය නරඹන්න." }],
+    location: "Galle District"
+  },
+  {
+    id: "arugam-bay",
+    name: { EN: "Arugam Bay", SI: "ආරුගම් බොක්ක" },
+    category: "beach",
+    image: "https://images.unsplash.com/photo-1544921603-91185f0962b1?auto=format&fit=crop&w=1200&q=80",
+    gallery: ["https://images.unsplash.com/photo-1544921603-91185f0962b1?auto=format&fit=crop&w=1200&q=80"],
+    history: { EN: "A moon-shaped bay on the East Coast, world-renowned as one of the best surfing destinations.", SI: "නැගෙනහිර වෙරළ තීරයේ පිහිටි අඩසඳ හැඩැති බොක්කක් වන මෙය ලොව හොඳම රළ පැදීමේ ස්ථානයක් ලෙස ප්‍රසිද්ධය." },
+    shortStory: { EN: "Ride the endless waves of the East.", SI: "නැගෙනහිර නිමක් නැති රළ මත සවාරියක් යන්න." },
+    bestTime: { EN: "May to September", SI: "මැයි සිට සැප්තැම්බර් දක්වා" },
+    tips: [{ EN: "Great for surf beginners and pros alike.", SI: "ආධුනිකයින්ට මෙන්ම ප්‍රවීණයන්ටත් රළ පැදීමට සුදුසුයි." }],
+    location: "Ampara District"
+  },
+  {
+    id: "trincomalee",
+    name: { EN: "Nilaveli & Uppuveli", SI: "නිලාවේලි සහ උප්පුවේලි" },
+    category: "beach",
+    image: "https://images.unsplash.com/photo-1544921603-91185f0962b1?auto=format&fit=crop&w=1200&q=80",
+    gallery: ["https://images.unsplash.com/photo-1544921603-91185f0962b1?auto=format&fit=crop&w=1200&q=80"],
+    history: { EN: "Stretches of pure white sand on the Northeast coast, offering access to Pigeon Island National Park.", SI: "ඊසානදිග වෙරළ තීරයේ පිහිටි පිරිසිදු සුදු වැලි සහිත වෙරළ තීරයන් සහ පරෙවි දූපතට පිවිසුම ලබා දෙයි." },
+    shortStory: { EN: "The crystal clear depths of the East.", SI: "නැගෙනහිර පළිඟු වන් පැහැදිලි සාගර ගැඹුර." },
+    bestTime: { EN: "April to October", SI: "අප්‍රේල් සිට ඔක්තෝබර් දක්වා" },
+    tips: [{ EN: "Take a boat to Pigeon Island for world-class snorkeling.", SI: "කිමිදුම් ක්‍රීඩා සඳහා බෝට්ටුවකින් පරෙවි දූපතට යන්න." }],
+    location: "Trincomalee District"
+  },
+  {
+    id: "bentota",
+    name: { EN: "Bentota Golden Beach", SI: "බෙන්තොට රන්වන් වෙරළ" },
+    category: "beach",
+    image: "https://images.unsplash.com/photo-1558446791-ac5fec3caddf?auto=format&fit=crop&w=1200&q=80",
+    gallery: ["https://images.unsplash.com/photo-1558446791-ac5fec3caddf?auto=format&fit=crop&w=1200&q=80"],
+    history: { EN: "A major resort town famous for water sports and its broad, golden sandy beaches.", SI: "ජල ක්‍රීඩා සහ පුළුල් රන්වන් වැලි සහිත වෙරළ තීරය නිසා ප්‍රසිද්ධ ප්‍රධාන සංචාරක නගරයකි." },
+    shortStory: { EN: "Adrenaline on the water, peace on the shore.", SI: "ජලය මත ජවය, වෙරළේ සාමය." },
+    bestTime: { EN: "October to April", SI: "ඔක්තෝබර් සිට අප්‍රේල් දක්වා" },
+    tips: [{ EN: "Try the river safari on the Madu Ganga nearby.", SI: "අසල ඇති මාදු ගඟේ බෝට්ටු සවාරියක් අත්විඳින්න." }],
+    location: "Galle District"
+  },
+  {
+    id: "hikkaduwa",
+    name: { EN: "Hikkaduwa Marine Sanctuary", SI: "හික්කඩුව සාගර රක්ෂිතය" },
+    category: "beach",
+    image: "https://images.unsplash.com/photo-1544921603-91185f0962b1?auto=format&fit=crop&w=1200&q=80",
+    gallery: ["https://images.unsplash.com/photo-1544921603-91185f0962b1?auto=format&fit=crop&w=1200&q=80"],
+    history: { EN: "Famous for its shallow coral reefs and diverse marine life, including giant sea turtles.", SI: "නොගැඹුරු කොරල් පර සහ යෝධ මුහුදු කැස්බෑවුන් ඇතුළු විවිධ සාගර ජීවීන් සඳහා ප්‍රසිද්ධය." },
+    shortStory: { EN: "Swim with the giants of the reef.", SI: "කොරල් පරයේ යෝධයන් සමඟ පිහිනන්න." },
+    bestTime: { EN: "November to April", SI: "නොවැම්බර් සිට අප්‍රේල් දක්වා" },
+    tips: [{ EN: "Take a glass-bottom boat if you don't want to get wet.", SI: "දියට බැසීමට අකමැති නම් වීදුරු පතුල සහිත බෝට්ටුවක යන්න." }],
+    location: "Galle District"
+  },
+  {
+    id: "tangalle",
+    name: { EN: "Tangalle Silent Beach", SI: "තංගල්ල නිහඬ වෙරළ" },
+    category: "beach",
+    image: "https://images.unsplash.com/photo-1544921603-91185f0962b1?auto=format&fit=crop&w=1200&q=80",
+    gallery: ["https://images.unsplash.com/photo-1544921603-91185f0962b1?auto=format&fit=crop&w=1200&q=80"],
+    history: { EN: "Known for its wild, untouched coastline and deep blue waters on the far south coast.", SI: "ඈත දකුණු වෙරළ තීරයේ පිහිටි ස්වභාවික, ස්පර්ශ නොකළ වෙරළ තීරයන් සහ තද නිල් පැහැති මුහුද සඳහා ප්‍රසිද්ධය." },
+    shortStory: { EN: "Unspoiled solitude by the sea.", SI: "මුහුදු වෙරළේ අසමසම හුදෙකලාව." },
+    bestTime: { EN: "December to March", SI: "දෙසැම්බර් සිට මාර්තු දක්වා" },
+    tips: [{ EN: "The sea here can be rough; swim only in designated areas.", SI: "මෙහි මුහුද රළු විය හැක; නියමිත ස්ථානවල පමණක් පිහිනන්න." }],
+    location: "Hambantota District"
+  },
+  {
+    id: "yala",
+    name: { EN: "Yala National Park", SI: "යාල ජාතික උද්‍යානය" },
+    category: "wildlife",
+    image: "https://images.unsplash.com/photo-1590766940554-634a7ed41450?auto=format&fit=crop&w=1200&q=80",
+    gallery: ["https://images.unsplash.com/photo-1590766940554-634a7ed41450?auto=format&fit=crop&w=1200&q=80"],
+    history: { EN: "Sri Lanka's most famous park, boasting the highest leopard density in the world.", SI: "ලොව වැඩිම දිවි ඝනත්වයක් සහිත ශ්‍රී ලංකාවේ වඩාත් ප්‍රසිද්ධ ජාතික උද්‍යානයයි." },
+    shortStory: { EN: "Home of the spotted king.", SI: "දිවි රජුගේ නිවහන." },
+    bestTime: { EN: "February to June", SI: "පෙබරවාරි සිට ජූනි දක්වා" },
+    tips: [{ EN: "Enter at dawn for the best chance to spot a leopard.", SI: "දිවියන් දැකීමට උදෑසනම උද්‍යානයට ඇතුළු වන්න." }],
+    location: "Hambantota District"
+  },
+  {
+    id: "udawalawe",
+    name: { EN: "Udawalawe National Park", SI: "උඩවලව ජාතික උද්‍යානය" },
+    category: "wildlife",
+    image: "https://images.unsplash.com/photo-1581852017103-68ac65514cf7?auto=format&fit=crop&w=1200&q=80",
+    gallery: ["https://images.unsplash.com/photo-1581852017103-68ac65514cf7?auto=format&fit=crop&w=1200&q=80"],
+    history: { EN: "An important habitat for Sri Lankan elephants and a premier site for bird watching.", SI: "ශ්‍රී ලංකාවේ අලි ඇතුන්ගේ වැදගත් වාසස්ථානයක් වන අතර පක්ෂි නිරීක්ෂණය සඳහා කදිම ස්ථානයකි." },
+    shortStory: { EN: "Where giants roam free.", SI: "යෝධයන් නිදැල්ලේ සැරිසරන තැන." },
+    bestTime: { EN: "October to April", SI: "ඔක්තෝබර් සිට අප්‍රේල් දක්වා" },
+    tips: [{ EN: "Visit the Elephant Transit Home nearby at feeding time.", SI: "ආසන්නයේ ඇති ඇත් අතුරු සෙවණ ආහාර ලබා දෙන වේලාවට නරඹන්න." }],
+    location: "Ratnapura District"
+  },
+  {
+    id: "minneriya",
+    name: { EN: "Minneriya National Park", SI: "මින්නේරිය ජාතික උද්‍යානය" },
+    category: "wildlife",
+    image: "https://images.unsplash.com/photo-1549414002-36365a6b0933?auto=format&fit=crop&w=1200&q=80",
+    gallery: ["https://images.unsplash.com/photo-1549414002-36365a6b0933?auto=format&fit=crop&w=1200&q=80"],
+    history: { EN: "Famous for 'The Gathering', where hundreds of elephants congregate around the Minneriya Tank.", SI: "මින්නේරිය වැව අසල අලි සිය ගණනක් එක්රැස් වන 'අලි රංචුව' (The Gathering) සඳහා ප්‍රසිද්ධය." },
+    shortStory: { EN: "The great elephant gathering.", SI: "මහා අලි රංචුවක දර්ශනය." },
+    bestTime: { EN: "August to September", SI: "අගෝස්තු සිට සැප්තැම්බර් දක්වා" },
+    tips: [{ EN: "Late afternoon is the best time for elephant sightings.", SI: "අලි ඇතුන් දැකීමට පස්වරු කාලය වඩාත් සුදුසුය." }],
+    location: "Polonnaruwa District"
+  },
+  {
+    id: "wilpattu",
+    name: { EN: "Wilpattu National Park", SI: "විල්පත්තු ජාතික උද්‍යානය" },
+    category: "wildlife",
+    image: "https://images.unsplash.com/photo-1590766940554-634a7ed41450?auto=format&fit=crop&w=1200&q=80",
+    gallery: ["https://images.unsplash.com/photo-1590766940554-634a7ed41450?auto=format&fit=crop&w=1200&q=80"],
+    history: { EN: "Sri Lanka's largest park, characterized by a unique complex of 'Willus' (natural lakes).", SI: "ස්වභාවික විල් හෙවත් 'විල්ලු' වලින් සමන්විත ශ්‍රී ලංකාවේ විශාලතම ජාතික උද්‍යානයයි." },
+    shortStory: { EN: "Lakes of the wild.", SI: "වනයේ ස්වභාවික විල්." },
+    bestTime: { EN: "May to early October", SI: "මැයි සිට ඔක්තෝබර් මුල දක්වා" },
+    tips: [{ EN: "Great for those seeking a less crowded safari experience.", SI: "අඩු පිරිසක් ගැවසෙන සෆාරි අත්දැකීමක් සොයන්නන්ට ඉතා සුදුසුයි." }],
+    location: "Anuradhapura District"
+  },
+  {
+    id: "sinharaja",
+    name: { EN: "Sinharaja Forest Reserve", SI: "සිංහරාජ වන රක්ෂිතය" },
+    category: "wildlife",
+    image: "https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=1200&q=80",
+    gallery: ["https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=1200&q=80"],
+    history: { EN: "A UNESCO World Heritage site and the last viable primary tropical rainforest in the island.", SI: "යුනෙස්කෝ ලෝක උරුමයක් වන මෙය, දිවයිනේ ඉතිරිව ඇති එකම ප්‍රාථමික නිවර්තන වැසි වනාන්තරයයි." },
+    shortStory: { EN: "The kingdom of the lion forest.", SI: "සිංහරාජයේ හරිත අධිරාජ්‍යය." },
+    bestTime: { EN: "January to April", SI: "ජනවාරි සිට අප්‍රේල් දක්වා" },
+    tips: [{ EN: "Wear leech socks and carry repellent.", SI: "කූඩැල්ලන්ගෙන් ආරක්ෂා වීමට මේස් සහ ආලේපන රැගෙන යන්න." }],
+    location: "Ratnapura District"
+  },
+  {
+    id: "bundala",
+    name: { EN: "Bundala National Park", SI: "බූන්දල ජාතික උද්‍යානය" },
+    category: "wildlife",
+    image: "https://images.unsplash.com/photo-1549414002-36365a6b0933?auto=format&fit=crop&w=1200&q=80",
+    gallery: ["https://images.unsplash.com/photo-1549414002-36365a6b0933?auto=format&fit=crop&w=1200&q=80"],
+    history: { EN: "A Ramsar wetland site, crucial for migratory birds including flamingos.", SI: "ෆ්ලෙමින්ගෝ ඇතුළු සංක්‍රමණික පක්ෂීන් සඳහා වැදගත් වන රැම්සාර් තෙත් බිම් අඩවියකි." },
+    shortStory: { EN: "A sanctuary for winged travelers.", SI: "පියාපත් ඇති සංචාරකයින්ගේ නවාතැන." },
+    bestTime: { EN: "September to March", SI: "සැප්තැම්බර් සිට මාර්තු දක්වා" },
+    tips: [{ EN: "A must-visit for serious bird watchers.", SI: "පක්ෂි නිරීක්ෂකයින් අනිවාර්යයෙන්ම නැරඹිය යුතු ස්ථානයකි." }],
+    location: "Hambantota District"
+  },
+  {
+    id: "ella",
+    name: { EN: "Ella Highlands", SI: "ඇල්ල කඳුකරය" },
+    category: "mountains",
+    image: "https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=1200&q=80",
+    gallery: ["https://images.unsplash.com/photo-1578519050142-afb511e518de?auto=format&fit=crop&w=1200&q=80"],
+    history: { EN: "A mountain town famous for its iconic Nine Arch Bridge and breathtaking hiking trails.", SI: "ඓතිහාසික ආරුක්කු නවය පාලම සහ මනරම් කඳු තරණ මාවත් නිසා ප්‍රසිද්ධ කඳුකර නගරයකි." },
+    shortStory: { EN: "The soul of the tea country.", SI: "තේ කලාපයේ ආත්මය." },
+    bestTime: { EN: "January to March", SI: "ජනවාරි සිට මාර්තු දක්වා" },
+    tips: [{ EN: "Don't miss the sunrise from Little Adam's Peak.", SI: "පුංචි ශ්‍රී පාදයේ සිට හිරු උදාව නැරඹීමට අමතක නොකරන්න." }],
+    location: "Badulla District"
+  },
+  {
+    id: "adams-peak",
+    name: { EN: "Adam’s Peak (Sri Pada)", SI: "ශ්‍රී පාදය" },
+    category: "mountains",
+    image: "https://images.unsplash.com/photo-1563297054-94676106c59b?auto=format&fit=crop&w=1200&q=80",
+    gallery: ["https://images.unsplash.com/photo-1563297054-94676106c59b?auto=format&fit=crop&w=1200&q=80"],
+    history: { EN: "A sacred site for four religions, famous for the 'sacred footprint' and its night pilgrimage.", SI: "රාත්‍රී වන්දනාව සහ 'ශ්‍රී පතුල' නිසා ප්‍රසිද්ධ, ආගම් හතරකටම පූජනීය වූ ස්ථානයකි." },
+    shortStory: { EN: "A climb to the heavens.", SI: "අහස දෙසට යන වන්දනාව." },
+    bestTime: { EN: "December to April", SI: "දෙසැම්බර් සිට අප්‍රේල් දක්වා" },
+    tips: [{ EN: "Start the climb at midnight to catch the sunrise.", SI: "හිරු උදාව නැරඹීමට මධ්‍යම රාත්‍රියේ නැගීම අරඹන්න." }],
+    location: "Ratnapura District"
+  },
+  {
+    id: "knuckles",
+    name: { EN: "Knuckles Range", SI: "නකල්ස් කඳු පන්තිය" },
+    category: "mountains",
+    image: "https://images.unsplash.com/photo-1580794749460-76f97b7180d8?auto=format&fit=crop&w=1200&q=80",
+    gallery: ["https://images.unsplash.com/photo-1580794749460-76f97b7180d8?auto=format&fit=crop&w=1200&q=80"],
+    history: { EN: "A rugged mountain range shaped like a clenched fist, offering incredible biodiversity.", SI: "මිටි කළ අතක හැඩය ඇති, ජෛව විවිධත්වයෙන් පිරි රළු කඳු පන්තියකි." },
+    shortStory: { EN: "Into the misty wilderness.", SI: "මීදුමෙන් වැසුණු වන මැදට." },
+    bestTime: { EN: "June to September", SI: "ජූනි සිට සැප්තැම්බර් දක්වා" },
+    tips: [{ EN: "Hiring a local guide is highly recommended.", SI: "දේශීය මගපෙන්වන්නෙකු ලබා ගැනීම බෙහෙවින් නිර්දේශ කෙරේ." }],
+    location: "Matale/Kandy Districts"
+  },
+  {
+    id: "horton-plains",
+    name: { EN: "Horton Plains", SI: "හෝර්ටන් තැන්න" },
+    category: "mountains",
+    image: "https://images.unsplash.com/photo-1671432751719-d1a032c1a369?auto=format&fit=crop&w=1200&q=80",
+    gallery: ["https://images.unsplash.com/photo-1671432751719-d1a032c1a369?auto=format&fit=crop&w=1200&q=80"],
+    history: { EN: "A cold, windy plateau ending at World’s End, an 880m vertical drop.", SI: "අඩි 2,800 ක ප්‍රපාතයකින් හෙවත් ලෝකාන්තයෙන් අවසන් වන සිසිල් සානුමය ප්‍රදේශයකි." },
+    shortStory: { EN: "Where the world ends.", SI: "ලෝකය අවසන් වන තැන." },
+    bestTime: { EN: "January to March", SI: "ජනවාරි සිට මාර්තු දක්වා" },
+    tips: [{ EN: "Reach World's End before 9 AM to avoid the mist.", SI: "මීදුමට පෙර ලෝකාන්තය නැරඹීමට පෙරවරු 9 ට පෙර එහි යන්න." }],
+    location: "Nuwara Eliya District"
+  },
+  {
+    id: "nuwara-eliya",
+    name: { EN: "Little England", SI: "පුංචි එංගලන්තය" },
+    category: "mountains",
+    image: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=1200&q=80",
+    gallery: ["https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=1200&q=80"],
+    history: { EN: "Known for its colonial architecture and as the heart of Sri Lanka's tea industry.", SI: "යටත් විජිත සමයේ ගෘහ නිර්මාණ ශිල්පය සහ තේ කර්මාන්තයේ හදවත ලෙස ප්‍රසිද්ධය." },
+    shortStory: { EN: "Mist, tea, and colonial charm.", SI: "මීදුම, තේ සහ පැරණි අලංකාරය." },
+    bestTime: { EN: "April to June", SI: "අප්‍රේල් සිට ජූනි දක්වා" },
+    tips: [{ EN: "Pack warm clothes regardless of the season.", SI: "ඕනෑම කාලයකදී ඇඳීමට උණුසුම් ඇඳුම් රැගෙන යන්න." }],
+    location: "Nuwara Eliya District"
   }
 ];
 
@@ -319,7 +578,7 @@ export const HERITAGE_MUSIC_DATA: HeritageMusic[] = [
     type: 'instrument',
     name: { EN: "Geta Beraya", SI: "ගැට බෙරය" },
     description: { EN: "The most iconic drum of the Kandyan hills.", SI: "මහනුවර කඳුකරයට ආවේණික වූ බෙරයයි." },
-    image: "https://cdn.pixabay.com/photo/2016/11/29/04/19/ocean-1867285_1280.jpg",
+    image: "https://images.unsplash.com/photo-1665849050332-8d5d7e59afb6?auto=format&fit=crop&w=1200&q=80",
     origin: { EN: "Kandy", SI: "මහනුවර" },
     significance: { EN: "The soul of Kandyan rhythmic art.", SI: "උඩරට රිද්ම කලා ශිල්පයේ හදවතයි." }
   }
@@ -341,7 +600,7 @@ export const FESTIVALS_DATA: Festival[] = [
     name: { EN: "Vesak Festival", SI: "වෙසක් උත්සවය" },
     date: { EN: "May (Full Moon)", SI: "මැයි (පුර පසළොස්වක)" },
     description: { EN: "Commemorating the birth, enlightenment, and passing of Lord Buddha with lights and lanterns.", SI: "බුදුරජාණන් වහන්සේගේ තෙමඟුල සැමරීම සඳහා පහන් සහ තොරණින් සැරසෙන උත්සවයකි." },
-    image: "https://cdn.pixabay.com/photo/2018/05/23/21/04/vesak-3425141_1280.jpg",
+    image: "https://images.unsplash.com/photo-1621393614326-2f9ed389ce02?auto=format&fit=crop&w=1200&q=80",
     significance: { EN: "The most important Buddhist festival in the island.", SI: "දිවයිනේ වැදගත්ම බෞද්ධ උත්සවයයි." }
   },
   {
@@ -349,7 +608,7 @@ export const FESTIVALS_DATA: Festival[] = [
     name: { EN: "Kandy Esala Perahera", SI: "මහනුවර ඇසළ පෙරහැර" },
     date: { EN: "July / August", SI: "ජූලි / අගෝස්තු" },
     description: { EN: "A grand procession featuring elephants and dancers to honor the Sacred Tooth Relic.", SI: "දන්ත ධාතූන් වහන්සේ උදෙසා පවත්වන ලොව විචිත්‍රවත්ම පෙරහැරකි." },
-    image: "https://cdn.pixabay.com/photo/2017/03/24/18/16/dance-2171881_1280.jpg",
+    image: "https://images.unsplash.com/photo-1665849050332-8d5d7e59afb6?auto=format&fit=crop&w=1200&q=80",
     significance: { EN: "One of the oldest and grandest festivals in Asia.", SI: "ආසියාවේ පැරණිතම සහ විශාලතම උත්සවයකි." }
   },
   {
@@ -357,63 +616,7 @@ export const FESTIVALS_DATA: Festival[] = [
     name: { EN: "Sinhala & Tamil New Year", SI: "සිංහල හා දෙමළ අලුත් අවුරුද්ද" },
     date: { EN: "April 13-14", SI: "අප්‍රේල් 13-14" },
     description: { EN: "A major harvest festival celebrated with traditional games, food, and rituals to mark the movement of the sun.", SI: "සාම්ප්‍රදායික ක්‍රීඩා, ආහාර සහ චාරිත්‍ර වාරිත්‍ර සමඟ සමරනු ලබන වසරේ ප්‍රධානතම සංස්කෘතික උත්සවයයි." },
-    image: "https://cdn.pixabay.com/photo/2016/11/21/13/46/background-1845479_1280.jpg",
+    image: "https://images.unsplash.com/photo-1628236113113-1280392c695c?auto=format&fit=crop&w=1200&q=80",
     significance: { EN: "Symbolizes national unity and the end of the harvest season.", SI: "ජාතික සමගිය සහ අස්වනු නෙලීමේ කාලය අවසන් වීම සංකේතවත් කරයි." }
-  },
-  {
-    id: "fest-4",
-    name: { EN: "Thai Pongal", SI: "තෛපොංගල් උත්සවය" },
-    date: { EN: "January", SI: "ජනවාරි" },
-    description: { EN: "A Hindu harvest festival dedicated to the Sun God, featuring the cooking of the 'Pongal' rice dish.", SI: "සූර්ය දෙවියන් උදෙසා පවත්වනු ලබන හින්දු අස්වනු මංගල්‍යයයි. මෙහිදී 'පොංගල්' බත් පිසීම විශේෂත්වයකි." },
-    image: "https://cdn.pixabay.com/photo/2017/01/14/12/36/pongal-1979410_1280.jpg",
-    significance: { EN: "Gratitude to nature for a bountiful harvest.", SI: "සරු අස්වැන්නක් ලබා දීම වෙනුවෙන් සොබාදහමට ස්තූතිය පළ කිරීම." }
-  },
-  {
-    id: "fest-5",
-    name: { EN: "Poson Poya", SI: "පොසොන් උත්සවය" },
-    date: { EN: "June (Full Moon)", SI: "ජූනි (පුර පසළොස්වක)" },
-    description: { EN: "Commemorates the arrival of Buddhism in Sri Lanka at Mihintale.", SI: "මිහින්තලයේදී ලංකාවට බුදුදහම ලැබීම සැමරීම සඳහා පවත්වනු ලබන උත්සවයයි." },
-    image: "https://cdn.pixabay.com/photo/2017/09/16/01/22/sri-lanka-2754279_1280.jpg",
-    significance: { EN: "The second most important Poya day, focusing on the spread of Dhamma.", SI: "ධර්මය ව්‍යාප්ත වීම පදනම් කරගත් දිවයිනේ දෙවන වැදගත්ම පොහොය දිනයයි." }
-  },
-  {
-    id: "fest-6",
-    name: { EN: "Deepavali", SI: "දීපාවලී උත්සවය" },
-    date: { EN: "October / November", SI: "ඔක්තෝබර් / නොවැම්බර්" },
-    description: { EN: "The Hindu Festival of Lights, celebrating the victory of light over darkness and good over evil.", SI: "අන්ධකාරය පරදා ආලෝකයත්, අයහපත පරදා යහපතත් ජය ගැනීම සැමරෙන හින්දු ආලෝක උත්සවයයි." },
-    image: "https://cdn.pixabay.com/photo/2021/01/17/14/40/mountain-5925345_1280.jpg",
-    significance: { EN: "Celebrated with oil lamps, vibrant kolams, and sweets.", SI: "පහන් දල්වමින් සහ රටා මවමින් උත්කර්ෂවත් ලෙස සමරනු ලබයි." }
-  },
-  {
-    id: "fest-7",
-    name: { EN: "Kataragama Festival", SI: "කතරගම ඇසළ උත්සවය" },
-    date: { EN: "July / August", SI: "ජූලි / අගෝස්තු" },
-    description: { EN: "A vibrant multi-religious festival featuring fire-walking, water cutting ceremonies, and kavadi dancing.", SI: "ගිනි පෑගීම සහ කාවඩි නැටුම් ඇතුළු විවිධ චාරිත්‍ර පවත්වන සර්ව ආගමික උත්සවයකි." },
-    image: "https://cdn.pixabay.com/photo/2016/09/04/21/53/buddhism-1645318_1280.jpg",
-    significance: { EN: "Honoring Lord Kataragama with immense devotion.", SI: "කතරගම දෙවියන් උදෙසා මහත් භක්තියෙන් පවත්වනු ලබන පුද පූජා මාලාවකි." }
-  },
-  {
-    id: "fest-8",
-    name: { EN: "Nallur Festival", SI: "නල්ලූර් කන්දසාමි කෝවිල් උත්සවය" },
-    date: { EN: "August / September", SI: "අගෝස්තු / සැප්තැම්බර්" },
-    description: { EN: "The longest festival in Sri Lanka, held at the historic Nallur Kandaswamy Kovil in Jaffna.", SI: "යාපනයේ පිහිටි ඓතිහාසික නල්ලූර් කෝවිල කේන්ද්‍ර කරගෙන පවත්වන ලංකාවේ දීර්ඝතම උත්සවයයි." },
-    image: "https://cdn.pixabay.com/photo/2016/11/29/04/19/ocean-1867285_1280.jpg",
-    significance: { EN: "A grand showcase of Hindu tradition in the Northern Peninsula.", SI: "උතුරු අර්ධද්වීපයේ හින්දු සම්ප්‍රදායන් විදහා දක්වන සුවිශේෂී මංගල්‍යයකි." }
-  },
-  {
-    id: "fest-9",
-    name: { EN: "Christmas", SI: "නත්තල් උත්සවය" },
-    date: { EN: "December 25", SI: "දෙසැම්බර් 25" },
-    description: { EN: "Celebrated widely across the island, especially in coastal areas, marking the birth of Jesus Christ.", SI: "ජේසුස් ක්‍රිස්තුස් වහන්සේගේ උපත සැමරීම සඳහා දිවයින පුරා පවත්වනු ලබන ආගමික උත්සවයයි." },
-    image: "https://cdn.pixabay.com/photo/2016/11/29/04/19/ocean-1867285_1280.jpg",
-    significance: { EN: "A time of joy, sharing, and religious harmony.", SI: "ප්‍රීතිය, බෙදාහදා ගැනීම සහ ආගමික සහජීවනය විදහා දක්වන කාලයකි." }
-  },
-  {
-    id: "fest-10",
-    name: { EN: "Duruthu Perahera", SI: "දුරුතු පෙරහැර" },
-    date: { EN: "January (Full Moon)", SI: "ජනවාරි (පුර පසළොස්වක)" },
-    description: { EN: "A spectacular cultural pageant held at the Kelaniya Raja Maha Vihara to mark the Buddha's first visit to Sri Lanka.", SI: "බුදුරජාණන් වහන්සේගේ ප්‍රථම ලංකාගමනය සැමරීම සඳහා කැලණිය රජමහා විහාරයේ පවත්වනු ලබන මනරම් පෙරහැරයි." },
-    image: "https://cdn.pixabay.com/photo/2017/03/24/18/16/dance-2171881_1280.jpg",
-    significance: { EN: "One of the most elaborate and traditional processions in the island.", SI: "දිවයිනේ පැවැත්වෙන අලංකාරවත් සහ සාම්ප්‍රදායික පෙරහැර වලින් එකකි." }
   }
 ];

@@ -61,18 +61,18 @@ const StorySection: React.FC<StorySectionProps> = ({ language, setView }) => {
           <div className="grid grid-cols-2 gap-6">
             <div className="space-y-6 pt-12">
               <div className="story-ring p-1 rounded-3xl shadow-xl">
-                 <img src="https://cdn.pixabay.com/photo/2017/08/04/17/39/sigiriya-2580795_1280.jpg" className="rounded-[22px] w-full grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" alt="Temple" />
+                 <img src="https://images.unsplash.com/photo-1580794749460-76f97b7180d8?auto=format&fit=crop&w=800&q=80" className="rounded-[22px] w-full grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" alt="Temple" />
               </div>
               <div className="story-ring p-1 rounded-3xl shadow-xl">
-                 <img src="https://cdn.pixabay.com/photo/2021/01/17/14/40/mountain-5925345_1280.jpg" className="rounded-[22px] w-full grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" alt="Statue" />
+                 <img src="https://images.unsplash.com/photo-1563297054-94676106c59b?auto=format&fit=crop&w=800&q=80" className="rounded-[22px] w-full grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" alt="Statue" />
               </div>
             </div>
             <div className="space-y-6">
               <div className="story-ring p-1 rounded-3xl shadow-xl">
-                 <img src="https://cdn.pixabay.com/photo/2016/11/21/13/46/background-1845479_1280.jpg" className="rounded-[22px] w-full grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" alt="Culture" />
+                 <img src="https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=800&q=80" className="rounded-[22px] w-full grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" alt="Culture" />
               </div>
               <div className="story-ring p-1 rounded-3xl shadow-xl">
-                 <img src="https://cdn.pixabay.com/photo/2018/11/15/22/41/sri-lanka-3818318_1280.jpg" className="rounded-[22px] w-full grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" alt="Nature" />
+                 <img src="https://images.unsplash.com/photo-1620054604245-566083771259?auto=format&fit=crop&w=800&q=80" className="rounded-[22px] w-full grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" alt="Nature" />
               </div>
             </div>
           </div>

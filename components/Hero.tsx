@@ -57,7 +57,7 @@ const Hero: React.FC<HeroProps> = ({ language, setView }) => {
         <div 
           className="absolute inset-0 bg-cover bg-center transition-transform duration-[4000ms] ease-out brightness-[0.35] contrast-[1.3] saturate-[0.8]" 
           style={{ 
-            backgroundImage: `url('https://cdn.pixabay.com/photo/2021/08/17/14/23/mountain-6553198_1280.jpg')`,
+            backgroundImage: `url('https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=1920&q=80')`,
             transform: `scale(${1.1 + scrollPos / 3000}) translate3d(${mousePos.x * 15}px, ${mousePos.y * 15}px, -100px)`,
           }}
         >
