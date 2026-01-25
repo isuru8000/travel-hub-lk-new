@@ -1,15 +1,14 @@
 import React from 'react';
 import { Language } from '../types.ts';
 import { DESTINATIONS } from '../constants.tsx';
-// Add missing 'Database' icon to imports
-import { Compass, MapPin, Star, ArrowRight, ShieldCheck, Zap, Radio, Target, Clock, ExternalLink, Database } from 'lucide-react';
+import { Compass, MapPin, Star, ArrowRight, ShieldCheck, Zap, Radio, Target, Clock, ExternalLink, Database, Lock } from 'lucide-react';
 
 const BookingDestinations: React.FC<{ language: Language, setView: (view: any) => void }> = ({ language, setView }) => {
-  // Use a different filter or sorting for the booking page to differentiate it
   const bookingRegistry = DESTINATIONS.map(d => ({
     ...d,
-    price: Math.floor(Math.random() * 500) + 150, // Simulated booking rates
-    duration: '2-4 Days'
+    price: Math.floor(Math.random() * 500) + 150,
+    duration: '2-4 Days',
+    isLocked: Math.random() > 0.6 // Randomly lock some for demo
   }));
 
   return (
@@ -26,36 +25,25 @@ const BookingDestinations: React.FC<{ language: Language, setView: (view: any) =
           <h2 className="text-6xl md:text-[10rem] font-heritage font-bold text-white tracking-tighter uppercase leading-[0.8] drop-shadow-[0_20px_60px_rgba(0,0,0,0.8)]">
             ROUTE <br/><span className="italic insta-text-gradient">SYNTHESIS.</span>
           </h2>
-          <p className="text-white/40 text-lg md:text-2xl font-light italic leading-relaxed tracking-wide">
-            "Direct synchronization with island-wide heritage expeditions and waypoint nodes."
-          </p>
         </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 -mt-24 relative z-10 space-y-24">
-        <div className="flex justify-between items-end border-b border-gray-100 pb-12">
-           <div className="space-y-2">
-              <p className="text-[10px] font-black text-[#E1306C] uppercase tracking-[0.4em]">Active_Manifold</p>
-              <h3 className="text-3xl font-heritage font-bold text-[#0a0a0a] uppercase tracking-tighter">Verified Waypoints</h3>
-           </div>
-           <div className="flex gap-4">
-              <div className="px-6 py-3 bg-gray-50 rounded-2xl border border-gray-100 flex items-center gap-3">
-                 <ShieldCheck size={16} className="text-green-500" />
-                 <span className="text-[10px] font-black uppercase tracking-widest text-gray-400">Registry_v4.5_Secured</span>
-              </div>
-           </div>
-        </div>
-
         <div className="space-y-16">
           {bookingRegistry.map((item, idx) => (
-            <div key={item.id} className="group relative flex flex-col lg:flex-row bg-white rounded-[4rem] overflow-hidden border border-gray-100 shadow-sm transition-all duration-1000 hover:shadow-2xl hover:-translate-y-2">
+            <div key={item.id} className={`group relative flex flex-col lg:flex-row bg-white rounded-[4rem] overflow-hidden border border-gray-100 shadow-sm transition-all duration-1000 ${item.isLocked ? 'grayscale opacity-60' : 'hover:shadow-2xl hover:-translate-y-2'}`}>
+               
+               {item.isLocked && (
+                 <div className="absolute inset-0 z-20 bg-black/40 backdrop-blur-md flex items-center justify-center">
+                    <div className="bg-white px-10 py-4 rounded-full flex items-center gap-4 shadow-3xl animate-pulse">
+                       <Lock size={18} className="text-blue-600" />
+                       <span className="text-[11px] font-black text-blue-600 uppercase tracking-[0.3em]">NODE_LOCKED_COMMING_SOON</span>
+                    </div>
+                 </div>
+               )}
+
                <div className="w-full lg:w-2/5 h-96 lg:h-auto relative overflow-hidden">
                   <img src={item.image} className="w-full h-full object-cover transition-transform duration-[6000ms] group-hover:scale-110" alt={item.name[language]} />
-                  <div className="absolute top-8 left-8">
-                     <div className="px-5 py-2 bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl text-white text-[9px] font-black uppercase tracking-widest">
-                        Node_Ref: #{item.id.toUpperCase()}
-                     </div>
-                  </div>
                </div>
                
                <div className="w-full lg:w-3/5 p-12 lg:p-20 flex flex-col justify-between space-y-10">
@@ -73,9 +61,7 @@ const BookingDestinations: React.FC<{ language: Language, setView: (view: any) =
                            <p className="text-4xl font-heritage font-bold text-[#0a0a0a]">${item.price}</p>
                         </div>
                      </div>
-                     <p className="text-xl text-gray-400 font-light italic leading-relaxed">
-                        "{item.shortStory[language]}"
-                     </p>
+                     <p className="text-xl text-gray-400 font-light italic leading-relaxed">"{item.shortStory[language]}"</p>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 pt-8 border-t border-gray-50">
@@ -92,14 +78,17 @@ const BookingDestinations: React.FC<{ language: Language, setView: (view: any) =
                            <span className="text-[9px] font-black uppercase tracking-widest">Sync Status</span>
                         </div>
                         <div className="flex items-center gap-2">
-                           <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-                           <p className="text-[10px] font-black text-green-600 uppercase tracking-widest">LOCKED_ON</p>
+                           <div className={`w-1.5 h-1.5 rounded-full animate-pulse ${item.isLocked ? 'bg-blue-500' : 'bg-green-500'}`} />
+                           <p className={`text-[10px] font-black uppercase tracking-widest ${item.isLocked ? 'text-blue-600' : 'text-green-600'}`}>
+                             {item.isLocked ? 'CALIBRATING' : 'LOCKED_ON'}
+                           </p>
                         </div>
                      </div>
                      <div className="flex items-center justify-end">
                         <button 
+                          disabled={item.isLocked}
                           onClick={() => setView('marketplace')}
-                          className="flex items-center gap-6 px-10 py-5 bg-[#0a0a0a] text-white rounded-2xl font-black text-[10px] uppercase tracking-[0.4em] hover:bg-[#E1306C] transition-all shadow-xl group/btn"
+                          className="flex items-center gap-6 px-10 py-5 bg-[#0a0a0a] text-white rounded-2xl font-black text-[10px] uppercase tracking-[0.4em] hover:bg-[#E1306C] transition-all shadow-xl group/btn disabled:opacity-20"
                         >
                            Initialize Sync
                            <ArrowRight size={16} className="group-hover/btn:translate-x-2 transition-transform" />
@@ -107,21 +96,8 @@ const BookingDestinations: React.FC<{ language: Language, setView: (view: any) =
                      </div>
                   </div>
                </div>
-               
-               {/* Decorative Side Marker */}
-               <div className="hidden lg:block absolute right-0 top-0 bottom-0 w-1.5 bg-gray-50 group-hover:bg-[#E1306C] transition-colors" />
             </div>
           ))}
-        </div>
-
-        <div className="pt-20 text-center space-y-8 opacity-20">
-           <div className="flex justify-center gap-8">
-              <Compass size={40} />
-              <Radio size={40} />
-              {/* Fix for line 121 (or 122 in this content): Now imported 'Database' */}
-              <Database size={40} />
-           </div>
-           <p className="text-[10px] font-black uppercase tracking-[1em] ml-4">End_Of_Route_Registry</p>
         </div>
       </div>
     </div>
