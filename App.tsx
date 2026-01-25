@@ -161,6 +161,7 @@ const App: React.FC = () => {
   const renderContent = () => {
     switch (view) {
       case 'community':
+      case 'memories':
         return <NexusRewards language={language} user={user} onLogin={handleLogin} setView={setView} />;
       case 'marketplace':
         return <div className="pt-24"><Marketplace language={language} /></div>;
@@ -192,8 +193,6 @@ const App: React.FC = () => {
         return <div className="pt-24"><TravelEssentials language={language} /></div>;
       case 'festivals':
         return <div className="pt-24"><Festivals language={language} /></div>;
-      case 'memories':
-        return <div className="pt-24"><TravelMemories language={language} user={user} onLogin={handleLogin} /></div>;
       case 'interests':
         return <div className="pt-24"><CategoriesSection language={language} setView={setView} /></div>;
       case 'quiz':

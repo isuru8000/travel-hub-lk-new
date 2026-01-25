@@ -1,57 +1,94 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import { Language, User } from '../types.ts';
+
+import React, { useState, useEffect, useRef } from 'react';
+import { Language, User, Memory } from '../types.ts';
 import { 
   Zap, 
-  Wallet, 
   ArrowRight, 
   Sparkles, 
   ShieldCheck, 
-  Gift, 
-  History, 
-  Target, 
-  Gem, 
   Camera, 
-  Scan, 
   Share2, 
   Lock, 
-  Crown, 
-  Cpu, 
+  Gem, 
   Activity,
   Award,
-  Database,
-  ArrowUpRight,
-  TrendingUp,
-  Boxes,
-  CircleDollarSign,
   Loader2,
   CheckCircle2,
   X,
-  RefreshCw,
+  History,
+  Target,
+  Image as ImageIcon,
+  Quote,
+  Send,
+  Star,
+  Wand2,
+  Plus,
+  Compass,
+  MapPin,
+  Heart,
+  MessageSquare,
+  Users,
+  Radio,
+  Database,
+  Gift,
   Trophy,
-  Hexagon,
-  Orbit,
-  Signal,
-  Hammer,
-  AlertTriangle,
-  Users
+  Upload,
+  FileImage
 } from 'lucide-react';
+import { refineTravelStory } from '../services/gemini.ts';
 
 interface NexusRewardsProps {
   language: Language;
   user: User | null;
   onLogin: () => void;
-  // Prop to enable navigation back to the home registry
   setView: (view: any) => void;
 }
 
+const INITIAL_MEMORIES: Memory[] = [
+  {
+    id: 'm1',
+    userName: 'Alexander P.',
+    location: 'Sigiriya',
+    title: 'Echoes of the Sky Fortress',
+    story: 'Standing atop the Lion Rock at dawn, I felt the weight of centuries. The mist clinging to the jungle canopy felt like a bridge between eras.',
+    image: 'https://images.unsplash.com/photo-1580794749460-76f97b7180d8?auto=format&fit=crop&w=800&q=80',
+    likes: 412,
+    date: '2026-03-12',
+    rating: 5,
+    tags: ['ancient', 'sunrise']
+  },
+  {
+    id: 'm2',
+    userName: 'Elena M.',
+    location: 'Ella',
+    title: 'Mist in the Tea Valley',
+    story: 'The scent of damp earth and fresh tea leaves is something I’ll never forget. The blue train winding through the hills is pure magic.',
+    image: 'https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=800&q=80',
+    likes: 285,
+    date: '2026-03-05',
+    rating: 5,
+    tags: ['mountains', 'tea']
+  }
+];
+
 const NexusRewards: React.FC<NexusRewardsProps> = ({ language, user, onLogin, setView }) => {
-  const [balance, setBalance] = useState<number>(0);
-  const [isSyncing, setIsSyncing] = useState(false);
-  const [activeTab, setActiveTab] = useState<'earn' | 'vault'>('earn');
-  const [notif, setNotif] = useState<{ type: 'earn' | 'spend'; amount: number; title: string } | null>(null);
-  const [redemptionCode, setRedemptionCode] = useState<string | null>(null);
-  const [processingId, setProcessingId] = useState<string | null>(null);
+  const [memories, setMemories] = useState<Memory[]>(INITIAL_MEMORIES);
+  const [showForm, setShowForm] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isRefining, setIsRefining] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  
+  const [newMemory, setNewMemory] = useState<Partial<Memory>>({
+    title: '',
+    location: '',
+    story: '',
+    rating: 5,
+    image: ''
+  });
 
   useEffect(() => {
     const handleMove = (e: MouseEvent) => {
@@ -64,207 +101,483 @@ const NexusRewards: React.FC<NexusRewardsProps> = ({ language, user, onLogin, se
     return () => window.removeEventListener('mousemove', handleMove);
   }, []);
 
-  useEffect(() => {
-    const saved = localStorage.getItem('th_nexus_essence');
-    if (saved) setBalance(parseInt(saved));
-    else if (user) {
-      setBalance(250);
-      localStorage.setItem('th_nexus_essence', '250');
+  const handleRefine = async () => {
+    if (!newMemory.story || isRefining) return;
+    setIsRefining(true);
+    const refined = await refineTravelStory(newMemory.story, language);
+    setNewMemory(prev => ({ ...prev, story: refined }));
+    setIsRefining(false);
+  };
+
+  const processFile = (file: File) => {
+    if (!file.type.startsWith('image/')) {
+      alert("Invalid file type. Registry only accepts visual fragments (images).");
+      return;
     }
-  }, [user]);
-
-  useEffect(() => {
-    localStorage.setItem('th_nexus_essence', balance.toString());
-  }, [balance]);
-
-  const handleEarn = async (q: any) => {
-    // Disabled due to "Coming Soon" state
-    return;
+    
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      setNewMemory(prev => ({ ...prev, image: e.target?.result as string }));
+    };
+    reader.readAsDataURL(file);
   };
 
-  const handleRedeem = async (v: any) => {
-    // Disabled due to "Coming Soon" state
-    return;
+  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) processFile(file);
   };
 
-  const quests = [
-    { id: 'q1', icon: <Camera size={32} />, title: { EN: 'Archive a Memory', SI: 'මතකයක් එක් කරන්න' }, reward: 50, desc: { EN: 'Share a personal travel story in the public journal.', SI: 'ඔබේ සංචාරක අත්දැකීමක් පොදු සටහන් පොතට එක් කරන්න.' }, color: '#E1306C' },
-    { id: 'q2', icon: <Scan size={32} />, title: { EN: 'Complete VR Sync', SI: 'ත්‍රිමාණ ගවේෂණය නිම කරන්න' }, reward: 100, desc: { EN: 'Visit 5 unique 3D spatial registries in the VR showcase.', SI: 'ත්‍රිමාණ ගවේෂණාගාරයේ ස්ථාන 5ක් නරඹන්න.' }, color: '#3B82F6' },
-    { id: 'q3', icon: <Award size={32} />, title: { EN: 'Site Verification', SI: 'ස්ථාන තහවුරු කිරීම' }, reward: 25, desc: { EN: 'Review a destination with verified registry data.', SI: 'යම් ගමනාන්තයක් පිළිබඳ සවිස්තරාත්මක විවරණයක් එක් කරන්න.' }, color: '#F59E0B' },
-    { id: 'q4', icon: <Share2 size={32} />, title: { EN: 'Expand the Network', SI: 'ජාලය පුළුල් කරන්න' }, reward: 250, desc: { EN: 'Invite a fellow voyager to join the Travel Hub registry.', SI: 'තවත් සංචාරකයෙකු අපගේ ජාලය සමඟ සම්බන්ධ කරන්න.' }, color: '#10B981' }
-  ];
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragging(true);
+  };
 
-  const vaultItems = [
-    { id: 'v1', icon: <Boxes size={32} />, title: { EN: '10% Registry Discount', SI: '10% වෙන්කිරීමේ වට්ටමක්' }, cost: 500, type: 'BOOKING_UPGRADE' },
-    { id: 'v2', icon: <Crown size={32} />, title: { EN: 'VIP Lounge Access', SI: 'VIP විවේකාගාර පහසුකම්' }, cost: 1200, type: 'AIRPORT_PRIVILEGE' },
-    { id: 'v3', icon: <Cpu size={32} />, title: { EN: 'High-Fidelity Archive Unlock', SI: 'සුවිශේෂී ත්‍රිමාණ දර්ශන' }, cost: 800, type: 'DIGITAL_ACCESS' }
-  ];
+  const handleDragLeave = () => {
+    setIsDragging(false);
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragging(false);
+    const file = e.dataTransfer.files?.[0];
+    if (file) processFile(file);
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!user) {
+      onLogin();
+      return;
+    }
+
+    if (!newMemory.image) {
+      alert("Please upload a visual fragment to complete the archival process.");
+      return;
+    }
+    
+    setIsSubmitting(true);
+    
+    setTimeout(() => {
+      const memory: Memory = {
+        id: `m${Date.now()}`,
+        userName: user.name,
+        location: newMemory.location || 'Unknown Node',
+        title: newMemory.title || 'Untitled Memory',
+        story: newMemory.story || '',
+        image: newMemory.image || 'https://images.unsplash.com/photo-1580794749460-76f97b7180d8?auto=format&fit=crop&w=800&q=80',
+        likes: 0,
+        date: new Date().toISOString().split('T')[0],
+        rating: newMemory.rating || 5,
+        tags: ['community']
+      };
+
+      setMemories([memory, ...memories]);
+      setIsSubmitting(false);
+      setIsSuccess(true);
+      
+      setTimeout(() => {
+        setIsSuccess(false);
+        setShowForm(false);
+        setNewMemory({ title: '', location: '', story: '', rating: 5, image: '' });
+      }, 2000);
+    }, 1800);
+  };
 
   return (
     <div className="min-h-screen bg-[#010101] text-white pt-32 pb-40 relative overflow-hidden">
-      {/* --- CYBERPUNK ATMOSPHERE --- */}
+      {/* CYBER-HERITAGE BACKGROUND */}
       <div className="fixed inset-0 z-0 pointer-events-none" style={{ perspective: '2000px' }}>
-         <div 
-           className="absolute inset-0 opacity-[0.03]" 
-           style={{ backgroundImage: `url('https://www.transparenttextures.com/patterns/stardust.png')` }} 
-         />
+         <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: `url('https://www.transparenttextures.com/patterns/stardust.png')` }} />
          <div 
            className="absolute inset-0 opacity-[0.1] transition-transform duration-1000 ease-out" 
            style={{ 
              backgroundImage: `linear-gradient(#E1306C 1px, transparent 1px), linear-gradient(90deg, #E1306C 1px, transparent 1px)`, 
              backgroundSize: '100px 100px', 
              transform: `rotateX(75deg) translateY(200px) scale(3) rotateZ(${mousePos.x * 5}deg)`,
-             maskImage: 'radial-gradient(ellipse at center, black 10%, transparent 80%)'
+             maskImage: 'radial-gradient(ellipse at center, black 10%, transparent 80%)' 
            }} 
          />
-         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(225,48,108,0.1)_0%,transparent_70%)] animate-pulse" />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10 space-y-24">
-        {/* Hub Header */}
+        
+        {/* Community Header */}
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-12 border-b border-white/5 pb-20">
           <div className="space-y-10">
             <div className="flex flex-col items-start gap-6">
                <div className="inline-flex items-center gap-4 px-6 py-2.5 rounded-full bg-[#E1306C]/15 border border-[#E1306C]/30 text-[#E1306C] text-[10px] font-black uppercase tracking-[0.5em] shadow-3xl animate-pulse">
-                  <Users size={14} fill="currentColor" /> Lanka_Community_Protocol_v2
+                  <Users size={14} fill="currentColor" /> Community_Hub_v4.5
                </div>
                <div className="h-16 w-[1px] bg-gradient-to-b from-[#E1306C] to-transparent"></div>
             </div>
             
-            <h1 className="text-6xl md:text-[10rem] font-heritage font-bold tracking-tighter leading-[0.8] uppercase">
-              COMMUNITY <br/><span className="italic insta-text-gradient">HUB.</span>
+            <h1 className="text-6xl md:text-[10rem] font-heritage font-bold tracking-tighter leading-[0.8] uppercase text-white">
+              VOYAGER <br/><span className="italic insta-text-gradient">NETWORK.</span>
             </h1>
             
-            <p className="text-gray-500 max-w-xl text-xl md:text-2xl font-light italic leading-relaxed border-l-4 border-[#E1306C]/20 pl-8">
-              "Every archival engagement mints Essence. Synchronize your journey to unlock future manifolds."
+            <p className="text-gray-500 max-w-xl text-xl md:text-2xl font-light italic leading-relaxed">
+              "Every archival engagement mints essence. Synchronize your journey to unlock future manifolds."
             </p>
           </div>
 
-          <div className="relative group w-full lg:w-auto min-w-[380px]">
-            <div className="absolute -inset-2 bg-gradient-to-r from-[#E1306C] via-purple-500 to-blue-600 rounded-[4rem] blur-2xl opacity-10 group-hover:opacity-30 transition-opacity duration-1000" />
-            <div className="relative bg-[#0a0a0a]/80 backdrop-blur-[100px] border border-white/10 p-12 rounded-[4rem] space-y-8 shadow-[0_0_80px_rgba(0,0,0,0.5)] overflow-hidden">
-               <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-               <div className="flex justify-between items-center">
-                  <p className="text-[11px] font-black text-gray-500 uppercase tracking-[0.5em]">Identity_Essence</p>
-                  <div className="flex items-center gap-2">
-                     <div className="w-1.5 h-1.5 bg-yellow-500 rounded-full animate-pulse" />
-                     <span className="text-[9px] font-bold text-white/40 uppercase tracking-widest">Calibration Mode</span>
-                  </div>
+          <div className="relative group w-full lg:w-auto">
+            <button 
+              onClick={() => user ? setShowForm(true) : onLogin()}
+              className="group relative px-12 py-8 bg-white border border-white/10 rounded-[3rem] shadow-[0_30px_70px_rgba(255,255,255,0.1)] hover:scale-105 transition-all overflow-hidden flex items-center gap-6"
+            >
+               <div className="absolute inset-0 bg-gradient-to-tr from-[#E1306C]/5 via-transparent to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+               <div className="w-16 h-16 rounded-2xl bg-gray-50 border border-gray-100 flex items-center justify-center text-[#E1306C] shadow-inner group-hover:rotate-12 transition-transform">
+                  <Plus size={28} />
                </div>
-               
-               <div className="flex items-end gap-5">
-                  <span className="text-7xl md:text-9xl font-heritage font-bold leading-none tracking-tighter transition-all duration-1000 opacity-20">
-                    000
-                  </span>
-                  <div className="flex flex-col items-center gap-2 mb-2">
-                     <Gem size={32} className="text-gray-600 animate-float" />
-                     <span className="text-[8px] font-black text-gray-600 uppercase tracking-widest">Locked</span>
-                  </div>
+               <div className="text-left space-y-1">
+                  <p className="text-[10px] font-black text-[#E1306C] uppercase tracking-[0.4em]">Initialize Registry</p>
+                  <p className="text-2xl font-heritage font-bold uppercase text-[#0a0a0a]">Upload Memoir</p>
                </div>
-               
-               <div className="pt-8 border-t border-white/5">
-                  <div className="flex items-center gap-4 text-gray-500 italic text-sm">
-                    <Loader2 size={16} className="animate-spin" />
-                    Neural handshake pending expansion...
-                  </div>
-              </div>
-            </div>
+               <ArrowRight size={20} className="text-[#0a0a0a]/30 group-hover:translate-x-2 transition-transform" />
+            </button>
           </div>
         </div>
 
-        {/* Tab Controls (Disabled Visuals) */}
-        <div className="flex flex-col sm:flex-row gap-6 opacity-40 grayscale pointer-events-none">
-           <button className="px-12 py-6 rounded-3xl font-black text-[11px] uppercase tracking-[0.6em] border bg-white/5 text-white/40 border-white/10">
-              <span className="flex items-center gap-4"><Zap size={16} /> Earn Essence</span>
-           </button>
-           <button className="px-12 py-6 rounded-3xl font-black text-[11px] uppercase tracking-[0.6em] border bg-white/5 text-white/40 border-white/10">
-              <span className="flex items-center gap-4"><Lock size={16} /> Vault Access</span>
-           </button>
-        </div>
-
-        {/* --- GLOBAL COMING SOON OVERLAY --- */}
-        <div className="relative">
-          <div className="absolute inset-x-0 -top-20 -bottom-20 z-[60] bg-black/40 backdrop-blur-[4px] rounded-[5rem] border border-white/5 flex flex-col items-center justify-center text-center p-12 group/global">
-              <div className="relative mb-12">
-                <div className="w-32 h-32 bg-white/5 rounded-[3rem] border border-white/10 flex items-center justify-center text-[#E1306C] shadow-[0_0_80px_rgba(225,48,108,0.2)] group-hover/global:rotate-12 transition-transform duration-700">
-                  <Hammer size={56} />
+        {/* UPLOAD FORM SECTION */}
+        {showForm && (
+          <div className="bg-white rounded-[5rem] p-10 md:p-20 shadow-[0_80px_180px_rgba(225,48,108,0.2)] border border-white animate-in slide-in-from-bottom-20 duration-1000 relative overflow-hidden">
+             {isSuccess && (
+                <div className="absolute inset-0 z-50 bg-white/95 backdrop-blur-md flex flex-col items-center justify-center text-center p-12 space-y-10 animate-in fade-in duration-500">
+                   <div className="relative">
+                      <div className="w-40 h-40 bg-green-500/10 rounded-full flex items-center justify-center animate-pulse shadow-2xl">
+                         <CheckCircle2 size={80} className="text-green-500" />
+                      </div>
+                      <div className="absolute -inset-4 border-2 border-dashed border-green-500/20 rounded-full animate-spin-slow" />
+                   </div>
+                   <div className="space-y-4">
+                      <h4 className="text-5xl font-heritage font-bold text-[#0a0a0a] uppercase tracking-tighter">Memoir Archived</h4>
+                      <p className="text-gray-500 text-xl font-medium italic">"Synchronization with the public community registry complete."</p>
+                   </div>
                 </div>
-                <div className="absolute -inset-4 border border-[#E1306C]/20 rounded-[3.5rem] animate-spin-slow pointer-events-none" />
-              </div>
+             )}
 
-              <div className="space-y-6 max-w-2xl animate-in zoom-in duration-1000">
-                  <div className="px-8 py-2 bg-[#E1306C] text-white rounded-full text-[10px] font-black uppercase tracking-[0.6em] mx-auto w-fit shadow-2xl mb-6">Community Infrastructure Update</div>
-                  <h2 className="text-5xl md:text-8xl font-heritage font-bold text-white uppercase tracking-tighter leading-tight">
-                    SYNC <span className="insta-text-gradient italic">PENDING.</span>
-                  </h2>
-                  <p className="text-gray-400 text-lg md:text-2xl font-medium italic leading-relaxed">
-                    "The essence economy and rewards manifold are currently being synthesized. The Community Network will go live in the next regional archival cycle."
-                  </p>
-                  
-                  <div className="pt-12 flex flex-col items-center gap-6">
-                    <div className="flex items-center gap-6 px-10 py-4 bg-white/5 rounded-2xl border border-white/10">
-                       <Activity size={20} className="text-[#E1306C] animate-pulse" />
-                       <div className="text-left">
-                          <p className="text-[10px] font-black uppercase tracking-widest text-white/40 leading-none mb-1">Calibration_Status</p>
-                          <p className="text-sm font-bold text-white tracking-widest">ARCHITECTING_MANIFOLD_94%</p>
-                       </div>
-                    </div>
-                    <button 
-                      onClick={() => setView('home')}
-                      className="group flex items-center gap-4 text-[10px] font-black text-gray-500 uppercase tracking-[0.5em] hover:text-white transition-all"
-                    >
-                      Return to Main Registry
-                      <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform" />
-                    </button>
+             <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-10 border-b border-gray-100 pb-16 mb-16">
+                <div className="space-y-6">
+                   <div className="flex items-center gap-4 text-[#E1306C]">
+                      <Radio className="w-5 h-5 animate-pulse" />
+                      <span className="text-[12px] font-black uppercase tracking-[0.6em]">Neural_Archive_Portal</span>
+                   </div>
+                   <h3 className="text-4xl md:text-7xl font-heritage font-bold text-[#0a0a0a] tracking-tighter uppercase leading-none">
+                      New <span className="italic insta-text-gradient">Entry.</span>
+                   </h3>
+                </div>
+                <button onClick={() => setShowForm(false)} className="w-16 h-16 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 hover:text-black hover:bg-gray-100 transition-all">
+                   <X size={28} />
+                </button>
+             </div>
+
+             <form onSubmit={handleSubmit} className="grid grid-cols-1 lg:grid-cols-12 gap-16 md:gap-24 relative z-10">
+                <div className="lg:col-span-7 space-y-12">
+                   <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                      <div className="space-y-4">
+                         <label className="text-[11px] font-black text-gray-400 uppercase tracking-[0.4em] ml-2">Destination Node</label>
+                         <div className="relative group">
+                            <MapPin className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-300 group-focus-within:text-[#E1306C] transition-colors" size={20} />
+                            <input 
+                               required
+                               type="text" 
+                               value={newMemory.location}
+                               onChange={(e) => setNewMemory(p => ({...p, location: e.target.value}))}
+                               className="w-full pl-16 pr-8 py-7 bg-gray-50 border-2 border-transparent rounded-[2.5rem] focus:bg-white focus:border-[#E1306C]/20 outline-none transition-all font-bold text-lg shadow-inner text-[#0a0a0a]"
+                               placeholder="Ex: Galle Fort Lighthouse"
+                            />
+                         </div>
+                      </div>
+                      <div className="space-y-4">
+                         <label className="text-[11px] font-black text-gray-400 uppercase tracking-[0.4em] ml-2">Registry Title</label>
+                         <div className="relative group">
+                            <Compass className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-300 group-focus-within:text-[#E1306C] transition-colors" size={20} />
+                            <input 
+                               required
+                               type="text" 
+                               value={newMemory.title}
+                               onChange={(e) => setNewMemory(p => ({...p, title: e.target.value}))}
+                               className="w-full pl-16 pr-8 py-7 bg-gray-50 border-2 border-transparent rounded-[2.5rem] focus:bg-white focus:border-[#E1306C]/20 outline-none transition-all font-bold text-lg shadow-inner text-[#0a0a0a]"
+                               placeholder="Poetic title of your journey..."
+                            />
+                         </div>
+                      </div>
+                   </div>
+
+                   <div className="space-y-4">
+                      <div className="flex justify-between items-center px-2">
+                         <label className="text-[11px] font-black text-gray-400 uppercase tracking-[0.4em]">The Narrative</label>
+                         <button 
+                           type="button" 
+                           onClick={handleRefine}
+                           disabled={!newMemory.story || isRefining}
+                           className="flex items-center gap-3 px-5 py-2 bg-[#E1306C]/5 text-[#E1306C] border border-[#E1306C]/20 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-[#E1306C] hover:text-white transition-all disabled:opacity-30"
+                         >
+                            {isRefining ? <Loader2 size={12} className="animate-spin" /> : <Wand2 size={12} />}
+                            Refine with AI
+                         </button>
+                      </div>
+                      <div className="relative">
+                         <Quote size={40} className="absolute top-8 left-8 text-gray-100 pointer-events-none" />
+                         <textarea 
+                           required
+                           rows={6}
+                           value={newMemory.story}
+                           onChange={(e) => setNewMemory(p => ({...p, story: e.target.value}))}
+                           className="w-full px-12 py-12 bg-gray-50 border-2 border-transparent rounded-[3.5rem] focus:bg-white focus:border-[#E1306C]/20 outline-none transition-all font-medium italic text-xl shadow-inner text-gray-600 resize-none"
+                           placeholder="Relive your steps through prose..."
+                         />
+                      </div>
+                   </div>
+                </div>
+
+                <div className="lg:col-span-5 space-y-12">
+                   <div className="space-y-4">
+                      <label className="text-[11px] font-black text-gray-400 uppercase tracking-[0.4em] ml-2">Visual Data (Device Sync)</label>
+                      <input 
+                         type="file" 
+                         ref={fileInputRef} 
+                         onChange={handleFileSelect} 
+                         className="hidden" 
+                         accept="image/*"
+                      />
+                      <div 
+                         onDragOver={handleDragOver}
+                         onDragLeave={handleDragLeave}
+                         onDrop={handleDrop}
+                         onClick={() => fileInputRef.current?.click()}
+                         className={`relative group h-[340px] rounded-[3.5rem] overflow-hidden border-2 border-dashed transition-all cursor-pointer flex flex-col items-center justify-center text-center p-8 ${
+                            isDragging ? 'border-[#E1306C] bg-[#E1306C]/5' : 'border-gray-200 bg-gray-50 hover:border-[#E1306C]/40 hover:bg-white'
+                         } ${newMemory.image ? 'border-solid' : ''}`}
+                      >
+                         {newMemory.image ? (
+                           <>
+                             <img src={newMemory.image} className="absolute inset-0 w-full h-full object-cover animate-in fade-in zoom-in duration-700" alt="Preview" />
+                             <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                                <div className="flex flex-col items-center gap-4">
+                                   <button 
+                                      type="button" 
+                                      onClick={(e) => { e.stopPropagation(); setNewMemory(p => ({...p, image: ''})); }} 
+                                      className="bg-white text-black px-6 py-3 rounded-2xl shadow-2xl font-black text-[10px] uppercase tracking-widest hover:bg-red-500 hover:text-white transition-all"
+                                   >
+                                      Clear Fragment
+                                   </button>
+                                   <p className="text-white text-[9px] font-black uppercase tracking-widest">Click to Replace</p>
+                                </div>
+                             </div>
+                           </>
+                         ) : (
+                           <div className="space-y-6">
+                              <div className="w-24 h-24 bg-white rounded-3xl shadow-xl border border-gray-100 flex items-center justify-center text-gray-300 group-hover:text-[#E1306C] group-hover:scale-110 transition-all mx-auto">
+                                 {isDragging ? <Upload size={40} className="animate-bounce" /> : <FileImage size={40} />}
+                              </div>
+                              <div className="space-y-2">
+                                 <p className="text-sm font-bold text-[#0a0a0a] uppercase tracking-widest">
+                                    {isDragging ? 'Drop Fragment Now' : 'Select From Device'}
+                                 </p>
+                                 <p className="text-[10px] text-gray-400 font-medium italic">Drag & drop or tap to browse photos</p>
+                              </div>
+                              <div className="pt-4 flex justify-center gap-3">
+                                 <div className="w-1.5 h-1.5 rounded-full bg-gray-200" />
+                                 <div className="w-1.5 h-1.5 rounded-full bg-gray-200" />
+                                 <div className="w-1.5 h-1.5 rounded-full bg-gray-200" />
+                              </div>
+                           </div>
+                         )}
+                      </div>
+                   </div>
+
+                   <div className="space-y-4">
+                      <label className="text-[11px] font-black text-gray-400 uppercase tracking-[0.4em] ml-2">Resonance Level</label>
+                      <div className="flex justify-between items-center bg-gray-50 p-6 rounded-[2.5rem] shadow-inner border border-gray-100">
+                         <div className="flex gap-4">
+                            {[1,2,3,4,5].map(s => (
+                               <button 
+                                 key={s} 
+                                 type="button"
+                                 onClick={() => setNewMemory(p => ({...p, rating: s as any}))}
+                                 className={`transition-all duration-300 ${s <= (newMemory.rating || 0) ? 'text-yellow-400 scale-125' : 'text-gray-200 hover:text-yellow-200'}`}
+                               >
+                                  <Star size={32} fill="currentColor" />
+                               </button>
+                            ))}
+                         </div>
+                         <span className="text-3xl font-heritage font-black text-[#0a0a0a] mr-4 opacity-40">{newMemory.rating}/5</span>
+                      </div>
+                   </div>
+
+                   <button 
+                     type="submit"
+                     disabled={isSubmitting || !newMemory.image}
+                     className="w-full h-24 bg-[#0a0a0a] text-white rounded-[2.5rem] font-black text-sm uppercase tracking-[0.6em] flex items-center justify-center gap-8 hover:bg-[#E1306C] hover:shadow-[0_40px_80px_rgba(225,48,108,0.3)] transition-all active:scale-95 group/btn relative overflow-hidden disabled:opacity-20 disabled:cursor-not-allowed"
+                   >
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000" />
+                      {isSubmitting ? (
+                        <Loader2 size={32} className="animate-spin text-white" />
+                      ) : (
+                        <>
+                           Commit Archive
+                           <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center transition-all group-hover/btn:rotate-12">
+                              <Send size={24} className="group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
+                           </div>
+                        </>
+                      )}
+                   </button>
+                </div>
+             </form>
+          </div>
+        )}
+
+        {/* MEMOIRS GRID - All Cards now bg-white */}
+        <div className="space-y-24">
+           <div className="flex flex-col items-center text-center space-y-10">
+              <div className="inline-flex items-center gap-6 text-[#E1306C] opacity-80">
+                 <div className="h-[2px] w-24 bg-gradient-to-r from-transparent to-[#E1306C]"></div>
+                 <Database size={28} className="animate-spin-slow" />
+                 <span className="text-[12px] font-black uppercase tracking-[0.8em]">Public_Memoir_Feed</span>
+                 <div className="h-[2px] w-24 bg-gradient-to-l from-transparent to-[#E1306C]"></div>
+              </div>
+              <h2 className="text-5xl md:text-[8rem] font-heritage font-bold text-white tracking-tighter uppercase leading-none">
+                 LIVED <span className="insta-text-gradient italic">STORIES.</span>
+              </h2>
+           </div>
+
+           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+             {memories.map((m, idx) => (
+               <div 
+                 key={m.id}
+                 className="group relative bg-white rounded-[4rem] overflow-hidden border border-gray-100 transition-all duration-1000 hover:border-[#E1306C]/30 hover:-translate-y-4 shadow-2xl"
+               >
+                  <div className="relative h-96 overflow-hidden">
+                     <img src={m.image} className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110" alt={m.title} />
+                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
+                     
+                     <div className="absolute top-10 right-10 flex gap-1">
+                        {Array.from({ length: m.rating }).map((_, i) => (
+                           <Star key={i} size={10} className="text-yellow-400 fill-current shadow-2xl" />
+                        ))}
+                     </div>
+
+                     <div className="absolute bottom-8 left-8 flex items-center gap-4">
+                        <div className="w-14 h-14 rounded-2xl border-2 border-white/40 overflow-hidden shadow-2xl bg-gray-900">
+                           <img src={`https://ui-avatars.com/api/?name=${m.userName}&background=E1306C&color=fff`} className="w-full h-full object-cover" />
+                        </div>
+                        <div className="text-left">
+                           <p className="text-[10px] font-black text-white uppercase tracking-widest mb-1">{m.userName}</p>
+                           <div className="flex items-center gap-2 text-[8px] font-bold text-white/60 uppercase tracking-widest">
+                              <History size={10} />
+                              {m.date}
+                           </div>
+                        </div>
+                     </div>
                   </div>
-              </div>
-          </div>
 
-          {/* Background Content (Blurred) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 opacity-10 grayscale blur-[10px] pointer-events-none">
-            {quests.map((q, idx) => (
-              <div key={q.id} className="p-12 rounded-[4.5rem] bg-white/[0.02] border border-white/5">
-                 <div className="w-32 h-32 rounded-[2.5rem] bg-white/5" />
-              </div>
-            ))}
-          </div>
+                  <div className="p-12 space-y-8">
+                     <div className="space-y-3">
+                        <div className="flex items-center gap-3 text-[#E1306C]">
+                           <MapPin size={14} />
+                           <span className="text-[10px] font-black uppercase tracking-[0.4em]">{m.location}</span>
+                        </div>
+                        <h4 className="text-3xl font-heritage font-bold text-[#0a0a0a] uppercase tracking-tighter leading-tight group-hover:insta-text-gradient transition-all">
+                           {m.title}
+                        </h4>
+                     </div>
+                     
+                     <div className="relative">
+                        <Quote size={28} className="absolute -top-4 -left-4 text-[#E1306C]/10" />
+                        <p className="text-base text-gray-500 font-light italic leading-relaxed pl-4 line-clamp-4">
+                           "{m.story}"
+                        </p>
+                     </div>
+
+                     <div className="pt-8 border-t border-gray-100 flex justify-between items-center">
+                        <div className="flex items-center gap-6">
+                           <button className="flex items-center gap-2.5 text-gray-400 hover:text-[#E1306C] transition-colors group/stat">
+                              <Heart size={18} className="group-hover/stat:fill-current" />
+                              <span className="text-[11px] font-black">{m.likes}</span>
+                           </button>
+                           <button className="flex items-center gap-2.5 text-gray-400 hover:text-[#0a0a0a] transition-colors">
+                              <MessageSquare size={18} />
+                              <span className="text-[11px] font-black">Sync</span>
+                           </button>
+                        </div>
+                        <button className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center text-gray-400 hover:bg-[#E1306C] hover:text-white transition-all">
+                           <Share2 size={16} />
+                        </button>
+                     </div>
+                  </div>
+               </div>
+             ))}
+           </div>
         </div>
 
-        {/* Global Hub Status HUD */}
-        <div className="pt-24 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-12 opacity-20">
-           <div className="flex items-center gap-10">
+        {/* REWARDS SECTION */}
+        <div className="space-y-24 py-40 border-t border-white/5 relative overflow-hidden">
+           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-60 bg-[#f09433]/5 blur-[180px] rotate-12 pointer-events-none" />
+
+           <div className="flex flex-col items-center text-center space-y-10 relative z-10">
+              <div className="px-8 py-3 rounded-full bg-yellow-500/10 border border-yellow-500/20 text-yellow-500 text-[10px] md:text-[12px] font-black uppercase tracking-[0.6em] flex items-center gap-4 shadow-2xl backdrop-blur-md">
+                 <Gem size={18} className="animate-bounce" />
+                 Rewards_Synergy_Module
+              </div>
+              <h3 className="text-5xl md:text-[9rem] font-heritage font-bold text-white uppercase tracking-tighter leading-none">
+                 COMING <span className="text-yellow-500 italic">SOON.</span>
+              </h3>
+              <p className="text-gray-500 text-lg md:text-2xl font-light italic leading-relaxed max-w-2xl mx-auto opacity-60">
+                 "Our architectural bureau is synthesizing the Essence Economy. Future manifolds for point redemption and VIP access are under calibration."
+              </p>
+              
+              <div className="pt-12">
+                 <div className="flex items-center gap-10 opacity-20">
+                    <Award size={40} />
+                    <Gift size={40} />
+                    <Trophy size={40} />
+                 </div>
+              </div>
+           </div>
+        </div>
+
+        {/* Global Footer Sync Info */}
+        <div className="pt-24 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-12 opacity-30">
+           <div className="flex items-center gap-8">
               <div className="flex items-center gap-4">
-                 <AlertTriangle size={24} className="text-yellow-500" />
+                 <ShieldCheck size={28} className="text-green-500" />
                  <div className="text-left">
-                    <p className="text-[9px] font-black uppercase tracking-widest text-white">Under_Construction</p>
-                    <p className="text-[10px] font-bold text-white/60">Development Phase 04</p>
+                    <p className="text-[9px] font-black uppercase tracking-widest text-white">Identity_Locked</p>
+                    <p className="text-[10px] font-bold text-white/60">Registry Sync v4.5</p>
                  </div>
               </div>
            </div>
 
            <div className="flex items-center gap-8">
               <div className="text-right">
-                 <p className="text-[9px] font-black uppercase tracking-widest text-white">Target_Sync</p>
-                 <p className="text-[10px] font-bold text-white/60">Q3 2026 RELEASE</p>
+                 <p className="text-[9px] font-black uppercase tracking-widest text-white">Next_Cycle_Target</p>
+                 <p className="text-[10px] font-bold text-white/60">Q4 2026 ARCHIVE_UPDATE</p>
               </div>
               <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-600 shadow-inner">
-                 <Signal size={28} />
+                 <Activity size={28} />
               </div>
            </div>
         </div>
       </div>
 
       <style dangerouslySetInnerHTML={{ __html: `
-        @keyframes scan {
-          0% { transform: translateX(-100%); }
-          100% { transform: translateX(100%); }
+        @keyframes scan-slow {
+          0% { transform: translateY(-100%); opacity: 0; }
+          20% { opacity: 0.5; }
+          80% { opacity: 0.5; }
+          100% { transform: translateY(500px); opacity: 0; }
         }
-        .animate-scan { animation: scan 3s linear infinite; }
+        .animate-scan-slow { animation: scan-slow 6s linear infinite; }
         .animate-spin-slow { animation: spin 20s linear infinite; }
         .animate-float { animation: float 6s ease-in-out infinite; }
         @keyframes float {
           0%, 100% { transform: translateY(0); }
           50% { transform: translateY(-15px); }
+        }
+        @keyframes spin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
         }
         .shadow-3xl {
           box-shadow: 0 0 50px rgba(225,48,108,0.3);
