@@ -1,3 +1,4 @@
+
 import { Destination, Food, HeritageMusic, TraditionalMedicine, TeaExperience, Phrase, TravelEssential, Festival, Translation, HikingSpot, Transport } from './types.ts';
 
 export const SUPABASE_KEY = 'sb_publishable_c8wPY71QFNsFJKcAEuD86w_pcqen0nv';
@@ -53,9 +54,9 @@ export const TRANSPORT_DATA: Transport[] = [
 ];
 
 export const DESTINATIONS: Destination[] = [
-  { id: "sigiriya", name: { EN: "Sigiriya Lion Rock", SI: "සීගිරිය සිංහගිරිය" }, category: "ancient", image: "https://images.unsplash.com/photo-1580794749460-76f97b7180d8?auto=format&fit=crop&w=1920&q=80", gallery: ["https://images.unsplash.com/photo-1620054604245-566083771259?auto=format&fit=crop&w=1200&q=80", "https://images.unsplash.com/photo-1580794749460-76f97b7180d8?auto=format&fit=crop&w=1200&q=80"], videoUrl: "https://www.youtube.com/shorts/j4ln2UNOnZk", history: { EN: "Sigiriya, the 'Lion Rock', is a UNESCO World Heritage site and one of the best-preserved examples of ancient urban planning.", SI: "සීගිරිය හෙවත් 'සිංහගිරිය' යනු යුනෙස්කෝ ලෝක උරුම අඩවියක් වන අතර පැරණි නගර නිර්මාණකරණයේ විශිෂ්ටතම නිදසුනකි." }, shortStory: { EN: "The 8th Wonder of the World – A fortress in the sky.", SI: "ලොව අටවන පුදුමය - අහස උසට විහිදුණු බලකොටුවකි." }, bestTime: { EN: "December to April", SI: "දෙසැම්බර් සිට අප්‍රේල් දක්වා" }, tips: [{ EN: "Climb early morning to avoid the heat.", SI: "රස්නය මග හැරීමට උදෑසන කාලයේ නැගීම ආරම්භ කරන්න." }], location: "Matale District" },
-  { id: "polonnaruwa", name: { EN: "Ancient City of Polonnaruwa", SI: "පොළොන්නරුව පැරණි නගරය" }, category: "ancient", image: "https://images.unsplash.com/photo-1656339952847-a360aee9273b?auto=format&fit=crop&w=1200&q=80", gallery: ["https://images.unsplash.com/photo-1656339952847-a360aee9273b?auto=format&fit=crop&w=1200&q=80"], history: { EN: "The second most ancient kingdom of Sri Lanka, Polonnaruwa features remains of garden-cities and incredible stone sculptures.", SI: "ශ්‍රී ලංකාවේ දෙවන පැරණිතම රාජධානිය වන පොළොන්නරුව, උද්‍යාන නගරවල ශේෂයන් සහ විස්මිත ගල් කැටයම් වලින් සමන්විත වේ." }, shortStory: { EN: "Where stone tells the story of an empire.", SI: "ගල් කැටයම් අධිරාජ්‍යයක කතාව පවසන තැන." }, bestTime: { EN: "July to September", SI: "ජූලි සිට සැප්තැම්බර් දක්වා" }, tips: [{ EN: "Rent a bicycle to explore the massive ruins.", SI: "නටබුන් නැරඹීමට බයිසිකලයක් කුලියට ගන්න." }], location: "Polonnaruwa District" },
-  { id: "ella", name: { EN: "Nine Arch Bridge", SI: "ආරුක්කු නවය පාලම" }, category: "mountains", image: "https://images.unsplash.com/photo-1578519050142-afb511e518de?auto=format&fit=crop&w=1200&q=80", gallery: ["https://images.unsplash.com/photo-1578519050142-afb511e518de?auto=format&fit=crop&w=1200&q=80"], history: { EN: "A colonial-era masterpiece, this bridge was built entirely out of rock, bricks, and cement without a single piece of steel.", SI: "යටත් විජිත යුගයේ අගනා නිර්මාණයක් වන මෙම පාලම කිසිදු වානේ කැබැල්ලක් භාවිතා නොකර ගල්, ගඩොල් සහ සිමෙන්ති වලින් පමණක් නිමවා ඇත." }, shortStory: { EN: "The bridge in the sky where time slows down.", SI: "කාලය සෙමින් ගෙවෙන අහස උසට බැඳි පාලම." }, bestTime: { EN: "January to March", SI: "ජනවාරි සිට මාර්තු දක්වා" }, tips: [{ EN: "Check the train schedule for the perfect photo op.", SI: "ඡායාරූපයක් ගැනීමට සුදුසුම වේලාව දැන ගැනීමට දුම්රිය කාලසටහන පරීක්ෂා කරන්න." }], location: "Badulla District" },
+  { id: "sigiriya", name: { EN: "Sigiriya Lion Rock", SI: "සීගිරිය සිංහගිරිය" }, category: "ancient", image: "https://images.unsplash.com/photo-1580794749460-76f97b7180d8?auto=format&fit=crop&w=1920&q=80", gallery: ["https://images.unsplash.com/photo-1620054604245-566083771259?auto=format&fit=crop&w=1200&q=80", "https://images.unsplash.com/photo-1580794749460-76f97b7180d8?auto=format&fit=crop&w=1200&q=80"], videoUrl: "https://www.youtube.com/shorts/j4ln2UNOnZk", history: { EN: "Sigiriya, the 'Lion Rock', is a UNESCO World Heritage site and one of the best-preserved examples of ancient urban planning.", SI: "සීගිරිය හෙවත් 'සිංහගිරිය' යනු යුනෙස්කෝ ලෝක උරුම අඩවියක් වන අතර පැරණි නගර නිර්මාණකරණයේ විශිෂ්ටතම නිදසුනකි." }, shortStory: { EN: "The 8th Wonder of the World – A fortress in the sky.", SI: "ලොව අටවන පුදුමය - අහස උසට විහිදුණු බලකොටුවකි." }, bestTime: { EN: "December to April", SI: "දෙසැම්බර් සිට අප්‍රේල් දක්වා" }, tips: [{ EN: "Climb early morning to avoid the heat.", SI: "රස්නය මග හැරීමට උදෑසන කාලයේ නැගීම ආරම්භ කරන්න." }], location: "Matale District", coordinates: { x: 52, y: 38 } },
+  { id: "polonnaruwa", name: { EN: "Ancient City of Polonnaruwa", SI: "පොළොන්නරුව පැරණි නගරය" }, category: "ancient", image: "https://images.unsplash.com/photo-1656339952847-a360aee9273b?auto=format&fit=crop&w=1200&q=80", gallery: ["https://images.unsplash.com/photo-1656339952847-a360aee9273b?auto=format&fit=crop&w=1200&q=80"], history: { EN: "The second most ancient kingdom of Sri Lanka, Polonnaruwa features remains of garden-cities and incredible stone sculptures.", SI: "ශ්‍රී ලංකාවේ දෙවන පැරණිතම රාජධානිය වන පොළොන්නරුව, උද්‍යාන නගරවල ශේෂයන් සහ විස්මිත ගල් කැටයම් වලින් සමන්විත වේ." }, shortStory: { EN: "Where stone tells the story of an empire.", SI: "ගල් කැටයම් අධිරාජ්‍යයක කතාව පවසන තැන." }, bestTime: { EN: "July to September", SI: "ජූලි සිට සැප්තැම්බර් දක්වා" }, tips: [{ EN: "Rent a bicycle to explore the massive ruins.", SI: "නටබුන් නැරඹීමට බයිසිකලයක් කුලියට ගන්න." }], location: "Polonnaruwa District", coordinates: { x: 62, y: 34 } },
+  { id: "ella", name: { EN: "Nine Arch Bridge", SI: "ආරුක්කු නවය පාලම" }, category: "mountains", image: "https://images.unsplash.com/photo-1578519050142-afb511e518de?auto=format&fit=crop&w=1200&q=80", gallery: ["https://images.unsplash.com/photo-1578519050142-afb511e518de?auto=format&fit=crop&w=1200&q=80"], history: { EN: "A colonial-era masterpiece, this bridge was built entirely out of rock, bricks, and cement without a single piece of steel.", SI: "යටත් විජිත යුගයේ අගනා නිර්මාණයක් වන මෙම පාලම කිසිදු වානේ කැබැල්ලක් භාවිතා නොකර ගල්, ගඩොල් සහ සිමෙන්ති වලින් පමණක් නිමවා ඇත." }, shortStory: { EN: "The bridge in the sky where time slows down.", SI: "කාලය සෙමින් ගෙවෙන අහස උසට බැඳි පාලම." }, bestTime: { EN: "January to March", SI: "ජනවාරි සිට මාර්තු දක්වා" }, tips: [{ EN: "Check the train schedule for the perfect photo op.", SI: "ඡායාරූපයක් ගැනීමට සුදුසුම වේලාව දැන ගැනීමට දුම්රිය කාලසටහන පරීක්ෂා කරන්න." }], location: "Badulla District", coordinates: { x: 62, y: 68 } },
   {
     id: "kandy-temple",
     name: { EN: "Temple of the Tooth", SI: "ශ්‍රී දළදා මාළිගාව" },
@@ -66,7 +67,8 @@ export const DESTINATIONS: Destination[] = [
     shortStory: { EN: "The guardian of the sacred flame.", SI: "පූජනීය දන්ත ධාතූන් වහන්සේගේ රැකවලයා." },
     bestTime: { EN: "August (Esala Perahera)", SI: "අගෝස්තු (ඇසළ පෙරහැර)" },
     tips: [{ EN: "Wear white and cover shoulders/knees.", SI: "සුදු ඇඳුම් ඇඳ උරහිස් සහ දණහිස් වැසෙන සේ සැරසෙන්න." }],
-    location: "Kandy District"
+    location: "Kandy District",
+    coordinates: { x: 52, y: 50 }
   },
   {
     id: "galle-fort",
@@ -78,7 +80,8 @@ export const DESTINATIONS: Destination[] = [
     shortStory: { EN: "Where colonial charm meets the Indian Ocean.", SI: "යටත් විජිත අලංකාරය ඉන්දියන් සාගරය හමුවන තැන." },
     bestTime: { EN: "November to April", SI: "නොවැම්බර් සිට අප්‍රේල් දක්වා" },
     tips: [{ EN: "Walk the ramparts at sunset for the best view.", SI: "හිරු බැස යන වේලාවට බැම්ම මත ඇවිද යන්න." }],
-    location: "Galle District"
+    location: "Galle District",
+    coordinates: { x: 35, y: 88 }
   },
   {
     id: "yala-safari",
@@ -90,7 +93,8 @@ export const DESTINATIONS: Destination[] = [
     shortStory: { EN: "The kingdom of the silent leopard.", SI: "නිහඬ දිවියාගේ රාජධානිය." },
     bestTime: { EN: "February to June", SI: "පෙබරවාරි සිට ජූනි දක්වා" },
     tips: [{ EN: "Book the 5 AM safari for maximum animal visibility.", SI: "උදෑසන 5 ට සෆාරි ගමන ආරම්භ කරන්න." }],
-    location: "Hambantota District"
+    location: "Hambantota District",
+    coordinates: { x: 75, y: 80 }
   },
   {
     id: "anuradhapura",
@@ -102,7 +106,8 @@ export const DESTINATIONS: Destination[] = [
     shortStory: { EN: "The eternal cradle of Buddhist civilization.", SI: "බෞද්ධ ශිෂ්ටාචාරයේ සදාකාලික තොටිල්ල." },
     bestTime: { EN: "June (Poson Poya)", SI: "ජූනි (පොසොන් පෝය)" },
     tips: [{ EN: "Rent a bicycle to navigate the vast archaeological site.", SI: "පූජා භූමිය නැරඹීමට බයිසිකලයක් භාවිතා කරන්න." }],
-    location: "Anuradhapura District"
+    location: "Anuradhapura District",
+    coordinates: { x: 45, y: 25 }
   },
   {
     id: "dambulla",
@@ -114,7 +119,8 @@ export const DESTINATIONS: Destination[] = [
     shortStory: { EN: "Where silence speaks through golden statues.", SI: "රන් පිළිම අතර නිහඬතාවය කතා කරන තැන." },
     bestTime: { EN: "Year round", SI: "වසර පුරා" },
     tips: [{ EN: "Watch out for the monkeys on the stairs!", SI: "පඩිපෙළ අසල සිටින වඳුරන්ගෙන් ප්‍රවේශම් වන්න." }],
-    location: "Matale District"
+    location: "Matale District",
+    coordinates: { x: 52, y: 34 }
   },
   {
     id: "mirissa",
@@ -126,7 +132,8 @@ export const DESTINATIONS: Destination[] = [
     shortStory: { EN: "Sunsets and giants of the deep.", SI: "හිරු බැසීම සහ සාගරයේ යෝධයින්." },
     bestTime: { EN: "November to March", SI: "නොවැම්බර් සිට මාර්තු දක්වා" },
     tips: [{ EN: "Take a boat tour to see Blue Whales.", SI: "නිල් තල්මසුන් නැරඹීමට බෝට්ටු සංචාරයක් යන්න." }],
-    location: "Matara District"
+    location: "Matara District",
+    coordinates: { x: 45, y: 92 }
   },
   {
     id: "arugam-bay",
@@ -138,7 +145,8 @@ export const DESTINATIONS: Destination[] = [
     shortStory: { EN: "Ride the perfect wave.", SI: "පිරිපුන් රළ මත සවාරියක්." },
     bestTime: { EN: "May to September", SI: "මැයි සිට සැප්තැම්බර් දක්වා" },
     tips: [{ EN: "Great for intermediate to expert surfers.", SI: "රළ පැදීමට දක්ෂ පුද්ගලයින් සඳහා ඉතා සුදුසුයි." }],
-    location: "Ampara District"
+    location: "Ampara District",
+    coordinates: { x: 82, y: 65 }
   },
   {
     id: "horton-plains",
@@ -150,7 +158,8 @@ export const DESTINATIONS: Destination[] = [
     shortStory: { EN: "Standing at the edge of the world.", SI: "ලෝකයේ කෙළවරේ සිටගෙන." },
     bestTime: { EN: "January to March", SI: "ජනවාරි සිට මාර්තු දක්වා" },
     tips: [{ EN: "Be at the World's End by 9 AM before the mist rolls in.", SI: "මීදුම ඒමට පෙර උදෑසන 9 ට පමණ ලෝකාන්තය වෙත යන්න." }],
-    location: "Nuwara Eliya District"
+    location: "Nuwara Eliya District",
+    coordinates: { x: 58, y: 65 }
   },
   {
     id: "knuckles-range",
@@ -162,7 +171,8 @@ export const DESTINATIONS: Destination[] = [
     shortStory: { EN: "The rugged spine of the hills.", SI: "කඳුකරයේ රළු කඳු වැටිය." },
     bestTime: { EN: "December to March", SI: "දෙසැම්බර් සිට මාර්තු දක්වා" },
     tips: [{ EN: "Hiring a guide is essential for deep jungle treks.", SI: "වනාන්තරය තුළට යාමට මගපෙන්වන්නෙකුගේ සහය ලබා ගැනීම අත්‍යවශ්‍යයි." }],
-    location: "Kandy District"
+    location: "Kandy District",
+    coordinates: { x: 58, y: 46 }
   },
   {
     id: "trincomalee",
@@ -174,7 +184,8 @@ export const DESTINATIONS: Destination[] = [
     shortStory: { EN: "Pure white sands and ancient shrines.", SI: "සුදු වැලි තලාව සහ පුරාණ කෝවිල්." },
     bestTime: { EN: "May to October", SI: "මැයි සිට ඔක්තෝබර් දක්වා" },
     tips: [{ EN: "Visit Pigeon Island for world-class snorkeling.", SI: "ස්නෝකලින් සඳහා පරෙවි දූපත වෙත යන්න." }],
-    location: "Trincomalee District"
+    location: "Trincomalee District",
+    coordinates: { x: 74, y: 22 }
   },
   {
     id: "nuwara-eliya",
@@ -186,7 +197,8 @@ export const DESTINATIONS: Destination[] = [
     shortStory: { EN: "Emerald hills and English mist.", SI: "හරිත කඳු වැටි සහ ඉංග්‍රීසි මීදුම." },
     bestTime: { EN: "April (Spring season)", SI: "අප්‍රේල් (වසන්ත කාලය)" },
     tips: [{ EN: "Bring warm clothes even in the summer.", SI: "ගිම්හාන කාලයේ පවා උණුසුම් ඇඳුම් රැගෙන යන්න." }],
-    location: "Nuwara Eliya District"
+    location: "Nuwara Eliya District",
+    coordinates: { x: 58, y: 60 }
   },
   {
     id: "jaffna",
@@ -198,7 +210,8 @@ export const DESTINATIONS: Destination[] = [
     shortStory: { EN: "The golden gateway of the North.", SI: "උතුරේ රන් ද්වාරය." },
     bestTime: { EN: "August (Festival time)", SI: "අගෝස්තු (උත්සව කාලය)" },
     tips: [{ EN: "Respect the dress code inside the temple.", SI: "කෝවිල තුළ නියමිත ඇඳුම් සම්ප්‍රදාය අනුගමනය කරන්න." }],
-    location: "Jaffna District"
+    location: "Jaffna District",
+    coordinates: { x: 35, y: 5 }
   },
   {
     id: "udawalawe",
@@ -210,7 +223,8 @@ export const DESTINATIONS: Destination[] = [
     shortStory: { EN: "Where elephants roam the dry plains.", SI: "වියළි තැන්නක අලින් සැරිසරන තැන." },
     bestTime: { EN: "December to March", SI: "දෙසැම්බර් සිට මාර්තු දක්වා" },
     tips: [{ EN: "Visit the Elephant Transit Home nearby.", SI: "අසල ඇති අලි සංක්‍රමණික මධ්‍යස්ථානය වෙත යන්න." }],
-    location: "Ratnapura District"
+    location: "Ratnapura District",
+    coordinates: { x: 58, y: 75 }
   },
   {
     id: "sinharaja",
@@ -222,7 +236,8 @@ export const DESTINATIONS: Destination[] = [
     shortStory: { EN: "The ancient green lung of Lanka.", SI: "ලංකාවේ පැරණි හරිත පෙනහල්ල." },
     bestTime: { EN: "January to April", SI: "ජනවාරි සිට අප්‍රේල් දක්වා" },
     tips: [{ EN: "Expect rain at any time; bring leeches socks.", SI: "ඕනෑම වේලාවක වර්ෂාව අපේක්ෂා කරන්න; කූඩැල්ලන්ගෙන් ආරක්ෂා වීමට පියවර ගන්න." }],
-    location: "Galle District"
+    location: "Galle District",
+    coordinates: { x: 45, y: 80 }
   },
   {
     id: "hikkaduwa",
@@ -234,7 +249,8 @@ export const DESTINATIONS: Destination[] = [
     shortStory: { EN: "Corals, turtles, and tropical vibes.", SI: "කොරල්, කැස්බෑවුන් සහ නිවර්තන අත්දැකීම." },
     bestTime: { EN: "November to April", SI: "නොවැම්බර් සිට අප්‍රේල් දක්වා" },
     tips: [{ EN: "Take a glass-bottom boat tour.", SI: "වීදුරු පතුලක් සහිත බෝට්ටු සංචාරයක් යන්න." }],
-    location: "Galle District"
+    location: "Galle District",
+    coordinates: { x: 32, y: 85 }
   },
   {
     id: "pasikudah",
@@ -246,7 +262,8 @@ export const DESTINATIONS: Destination[] = [
     shortStory: { EN: "The mirror of the East.", SI: "නැගෙනහිර කැඩපත." },
     bestTime: { EN: "May to September", SI: "මැයි සිට සැප්තැම්බර් දක්වා" },
     tips: [{ EN: "Perfect for families and non-swimmers.", SI: "පවුලේ සැමට සහ පිහිනීමට නොහැකි අයට පවා ඉතා සුදුසුයි." }],
-    location: "Batticaloa District"
+    location: "Batticaloa District",
+    coordinates: { x: 80, y: 40 }
   },
   {
     id: "wilpattu",
@@ -258,7 +275,8 @@ export const DESTINATIONS: Destination[] = [
     shortStory: { EN: "The land of natural lakes.", SI: "ස්වාභාවික විල්වල දේශය." },
     bestTime: { EN: "February to October", SI: "පෙබරවාරි සිට ඔක්තෝබර් දක්වා" },
     tips: [{ EN: "Known for Sloth Bears as well as Leopards.", SI: "වලසුන් සහ දිවියන් නැරඹීමට හොඳම ස්ථානයකි." }],
-    location: "Anuradhapura District"
+    location: "Anuradhapura District",
+    coordinates: { x: 35, y: 25 }
   },
   {
     id: "minneriya",
@@ -270,7 +288,8 @@ export const DESTINATIONS: Destination[] = [
     shortStory: { EN: "The largest meeting of giants.", SI: "යෝධයින්ගේ විශාලතම හමුවීම." },
     bestTime: { EN: "August to September", SI: "අගෝස්තු සිට සැප්තැම්බර් දක්වා" },
     tips: [{ EN: "Afternoons are best for elephant sightings.", SI: "අලි නැරඹීමට පස්වරු කාලය ඉතා සුදුසුයි." }],
-    location: "Polonnaruwa District"
+    location: "Polonnaruwa District",
+    coordinates: { x: 58, y: 32 }
   },
   {
     id: "ritigala",
@@ -282,7 +301,8 @@ export const DESTINATIONS: Destination[] = [
     shortStory: { EN: "A mystic mountain lost in time.", SI: "කාලය තුළ අතරමං වූ අද්භූත කන්ද." },
     bestTime: { EN: "Year round", SI: "වසර පුරා" },
     tips: [{ EN: "It's a quiet site; perfect for meditative walks.", SI: "මෙය ඉතා නිහඬ ස්ථානයක් බැවින් සන්සුන්ව ඇවිද යා හැක." }],
-    location: "Anuradhapura District"
+    location: "Anuradhapura District",
+    coordinates: { x: 54, y: 28 }
   },
   {
     id: "pidurangala",
@@ -294,7 +314,8 @@ export const DESTINATIONS: Destination[] = [
     shortStory: { EN: "The best view of the Lion Rock.", SI: "සීගිරිය නැරඹීමට ඇති හොඳම ස්ථානය." },
     bestTime: { EN: "Sunrise or Sunset", SI: "හිරු උදාව හෝ බැසීම" },
     tips: [{ EN: "The final climb involves some light bouldering.", SI: "අවසාන කොටස නැගීම තරමක් අපහසු විය හැක." }],
-    location: "Matale District"
+    location: "Matale District",
+    coordinates: { x: 53, y: 37 }
   }
 ];
 

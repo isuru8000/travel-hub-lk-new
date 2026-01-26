@@ -19,6 +19,7 @@ export interface Destination {
   bestTime: { EN: string; SI: string };
   tips: { EN: string; SI: string }[];
   location: string;
+  coordinates?: { x: number; y: number };
 }
 
 export interface Transport {

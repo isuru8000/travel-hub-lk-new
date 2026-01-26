@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { Destination, Language } from '../types.ts';
 import { DESTINATIONS, UI_STRINGS } from '../constants.tsx';
@@ -31,7 +30,9 @@ import {
   Database,
   Shield,
   Zap,
-  Target
+  Target,
+  Maximize2,
+  Navigation
 } from 'lucide-react';
 
 // Helper to handle YouTube URL variations
@@ -213,6 +214,83 @@ const CustomVideoPlayer: React.FC<{ url: string; title: string }> = ({ url, titl
   );
 };
 
+const GeospatialMap: React.FC<{ destination: Destination; language: Language }> = ({ destination, language }) => {
+  const mapUrl = `https://www.google.com/maps/embed/v1/place?key=REPLACE_WITH_YOUR_MAPS_API_KEY&q=${encodeURIComponent(destination.name.EN + ', ' + destination.location + ', Sri Lanka')}`;
+  
+  // Note: Using a standard search link since we don't have a Maps API Key injected here for the embed.
+  // Using the Google Maps Search URL in an iframe is a common fallback if the Embed API key isn't present.
+  const query = encodeURIComponent(`${destination.name.EN} ${destination.location} Sri Lanka`);
+  const iframeSrc = `https://maps.google.com/maps?q=${query}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
+  const externalLink = `https://www.google.com/maps/search/?api=1&query=${query}`;
+
+  return (
+    <div className="space-y-10 animate-reveal">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-6 text-[#E1306C]">
+          <Navigation size={32} className="animate-pulse" aria-hidden="true" />
+          <span className="text-[14px] font-black uppercase tracking-[0.7em] font-mono">Geospatial_Alignment</span>
+        </div>
+        <a 
+          href={externalLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-3 px-6 py-2 bg-black text-white rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-[#E1306C] transition-all shadow-xl"
+        >
+          Open External Maps
+          <ArrowUpRight size={14} />
+        </a>
+      </div>
+
+      <div 
+        onClick={() => window.open(externalLink, '_blank')}
+        className="group relative h-[500px] rounded-[4rem] overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.15)] border-4 border-white cursor-pointer"
+      >
+        {/* Iframe for the "Interactive" part */}
+        <iframe
+          title={`Map location for ${destination.name[language]}`}
+          width="100%"
+          height="100%"
+          frameBorder="0"
+          scrolling="no"
+          marginHeight={0}
+          marginWidth={0}
+          src={iframeSrc}
+          className="grayscale group-hover:grayscale-0 transition-all duration-1000 scale-105 pointer-events-none"
+        ></iframe>
+
+        {/* Overlay HUD */}
+        <div className="absolute inset-0 bg-black/5 group-hover:opacity-0 transition-opacity duration-700 pointer-events-none" />
+        
+        <div className="absolute inset-0 border-[20px] border-white/5 pointer-events-none" />
+        
+        {/* Archival Decor */}
+        <div className="absolute top-10 left-10 p-6 bg-black/60 backdrop-blur-md rounded-[2rem] border border-white/10 text-white space-y-2 max-w-xs transition-transform duration-700 group-hover:-translate-y-2">
+          <div className="flex items-center gap-2 text-[#E1306C]">
+             <Target size={14} className="animate-pulse" />
+             <span className="text-[9px] font-black uppercase tracking-widest">Locked_Coordinates</span>
+          </div>
+          <p className="text-sm font-bold uppercase tracking-tight leading-tight">{destination.location}</p>
+          <div className="pt-2 flex items-center gap-4 opacity-40">
+             <div className="h-0.5 w-12 bg-white rounded-full" />
+             <div className="w-1.5 h-1.5 rounded-full bg-white animate-ping" />
+          </div>
+        </div>
+
+        <div className="absolute bottom-10 right-10 flex flex-col items-end gap-4">
+           <div className="w-16 h-16 rounded-2xl bg-white flex items-center justify-center shadow-2xl text-[#0a0a0a] group-hover:scale-110 group-hover:rotate-12 transition-all">
+              <Maximize2 size={24} />
+           </div>
+           <p className="text-[9px] font-black text-white/40 uppercase tracking-[0.5em] font-mono [writing-mode:vertical-lr] rotate-180">Registry_Mapping_v4.5</p>
+        </div>
+
+        {/* Tactical Scanning line */}
+        <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#E1306C] to-transparent shadow-[0_0_20px_#E1306C] animate-scan-slow opacity-0 group-hover:opacity-100" />
+      </div>
+    </div>
+  );
+};
+
+// Fix: Defined missing DestinationDetailProps interface to fix TypeScript error
 interface DestinationDetailProps {
   destination: Destination | null;
   language: Language;
@@ -222,7 +300,6 @@ interface DestinationDetailProps {
 
 const DestinationDetail: React.FC<DestinationDetailProps> = ({ destination, language, onBack, onSelect }) => {
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [activeSection, setActiveSection] = useState('history');
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -350,7 +427,7 @@ const DestinationDetail: React.FC<DestinationDetailProps> = ({ destination, lang
         
         {/* SECTION 01: THE ARCHIVE HISTORY */}
         <section className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-start" aria-labelledby="section-history-title">
-          <div className="lg:col-span-8 space-y-20">
+          <div className="lg:col-span-8 space-y-24">
             <div className="space-y-10 animate-reveal">
                <div className="flex items-center gap-6 text-[#E1306C]">
                   <History size={32} className="animate-pulse" aria-hidden="true" />
@@ -367,7 +444,7 @@ const DestinationDetail: React.FC<DestinationDetailProps> = ({ destination, lang
             {/* Quick-Stats Artifact Panel */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 pt-10">
                <div className="bg-[#fafafa] p-12 rounded-[4rem] border border-gray-100 space-y-8 group hover:shadow-[0_40px_100px_rgba(0,0,0,0.08)] transition-all duration-700 hover:-translate-y-2">
-                  <div className="w-20 h-20 bg-white rounded-3xl flex items-center justify-center text-[#E1306C] shadow-sm group-hover:rotate-12 transition-transform border border-gray-50">
+                  <div className="w-20 h-20 bg-white rounded-3xl flex items-center justify-center text-[#E1306C] shadow-sm group-hover:rotate-12 transition-transform border border-gray-100">
                      <Clock size={36} />
                   </div>
                   <div className="space-y-2">
@@ -392,6 +469,9 @@ const DestinationDetail: React.FC<DestinationDetailProps> = ({ destination, lang
                   </p>
                </div>
             </div>
+
+            {/* INTEGRATED MAP COMPONENT */}
+            <GeospatialMap destination={destination} language={language} />
           </div>
 
           {/* Sticky Sidebar Advisory */}

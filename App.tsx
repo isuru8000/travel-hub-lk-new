@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useMemo } from 'react';
 import { Language, User, Destination } from './types.ts';
 import Layout from './components/Layout.tsx';
