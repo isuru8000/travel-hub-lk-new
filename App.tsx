@@ -184,12 +184,8 @@ const App: React.FC = () => {
               </div>
 
               <PopularHighlights language={language} onSelectDestination={navigateToDestination} setView={setView} />
-              
-              <div id="heritage-hub">
-                <HeritageHub language={language} setView={setView} />
-              </div>
 
-              {/* --- NEW: FUTURE MANIFOLD (BLURRED TEASERS) --- */}
+              {/* --- FUTURE MANIFOLD (BLURRED TEASERS) --- */}
               <section className="py-40 bg-[#020205] relative overflow-hidden">
                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(225,48,108,0.1)_0%,transparent_50%)] animate-pulse" />
                  
