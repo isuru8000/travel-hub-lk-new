@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Language } from '../types.ts';
 import { UI_STRINGS } from '../constants.tsx';
-import { Navigation, Target, Activity, ShieldCheck, ChevronDown } from 'lucide-react';
+import { Navigation, Target, Activity, ShieldCheck, ChevronDown, Radio, Orbit, Zap, Box, Layers } from 'lucide-react';
 
 interface HeroProps {
   language: Language;
@@ -26,195 +26,139 @@ const Hero: React.FC<HeroProps> = ({ language, setView }) => {
     };
 
     window.addEventListener('mousemove', handleMove);
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => {
       window.removeEventListener('mousemove', handleMove);
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
-  // Generate unique spatial nodes for the 3D background
-  const spatialNodes = useMemo(() => {
-    return Array.from({ length: 50 }).map((_, i) => ({
-      id: i,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      z: Math.random() * 800 - 400,
-      size: Math.random() * 2.5 + 0.5,
-      opacity: Math.random() * 0.4 + 0.1,
-      duration: Math.random() * 15 + 10,
-      delay: Math.random() * -20,
-    }));
-  }, []);
-
   return (
-    <div className="relative h-screen flex items-center justify-center overflow-hidden bg-[#02040a]">
+    <div className="relative h-[115vh] flex items-center justify-center overflow-hidden bg-[#020205]" style={{ perspective: '2000px' }}>
       
-      {/* --- BACKGROUND ANIMATION ENGINE --- */}
-      <div className="absolute inset-0 z-0 pointer-events-none" style={{ perspective: '1500px' }}>
+      {/* --- CINEMATIC 3D ENGINE --- */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
         
-        {/* Layer 1: The Mountain Plate (Base) */}
+        {/* Deep Field Image with Parallax */}
         <div 
-          className="absolute inset-0 bg-cover bg-center transition-transform duration-[4000ms] ease-out brightness-[0.35] contrast-[1.3] saturate-[0.8]" 
+          className="absolute inset-0 bg-cover bg-center transition-transform duration-[200ms] brightness-[0.35] saturate-[1.1]" 
           style={{ 
-            backgroundImage: `url('https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=1920&q=80')`,
-            transform: `scale(${1.1 + scrollPos / 3000}) translate3d(${mousePos.x * 15}px, ${mousePos.y * 15}px, -100px)`,
+            backgroundImage: `url('https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=2400&q=80')`,
+            transform: `scale(${1.15 + scrollPos / 5000}) translateY(${scrollPos * 0.15}px) rotateX(${mousePos.y * 2}deg) rotateY(${mousePos.x * 2}deg)`,
+            willChange: 'transform'
           }}
         >
-          {/* Layer 2: Volumetric Fog/Glow */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#02040a] via-transparent to-[#02040a] opacity-90" />
-          <div 
-            className="absolute inset-0 opacity-40 transition-opacity duration-1000"
-            style={{ 
-              background: `radial-gradient(circle at ${50 + mousePos.x * 30}% ${50 + mousePos.y * 30}%, #2ecc7122 0%, transparent 60%)` 
-            }} 
-          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#020205] via-transparent to-[#020205] opacity-90" />
         </div>
 
-        {/* Layer 3: Neural Mesh Protocol (Moving Grid) */}
+        {/* Neural Scan Rings - Enhanced 3D Depth */}
         <div 
-          className="absolute inset-0 opacity-[0.07] transition-transform duration-500 ease-out" 
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] opacity-20 hidden md:block"
           style={{ 
-            backgroundImage: `linear-gradient(#2ecc71 1px, transparent 1px), linear-gradient(90deg, #2ecc71 1px, transparent 1px)`, 
-            backgroundSize: '120px 120px', 
-            transform: `rotateX(65deg) translateY(${scrollPos * 0.1}px) translateZ(-200px) scale(2.5)`,
-            maskImage: 'radial-gradient(ellipse at center, black 20%, transparent 80%)'
-          }} 
-        />
-
-        {/* Layer 4: Vertical Scanline HUD Animation */}
-        <div className="absolute top-0 left-0 w-full h-[4px] bg-gradient-to-r from-transparent via-[#2ecc71]/40 to-transparent shadow-[0_0_30px_#2ecc71] animate-scan-hud z-10" />
-
-        {/* Layer 5: Data Nodes (Particles) */}
-        <div 
-          className="absolute inset-0 opacity-60"
-          style={{ transform: `translate3d(${mousePos.x * -30}px, ${mousePos.y * -30}px, 0)` }}
+            transform: `translate(-50%, -50%) translate3d(${mousePos.x * 60}px, ${mousePos.y * 60}px, 100px) rotate(${scrollPos * 0.03}deg)`,
+            willChange: 'transform',
+            transformStyle: 'preserve-3d'
+          }}
         >
-          {spatialNodes.map((node) => (
-            <div 
-              key={node.id}
-              className="absolute bg-white rounded-full animate-pulse-slow shadow-[0_0_10px_rgba(255,255,255,0.5)]"
-              style={{
-                left: `${node.x}%`,
-                top: `${node.y}%`,
-                width: `${node.size}px`,
-                height: `${node.size}px`,
-                opacity: node.opacity,
-                transform: `translateZ(${node.z}px)`,
-                animation: `float-node ${node.duration}s linear infinite`,
-                animationDelay: `${node.delay}s`
-              }}
-            />
-          ))}
+          <div className="absolute inset-0 border-[1px] border-[#E1306C] rounded-full animate-spin-slow opacity-40 shadow-[0_0_80px_#E1306C]" />
+          <div className="absolute inset-32 border-[1px] border-blue-500 rounded-full animate-reverse-spin opacity-30 shadow-[0_0_40px_#3b82f6]" style={{ transform: 'translateZ(50px)' }} />
+          <div className="absolute inset-60 border-dashed border-[1px] border-white/20 rounded-full animate-spin-extremely-slow" style={{ transform: 'translateZ(-30px)' }} />
         </div>
+
+        {/* Ambient Particles */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(225,48,108,0.05)_0%,transparent_70%)] animate-pulse" />
       </div>
 
-      {/* --- CONTENT OVERLAY --- */}
-      <div className="relative z-30 max-w-6xl w-full px-8 flex flex-col items-center text-center">
+      {/* --- CONTENT HUB --- */}
+      <div 
+        className="relative z-30 max-w-7xl w-full px-8 flex flex-col items-center text-center"
+        style={{ 
+          transform: `translate3d(${mousePos.x * -20}px, ${mousePos.y * -20}px, 0)`,
+          transformStyle: 'preserve-3d'
+        }}
+      >
         
-        {/* Protocol Metadata (Top Badge) */}
-        <div className="flex flex-col items-center gap-4 mb-14 animate-in fade-in slide-in-from-top-8 duration-1000">
-           <div className="inline-flex items-center gap-4 px-6 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-xl text-green-400 text-[9px] font-black uppercase tracking-[0.5em] shadow-[0_0_40px_rgba(46,204,113,0.2)]">
-             <Activity size={14} className="animate-pulse" />
-             ARCHIVE_SYNC_V3.1 ACTIVE
+        <div className="flex flex-col items-center gap-8 mb-12 animate-in fade-in slide-in-from-top-12 duration-1000">
+           <div className="inline-flex items-center gap-4 px-8 py-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-2xl text-[#E1306C] text-[10px] font-black uppercase tracking-[0.6em] shadow-[0_0_40px_rgba(225,48,108,0.2)]">
+             <Layers size={14} className="animate-pulse" />
+             ARCHIVE_V5.0_BETA_SYNC
            </div>
-           <div className="h-10 w-px bg-gradient-to-b from-green-500/50 to-transparent"></div>
         </div>
         
-        {/* Main Heading Group */}
-        <div className="space-y-0 mb-12 animate-in fade-in zoom-in-95 duration-1000 delay-200">
-          <h1 
-            className="text-4xl sm:text-6xl md:text-[6.5rem] font-heritage font-bold leading-[0.8] tracking-tight text-white uppercase"
-            style={{ textShadow: '0 15px 45px rgba(0,0,0,0.8)' }}
-          >
+        <div className="space-y-4 mb-20 animate-in fade-in zoom-in-95 duration-1000 delay-200" style={{ transform: 'translateZ(100px)' }}>
+          <h1 className="text-6xl sm:text-8xl md:text-[13rem] font-heritage font-bold leading-[0.8] tracking-tighter text-white uppercase select-none">
             {language === 'EN' ? (
               <>
-                <span className="block opacity-90 mb-4 tracking-[0.05em]">Discover the</span>
-                <span className="block font-script text-6xl sm:text-8xl md:text-[9.5rem] text-[#2ecc71] lowercase normal-case tracking-normal -mt-3 sm:-mt-6 md:-mt-8 drop-shadow-glow">Sri Lanka</span>
+                <span className="block opacity-60 mb-4 tracking-[0.1em] text-4xl md:text-6xl font-light italic">Discover the</span>
+                <span className="block insta-text-gradient drop-shadow-[0_20px_50px_rgba(225,48,108,0.5)]">SRI LANKA.</span>
               </>
             ) : (
               <>
-                <span className="block opacity-90 mb-3 tracking-[0.05em]">ලංකා ආත්මය</span>
-                <span className="block font-script text-6xl sm:text-8xl md:text-[9.5rem] text-[#2ecc71] -mt-3 sm:-mt-6 md:-mt-8 drop-shadow-glow">සොයා යන්න.</span>
+                <span className="block opacity-60 mb-4 tracking-[0.1em] text-4xl md:text-6xl font-light italic">අත්විඳින්න</span>
+                <span className="block insta-text-gradient drop-shadow-[0_20px_50px_rgba(225,48,108,0.5)]">ශ්‍රී ලංකාව.</span>
               </>
             )}
           </h1>
         </div>
         
-        {/* Subtitle / Descriptive Text */}
-        <p className="text-base md:text-xl text-white/50 font-light max-w-2xl leading-relaxed mb-16 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-500 italic">
+        <p className="text-lg md:text-2xl text-white/50 font-light max-w-4xl leading-relaxed mb-24 animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-500 italic" style={{ transform: 'translateZ(60px)' }}>
           {language === 'EN' 
-            ? "Access the ultimate digital gateway to ancient heritages, sapphire waters, and the futuristic luxury of our island protocol." 
-            : "පුරාණ උරුමයන්, නිල්වන් සාගරය සහ දිවයිනේ අනාගත සුඛෝපභෝගී අත්දැකීම් වෙත පිවිසෙන පරම ඩිජිටල් ද්වාරය."}
+            ? "Step into a multi-dimensional reconstruction of the world's most mysterious island." 
+            : "ලොව වඩාත් අභිරහස් දූපතේ බහුමාන ප්‍රතිනිර්මාණයකට පිවිසෙන්න."}
         </p>
 
-        {/* Action Controls - Glassmorphism Style */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-700">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-10 animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-700" style={{ transform: 'translateZ(120px)' }}>
           <button 
             onClick={() => setView('destinations')}
-            className="group relative px-14 py-5 bg-white text-[#0a0a0a] rounded-full font-black text-[11px] uppercase tracking-[0.5em] transition-all duration-500 hover:scale-110 active:scale-95 shadow-[0_25px_60px_rgba(255,255,255,0.2)] animate-radiant-pulse"
+            className="group relative px-20 py-8 bg-white text-[#020205] rounded-[2.5rem] font-black text-[14px] uppercase tracking-[0.5em] transition-all duration-500 hover:scale-110 active:scale-95 shadow-[0_40px_100px_rgba(255,255,255,0.2)] overflow-hidden"
           >
-            <span className="relative z-10">{language === 'EN' ? 'Explore Destinations' : 'ගමනාන්ත ගවේෂණය'}</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#E1306C]/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+            <span className="relative z-10 flex items-center gap-4">
+              Explore Reality
+              <Box size={18} fill="currentColor" className="text-[#E1306C]" />
+            </span>
           </button>
 
           <button 
             onClick={() => setView('vr-showcase')}
-            className="group relative px-14 py-5 bg-white/5 backdrop-blur-2xl border border-white/10 rounded-full font-black text-[11px] text-white uppercase tracking-[0.5em] transition-all duration-500 hover:bg-white/15 hover:border-white/30 active:scale-95 shadow-2xl overflow-hidden"
+            className="group relative px-20 py-8 bg-black/40 backdrop-blur-3xl border border-white/20 rounded-[2.5rem] font-black text-[14px] text-white uppercase tracking-[0.5em] transition-all duration-700 hover:bg-white/10 hover:border-[#E1306C]/50 hover:shadow-[0_0_80px_rgba(225,48,108,0.2)] active:scale-95"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+            <div className="absolute inset-0 bg-[#E1306C]/5 opacity-0 group-hover:opacity-100 transition-opacity" />
             <span className="relative z-10 flex items-center gap-4">
-              3D Registry
-              <ShieldCheck size={16} className="text-green-500 opacity-60" />
+              3D Interface
+              <Orbit size={22} className="text-blue-500 animate-spin-slow" />
             </span>
           </button>
         </div>
       </div>
 
-      {/* Atmospheric Bottom Decoration */}
-      <div className={`absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-5 transition-all duration-1000 z-40 ${scrollPos > 100 ? 'opacity-0' : 'opacity-30'}`}>
-        <span className="text-[8px] font-black text-white uppercase tracking-[1em] ml-1 animate-pulse">Sync_Scroll</span>
-        <div className="relative h-16 w-px overflow-hidden">
-           <div className="absolute inset-0 bg-white/20"></div>
-           <div className="absolute top-0 left-0 w-full h-1/2 bg-green-500 animate-scroll-indicator"></div>
-        </div>
+      {/* Floating HUD Gauges */}
+      <div className="absolute right-12 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-12 opacity-30 text-white pointer-events-none" style={{ transform: 'translateZ(150px)' }}>
+          {[1,2,3].map(i => (
+            <div key={i} className="flex flex-col items-end gap-2">
+               <div className="w-48 h-[1px] bg-gradient-to-l from-white/40 to-transparent" />
+               <p className="text-[8px] font-black uppercase tracking-[0.4em]">Spatial_Vector_0{i}</p>
+            </div>
+          ))}
+      </div>
+
+      {/* Corner Metadata */}
+      <div className="absolute left-12 bottom-12 hidden lg:flex flex-col gap-10 opacity-30 text-white pointer-events-none">
+          <div className="space-y-2">
+             <p className="text-[10px] font-black uppercase tracking-[0.4em] leading-none text-[#E1306C]">Neural_Uplink</p>
+             <p className="text-2xl font-heritage font-bold">99.8% STABLE</p>
+          </div>
+          <div className="space-y-2">
+             <p className="text-[10px] font-black uppercase tracking-[0.4em] leading-none text-blue-400">Environment</p>
+             <p className="text-2xl font-heritage font-bold">LOCKED_VOLUMETRIC</p>
+          </div>
       </div>
 
       <style dangerouslySetInnerHTML={{ __html: `
-        @keyframes float-node {
-          0% { transform: translateY(0) translateZ(0); }
-          50% { transform: translateY(-30px) translateZ(100px); }
-          100% { transform: translateY(0) translateZ(0); }
-        }
-        @keyframes scan-hud {
-          0% { top: -10%; opacity: 0; }
-          10% { opacity: 1; }
-          90% { opacity: 1; }
-          100% { top: 110%; opacity: 0; }
-        }
-        @keyframes scroll-indicator {
-          0% { transform: translateY(-100%); }
-          100% { transform: translateY(200%); }
-        }
-        @keyframes radiant-pulse {
-          0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
-          70% { box-shadow: 0 0 0 25px rgba(255, 255, 255, 0); }
-          100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
-        }
-        .animate-scan-hud {
-          animation: scan-hud 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-        }
-        .animate-scroll-indicator {
-          animation: scroll-indicator 2s ease-in-out infinite;
-        }
-        .animate-radiant-pulse {
-          animation: radiant-pulse 2s infinite;
-        }
-        .drop-shadow-glow {
-          filter: drop-shadow(0 0 15px rgba(46,204,113,0.6));
-        }
-        .animate-pulse-slow {
-          animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
+        .animate-reverse-spin { animation: reverse-spin 15s linear infinite; }
+        @keyframes reverse-spin { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
+        .animate-spin-extremely-slow { animation: spin 60s linear infinite; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
       `}} />
     </div>
   );
