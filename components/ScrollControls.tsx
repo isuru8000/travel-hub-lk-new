@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { ChevronUp, MousePointer2 } from 'lucide-react';
 
@@ -59,7 +60,7 @@ const ScrollControls: React.FC = () => {
             fill="transparent"
             strokeDasharray={175.9}
             strokeDashoffset={175.9 - (progress / 100) * 175.9}
-            className="text-[#E1306C] transition-all duration-150"
+            className="text-[#0EA5E9] transition-all duration-150"
             strokeLinecap="round"
           />
         </svg>
@@ -70,7 +71,7 @@ const ScrollControls: React.FC = () => {
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-[#0a0a0a] text-white rounded-full flex items-center justify-center shadow-2xl border border-white/10 hover:scale-110 active:scale-95 transition-all group/btn overflow-hidden"
           title="Return to Registry Top"
         >
-          <div className="absolute inset-0 bg-gradient-to-tr from-[#E1306C]/40 to-transparent opacity-0 group-hover/btn:opacity-100 transition-opacity"></div>
+          <div className="absolute inset-0 bg-gradient-to-tr from-[#0EA5E9]/40 to-transparent opacity-0 group-hover/btn:opacity-100 transition-opacity"></div>
           <ChevronUp 
             size={24} 
             className="relative z-10 transition-transform group-hover/btn:-translate-y-1" 

@@ -8,32 +8,18 @@ import {
   LogIn, 
   LogOut, 
   ChevronRight, 
-  Sparkles, 
-  Compass, 
-  Search, 
-  ShoppingBag, 
   ChevronDown, 
   BedDouble, 
-  Map, 
   Zap, 
-  Database, 
-  Signal, 
   Activity, 
-  Wallet, 
   Mountain, 
   Utensils, 
   Music, 
-  Target, 
-  ShoppingCart, 
-  Users,
   Sprout,
   PartyPopper,
   MessageSquare,
   PawPrint,
   Backpack,
-  HelpCircle,
-  Wind,
-  Waves,
   Car,
   MapPin
 } from 'lucide-react';
@@ -48,24 +34,39 @@ interface NavbarProps {
   onLogout: () => void;
 }
 
-export const TravelHubLogo = ({ size = 48, className = "", isLight = false }) => (
+interface NavSubItem {
+  id: string;
+  label: string;
+  icon: React.ReactNode;
+}
+
+interface NavLink {
+  id: string;
+  label: string;
+  icon?: React.ReactNode;
+  premium?: boolean;
+  hasDropdown?: boolean;
+  items?: NavSubItem[];
+}
+
+export const TravelHubLogo = ({ size = 48, className = "", isLight = false }: { size?: number, className?: string, isLight?: boolean }) => (
   <div className={`relative group/logo-svg ${className}`} role="img" aria-label="Travel Hub Sri Lanka Logo">
-    <svg width={size} height={size} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="drop-shadow-[0_0_25px_rgba(225,48,108,0.4)] transition-all duration-1000 ease-in-out group-hover/logo-svg:scale-110">
+    <svg width={size} height={size} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="drop-shadow-[0_0_25px_rgba(14,165,233,0.4)] transition-all duration-1000 ease-in-out group-hover/logo-svg:scale-110">
       <circle cx="50" cy="50" r="40" fill="url(#logo_pulse_grad)" className="animate-pulse opacity-20" />
       <circle cx="50" cy="50" r="48" stroke={isLight ? "rgba(0,0,0,0.8)" : "rgba(255,255,255,0.8)"} strokeWidth="0.5" strokeDasharray="4 12" className="animate-spin-slow opacity-20 transition-colors duration-1000" />
-      <circle cx="50" cy="50" r="44" stroke="#E1306C" strokeWidth="1.5" strokeLinecap="round" strokeDasharray="30 200" className="animate-logo-sweep" />
+      <circle cx="50" cy="50" r="44" stroke="#0EA5E9" strokeWidth="1.5" strokeLinecap="round" strokeDasharray="30 200" className="animate-logo-sweep" />
       <g className="neural-mesh opacity-80">
         <line x1="50" y1="50" x2="50" y2="20" stroke={isLight ? "black" : "white"} strokeWidth="1" className="animate-pulse transition-colors duration-1000" />
         <line x1="50" y1="50" x2="25" y2="70" stroke={isLight ? "black" : "white"} strokeWidth="1" className="animate-pulse transition-colors duration-1000" style={{ animationDelay: '0.5s' }} />
         <line x1="50" y1="50" x2="75" y2="70" stroke={isLight ? "black" : "white"} strokeWidth="1" className="animate-pulse transition-colors duration-1000" style={{ animationDelay: '1s' }} />
-        <circle cx="50" cy="50" r="6" fill="#E1306C" className="animate-pulse" />
+        <circle cx="50" cy="50" r="6" fill="#0EA5E9" className="animate-pulse" />
         <circle cx="50" cy="20" r="3" fill={isLight ? "black" : "white"} className="transition-colors duration-1000" />
         <circle cx="25" cy="70" r="3" fill={isLight ? "black" : "white"} className="transition-colors duration-1000" />
         <circle cx="75" cy="70" r="3" fill={isLight ? "black" : "white"} className="transition-colors duration-1000" />
       </g>
       <defs>
         <radialGradient id="logo_pulse_grad" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#E1306C" />
+          <stop offset="0%" stopColor="#0EA5E9" />
           <stop offset="100%" stopColor="transparent" />
         </radialGradient>
       </defs>
@@ -99,21 +100,15 @@ const Navbar: React.FC<NavbarProps> = ({
 
   useEffect(() => {
     const handleScroll = () => {
-      // Sensitivity for theme switching
       setScrolled(window.scrollY > 80);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // AUTO-COLOR LOGIC:
-  // If the page background is black, use a white nav bar (isLightMode = true)
-  // If the page background is white, use a black nav bar (isLightMode = false)
   const isLightMode = useMemo(() => {
     const alwaysDarkViews = ['vr-showcase', 'community', 'nexus-rewards', 'vr-experience'];
     const hybridHeaderViews = ['home', 'destination-detail', 'foods', 'music', 'medicine', 'tea', 'hiking', 'festivals', 'marketplace', 'hotels', 'transport', 'booking-destinations'];
-    
-    // Light nav (White bar/Black text) should be used when the underlying section is dark
     return alwaysDarkViews.includes(currentView) || (hybridHeaderViews.includes(currentView) && !scrolled);
   }, [currentView, scrolled]);
 
@@ -134,7 +129,7 @@ const Navbar: React.FC<NavbarProps> = ({
     }
   };
 
-  const navLinks = [
+  const navLinks: NavLink[] = [
     { id: 'home', label: language === 'EN' ? 'Home' : 'මුල් පිටුව' },
     { id: 'destinations', label: language === 'EN' ? 'Reality' : 'යථාර්ථය' },
     { 
@@ -168,6 +163,9 @@ const Navbar: React.FC<NavbarProps> = ({
     { id: 'community', label: language === 'EN' ? 'COMMUNITY' : 'සමූහය' }
   ];
 
+  const heritageSubViews = ['destinations', 'hiking', 'foods', 'music', 'medicine', 'tea', 'phrases', 'essentials', 'festivals'];
+  const marketplaceSubViews = ['hotels', 'transport', 'booking-destinations'];
+
   return (
     <div className={`fixed left-0 right-0 z-[70] transition-all duration-1000 ease-in-out flex justify-center pointer-events-none ${scrolled ? 'top-3' : 'top-8'}`}>
       <nav 
@@ -177,10 +175,8 @@ const Navbar: React.FC<NavbarProps> = ({
             : 'bg-black/85 border-white/20 text-white shadow-[0_30px_100px_rgba(0,0,0,0.5)]'
         } ${scrolled ? 'py-3' : ''}`}
       >
-        {/* Animated Top Scan Line */}
-        <div className={`absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#E1306C] to-transparent opacity-0 group-hover/nav:opacity-100 transition-opacity duration-1000 animate-nav-scan pointer-events-none`} />
+        <div className={`absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#0EA5E9] to-transparent opacity-0 group-hover/nav:opacity-100 transition-opacity duration-1000 animate-nav-scan pointer-events-none`} />
         
-        {/* Left Side: Brand */}
         <button 
           onClick={() => handleNav('home')}
           className="flex items-center gap-4 group/logo shrink-0"
@@ -191,7 +187,7 @@ const Navbar: React.FC<NavbarProps> = ({
               Travel Hub
             </span>
             <div className="flex items-center gap-2">
-               <div className="w-1.5 h-1.5 bg-[#E1306C] rounded-full animate-pulse shadow-[0_0_8px_#E1306C]" />
+               <div className="w-1.5 h-1.5 bg-[#0EA5E9] rounded-full animate-pulse shadow-[0_0_8px_#0EA5E9]" />
                <span className={`font-black text-[7px] uppercase tracking-[0.4em] transition-colors duration-1000 ease-in-out ${isLightMode ? 'text-black/40' : 'text-white/40'}`}>
                  SRI LANKA • CORE_V4
                </span>
@@ -199,73 +195,73 @@ const Navbar: React.FC<NavbarProps> = ({
           </div>
         </button>
 
-        {/* Center: Main Links */}
         <div className={`hidden lg:flex items-center gap-2 p-1 rounded-full border transition-all duration-1000 ease-in-out ${isLightMode ? 'bg-black/5 border-black/10' : 'bg-white/5 border-white/10'}`}>
-          {navLinks.map((link) => (
-            <div 
-              key={link.id} 
-              className="relative"
-              onMouseEnter={() => link.hasDropdown && setActiveDropdown(link.id)}
-              onMouseLeave={() => setActiveDropdown(null)}
-            >
-              <button 
-                onClick={() => !link.hasDropdown && handleNav(link.id as any)} 
-                className={`px-6 py-2.5 rounded-full flex items-center gap-2.5 transition-all duration-700 ease-in-out relative group/link ${
-                  currentView === link.id || (link.id === 'marketplace' && ['hotels', 'transport', 'booking-destinations'].includes(currentView)) || (link.id === 'heritage' && ['destinations', 'hiking', 'foods', 'music', 'medicine', 'tea', 'phrases', 'essentials', 'festivals'].includes(currentView))
-                    ? (isLightMode ? 'text-black font-black' : 'text-white font-black') 
-                    : (isLightMode ? 'text-black/50 hover:text-black' : 'text-white/50 hover:text-white')
-                }`}
+          {navLinks.map((link) => {
+            const isTabActive = currentView === link.id || 
+                                (link.id === 'marketplace' && marketplaceSubViews.includes(currentView)) || 
+                                (link.id === 'heritage' && heritageSubViews.includes(currentView));
+            
+            return (
+              <div 
+                key={link.id} 
+                className="relative"
+                onMouseEnter={() => link.hasDropdown && setActiveDropdown(link.id)}
+                onMouseLeave={() => setActiveDropdown(null)}
               >
-                {/* Active Underglow / Hover State */}
-                {(currentView === link.id || activeDropdown === link.id || (link.id === 'marketplace' && ['hotels', 'transport', 'booking-destinations'].includes(currentView)) || (link.id === 'heritage' && ['destinations', 'hiking', 'foods', 'music', 'medicine', 'tea', 'phrases', 'essentials', 'festivals'].includes(currentView))) && (
-                  <div className={`absolute inset-0 rounded-full border transition-all duration-1000 ease-in-out ${isLightMode ? 'bg-black/10 border-black/20' : 'bg-white/10 border-white/20'}`} />
-                )}
-                
-                <span className="text-[10px] font-black uppercase tracking-[0.3em] relative z-10 flex items-center gap-2 transition-colors duration-1000 ease-in-out">
-                  {link.premium && <Zap size={10} className="text-yellow-400 fill-current animate-pulse" />}
-                  {(link as any).icon && (link as any).icon}
-                  {link.label}
-                  {link.hasDropdown && (
-                    <ChevronDown size={12} className={`transition-transform duration-700 ease-in-out ${activeDropdown === link.id ? 'rotate-180' : 'opacity-40'}`} />
+                <button 
+                  onClick={() => !link.hasDropdown && handleNav(link.id as any)} 
+                  className={`px-6 py-2.5 rounded-full flex items-center gap-2.5 transition-all duration-700 ease-in-out relative group/link ${
+                    isTabActive
+                      ? (isLightMode ? 'text-black font-black' : 'text-white font-black') 
+                      : (isLightMode ? 'text-black/50 hover:text-black' : 'text-white/50 hover:text-white')
+                  }`}
+                >
+                  {(isTabActive || activeDropdown === link.id) && (
+                    <div className={`absolute inset-0 rounded-full border transition-all duration-1000 ease-in-out ${isLightMode ? 'bg-black/10 border-black/20' : 'bg-white/10 border-white/20'}`} />
                   )}
-                </span>
-              </button>
+                  
+                  <span className="text-[10px] font-black uppercase tracking-[0.3em] relative z-10 flex items-center gap-2 transition-colors duration-1000 ease-in-out">
+                    {link.premium && <Zap size={10} className="text-blue-400 fill-current animate-pulse" />}
+                    {link.icon && link.icon}
+                    {link.label}
+                    {link.hasDropdown && (
+                      <ChevronDown size={12} className={`transition-transform duration-700 ease-in-out ${activeDropdown === link.id ? 'rotate-180' : 'opacity-40'}`} />
+                    )}
+                  </span>
+                </button>
 
-              {/* Sub-menu Dropdown */}
-              {link.hasDropdown && activeDropdown === link.id && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-5 w-72 animate-in fade-in slide-in-from-top-3 duration-500 z-[80]">
-                  <div className={`backdrop-blur-3xl rounded-[2.5rem] shadow-[0_50px_120px_rgba(0,0,0,0.2)] border p-4 space-y-1 relative overflow-hidden max-h-[75vh] overflow-y-auto no-scrollbar transition-all duration-1000 ease-in-out ${isLightMode ? 'bg-white/95 border-black/10' : 'bg-black/95 border-white/20'}`}>
-                    {/* Inner Dropdown Glow */}
-                    <div className="absolute -top-10 -left-10 w-32 h-32 bg-[#E1306C]/10 blur-[40px] rounded-full pointer-events-none" />
-                    
-                    {link.items?.map((item) => (
-                      <button
-                        key={item.id}
-                        onClick={() => handleNav(item.id as any)}
-                        className={`w-full flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-500 group/item text-left border border-transparent ${isLightMode ? 'hover:bg-black/5' : 'hover:bg-white/10'}`}
-                      >
-                        <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-500 ${isLightMode ? 'bg-black/5 text-black/40 group-hover/item:text-[#E1306C]' : 'bg-white/5 text-white/40 group-hover/item:text-[#E1306C]'}`}>
-                          {item.icon}
-                        </div>
-                        <span className={`text-[10px] font-black uppercase tracking-widest transition-all duration-500 ${isLightMode ? 'text-black/70 group-hover/item:text-black' : 'text-white/70 group-hover/item:text-white'} group-hover/item:translate-x-1`}>
-                          {item.label}
-                        </span>
-                      </button>
-                    ))}
+                {link.hasDropdown && activeDropdown === link.id && (
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 pt-5 w-72 animate-in fade-in slide-in-from-top-3 duration-500 z-[80]">
+                    <div className={`backdrop-blur-3xl rounded-[2.5rem] shadow-[0_50px_120px_rgba(0,0,0,0.2)] border p-4 space-y-1 relative overflow-hidden max-h-[75vh] overflow-y-auto no-scrollbar transition-all duration-1000 ease-in-out ${isLightMode ? 'bg-white/95 border-black/10' : 'bg-black/95 border-white/20'}`}>
+                      <div className="absolute -top-10 -left-10 w-32 h-32 bg-[#0EA5E9]/10 blur-[40px] rounded-full pointer-events-none" />
+                      {link.items?.map((item) => (
+                        <button
+                          key={item.id}
+                          onClick={() => handleNav(item.id as any)}
+                          className={`w-full flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-500 group/item text-left border border-transparent ${isLightMode ? 'hover:bg-black/5' : 'hover:bg-white/10'}`}
+                        >
+                          <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-500 ${isLightMode ? 'bg-black/5 text-black/40 group-hover/item:text-[#0EA5E9]' : 'bg-white/5 text-white/40 group-hover/item:text-[#0EA5E9]'}`}>
+                            {item.icon}
+                          </div>
+                          <span className={`text-[10px] font-black uppercase tracking-widest transition-all duration-500 ${isLightMode ? 'text-black/70 group-hover/item:text-black' : 'text-white/70 group-hover/item:text-white'} group-hover/item:translate-x-1`}>
+                            {item.label}
+                          </span>
+                        </button>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              )}
-            </div>
-          ))}
+                )}
+              </div>
+            );
+          })}
         </div>
 
-        {/* Right Side: Actions */}
         <div className="flex items-center gap-4 md:gap-6">
           <button 
             onClick={() => setLanguage(language === 'EN' ? 'SI' : 'EN')}
             className={`hidden sm:flex items-center gap-3 px-5 py-2.5 rounded-xl transition-all duration-1000 ease-in-out text-[10px] font-black uppercase tracking-widest active:scale-95 border ${isLightMode ? 'bg-black/5 border-black/10 text-black hover:bg-black/10' : 'bg-white/5 border-white/10 text-white hover:bg-white/15'}`}
           >
-            <Globe size={14} className="text-[#E1306C]" />
+            <Globe size={14} className="text-[#0EA5E9]" />
             {language}
           </button>
 
@@ -275,7 +271,7 @@ const Navbar: React.FC<NavbarProps> = ({
                 onClick={() => setShowUserMenu(!showUserMenu)}
                 className={`flex items-center gap-3 p-1.5 pr-5 rounded-full border transition-all duration-1000 ease-in-out active:scale-95 group/user ${isLightMode ? 'bg-black/5 border-black/20 hover:border-black/40' : 'bg-white/10 border-white/20 hover:border-white/40'}`}
               >
-                <div className="w-9 h-9 rounded-full border border-[#E1306C] shadow-[0_0_15px_rgba(225,48,108,0.4)] overflow-hidden">
+                <div className="w-9 h-9 rounded-full border border-[#0EA5E9] shadow-[0_0_15px_rgba(14,165,233,0.4)] overflow-hidden">
                   <img src={user.photo} alt={user.name} className="w-full h-full object-cover" />
                 </div>
                 <span className={`hidden sm:inline text-[10px] font-black uppercase tracking-widest transition-colors duration-1000 ease-in-out ${isLightMode ? 'text-black' : 'text-white'}`}>{user.name.split(' ')[0]}</span>
@@ -300,12 +296,11 @@ const Navbar: React.FC<NavbarProps> = ({
               onClick={onLogin}
               className={`relative w-12 h-12 flex items-center justify-center rounded-full transition-all duration-1000 ease-in-out hover:scale-110 active:scale-90 shadow-2xl group/login overflow-hidden border ${isLightMode ? 'bg-black text-white border-black/50' : 'bg-white text-black border-white/50'}`}
             >
-              <div className="absolute inset-0 bg-gradient-to-tr from-[#E1306C] to-purple-500 opacity-0 group-hover/login:opacity-20 transition-opacity" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#0EA5E9] to-cyan-500 opacity-0 group-hover/login:opacity-20 transition-opacity" />
               <LogIn size={22} className="relative z-10" />
             </button>
           )}
 
-          {/* Mobile Menu Toggle */}
           <button 
             onClick={() => setIsOpen(!isOpen)} 
             className={`lg:hidden w-12 h-12 flex items-center justify-center rounded-2xl transition-all duration-1000 ease-in-out active:scale-90 border ${isLightMode ? 'bg-black/5 border-black/20 text-black' : 'bg-white/10 border-white/20 text-white'}`}
@@ -315,7 +310,6 @@ const Navbar: React.FC<NavbarProps> = ({
         </div>
       </nav>
 
-      {/* Mobile Sidebar (Overlay) */}
       {isOpen && (
         <div className="fixed inset-0 bg-black/98 backdrop-blur-[100px] z-[60] flex flex-col p-10 pt-32 animate-in fade-in slide-in-from-top-10 duration-700 pointer-events-auto overflow-y-auto">
           <div className="flex flex-col gap-10 pb-10">
@@ -331,7 +325,7 @@ const Navbar: React.FC<NavbarProps> = ({
                   }`}>
                     {link.label}
                   </span>
-                  {!link.hasDropdown && <ChevronRight className={`text-[#E1306C] transition-all ${currentView === link.id ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`} size={28} />}
+                  {!link.hasDropdown && <ChevronRight className={`text-[#0EA5E9] transition-all ${currentView === link.id ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`} size={28} />}
                 </button>
                 
                 {link.hasDropdown && (
@@ -340,7 +334,7 @@ const Navbar: React.FC<NavbarProps> = ({
                       <button
                         key={item.id}
                         onClick={() => handleNav(item.id as any)}
-                        className="flex items-center gap-3 py-2 text-white/50 hover:text-[#E1306C] transition-colors"
+                        className="flex items-center gap-3 py-2 text-white/50 hover:text-[#0EA5E9] transition-colors"
                       >
                         <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center">
                           {item.icon}
@@ -359,7 +353,7 @@ const Navbar: React.FC<NavbarProps> = ({
               onClick={() => { setLanguage(language === 'EN' ? 'SI' : 'EN'); setIsOpen(false); }}
               className="w-full py-8 rounded-[2.5rem] text-[12px] font-black uppercase tracking-[0.5em] text-white border border-white/10 flex items-center justify-center gap-6 bg-white/5 active:scale-95 transition-all"
             >
-              <Globe size={24} className="text-[#E1306C]" />
+              <Globe size={24} className="text-[#0EA5E9]" />
               {language === 'EN' ? 'RECODE LANGUAGE' : 'භාෂාව මාරු කරන්න'}
             </button>
           </div>

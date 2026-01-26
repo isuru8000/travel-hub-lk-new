@@ -72,7 +72,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onEnter, language }) => {
           <h2 className="text-3xl font-heritage font-bold text-[#0a0a0a] tracking-[0.4em] uppercase leading-none">
             Travel Hub
           </h2>
-          <div className="flex items-center justify-center gap-4 text-[#E1306C] opacity-60">
+          <div className="flex items-center justify-center gap-4 text-[#0EA5E9] opacity-60">
              <Activity size={14} className="animate-pulse" />
              <span className="text-[10px] font-black uppercase tracking-[0.5em]">System_Sync_V4.5</span>
           </div>
@@ -94,7 +94,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onEnter, language }) => {
                className={`h-full rounded-full transition-all duration-300 ease-out ${progress === 100 ? 'bg-green-500' : 'insta-gradient'}`}
                style={{ 
                  width: `${progress}%`,
-                 boxShadow: progress === 100 ? '0 0 20px rgba(34,197,94,0.5)' : '0 0 20px rgba(225,48,108,0.5)'
+                 boxShadow: progress === 100 ? '0 0 20px rgba(34,197,94,0.5)' : '0 0 20px rgba(14,165,233,0.5)'
                }}
              ></div>
            </div>
@@ -105,7 +105,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onEnter, language }) => {
                 {progress === 100 ? (
                   <CheckCircle2 size={20} className="animate-in zoom-in duration-300" />
                 ) : (
-                  <Loader2 size={16} className="animate-spin text-[#E1306C]" />
+                  <Loader2 size={16} className="animate-spin text-[#0EA5E9]" />
                 )}
                 <span className="text-[9px] font-black uppercase tracking-[0.4em]">
                   {progress === 100 

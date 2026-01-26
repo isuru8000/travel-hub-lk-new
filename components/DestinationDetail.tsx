@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from 'react';
 import { Destination, Language } from '../types.ts';
 import { DESTINATIONS, UI_STRINGS } from '../constants.tsx';
@@ -155,7 +156,7 @@ const CustomVideoPlayer: React.FC<{ url: string; title: string }> = ({ url, titl
         {!isPlaying && (
           <div className="w-28 h-28 story-ring p-1 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300 bg-white/10 backdrop-blur-md">
             <div className="bg-white w-full h-full rounded-full flex items-center justify-center">
-              <Play size={44} className="text-[#E1306C] fill-[#E1306C] ml-2" />
+              <Play size={44} className="text-[#0EA5E9] fill-[#0EA5E9] ml-2" />
             </div>
           </div>
         )}
@@ -177,7 +178,7 @@ const CustomVideoPlayer: React.FC<{ url: string; title: string }> = ({ url, titl
               className="absolute inset-0 w-full opacity-0 z-10 cursor-pointer"
             />
             <div 
-              className="absolute top-0 left-0 h-full insta-gradient shadow-[0_0_20px_rgba(225,48,108,0.8)] transition-all"
+              className="absolute top-0 left-0 h-full insta-gradient shadow-[0_0_20px_rgba(14,165,233,0.8)] transition-all"
               style={{ width: `${progress}%` }}
             ></div>
           </div>
@@ -187,7 +188,7 @@ const CustomVideoPlayer: React.FC<{ url: string; title: string }> = ({ url, titl
               <button 
                 onClick={togglePlay} 
                 aria-label={isPlaying ? "Pause Video" : "Play Video"}
-                className="text-white hover:text-[#E1306C] active:scale-90 transition-all transform"
+                className="text-white hover:text-[#0EA5E9] active:scale-90 transition-all transform"
               >
                 {isPlaying ? <Pause size={32} fill="currentColor" /> : <Play size={32} fill="currentColor" />}
               </button>
@@ -195,7 +196,7 @@ const CustomVideoPlayer: React.FC<{ url: string; title: string }> = ({ url, titl
               <button 
                 onClick={toggleMute} 
                 aria-label={isMuted ? "Unmute" : "Mute"}
-                className="text-white hover:text-[#E1306C] transition-colors"
+                className="text-white hover:text-[#0EA5E9] transition-colors"
               >
                 {isMuted ? <VolumeX size={28} /> : <Volume2 size={28} />}
               </button>
@@ -226,7 +227,7 @@ const GeospatialMap: React.FC<{ destination: Destination; language: Language }> 
   return (
     <div className="space-y-10 animate-reveal">
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-6 text-[#E1306C]">
+        <div className="flex items-center gap-6 text-[#0EA5E9]">
           <Navigation size={32} className="animate-pulse" aria-hidden="true" />
           <span className="text-[14px] font-black uppercase tracking-[0.7em] font-mono">Geospatial_Alignment</span>
         </div>
@@ -234,7 +235,7 @@ const GeospatialMap: React.FC<{ destination: Destination; language: Language }> 
           href={externalLink}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-3 px-6 py-2 bg-black text-white rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-[#E1306C] transition-all shadow-xl"
+          className="flex items-center gap-3 px-6 py-2 bg-black text-white rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-[#0EA5E9] transition-all shadow-xl"
         >
           Open External Maps
           <ArrowUpRight size={14} />
@@ -265,7 +266,7 @@ const GeospatialMap: React.FC<{ destination: Destination; language: Language }> 
         
         {/* Archival Decor */}
         <div className="absolute top-10 left-10 p-6 bg-black/60 backdrop-blur-md rounded-[2rem] border border-white/10 text-white space-y-2 max-w-xs transition-transform duration-700 group-hover:-translate-y-2">
-          <div className="flex items-center gap-2 text-[#E1306C]">
+          <div className="flex items-center gap-2 text-[#0EA5E9]">
              <Target size={14} className="animate-pulse" />
              <span className="text-[9px] font-black uppercase tracking-widest">Locked_Coordinates</span>
           </div>
@@ -284,7 +285,7 @@ const GeospatialMap: React.FC<{ destination: Destination; language: Language }> 
         </div>
 
         {/* Tactical Scanning line */}
-        <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#E1306C] to-transparent shadow-[0_0_20px_#E1306C] animate-scan-slow opacity-0 group-hover:opacity-100" />
+        <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#0EA5E9] to-transparent shadow-[0_0_20px_#0EA5E9] animate-scan-slow opacity-0 group-hover:opacity-100" />
       </div>
     </div>
   );
@@ -349,7 +350,7 @@ const DestinationDetail: React.FC<DestinationDetailProps> = ({ destination, lang
         <div 
           className="absolute inset-0 opacity-[0.1] transition-transform duration-300" 
           style={{ 
-            backgroundImage: `linear-gradient(#E1306C 1px, transparent 1px), linear-gradient(90deg, #E1306C 1px, transparent 1px)`, 
+            backgroundImage: `linear-gradient(#0EA5E9 1px, transparent 1px), linear-gradient(90deg, #0EA5E9 1px, transparent 1px)`, 
             backgroundSize: '100px 100px',
             transform: `rotateX(60deg) translateY(${scrollProgress * 500}px) scale(3)`,
             maskImage: 'radial-gradient(ellipse at center, black 10%, transparent 80%)'
@@ -372,7 +373,7 @@ const DestinationDetail: React.FC<DestinationDetailProps> = ({ destination, lang
           </button>
           
           <div className="flex gap-4">
-             <button aria-label="Share this destination" className="w-16 h-16 bg-black/50 backdrop-blur-2xl border border-white/20 text-white rounded-full flex items-center justify-center hover:bg-[#E1306C] transition-all shadow-2xl active:scale-90">
+             <button aria-label="Share this destination" className="w-16 h-16 bg-black/50 backdrop-blur-2xl border border-white/20 text-white rounded-full flex items-center justify-center hover:bg-[#0EA5E9] transition-all shadow-2xl active:scale-90">
                 <Share2 size={24} aria-hidden="true" />
              </button>
           </div>
@@ -385,11 +386,11 @@ const DestinationDetail: React.FC<DestinationDetailProps> = ({ destination, lang
         >
           <div className="max-w-7xl mx-auto space-y-12">
             <div className="flex flex-wrap items-center gap-6 animate-in slide-in-from-bottom-4 duration-1000">
-               <div className="px-8 py-2.5 bg-[#E1306C] text-white rounded-full text-[11px] font-black uppercase tracking-[0.6em] shadow-[0_0_50px_rgba(225,48,108,0.5)] border border-white/20">
+               <div className="px-8 py-2.5 bg-[#0EA5E9] text-white rounded-full text-[11px] font-black uppercase tracking-[0.6em] shadow-[0_0_50px_rgba(14,165,233,0.5)] border border-white/20">
                  ACTIVE NODE #{destination.id.toUpperCase()}
                </div>
                <div className="px-8 py-2.5 bg-black/40 backdrop-blur-3xl text-white rounded-full text-[11px] font-black uppercase tracking-[0.6em] border border-white/20 flex items-center gap-4">
-                 <CatIcon size={16} className="text-[#E1306C]" aria-hidden="true" />
+                 <CatIcon size={16} className="text-[#0EA5E9]" aria-hidden="true" />
                  {destination.category.toUpperCase()} REGISTRY
                </div>
             </div>
@@ -398,7 +399,7 @@ const DestinationDetail: React.FC<DestinationDetailProps> = ({ destination, lang
                <h1 className="text-6xl md:text-[11rem] font-heritage font-bold text-white leading-[0.85] tracking-tighter uppercase drop-shadow-[0_30px_60px_rgba(0,0,0,0.8)]">
                  {destination.name[language]}
                </h1>
-               <div className="flex items-center gap-8 text-2xl md:text-4xl text-white/80 font-light italic border-l-[6px] border-[#E1306C] pl-10 max-w-4xl py-2">
+               <div className="flex items-center gap-8 text-2xl md:text-4xl text-white/80 font-light italic border-l-[6px] border-[#0EA5E9] pl-10 max-w-4xl py-2">
                  {destination.shortStory[language]}
                </div>
             </div>
@@ -410,7 +411,7 @@ const DestinationDetail: React.FC<DestinationDetailProps> = ({ destination, lang
            {[1,2,3].map(i => (
              <div key={i} className="flex items-center gap-4 animate-in slide-in-from-right-10 duration-1000" style={{ animationDelay: `${i * 200}ms` }}>
                 <div className="text-[9px] font-mono font-black uppercase tracking-[0.3em] text-right">Channel_{String(i).padStart(2, '0')}<br/>Active_Sync</div>
-                <div className="w-1 h-1 rounded-full bg-[#E1306C] animate-pulse" />
+                <div className="w-1 h-1 rounded-full bg-[#0EA5E9] animate-pulse" />
              </div>
            ))}
         </div>
@@ -418,7 +419,7 @@ const DestinationDetail: React.FC<DestinationDetailProps> = ({ destination, lang
         {/* Scroll HUD Indicator */}
         <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-6 text-white/40 animate-bounce" aria-hidden="true">
            <span className="text-[9px] font-black uppercase tracking-[1em] ml-[1em]">Explore_Deep_Manifest</span>
-           <div className="h-16 w-px bg-gradient-to-b from-[#E1306C] to-transparent" />
+           <div className="h-16 w-px bg-gradient-to-b from-[#0EA5E9] to-transparent" />
         </div>
       </div>
 
@@ -429,7 +430,7 @@ const DestinationDetail: React.FC<DestinationDetailProps> = ({ destination, lang
         <section className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-start" aria-labelledby="section-history-title">
           <div className="lg:col-span-8 space-y-24">
             <div className="space-y-10 animate-reveal">
-               <div className="flex items-center gap-6 text-[#E1306C]">
+               <div className="flex items-center gap-6 text-[#0EA5E9]">
                   <History size={32} className="animate-pulse" aria-hidden="true" />
                   <span className="text-[14px] font-black uppercase tracking-[0.7em] font-mono">Registry_Deep_History</span>
                </div>
@@ -444,7 +445,7 @@ const DestinationDetail: React.FC<DestinationDetailProps> = ({ destination, lang
             {/* Quick-Stats Artifact Panel */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 pt-10">
                <div className="bg-[#fafafa] p-12 rounded-[4rem] border border-gray-100 space-y-8 group hover:shadow-[0_40px_100px_rgba(0,0,0,0.08)] transition-all duration-700 hover:-translate-y-2">
-                  <div className="w-20 h-20 bg-white rounded-3xl flex items-center justify-center text-[#E1306C] shadow-sm group-hover:rotate-12 transition-transform border border-gray-100">
+                  <div className="w-20 h-20 bg-white rounded-3xl flex items-center justify-center text-[#0EA5E9] shadow-sm group-hover:rotate-12 transition-transform border border-gray-100">
                      <Clock size={36} />
                   </div>
                   <div className="space-y-2">
@@ -457,7 +458,7 @@ const DestinationDetail: React.FC<DestinationDetailProps> = ({ destination, lang
                </div>
                
                <div className="bg-[#fafafa] p-12 rounded-[4rem] border border-gray-100 space-y-8 group hover:shadow-[0_40px_100px_rgba(0,0,0,0.08)] transition-all duration-700 hover:-translate-y-2">
-                  <div className="w-20 h-20 bg-white rounded-3xl flex items-center justify-center text-[#E1306C] shadow-sm group-hover:rotate-12 transition-transform border border-gray-100">
+                  <div className="w-20 h-20 bg-white rounded-3xl flex items-center justify-center text-[#0EA5E9] shadow-sm group-hover:rotate-12 transition-transform border border-gray-100">
                      <MapPin size={36} />
                   </div>
                   <div className="space-y-2">
@@ -478,12 +479,12 @@ const DestinationDetail: React.FC<DestinationDetailProps> = ({ destination, lang
           <aside className="lg:col-span-4 sticky top-32 space-y-12" aria-label="Official Advisory">
             <div className="p-12 rounded-[5rem] bg-[#0a0a0a] text-white space-y-12 shadow-[0_60px_120px_rgba(0,0,0,0.4)] relative overflow-hidden group">
                {/* Background Glow */}
-               <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(225,48,108,0.2)_0%,transparent_70%)] opacity-40 group-hover:opacity-60 transition-opacity duration-1000" />
+               <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(14,165,233,0.2)_0%,transparent_70%)] opacity-40 group-hover:opacity-60 transition-opacity duration-1000" />
                <div className="absolute inset-0 pattern-overlay opacity-10 pointer-events-none" />
                
                <div className="relative z-10 space-y-12">
                   <div className="space-y-6">
-                     <div className="flex items-center gap-4 text-[#E1306C]">
+                     <div className="flex items-center gap-4 text-[#0EA5E9]">
                         <ShieldCheck size={24} className="animate-pulse" aria-hidden="true" />
                         <span className="text-[11px] font-black uppercase tracking-[0.5em] font-mono">Official_Protocol</span>
                      </div>
@@ -497,7 +498,7 @@ const DestinationDetail: React.FC<DestinationDetailProps> = ({ destination, lang
                   <div className="pt-6">
                      <button 
                       aria-label="Initialize Booking for this destination"
-                      className="group w-full py-8 bg-white text-black rounded-[2.5rem] font-black text-[12px] uppercase tracking-[0.5em] flex items-center justify-center gap-6 hover:bg-[#E1306C] hover:text-white transition-all shadow-[0_20px_50px_rgba(255,255,255,0.1)] active:scale-95 overflow-hidden relative"
+                      className="group w-full py-8 bg-white text-black rounded-[2.5rem] font-black text-[12px] uppercase tracking-[0.5em] flex items-center justify-center gap-6 hover:bg-[#0EA5E9] hover:text-white transition-all shadow-[0_20px_50px_rgba(255,255,255,0.1)] active:scale-95 overflow-hidden relative"
                      >
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                         <span className="relative z-10">Initialize Sync</span>
@@ -510,10 +511,10 @@ const DestinationDetail: React.FC<DestinationDetailProps> = ({ destination, lang
             </div>
 
             {/* VR Launch Pod */}
-            <div className="p-12 bg-white rounded-[4rem] border border-gray-100 shadow-sm text-center space-y-8 group hover:border-[#E1306C]/30 transition-all duration-500">
+            <div className="p-12 bg-white rounded-[4rem] border border-gray-100 shadow-sm text-center space-y-8 group hover:border-[#0EA5E9]/30 transition-all duration-500">
                <div className="relative mx-auto w-24 h-24">
-                  <div className="absolute inset-0 bg-[#E1306C]/10 rounded-3xl animate-ping" />
-                  <div className="relative w-full h-full bg-[#E1306C]/5 rounded-3xl flex items-center justify-center text-[#E1306C] border border-[#E1306C]/10">
+                  <div className="absolute inset-0 bg-[#0EA5E9]/10 rounded-3xl animate-ping" />
+                  <div className="relative w-full h-full bg-[#0EA5E9]/5 rounded-3xl flex items-center justify-center text-[#0EA5E9] border border-[#0EA5E9]/10">
                     <PlayCircle size={44} />
                   </div>
                </div>
@@ -523,7 +524,7 @@ const DestinationDetail: React.FC<DestinationDetailProps> = ({ destination, lang
                </div>
                <button 
                 aria-label="Launch VR Reconstruction"
-                className="w-full py-4 rounded-2xl bg-gray-50 text-[10px] font-black text-gray-500 hover:bg-[#0a0a0a] hover:text-white uppercase tracking-[0.3em] transition-all focus-visible:ring-4 ring-[#E1306C]/20"
+                className="w-full py-4 rounded-2xl bg-gray-50 text-[10px] font-black text-gray-500 hover:bg-[#0a0a0a] hover:text-white uppercase tracking-[0.3em] transition-all focus-visible:ring-4 ring-[#0EA5E9]/20"
                >LAUNCH_SIMULATION</button>
             </div>
           </aside>
@@ -534,7 +535,7 @@ const DestinationDetail: React.FC<DestinationDetailProps> = ({ destination, lang
           <section className="space-y-20 py-10" aria-labelledby="section-video-title">
             <div className="flex flex-col md:flex-row justify-between items-end gap-10">
               <div className="space-y-6">
-                <div className="flex items-center gap-5 text-[#E1306C]">
+                <div className="flex items-center gap-5 text-[#0EA5E9]">
                   <Activity size={24} className="animate-pulse" aria-hidden="true" />
                   <span className="text-[12px] font-black uppercase tracking-[0.6em] font-mono">Cinematic_Registry_Feed</span>
                 </div>
@@ -570,14 +571,14 @@ const DestinationDetail: React.FC<DestinationDetailProps> = ({ destination, lang
 
            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto relative z-10">
              {destination.tips.map((tip, i) => (
-               <div key={i} className="group flex gap-10 p-12 bg-white rounded-[4rem] shadow-[0_30px_80px_rgba(0,0,0,0.04)] border border-gray-50 hover:border-[#E1306C]/40 transition-all duration-700 hover:-translate-y-4">
+               <div key={i} className="group flex gap-10 p-12 bg-white rounded-[4rem] shadow-[0_30px_80px_rgba(0,0,0,0.04)] border border-gray-50 hover:border-[#0EA5E9]/40 transition-all duration-700 hover:-translate-y-4">
                   <div className="w-20 h-20 rounded-[2.5rem] story-ring p-[2px] shrink-0 group-hover:rotate-12 transition-transform shadow-2xl">
                      <div className="bg-white w-full h-full rounded-[2.3rem] flex items-center justify-center font-heritage font-black text-3xl text-[#0a0a0a]">
                         0{i+1}
                      </div>
                   </div>
                   <div className="space-y-4 pt-3">
-                    <p className="text-[10px] font-black text-[#E1306C] uppercase tracking-[0.4em] opacity-40">Intelligence_Note_#{i+1}</p>
+                    <p className="text-[10px] font-black text-[#0EA5E9] uppercase tracking-[0.4em] opacity-40">Intelligence_Note_#{i+1}</p>
                     <p className="text-xl md:text-3xl text-gray-600 font-light leading-relaxed italic">
                       "{tip[language]}"
                     </p>
@@ -591,7 +592,7 @@ const DestinationDetail: React.FC<DestinationDetailProps> = ({ destination, lang
         <section className="space-y-20 py-10" aria-labelledby="section-gallery-title">
            <div className="flex flex-col md:flex-row justify-between items-end gap-10">
               <div className="space-y-6">
-                 <div className="flex items-center gap-5 text-[#E1306C]">
+                 <div className="flex items-center gap-5 text-[#0EA5E9]">
                     <ImageIcon size={28} aria-hidden="true" />
                     <span className="text-[12px] font-black uppercase tracking-[0.7em] font-mono">Visual_Asset_Inventory</span>
                  </div>
@@ -614,13 +615,13 @@ const DestinationDetail: React.FC<DestinationDetailProps> = ({ destination, lang
                     <p className="text-white/60 text-sm font-medium italic">High-fidelity volumetric capture for preservation archives.</p>
                  </div>
                  {/* Scanning Overlay */}
-                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#E1306C] to-transparent shadow-[0_0_20px_#E1306C] opacity-0 group-hover:opacity-100 animate-scan-slow pointer-events-none" />
+                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#0EA5E9] to-transparent shadow-[0_0_20px_#0EA5E9] opacity-0 group-hover:opacity-100 animate-scan-slow pointer-events-none" />
               </div>
               <div className="md:col-span-4 grid grid-rows-2 gap-10">
                  {destination.gallery.slice(0, 2).map((img, i) => (
                    <div key={i} className="group relative rounded-[4rem] overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.1)] border-2 border-white">
                       <img src={img} className="w-full h-full object-cover transition-transform duration-[6000ms] group-hover:scale-110" alt={`Artifact view ${i + 1} of ${destination.name[language]}`} />
-                      <div className="absolute inset-0 bg-gradient-to-tr from-[#E1306C]/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <div className="absolute inset-0 bg-gradient-to-tr from-[#0EA5E9]/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                    </div>
                  ))}
               </div>
@@ -633,7 +634,7 @@ const DestinationDetail: React.FC<DestinationDetailProps> = ({ destination, lang
 
            <div className="text-center space-y-10 relative z-10">
               <div className="inline-flex items-center gap-5 px-8 py-3 rounded-full bg-white border border-gray-100 shadow-xl text-gray-400 text-[11px] font-black uppercase tracking-[0.5em] mb-4">
-                 <Sparkles size={20} className="text-[#E1306C]" aria-hidden="true" />
+                 <Sparkles size={20} className="text-[#0EA5E9]" aria-hidden="true" />
                  Recommended Trajectories
               </div>
               <h2 id="section-related-title" className="text-4xl md:text-8xl font-heritage font-bold text-[#0a0a0a] uppercase tracking-tighter leading-none">Adjacent <span className="italic insta-text-gradient">Realities.</span></h2>
@@ -648,7 +649,7 @@ const DestinationDetail: React.FC<DestinationDetailProps> = ({ destination, lang
                  key={rel.id} 
                  onClick={() => { onSelect(rel); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
                  aria-label={`View details for related destination: ${rel.name[language]}`}
-                 className="group text-left relative h-[520px] rounded-[4.5rem] overflow-hidden cursor-pointer shadow-[0_40px_100px_rgba(0,0,0,0.08)] transition-all duration-1000 hover:-translate-y-6 focus-visible:ring-8 focus-visible:ring-[#E1306C]/10"
+                 className="group text-left relative h-[520px] rounded-[4.5rem] overflow-hidden cursor-pointer shadow-[0_40px_100px_rgba(0,0,0,0.08)] transition-all duration-1000 hover:-translate-y-6 focus-visible:ring-8 focus-visible:ring-[#0EA5E9]/10"
                >
                  <img src={rel.image} className="w-full h-full object-cover transition-transform duration-[6000ms] group-hover:scale-110 grayscale-[0.2] group-hover:grayscale-0" alt="" />
                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-black/30 to-transparent" />
@@ -661,7 +662,7 @@ const DestinationDetail: React.FC<DestinationDetailProps> = ({ destination, lang
 
                  <div className="absolute bottom-16 left-12 right-12 space-y-6">
                     <div className="space-y-3">
-                       <p className="text-[11px] font-black text-[#E1306C] uppercase tracking-[0.5em] drop-shadow-lg">{rel.location}</p>
+                       <p className="text-[11px] font-black text-[#0EA5E9] uppercase tracking-[0.5em] drop-shadow-lg">{rel.location}</p>
                        <h3 className="text-3xl md:text-4xl font-heritage font-bold text-white uppercase tracking-tight leading-none group-hover:insta-text-gradient transition-all duration-500">
                          {rel.name[language]}
                        </h3>
@@ -687,7 +688,7 @@ const DestinationDetail: React.FC<DestinationDetailProps> = ({ destination, lang
             <div className="w-px h-16 bg-gray-300" />
             <Box size={40} className="text-blue-600" />
             <div className="w-px h-16 bg-gray-300" />
-            <Target size={40} className="text-[#E1306C]" />
+            <Target size={40} className="text-[#0EA5E9]" />
          </div>
          <div className="text-center space-y-4">
             <p className="text-[11px] font-black uppercase tracking-[1.5em] text-gray-400 ml-[1.5em] font-mono animate-pulse">End_Of_Transmission</p>
@@ -695,7 +696,7 @@ const DestinationDetail: React.FC<DestinationDetailProps> = ({ destination, lang
          </div>
          <button 
            onClick={onBack}
-           className="mt-8 flex items-center gap-6 text-[10px] font-black text-[#E1306C] uppercase tracking-[0.5em] hover:text-black transition-all group"
+           className="mt-8 flex items-center gap-6 text-[10px] font-black text-[#0EA5E9] uppercase tracking-[0.5em] hover:text-black transition-all group"
          >
            <ArrowLeft size={16} className="group-hover:-translate-x-2 transition-transform" />
            Return to Hub Registry

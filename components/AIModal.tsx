@@ -175,8 +175,8 @@ const AIModal: React.FC<AIModalProps> = ({ language }) => {
   return (
     <>
       <div className="fixed bottom-6 right-6 z-[60] group/ai">
-        {/* Holographic Aura */}
-        <div className="absolute inset-[-12px] bg-gradient-to-tr from-[#E1306C] via-purple-500 to-blue-500 rounded-full animate-spin-slow opacity-20 blur-xl group-hover:opacity-40 transition-opacity"></div>
+        {/* Holographic Aura - Blue */}
+        <div className="absolute inset-[-12px] bg-gradient-to-tr from-[#0EA5E9] via-cyan-500 to-blue-500 rounded-full animate-spin-slow opacity-20 blur-xl group-hover:opacity-40 transition-opacity"></div>
         <div className="absolute inset-[-4px] border border-white/20 rounded-full animate-ping opacity-10"></div>
         
         <button 
@@ -184,16 +184,16 @@ const AIModal: React.FC<AIModalProps> = ({ language }) => {
           className="relative w-16 h-16 sm:w-20 sm:h-20 bg-[#0a0a0a] text-white rounded-full shadow-[0_30px_70px_rgba(0,0,0,0.5)] hover:scale-110 active:scale-95 transition-all flex items-center justify-center group overflow-hidden border border-white/20"
         >
           {/* Inner Light Sweep */}
-          <div className="absolute inset-0 bg-gradient-to-tr from-[#E1306C]/40 via-transparent to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+          <div className="absolute inset-0 bg-gradient-to-tr from-[#0EA5E9]/40 via-transparent to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
           
           <div className="relative z-10 flex items-center justify-center">
              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white/5 backdrop-blur-xl rounded-full border border-white/10 flex items-center justify-center shadow-2xl relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#E1306C]/20 to-transparent animate-pulse"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-[#0EA5E9]/20 to-transparent animate-pulse"></div>
                 <Navigation size={24} className="text-white relative z-10 group-hover:rotate-[360deg] transition-transform duration-1000 ease-in-out sm:w-7 sm:h-7" />
              </div>
              
              {/* Orbital Ring */}
-             <div className="absolute inset-[-8px] border-2 border-dashed border-[#E1306C]/30 rounded-full animate-spin-slow"></div>
+             <div className="absolute inset-[-8px] border-2 border-dashed border-[#0EA5E9]/30 rounded-full animate-spin-slow"></div>
           </div>
         </button>
       </div>
@@ -203,14 +203,14 @@ const AIModal: React.FC<AIModalProps> = ({ language }) => {
           
           <div className="relative shrink-0 p-10 bg-[#0a0a0a] text-white overflow-hidden">
             <div className="absolute inset-0 pattern-overlay opacity-10 pointer-events-none"></div>
-            <div className="absolute -top-32 -right-32 w-80 h-80 bg-gradient-to-br from-[#E1306C]/40 to-blue-600/30 blur-[120px] rounded-full pointer-events-none animate-pulse" />
+            <div className="absolute -top-32 -right-32 w-80 h-80 bg-gradient-to-br from-[#0EA5E9]/40 to-blue-600/30 blur-[120px] rounded-full pointer-events-none animate-pulse" />
             
             <div className="relative flex justify-between items-center">
               <div className="flex items-center gap-6">
                 <div className="relative">
-                   <div className="w-16 h-16 rounded-full p-[2px] bg-gradient-to-tr from-[#E1306C] via-purple-500 to-blue-500 shadow-3xl animate-spin-slow">
+                   <div className="w-16 h-16 rounded-full p-[2px] bg-gradient-to-tr from-[#0EA5E9] via-cyan-500 to-blue-500 shadow-3xl animate-spin-slow">
                       <div className="bg-[#0a0a0a] w-full h-full rounded-full flex items-center justify-center overflow-hidden relative">
-                         <div className="absolute inset-0 bg-gradient-to-tr from-[#E1306C]/20 to-transparent animate-pulse" />
+                         <div className="absolute inset-0 bg-gradient-to-tr from-[#0EA5E9]/20 to-transparent animate-pulse" />
                       </div>
                    </div>
                    <div className="absolute inset-0 flex items-center justify-center">
@@ -230,13 +230,13 @@ const AIModal: React.FC<AIModalProps> = ({ language }) => {
                      </h3>
                      <button 
                        onClick={() => setIsDeepMode(!isDeepMode)}
-                       className={`px-2 py-0.5 rounded text-[8px] font-black uppercase tracking-widest transition-all ${isDeepMode ? 'bg-[#E1306C] text-white shadow-lg shadow-[#E1306C]/20' : 'bg-white/10 text-white/40 border border-white/10'}`}
+                       className={`px-2 py-0.5 rounded text-[8px] font-black uppercase tracking-widest transition-all ${isDeepMode ? 'bg-[#0EA5E9] text-white shadow-lg shadow-[#0EA5E9]/20' : 'bg-white/10 text-white/40 border border-white/10'}`}
                      >
                        {isDeepMode ? 'Thinking_ON' : 'Thinking_OFF'}
                      </button>
                   </div>
                   <div className="flex items-center gap-3 mt-2">
-                    <Activity size={12} className="text-[#E1306C] animate-pulse" />
+                    <Activity size={12} className="text-[#0EA5E9] animate-pulse" />
                     <span className="text-[10px] font-black text-gray-500 uppercase tracking-[0.4em]">
                       {(isLoading || isTyping) ? (isDeepMode ? 'REASONING...' : 'SYNCING...') : 'CORE STABLE'}
                     </span>
@@ -259,8 +259,8 @@ const AIModal: React.FC<AIModalProps> = ({ language }) => {
             {needsApiKey && (
               <div className="flex flex-col items-center justify-center h-full text-center space-y-8 animate-in fade-in duration-700 p-6">
                 <div className="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center shadow-inner relative group">
-                  <div className="absolute inset-0 bg-[#E1306C]/10 rounded-full animate-ping opacity-20" />
-                  <Lock size={32} className="text-[#E1306C]" />
+                  <div className="absolute inset-0 bg-[#0EA5E9]/10 rounded-full animate-ping opacity-20" />
+                  <Lock size={32} className="text-[#0EA5E9]" />
                 </div>
                 <div className="space-y-3">
                   <h4 className="text-2xl font-heritage font-bold text-[#0a0a0a]">Uplink Restricted</h4>
@@ -272,7 +272,7 @@ const AIModal: React.FC<AIModalProps> = ({ language }) => {
                   onClick={handleKeySelection}
                   className="px-8 py-4 bg-[#0a0a0a] text-white rounded-full font-black text-[10px] uppercase tracking-[0.3em] flex items-center gap-3 hover:scale-105 active:scale-95 transition-all shadow-xl"
                 >
-                  <Sparkles size={14} className="text-[#E1306C]" />
+                  <Sparkles size={14} className="text-[#0EA5E9]" />
                   Verify Project Key
                 </button>
               </div>
@@ -282,7 +282,7 @@ const AIModal: React.FC<AIModalProps> = ({ language }) => {
               <div key={i} className={`flex flex-col animate-in slide-in-from-bottom-8 duration-700 ${m.role === 'user' ? 'items-end' : 'items-start'}`}>
                 {m.role === 'bot' && (
                   <div className="flex items-center gap-3 mb-3 ml-2">
-                    <div className={`w-1.5 h-1.5 rounded-full animate-ping ${m.isThinking ? 'bg-blue-500' : 'bg-[#E1306C]'}`}></div>
+                    <div className={`w-1.5 h-1.5 rounded-full animate-ping ${m.isThinking ? 'bg-blue-500' : 'bg-[#0EA5E9]'}`}></div>
                     <span className="text-[10px] font-black text-gray-400 uppercase tracking-[0.4em]">
                       {m.isThinking ? 'REASONING_ENGINE_O1' : 'INTELLIGENCE_UNIT'}
                     </span>
@@ -296,13 +296,13 @@ const AIModal: React.FC<AIModalProps> = ({ language }) => {
                   <div className="text-base sm:text-lg whitespace-pre-line prose prose-sm max-w-none prose-headings:font-heritage prose-headings:text-[#0a0a0a]">
                     {m.text}
                     {isTyping && i === messages.length - 1 && m.role === 'bot' && (
-                      <span className={`inline-block w-2 h-5 ml-2 animate-pulse align-middle rounded-full ${m.isThinking ? 'bg-blue-500' : 'bg-[#E1306C]'}`}></span>
+                      <span className={`inline-block w-2 h-5 ml-2 animate-pulse align-middle rounded-full ${m.isThinking ? 'bg-blue-500' : 'bg-[#0EA5E9]'}`}></span>
                     )}
                   </div>
                   
                   {m.links && m.links.length > 0 && (
                     <div className="mt-8 space-y-3 pt-6 border-t border-gray-200/50">
-                      <p className="text-[10px] font-black text-[#E1306C] uppercase tracking-widest mb-4">Verification Sources</p>
+                      <p className="text-[10px] font-black text-[#0EA5E9] uppercase tracking-widest mb-4">Verification Sources</p>
                       {m.links.map((link, lIdx) => (
                         <a 
                           key={lIdx}
@@ -310,11 +310,11 @@ const AIModal: React.FC<AIModalProps> = ({ language }) => {
                           target="_blank"
                           rel="noopener noreferrer"
                           className={`flex items-center justify-between gap-4 p-4 rounded-full transition-all border ${
-                            m.role === 'user' ? 'bg-white/5 border-white/10 text-white hover:bg-white/10' : 'bg-white border-gray-100 text-[#0a0a0a] hover:border-[#E1306C]/30 hover:shadow-lg'
+                            m.role === 'user' ? 'bg-white/5 border-white/10 text-white hover:bg-white/10' : 'bg-white border-gray-100 text-[#0a0a0a] hover:border-[#0EA5E9]/30 hover:shadow-lg'
                           }`}
                         >
                           <div className="flex items-center gap-3 overflow-hidden">
-                             <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${m.isThinking ? 'bg-blue-500/10 text-blue-500' : 'bg-[#E1306C]/10 text-[#E1306C]'}`}>
+                             <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${m.isThinking ? 'bg-blue-500/10 text-blue-500' : 'bg-[#0EA5E9]/10 text-[#0EA5E9]'}`}>
                                {m.isThinking ? <ExternalLink size={16} /> : <MapPin size={16} />}
                              </div>
                              <span className="text-xs font-bold truncate tracking-tight">{link.title}</span>
@@ -331,16 +331,16 @@ const AIModal: React.FC<AIModalProps> = ({ language }) => {
             {isLoading && (
               <div className="flex flex-col items-start">
                 <div className="flex items-center gap-3 mb-3 ml-2">
-                  {isDeepMode ? <Brain size={12} className="text-blue-500 animate-pulse" /> : <Loader2 size={12} className="text-[#E1306C] animate-spin" />}
+                  {isDeepMode ? <Brain size={12} className="text-blue-500 animate-pulse" /> : <Loader2 size={12} className="text-[#0EA5E9] animate-spin" />}
                   <span className="text-[10px] font-black text-gray-400 uppercase tracking-[0.4em]">
                     {isDeepMode ? 'THINKING_DEEPLY...' : 'CALCULATING_TRAJECTORY'}
                   </span>
                 </div>
                 <div className="bg-[#fafafa] p-8 rounded-[2.5rem] rounded-tl-none border border-gray-100 flex items-center gap-5">
                   <div className="flex gap-2">
-                    <div className={`w-2 h-2 rounded-full animate-bounce [animation-delay:-0.3s] ${isDeepMode ? 'bg-blue-500' : 'bg-[#E1306C]'}`}></div>
-                    <div className={`w-2 h-2 rounded-full animate-bounce [animation-delay:-0.15s] ${isDeepMode ? 'bg-blue-500' : 'bg-[#E1306C]'}`}></div>
-                    <div className={`w-2 h-2 rounded-full animate-bounce ${isDeepMode ? 'bg-blue-500' : 'bg-[#E1306C]'}`}></div>
+                    <div className={`w-2 h-2 rounded-full animate-bounce [animation-delay:-0.3s] ${isDeepMode ? 'bg-blue-500' : 'bg-[#0EA5E9]'}`}></div>
+                    <div className={`w-2 h-2 rounded-full animate-bounce [animation-delay:-0.15s] ${isDeepMode ? 'bg-blue-500' : 'bg-[#0EA5E9]'}`}></div>
+                    <div className={`w-2 h-2 rounded-full animate-bounce ${isDeepMode ? 'bg-blue-500' : 'bg-[#0EA5E9]'}`}></div>
                   </div>
                   <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest italic">{isDeepMode ? 'Accessing gemini-3-pro-preview reasoning...' : 'Scanning Maps Registry...'}</span>
                 </div>
@@ -355,9 +355,9 @@ const AIModal: React.FC<AIModalProps> = ({ language }) => {
                   <button
                     key={s.id}
                     onClick={() => handleSend(s[language])}
-                    className="shrink-0 group flex flex-col items-start gap-4 p-6 bg-[#fafafa] border border-gray-100 rounded-[2rem] transition-all hover:border-[#E1306C]/40 hover:bg-white hover:shadow-2xl hover:-translate-y-2 w-48"
+                    className="shrink-0 group flex flex-col items-start gap-4 p-6 bg-[#fafafa] border border-gray-100 rounded-[2rem] transition-all hover:border-[#0EA5E9]/40 hover:bg-white hover:shadow-2xl hover:-translate-y-2 w-48"
                   >
-                    <div className="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-400 group-hover:text-[#E1306C] transition-all border border-gray-50 group-hover:rotate-12">
+                    <div className="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-400 group-hover:text-[#0EA5E9] transition-all border border-gray-50 group-hover:rotate-12">
                       {s.icon}
                     </div>
                     <span className="text-[11px] font-black text-[#0a0a0a] uppercase tracking-widest text-left leading-tight group-hover:insta-text-gradient transition-all">
@@ -369,7 +369,7 @@ const AIModal: React.FC<AIModalProps> = ({ language }) => {
             )}
 
             <div className="flex gap-5 items-center">
-              <div className="flex-grow flex items-center bg-[#fafafa] rounded-[2.5rem] px-8 py-2 border border-gray-100 focus-within:ring-[6px] focus-within:ring-[#E1306C]/5 focus-within:bg-white focus-within:border-[#E1306C]/30 transition-all shadow-inner">
+              <div className="flex-grow flex items-center bg-[#fafafa] rounded-[2.5rem] px-8 py-2 border border-gray-100 focus-within:ring-[6px] focus-within:ring-[#0EA5E9]/5 focus-within:bg-white focus-within:border-[#0EA5E9]/30 transition-all shadow-inner">
                 <input 
                   type="text" 
                   value={input}
@@ -380,7 +380,7 @@ const AIModal: React.FC<AIModalProps> = ({ language }) => {
                   className="flex-grow py-5 bg-transparent focus:outline-none text-base font-bold text-[#0a0a0a] placeholder:text-gray-300 placeholder:italic disabled:opacity-50"
                 />
                 <div className="relative">
-                   <Sparkles size={22} className={`${(isLoading || isTyping) ? 'animate-pulse text-[#E1306C]' : 'text-gray-200'}`} />
+                   <Sparkles size={22} className={`${(isLoading || isTyping) ? 'animate-pulse text-[#0EA5E9]' : 'text-gray-200'}`} />
                 </div>
               </div>
               
@@ -397,7 +397,7 @@ const AIModal: React.FC<AIModalProps> = ({ language }) => {
                   disabled={!input.trim() || needsApiKey}
                   className="w-16 h-16 shrink-0 bg-[#0a0a0a] text-white rounded-full flex items-center justify-center hover:scale-110 active:scale-95 transition-all disabled:opacity-20 disabled:scale-100 shadow-[0_20px_50px_rgba(0,0,0,0.3)] border border-white/10 group overflow-hidden"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-tr from-[#E1306C] to-transparent opacity-0 group-hover:opacity-20 transition-opacity"></div>
+                  <div className="absolute inset-0 bg-gradient-to-tr from-[#0EA5E9] to-transparent opacity-0 group-hover:opacity-20 transition-opacity"></div>
                   <Send size={24} className="relative z-10 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                 </button>
               )}
