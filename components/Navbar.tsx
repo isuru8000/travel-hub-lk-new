@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useMemo } from 'react';
 import { Language, User } from '../types.ts';
 import { 
@@ -137,8 +136,6 @@ const Navbar: React.FC<NavbarProps> = ({
       label: language === 'EN' ? 'HERITAGE' : 'උරුමය', 
       hasDropdown: true,
       items: [
-        { id: 'destinations', label: language === 'EN' ? 'Wildlife' : 'වනජීවී', icon: <PawPrint size={14} /> },
-        { id: 'hiking', label: language === 'EN' ? 'Hiking' : 'කඳු තරණය', icon: <Mountain size={14} /> },
         { id: 'foods', label: language === 'EN' ? 'Food' : 'ආහාර', icon: <Utensils size={14} /> },
         { id: 'music', label: language === 'EN' ? 'Music' : 'සංගීතය', icon: <Music size={14} /> },
         { id: 'medicine', label: language === 'EN' ? 'Medicine' : 'හෙළ වෙදකම', icon: <Activity size={14} /> },
@@ -163,7 +160,7 @@ const Navbar: React.FC<NavbarProps> = ({
     { id: 'community', label: language === 'EN' ? 'COMMUNITY' : 'සමූහය' }
   ];
 
-  const heritageSubViews = ['destinations', 'hiking', 'foods', 'music', 'medicine', 'tea', 'phrases', 'essentials', 'festivals'];
+  const heritageSubViews = ['foods', 'music', 'medicine', 'tea', 'phrases', 'essentials', 'festivals'];
   const marketplaceSubViews = ['hotels', 'transport', 'booking-destinations'];
 
   return (
@@ -269,7 +266,7 @@ const Navbar: React.FC<NavbarProps> = ({
             <div className="relative">
               <button 
                 onClick={() => setShowUserMenu(!showUserMenu)}
-                className={`flex items-center gap-3 p-1.5 pr-5 rounded-full border transition-all duration-1000 ease-in-out active:scale-95 group/user ${isLightMode ? 'bg-black/5 border-black/20 hover:border-black/40' : 'bg-white/10 border-white/20 hover:border-white/40'}`}
+                className={`flex items-center gap-3 p-1.5 pr-5 rounded-full border transition-all duration-1000 ease-in-out active:scale-90 group/user ${isLightMode ? 'bg-black/5 border-black/20 hover:border-black/40' : 'bg-white/10 border-white/20 hover:border-white/40'}`}
               >
                 <div className="w-9 h-9 rounded-full border border-[#0EA5E9] shadow-[0_0_15px_rgba(14,165,233,0.4)] overflow-hidden">
                   <img src={user.photo} alt={user.name} className="w-full h-full object-cover" />

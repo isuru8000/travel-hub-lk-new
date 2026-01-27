@@ -1,4 +1,3 @@
-
 import React, { useState, useRef } from 'react';
 import { Language } from '../types.ts';
 import { Mountain, Utensils, Music, Activity, ArrowRight, Sparkles, Database, Box, Layers, Target } from 'lucide-react';
@@ -94,15 +93,6 @@ const HeritageCard: React.FC<{
 const HeritageHub: React.FC<HeritageHubProps> = ({ language, setView }) => {
   const data = [
     {
-      id: 'hiking',
-      title: language === 'EN' ? 'Heritage Hiking' : 'උරුම කඳු තරණය',
-      subtitle: language === 'EN' ? 'Scale the cloud forests where kings once meditated.' : 'රජවරුන් භාවනා කළ මීදුමෙන් වැසුණු කඳු මුදුන් කරා.',
-      icon: <Mountain size={28} />,
-      image: 'https://images.unsplash.com/photo-1563297054-94676106c59b?auto=format&fit=crop&w=800&q=80',
-      color: '#2ecc71',
-      refId: 'H01'
-    },
-    {
       id: 'foods',
       title: language === 'EN' ? 'Food Heritage' : 'ආහාර උරුමය',
       subtitle: language === 'EN' ? 'Taste the ancient spices of an island civilization.' : 'දිවයිනේ පැරණි කුළුබඩු රසයෙන් පිරි ආහාර සංස්කෘතිය.',
@@ -159,7 +149,7 @@ const HeritageHub: React.FC<HeritageHubProps> = ({ language, setView }) => {
         </div>
 
         {/* The Manifold Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-8 md:gap-12">
           {data.map((item) => (
             <HeritageCard 
               key={item.id}

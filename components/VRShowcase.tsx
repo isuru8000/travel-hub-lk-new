@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { Language } from '../types.ts';
 import { Layers, Box, Sparkles, Target, Radio, ArrowLeft, Gem, Wind, Zap, Lock, Loader2, Cpu, Scan, Hexagon, Binary, Shield, ZapOff, Signal, FastForward, Move, Compass, RotateCw, Activity, Cpu as CpuIcon, Database, HardDrive, Sun, ArrowDown } from 'lucide-react';
@@ -82,14 +81,6 @@ const PHASE_02_SPACES = [
 
 // Phase 03 - Experimental
 const PHASE_03_SPACES = [
-  {
-    id: 'pidurangala',
-    name: { EN: 'Pidurangala Peak', SI: 'පිදුරංගල කඳු මුදුන' },
-    status: 'COMING SOON',
-    image: 'https://images.unsplash.com/photo-1612862862126-865765df2ded?auto=format&fit=crop&w=800&q=80',
-    type: 'FORTRESS',
-    progress: 2
-  },
   {
     id: 'horton',
     name: { EN: 'Worlds End Abyss', SI: 'ලෝකාන්තය' },
