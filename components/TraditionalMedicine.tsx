@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Language, TraditionalMedicine as TraditionalMedicineType } from '../types.ts';
 import { MEDICINE_DATA } from '../constants.tsx';
@@ -71,6 +70,7 @@ const MedicineCard: React.FC<{ item: TraditionalMedicineType; language: Language
 const TraditionalMedicine: React.FC<TraditionalMedicineProps> = ({ language }) => {
   const herbs = MEDICINE_DATA.filter(m => m.type === 'herb');
   const treatments = MEDICINE_DATA.filter(m => m.type === 'treatment');
+  const heroMedicineBg = "https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?q=80&w=1920&auto=format&fit=crop";
 
   return (
     <section className="min-h-screen bg-[#fafafa] pb-32">
@@ -78,7 +78,7 @@ const TraditionalMedicine: React.FC<TraditionalMedicineProps> = ({ language }) =
       <div className="relative h-[70vh] flex items-center justify-center overflow-hidden bg-black">
         <div 
           className="absolute inset-0 bg-cover bg-fixed bg-center opacity-60 transition-transform duration-10000 hover:scale-110" 
-          style={{ backgroundImage: `url('https://cdn.pixabay.com/photo/2016/07/26/16/16/neem-1543161_1280.jpg')` }}
+          style={{ backgroundImage: `url('${heroMedicineBg}')` }}
         />
         <div className="absolute inset-0 bg-green-900/20 opacity-40" />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />

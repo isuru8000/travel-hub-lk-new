@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Language } from '../types';
 import { FOODS_DATA } from '../constants';
@@ -9,13 +8,15 @@ interface FoodsProps {
 }
 
 const Foods: React.FC<FoodsProps> = ({ language }) => {
+  const heroImage = "https://images.unsplash.com/photo-1543353071-10c8ba85a904?q=80&w=1920&auto=format&fit=crop";
+
   return (
     <section className="min-h-screen bg-white pb-32">
       {/* Food Heritage Header */}
       <div className="relative h-[65vh] flex items-center justify-center overflow-hidden bg-black">
         <div 
           className="absolute inset-0 bg-cover bg-fixed bg-center opacity-70 transition-transform duration-[20000ms] animate-slow-zoom" 
-          style={{ backgroundImage: `url('https://cdn.pixabay.com/photo/2016/01/21/01/24/food-5936087_1280.jpg')` }}
+          style={{ backgroundImage: `url('${heroImage}')` }}
         />
         <div className="absolute inset-0 story-ring opacity-20" />
         <div className="absolute inset-0 bg-gradient-to-t from-white via-black/40 to-transparent" />
@@ -56,7 +57,7 @@ const Foods: React.FC<FoodsProps> = ({ language }) => {
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[4000ms]"
                   loading="lazy"
                   onError={(e) => {
-                    (e.target as HTMLImageElement).src = "https://cdn.pixabay.com/photo/2016/01/21/01/24/food-5936087_1280.jpg";
+                    (e.target as HTMLImageElement).src = heroImage;
                   }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-40" />

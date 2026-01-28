@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Language, HeritageMusic as HeritageMusicType } from '../types.ts';
 import { HERITAGE_MUSIC_DATA } from '../constants.tsx';
@@ -73,6 +72,7 @@ const MusicCard: React.FC<{ music: HeritageMusicType; language: Language }> = ({
 const HeritageMusic: React.FC<HeritageMusicProps> = ({ language }) => {
   const instruments = HERITAGE_MUSIC_DATA.filter(m => m.type === 'instrument');
   const songs = HERITAGE_MUSIC_DATA.filter(m => m.type === 'song');
+  const heroMusicBg = "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1920&auto=format&fit=crop";
 
   return (
     <section className="min-h-screen bg-[#fafafa] pb-32">
@@ -80,7 +80,7 @@ const HeritageMusic: React.FC<HeritageMusicProps> = ({ language }) => {
       <div className="relative h-[70vh] flex items-center justify-center overflow-hidden bg-black">
         <div 
           className="absolute inset-0 bg-cover bg-fixed bg-center opacity-60 transition-transform duration-10000 hover:scale-110" 
-          style={{ backgroundImage: `url('https://cdn.pixabay.com/photo/2016/11/29/04/19/ocean-1867285_1280.jpg')` }}
+          style={{ backgroundImage: `url('${heroMusicBg}')` }}
         />
         <div className="absolute inset-0 insta-gradient opacity-20" />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />

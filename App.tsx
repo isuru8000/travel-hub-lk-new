@@ -168,20 +168,6 @@ const App: React.FC = () => {
           <div className="relative">
             <Hero language={language} setView={setView} />
             <div className="relative z-10">
-              {/* BRAND RECOGNITION */}
-              <div className="py-12 bg-white/40 backdrop-blur-2xl border-y border-gray-100 overflow-hidden relative">
-                 <div className="max-w-full flex whitespace-nowrap animate-marquee opacity-20 grayscale">
-                    {[1,2,3].map(i => (
-                      <div key={i} className="flex items-center gap-24 px-12">
-                        <span className="text-3xl font-heritage font-black uppercase tracking-tighter">Condé Nast Traveler</span>
-                        <span className="text-3xl font-heritage font-black uppercase tracking-tighter">National Geographic</span>
-                        <span className="text-3xl font-heritage font-black uppercase tracking-tighter">The New York Times</span>
-                        <span className="text-3xl font-heritage font-black uppercase tracking-tighter">Lonely Planet</span>
-                      </div>
-                    ))}
-                 </div>
-              </div>
-
               <PopularHighlights language={language} onSelectDestination={navigateToDestination} setView={setView} />
 
               {/* --- FUTURE MANIFOLD (BLURRED TEASERS) --- */}

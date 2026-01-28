@@ -1,8 +1,7 @@
-
 import React, { useState } from 'react';
 import { Language, Phrase } from '../types.ts';
 import { PHRASEBOOK_DATA } from '../constants.tsx';
-import { MessageSquare, Volume2, Search, Heart, Utensils, AlertCircle, ShoppingBag, Globe } from 'lucide-react';
+import { MessageSquare, Volume2, Search, Heart, Utensils, AlertCircle, ShoppingBag, Globe, Sparkles, BookOpen } from 'lucide-react';
 
 interface PhrasebookProps {
   language: Language;
@@ -11,6 +10,8 @@ interface PhrasebookProps {
 const Phrasebook: React.FC<PhrasebookProps> = ({ language }) => {
   const [filter, setFilter] = useState<string>('all');
   const [search, setSearch] = useState('');
+
+  const heroImage = "https://plus.unsplash.com/premium_photo-1682310061171-61f65b741454?q=80&w=1920&auto=format&fit=crop";
 
   const filteredPhrases = PHRASEBOOK_DATA.filter(p => {
     const matchesFilter = filter === 'all' || p.category === filter;
@@ -30,43 +31,55 @@ const Phrasebook: React.FC<PhrasebookProps> = ({ language }) => {
 
   return (
     <section className="min-h-screen bg-[#fafafa] pb-32">
-      <div className="story-ring text-white py-24 px-4 shadow-2xl relative overflow-hidden">
-        <div className="absolute inset-0 pattern-overlay opacity-10"></div>
-        <div className="max-w-4xl mx-auto text-center space-y-8 relative z-10">
-          <div className="space-y-4">
-            <h2 className="text-4xl md:text-6xl font-heritage font-bold text-white">
-              {language === 'EN' ? "Local Language Guide" : "දේශීය භාෂා මාර්ගෝපදේශය"}
+      {/* Header with Requested Background Image */}
+      <div className="relative h-[65vh] flex items-center justify-center overflow-hidden bg-black">
+        <div 
+          className="absolute inset-0 bg-cover bg-fixed bg-center opacity-60 transition-transform duration-[20000ms] animate-slow-zoom" 
+          style={{ backgroundImage: `url('${heroImage}')` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#fafafa] via-black/40 to-transparent" />
+        <div className="absolute inset-0 pattern-overlay opacity-10" />
+        
+        <div className="max-w-4xl mx-auto text-center space-y-12 relative z-10 px-6">
+          <div className="space-y-6">
+            <div className="inline-flex items-center gap-4 px-6 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[10px] font-black uppercase tracking-[0.5em] mb-4 shadow-2xl">
+              <BookOpen size={16} className="text-[#0EA5E9] animate-pulse" />
+              Linguistic_Archive_Node
+            </div>
+            <h2 className="text-5xl md:text-8xl font-heritage font-bold text-white tracking-tighter uppercase leading-[0.8] drop-shadow-2xl">
+              LOCAL <br/><span className="italic insta-text-gradient">GUIDE.</span>
             </h2>
-            <p className="text-lg md:text-xl text-white/90 font-light max-w-2xl mx-auto">
+            <p className="text-white/80 max-w-2xl mx-auto text-lg md:text-2xl font-light italic leading-relaxed drop-shadow-lg">
               {language === 'EN' 
-                ? "Connecting with the locals is the best part of travel. Learn some basic Sinhala to brighten your journey." 
+                ? "Connecting with the locals is the best part of travel. Learn the rhythmic heart of Sinhala to brighten your journey." 
                 : "දේශීය ජනතාව සමඟ සන්නිවේදනය කිරීම සංචාරයේ හොඳම කොටසයි. ඔබේ ගමන අලංකාර කිරීමට මූලික සිංහල වචන කිහිපයක් ඉගෙන ගන්න."}
             </p>
           </div>
 
           <div className="max-w-2xl mx-auto relative group">
-            <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-[#E1306C] transition-colors" size={20} />
+            <div className="absolute -inset-1 bg-gradient-to-r from-[#0EA5E9]/20 to-blue-500/20 rounded-[2.5rem] blur-xl opacity-0 group-focus-within:opacity-100 transition-opacity" />
+            <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-[#0EA5E9] transition-colors" size={24} />
             <input 
               type="text" 
               placeholder={language === 'EN' ? "Search for a phrase..." : "වචනයක් සොයන්න..."}
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-16 pr-6 py-5 bg-white text-[#262626] rounded-3xl focus:outline-none focus:ring-4 focus:ring-white/20 shadow-2xl font-semibold text-lg"
+              className="w-full pl-16 pr-6 py-6 bg-white/95 backdrop-blur-md text-[#262626] rounded-[2.5rem] focus:outline-none border border-white shadow-2xl font-bold text-xl placeholder:text-gray-300 placeholder:italic"
             />
           </div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 mt-12 space-y-12">
-        <div className="flex flex-wrap gap-3 justify-center">
+      <div className="max-w-7xl mx-auto px-4 -mt-12 relative z-20 space-y-16">
+        <div className="flex flex-wrap gap-4 justify-center bg-white/90 backdrop-blur-xl p-4 rounded-[3rem] shadow-xl border border-gray-100 w-fit mx-auto">
           {categories.map(cat => (
             <button
               key={cat.id}
               onClick={() => setFilter(cat.id)}
-              className={`flex items-center gap-3 px-8 py-3 rounded-full text-sm font-bold transition-all border shadow-sm ${
+              className={`flex items-center gap-3 px-8 py-3.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] transition-all border shadow-sm ${
                 filter === cat.id 
-                  ? 'story-ring text-white border-transparent' 
-                  : 'bg-white text-gray-500 border-gray-100 hover:border-[#E1306C] hover:text-[#E1306C]'
+                  ? 'bg-[#0a0a0a] text-white border-transparent scale-105 shadow-2xl' 
+                  : 'bg-white text-gray-400 border-gray-100 hover:border-[#0EA5E9] hover:text-[#0a0a0a]'
               }`}
             >
               {cat.icon}
@@ -75,37 +88,42 @@ const Phrasebook: React.FC<PhrasebookProps> = ({ language }) => {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredPhrases.map((p) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 pt-10">
+          {filteredPhrases.map((p, idx) => (
             <div 
               key={p.id}
-              className="bg-white p-10 rounded-[3rem] shadow-xl border border-gray-100 group hover:-translate-y-2 transition-all duration-300"
+              className="bg-white p-12 rounded-[4rem] shadow-sm border border-gray-100 group hover:-translate-y-4 hover:shadow-[0_50px_100px_rgba(0,0,0,0.08)] transition-all duration-700 relative overflow-hidden"
             >
-              <div className="flex justify-between items-start mb-6">
-                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest bg-gray-50 px-3 py-1 rounded-full border border-gray-100">
-                  {p.category}
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#0EA5E9]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              
+              <div className="flex justify-between items-start mb-8">
+                <span className="text-[9px] font-black text-gray-300 uppercase tracking-[0.4em] bg-gray-50 px-4 py-1.5 rounded-full border border-gray-100">
+                  Node_Ref: #L0{idx + 1}
                 </span>
-                <button className="text-gray-300 group-hover:text-[#E1306C] transition-colors">
+                <button className="w-12 h-12 rounded-2xl bg-gray-50 flex items-center justify-center text-gray-300 group-hover:text-[#0EA5E9] group-hover:bg-white group-hover:shadow-lg transition-all active:scale-90">
                   <Volume2 size={24} />
                 </button>
               </div>
 
-              <div className="space-y-6">
-                <div>
-                  <p className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-1">English</p>
-                  <p className="text-xl font-heritage font-bold text-[#262626]">{p.english}</p>
+              <div className="space-y-8">
+                <div className="space-y-2">
+                  <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest">English_Primary</p>
+                  <p className="text-2xl font-heritage font-bold text-[#262626]">{p.english}</p>
                 </div>
                 
-                <div className="w-12 h-0.5 bg-gray-100 group-hover:w-full transition-all duration-500"></div>
+                <div className="w-full h-px bg-gradient-to-r from-gray-100 via-gray-200 to-transparent"></div>
 
-                <div>
-                  <p className="text-sm font-bold text-[#E1306C] uppercase tracking-widest mb-1">Sinhala</p>
-                  <p className="text-3xl font-heritage font-bold text-[#262626] leading-tight">{p.sinhala}</p>
+                <div className="space-y-2">
+                  <p className="text-[10px] font-black text-[#0EA5E9] uppercase tracking-widest">Sinhala_Translation</p>
+                  <p className="text-4xl font-heritage font-bold text-[#0a0a0a] leading-tight drop-shadow-sm">{p.sinhala}</p>
                 </div>
 
-                <div className="pt-4">
-                  <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Pronunciation</p>
-                  <p className="text-lg font-medium text-gray-600 italic">"{p.transliteration}"</p>
+                <div className="pt-6 border-t border-gray-50">
+                  <p className="text-[9px] font-black text-gray-300 uppercase tracking-widest mb-2">Neural_Phonetic</p>
+                  <div className="bg-[#fafafa] p-5 rounded-3xl border border-gray-50 relative group-hover:bg-white transition-colors">
+                    <Sparkles size={14} className="absolute top-4 right-4 text-[#0EA5E9] opacity-20" />
+                    <p className="text-xl font-medium text-gray-500 italic tracking-tight">"{p.transliteration}"</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -113,16 +131,29 @@ const Phrasebook: React.FC<PhrasebookProps> = ({ language }) => {
         </div>
 
         {filteredPhrases.length === 0 && (
-          <div className="text-center py-20 space-y-4">
-             <div className="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center mx-auto text-gray-200">
-                <MessageSquare size={40} />
+          <div className="text-center py-32 space-y-8 bg-white rounded-[5rem] border border-dashed border-gray-200">
+             <div className="w-24 h-24 bg-gray-50 rounded-full flex items-center justify-center mx-auto text-gray-200 shadow-inner">
+                <MessageSquare size={48} className="animate-pulse" />
              </div>
-             <p className="text-gray-400 font-heritage text-xl">
-               {language === 'EN' ? 'No phrases found...' : 'වචන කිසිවක් හමු නොවීය...'}
-             </p>
+             <div className="space-y-2">
+                <h3 className="text-3xl font-heritage font-bold text-gray-400 uppercase tracking-tighter">Vocabulary Node Missing</h3>
+                <p className="text-gray-300 font-bold text-xs uppercase tracking-widest">The registry does not contain a match for your current query.</p>
+             </div>
+             <button onClick={() => { setSearch(''); setFilter('all'); }} className="px-10 py-4 bg-[#0a0a0a] text-white rounded-full text-[10px] font-black uppercase tracking-[0.3em] hover:scale-110 transition-all">Clear SearchGrid</button>
           </div>
         )}
       </div>
+
+      <style dangerouslySetInnerHTML={{ __html: `
+        @keyframes slow-zoom {
+          0% { transform: scale(1); }
+          50% { transform: scale(1.1); }
+          100% { transform: scale(1); }
+        }
+        .animate-slow-zoom {
+          animation: slow-zoom 30s linear infinite;
+        }
+      `}} />
     </section>
   );
 };

@@ -31,16 +31,38 @@ const Hero: React.FC<HeroProps> = ({ language, setView }) => {
     };
   }, []);
 
-  // Updated photographic background image as requested
   const heroBgImage = "https://images.unsplash.com/photo-1602364481046-a5c6c3629932?q=80&w=1719&auto=format&fit=crop";
+
+  const renderHangingText = (text: string) => {
+    return text.split('').map((char, i) => (
+      <span 
+        key={i} 
+        className="hanging-letter-node"
+        style={{ 
+          animationDelay: `${i * 0.15}s`,
+          // Vary the rope length slightly for an organic "hanging from a branch" look
+          marginTop: `${(Math.sin(i) * 10)}px`
+        }}
+      >
+        {/* The Rope (Tether) */}
+        <div className="ionic-tether" style={{ height: `${60 + Math.abs(Math.cos(i) * 30)}px` }} />
+        
+        {/* The Letter Atomic Node */}
+        <span 
+          className="letter-face"
+          data-char={char}
+        >
+          {char === ' ' ? '\u00A0' : char}
+        </span>
+      </span>
+    ));
+  };
 
   return (
     <div className="relative h-[115vh] flex items-center justify-center overflow-hidden bg-[#050508]" style={{ perspective: '2000px' }}>
       
       {/* --- CINEMATIC 3D ENGINE --- */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        
-        {/* The Cinematic Background Layer */}
         <div 
           className="absolute inset-0 bg-cover bg-center transition-transform duration-[400ms] ease-out brightness-[0.85] saturate-[1.1] contrast-[1.05]" 
           style={{ 
@@ -49,7 +71,6 @@ const Hero: React.FC<HeroProps> = ({ language, setView }) => {
             willChange: 'transform'
           }}
         >
-          {/* Enhanced gradients to ensure UI legibility over the high-detail photo */}
           <div className="absolute inset-0 bg-gradient-to-b from-[#020205]/60 via-transparent to-[#020205]/80" />
           <div className="absolute inset-0 bg-black/10 backdrop-blur-[0.2px]" />
         </div>
@@ -64,11 +85,7 @@ const Hero: React.FC<HeroProps> = ({ language, setView }) => {
           }}
         >
           <div className="absolute inset-0 border-[2px] border-[#0EA5E9] rounded-full animate-spin-slow opacity-30 shadow-[0_0_100px_rgba(14,165,233,0.2)]" />
-          <div className="absolute inset-48 border-[1px] border-cyan-400 rounded-full animate-reverse-spin opacity-20" style={{ transform: 'translateZ(40px)' }} />
         </div>
-
-        {/* Atmospheric Glow */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(14,165,233,0.05)_0%,transparent_80%)] animate-pulse" />
       </div>
 
       {/* --- CONTENT HUB --- */}
@@ -87,17 +104,28 @@ const Hero: React.FC<HeroProps> = ({ language, setView }) => {
            </div>
         </div>
         
-        <div className="space-y-4 mb-20 animate-in fade-in zoom-in-95 duration-1000 delay-200" style={{ transform: 'translateZ(130px)' }}>
-          <h1 className="text-6xl sm:text-8xl md:text-[13rem] font-heritage font-bold leading-[0.8] tracking-tighter text-white uppercase select-none">
+        <div className="space-y-4 mb-32 animate-in fade-in zoom-in-95 duration-1000 delay-200" style={{ transform: 'translateZ(130px)' }}>
+          <h1 className="text-6xl sm:text-8xl md:text-[13rem] font-heritage font-bold leading-[0.8] tracking-tighter text-white uppercase select-none relative">
             {language === 'EN' ? (
               <>
-                <span className="block opacity-90 mb-6 tracking-[0.1em] text-4xl md:text-6xl font-light italic drop-shadow-2xl">Discover the</span>
-                <span className="block insta-text-gradient drop-shadow-[0_20px_50px_rgba(14,165,233,0.6)]">SRI LANKA.</span>
+                <span className="block opacity-90 mb-24 tracking-[0.1em] text-4xl md:text-6xl font-light italic drop-shadow-2xl">Discover the</span>
+                <div className="hanging-system">
+                   {/* The Neural Branch / Conduit */}
+                   <div className="neural-branch" />
+                   <div className="flex justify-center items-start gap-2 md:gap-4 font-heritage">
+                     {renderHangingText("SRI LANKA")}
+                   </div>
+                </div>
               </>
             ) : (
               <>
-                <span className="block opacity-90 mb-6 tracking-[0.1em] text-4xl md:text-6xl font-light italic drop-shadow-2xl">අත්විඳින්න</span>
-                <span className="block insta-text-gradient drop-shadow-[0_20px_50px_rgba(14,165,233,0.6)]">ශ්‍රී ලංකාව.</span>
+                <span className="block opacity-90 mb-24 tracking-[0.1em] text-4xl md:text-6xl font-light italic drop-shadow-2xl">අත්විඳින්න</span>
+                <div className="hanging-system">
+                   <div className="neural-branch" />
+                   <div className="flex justify-center items-start gap-2 md:gap-4 font-heritage">
+                     {renderHangingText("ශ්‍රී ලංකාව")}
+                   </div>
+                </div>
               </>
             )}
           </h1>
@@ -134,30 +162,83 @@ const Hero: React.FC<HeroProps> = ({ language, setView }) => {
         </div>
       </div>
 
-      {/* Floating Meta HUD Gagues */}
-      <div className="absolute right-12 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-16 opacity-50 text-white pointer-events-none" style={{ transform: 'translateZ(220px)' }}>
-          {[1,2,3].map(i => (
-            <div key={i} className="flex flex-col items-end gap-3">
-               <div className="w-60 h-[1.5px] bg-gradient-to-l from-white/60 to-transparent shadow-[0_0_10px_white]" />
-               <p className="text-[9px] font-black uppercase tracking-[0.6em] text-[#0EA5E9]">NODE_SYNC_0{i}_ACTIVE</p>
-            </div>
-          ))}
-      </div>
-
       <style dangerouslySetInnerHTML={{ __html: `
+        .hanging-system {
+          position: relative;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+        
+        .neural-branch {
+          width: 90%;
+          height: 3px;
+          background: linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.4), transparent);
+          box-shadow: 0 0 30px rgba(14, 165, 233, 0.2);
+          position: absolute;
+          top: -20px;
+          border-radius: 50%;
+          opacity: 0.6;
+        }
+
+        .hanging-letter-node {
+          display: inline-flex;
+          flex-direction: column;
+          align-items: center;
+          transform-origin: top center;
+          animation: 
+            harmonic-sway 5s ease-in-out infinite,
+            reality-tremor 8s ease-in-out infinite;
+        }
+
+        .ionic-tether {
+          width: 1.5px;
+          background: linear-gradient(to bottom, rgba(14, 165, 233, 0.6) 0%, rgba(255,255,255,0.1) 100%);
+          box-shadow: 0 0 10px rgba(14, 165, 233, 0.3);
+          opacity: 0.4;
+        }
+
+        .letter-face {
+          display: block;
+          color: #0EA5E9;
+          font-family: 'Lora', serif;
+          font-weight: 800;
+          line-height: 0.7;
+          text-shadow: 
+            0 0 20px rgba(14, 165, 233, 0.4),
+            0 0 40px rgba(14, 165, 233, 0.2);
+          filter: brightness(1.2) contrast(1.1);
+          transform: translateY(-5px);
+          transition: all 0.3s ease;
+        }
+        
+        .hanging-letter-node:hover .letter-face {
+          color: #7DD3FC;
+          filter: brightness(1.5) drop-shadow(0 0 30px #0EA5E9);
+          transform: scale(1.1) translateY(0);
+        }
+
+        @keyframes harmonic-sway {
+          0%, 100% { transform: rotate(-4deg); }
+          50% { transform: rotate(4deg); }
+        }
+
+        @keyframes reality-tremor {
+          0%, 88%, 100% { transform: translate(0, 0) rotate(var(--current-rotation, 0deg)); }
+          90% { transform: translate(2px, -2px) scale(1.02); }
+          92% { transform: translate(-2px, 2px) scale(0.98); }
+          94% { transform: translate(2px, 2px) scale(1.02); }
+          96% { transform: translate(-2px, -2px) scale(0.98); }
+          98% { transform: translate(1px, 1px) scale(1.01); }
+        }
+
         @keyframes spin-slow {
           from { transform: rotate(0deg); }
           to { transform: rotate(360deg); }
         }
-        @keyframes reverse-spin {
-          from { transform: rotate(360deg); }
-          to { transform: rotate(0deg); }
-        }
         .animate-spin-slow {
           animation: spin-slow 28s linear infinite;
-        }
-        .animate-reverse-spin {
-          animation: reverse-spin 22s linear infinite;
         }
       `}} />
     </div>
