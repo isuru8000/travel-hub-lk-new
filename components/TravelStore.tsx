@@ -1,25 +1,19 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import { Language } from '../types.ts';
 import { 
-  ShoppingCart, 
-  Search, 
-  ArrowRight, 
   ShieldCheck, 
   Sparkles, 
   Zap, 
   Box, 
-  Compass, 
-  Gem, 
-  Star, 
-  Filter, 
-  Activity, 
-  ArrowUpRight, 
-  Cpu,
   ShoppingBag,
   Camera,
   Backpack,
   Sun,
-  Wind
+  Lock,
+  Activity,
+  Cpu,
+  Scan,
+  Orbit
 } from 'lucide-react';
 
 interface GearItem {
@@ -84,20 +78,6 @@ const STORE_ITEMS: GearItem[] = [
 ];
 
 const TravelStore: React.FC<{ language: Language }> = ({ language }) => {
-  const [filter, setFilter] = useState<string>('all');
-  const [cartCount, setCartCount] = useState(0);
-
-  const filteredItems = useMemo(() => {
-    return filter === 'all' ? STORE_ITEMS : STORE_ITEMS.filter(i => i.category === filter);
-  }, [filter]);
-
-  const categories = [
-    { id: 'all', EN: 'All Gear', SI: 'සියල්ල', icon: <Box size={14} /> },
-    { id: 'expedition', EN: 'Expedition', SI: 'වික්‍රමාන්විත', icon: <Backpack size={14} /> },
-    { id: 'lifestyle', EN: 'Lifestyle', SI: 'ජීවන රටා', icon: <Sun size={14} /> },
-    { id: 'tech', EN: 'Tech Hub', SI: 'තාක්ෂණික', icon: <Camera size={14} /> },
-  ];
-
   return (
     <div className="min-h-screen bg-white">
       {/* Cinematic Header */}
@@ -110,7 +90,7 @@ const TravelStore: React.FC<{ language: Language }> = ({ language }) => {
         
         <div className="relative text-center space-y-8 px-6 max-w-5xl animate-in fade-in zoom-in duration-1000">
            <div className="inline-flex items-center gap-4 px-6 py-2.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-3xl text-white text-[10px] font-black uppercase tracking-[0.5em] shadow-2xl">
-              <ShoppingBag size={16} className="text-[#E1306C] animate-pulse" />
+              <ShoppingBag size={16} className="text-[#0EA5E9] animate-pulse" />
               Global_Supply_Registry
            </div>
            <h2 className="text-6xl md:text-[10rem] font-heritage font-bold text-white tracking-tighter uppercase leading-[0.8] drop-shadow-[0_20px_60px_rgba(0,0,0,0.8)]">
@@ -124,101 +104,48 @@ const TravelStore: React.FC<{ language: Language }> = ({ language }) => {
 
       <div className="max-w-7xl mx-auto px-6 -mt-24 relative z-10 space-y-24">
         
-        {/* Filter Controls */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-8 bg-white/90 backdrop-blur-xl p-4 rounded-[3rem] shadow-xl border border-gray-100">
-           <div className="flex flex-wrap gap-2">
-              {categories.map((cat) => (
-                <button
-                  key={cat.id}
-                  onClick={() => setFilter(cat.id)}
-                  className={`flex items-center gap-3 px-8 py-4 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${
-                    filter === cat.id 
-                      ? 'bg-[#0a0a0a] text-white shadow-2xl scale-105' 
-                      : 'text-gray-400 hover:bg-gray-50 hover:text-[#0a0a0a]'
-                  }`}
-                >
-                  {cat.icon}
-                  {language === 'EN' ? cat.EN : cat.SI}
-                </button>
-              ))}
-           </div>
-
-           <div className="flex items-center gap-8 px-8 py-3 border-l border-gray-100 hidden md:flex">
-              <div className="text-right space-y-1">
-                 <p className="text-[9px] font-black text-gray-400 uppercase tracking-widest leading-none">Cart_Payload</p>
-                 <p className="text-sm font-bold text-[#0a0a0a] tracking-tight">{cartCount} ACTIVE NODES</p>
-              </div>
-              <div className="relative">
-                 <ShoppingCart size={24} className="text-[#E1306C]" />
-                 {cartCount > 0 && (
-                   <span className="absolute -top-2 -right-2 w-5 h-5 bg-[#E1306C] text-white text-[9px] font-black rounded-full flex items-center justify-center shadow-lg border-2 border-white animate-in zoom-in">
-                     {cartCount}
-                   </span>
-                 )}
-              </div>
-           </div>
-        </div>
-
-        {/* Products Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {filteredItems.map((item, idx) => (
-            <div 
-              key={item.id}
-              className="group relative bg-white rounded-[3.5rem] overflow-hidden border border-gray-50 shadow-[0_20px_50px_rgba(0,0,0,0.03)] transition-all duration-1000 hover:shadow-[0_80px_150px_rgba(0,0,0,0.1)] hover:-translate-y-4"
-              style={{ perspective: '1500px' }}
-            >
-              <div className="relative aspect-[4/5] overflow-hidden">
-                <img src={item.image} className="w-full h-full object-cover transition-transform duration-[4000ms] group-hover:scale-110" alt={item.name[language]} />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
-                
-                <div className="absolute top-8 left-8 transform translateZ(50px)">
-                  <div className="px-5 py-2 bg-white/10 backdrop-blur-3xl rounded-xl border border-white/20 text-white text-[8px] font-black uppercase tracking-widest shadow-2xl">
-                     {item.tag}
-                  </div>
-                </div>
-
-                <div className="absolute bottom-0 right-0 bg-[#0a0a0a] text-white px-8 py-5 rounded-tl-[2.5rem] shadow-[0_-20px_40px_rgba(0,0,0,0.4)] transform translateZ(60px)">
-                   <p className="text-[9px] font-black text-[#E1306C] uppercase tracking-[0.4em] mb-1">MSRP_UPLINK</p>
-                   <p className="text-3xl font-heritage font-bold">${item.price}</p>
-                </div>
-              </div>
-
-              <div className="p-10 space-y-8">
-                 <div className="space-y-2">
-                    <p className="text-[10px] font-black text-gray-300 uppercase tracking-[0.4em]">Protocol_Item #00{idx+1}</p>
-                    <h4 className="text-2xl font-heritage font-bold text-[#0a0a0a] uppercase tracking-tighter leading-tight group-hover:insta-text-gradient transition-all duration-500">
-                      {item.name[language]}
-                    </h4>
+        {/* Main "Coming Soon" Feature Section */}
+        <div className="relative group">
+           {/* Background Grid Decoration */}
+           <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-[5rem] blur-[100px] opacity-10 group-hover:opacity-20 transition-opacity" />
+           
+           <div className="relative bg-white/80 backdrop-blur-[100px] rounded-[5rem] border border-gray-100 shadow-[0_50px_100px_rgba(0,0,0,0.05)] overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-[3px] bg-blue-500 shadow-[0_0_20px_#3b82f6] animate-scan-slow z-20 opacity-50" />
+              
+              <div className="p-12 md:p-32 flex flex-col items-center text-center space-y-12">
+                 <div className="w-28 h-28 rounded-[2.5rem] bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-500 relative shadow-2xl">
+                    <div className="absolute inset-0 border border-blue-500/10 rounded-[2.5rem] animate-ping" />
+                    <Lock size={56} className="animate-pulse" />
                  </div>
 
-                 <div className="space-y-4 pt-6 border-t border-gray-50">
-                    <div className="flex items-center gap-3 text-gray-400">
-                       <Activity size={14} className="text-[#E1306C]" />
-                       <span className="text-[9px] font-black uppercase tracking-widest">Archive_Specs</span>
+                 <div className="space-y-6">
+                    <div className="inline-flex items-center gap-4 px-8 py-3 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-500 text-[10px] font-black uppercase tracking-[0.6em] mx-auto animate-pulse">
+                       <Scan size={14} /> Phase_03_Commerce_Integration
                     </div>
-                    <ul className="space-y-2">
-                       {item.specs[language].map((spec, sIdx) => (
-                         <li key={sIdx} className="text-[11px] font-medium text-gray-500 italic flex items-center gap-2">
-                            <div className="w-1 h-1 rounded-full bg-[#E1306C]/30" />
-                            {spec}
-                         </li>
-                       ))}
-                    </ul>
+                    <h3 className="text-5xl md:text-9xl font-heritage font-bold text-[#0a0a0a] uppercase tracking-tighter leading-none">
+                       COMING <span className="text-blue-500 italic">SOON.</span>
+                    </h3>
+                    <p className="text-gray-400 font-light italic text-xl md:text-3xl max-w-3xl mx-auto leading-relaxed opacity-70">
+                       {language === 'EN' 
+                         ? "The gear registry is currently undergoing high-fidelity calibration for next-cycle stock synchronization." 
+                         : "භාණ්ඩ නාමාවලිය දැනට පිරික්සුම් මට්ටමේ පවතින අතර, මීළඟ අදියරේදී සියලු නිෂ්පාදන ඔබ වෙත විවෘත වනු ඇත."}
+                    </p>
                  </div>
 
-                 <button 
-                  onClick={() => setCartCount(prev => prev + 1)}
-                  className="w-full py-5 bg-gray-50 text-[#0a0a0a] rounded-[2rem] font-black text-[10px] uppercase tracking-[0.4em] border border-gray-100 hover:bg-[#0a0a0a] hover:text-white transition-all shadow-sm group/btn overflow-hidden relative"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#E1306C] to-[#f09433] opacity-0 group-hover/btn:opacity-20 transition-opacity" />
-                  <span className="relative z-10 flex items-center justify-center gap-4">
-                     Commit to Manifest
-                     <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
-                  </span>
-                </button>
+                 <div className="flex gap-4 pt-8">
+                    <div className="px-10 py-5 bg-[#0a0a0a] text-white rounded-full font-black text-xs uppercase tracking-[0.4em] shadow-[0_20px_50px_rgba(0,0,0,0.3)] animate-pulse">
+                       Registry Locked
+                    </div>
+                 </div>
+
+                 {/* Teaser Grid (Blurred) */}
+                 <div className="w-full pt-16 grid grid-cols-2 md:grid-cols-4 gap-8 opacity-10 blur-xl pointer-events-none">
+                    {STORE_ITEMS.map((item) => (
+                       <div key={item.id} className="aspect-[4/5] bg-gray-200 rounded-[3rem]" />
+                    ))}
+                 </div>
               </div>
-            </div>
-          ))}
+           </div>
         </div>
 
         {/* Store Footer HUD */}
@@ -251,12 +178,13 @@ const TravelStore: React.FC<{ language: Language }> = ({ language }) => {
       </div>
 
       <style dangerouslySetInnerHTML={{ __html: `
-        @keyframes slow-zoom {
-          0% { transform: scale(1); }
-          50% { transform: scale(1.1); }
-          100% { transform: scale(1); }
+        @keyframes scan-slow {
+          0% { transform: translateY(-100%); opacity: 0; }
+          20% { opacity: 1; }
+          80% { opacity: 1; }
+          100% { transform: translateY(600px); opacity: 0; }
         }
-        .animate-slow-zoom { animation: slow-zoom 30s linear infinite; }
+        .animate-scan-slow { animation: scan-slow 5s linear infinite; }
       `}} />
     </div>
   );

@@ -35,6 +35,7 @@ export interface Transport {
 export interface Food {
   id: string;
   name: { EN: string; SI: string };
+  category: 'street' | 'village' | 'sweets' | 'coastal' | 'royal';
   description: { EN: string; SI: string };
   image: string;
   spiciness: 1 | 2 | 3 | 4 | 5;
@@ -115,6 +116,7 @@ export interface TravelEssential {
 export interface Festival {
   id: string;
   name: { EN: string; SI: string };
+  category: 'religious' | 'cultural' | 'harvest' | 'art' | 'coastal';
   date: { EN: string; SI: string };
   description: { EN: string; SI: string };
   image: string;

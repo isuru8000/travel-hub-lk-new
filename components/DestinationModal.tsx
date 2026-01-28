@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { Destination, Language } from '../types.ts';
 import { UI_STRINGS, DESTINATIONS } from '../constants.tsx';
@@ -312,7 +311,7 @@ const DestinationModal: React.FC<DestinationModalProps> = ({ destination, onClos
                   <Info size={18} className="text-[#E1306C]" />
                   {UI_STRINGS.historyLabel[language]}
                 </h3>
-                <p className="text-gray-600 leading-relaxed font-light text-xl relative z-10">
+                <p className="text-gray-600 leading-relaxed font-light text-xl relative z-10 whitespace-pre-line">
                   {destination.history[language]}
                 </p>
               </div>

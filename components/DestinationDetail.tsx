@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { Destination, Language } from '../types.ts';
 import { DESTINATIONS, UI_STRINGS } from '../constants.tsx';
@@ -434,7 +433,7 @@ const DestinationDetail: React.FC<DestinationDetailProps> = ({ destination, lang
                   <History size={32} className="animate-pulse" aria-hidden="true" />
                   <span className="text-[14px] font-black uppercase tracking-[0.7em] font-mono">Registry_Deep_History</span>
                </div>
-               <div className="prose prose-2xl max-w-none prose-p:font-light prose-p:leading-relaxed prose-p:text-gray-700 prose-p:italic italic">
+               <div className="prose prose-2xl max-w-none prose-p:font-light prose-p:leading-relaxed prose-p:text-gray-700 prose-p:italic italic whitespace-pre-line">
                  <h2 id="section-history-title" className="text-4xl md:text-7xl font-heritage font-bold text-[#0a0a0a] not-italic leading-tight mb-12 uppercase tracking-tighter">
                    {UI_STRINGS.historyLabel[language]}
                  </h2>

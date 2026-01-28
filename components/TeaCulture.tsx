@@ -59,13 +59,14 @@ const TeaCard: React.FC<{ item: TeaExperience; language: Language; idx: number }
 
 const TeaCulture: React.FC<TeaCultureProps> = ({ language }) => {
   const heroTeaBg = "https://images.unsplash.com/photo-1594631252845-29fc458695d1?q=80&w=1920&auto=format&fit=crop";
-  const pageBg = "https://media.istockphoto.com/id/1470009823/photo/cup-of-tea-on-a-light-background-with-flowers.webp?a=1&b=1&s=612x612&w=0&k=20&c=_AX7GlzUqUVFX7ztQ-2HJQXg_bUy9qRbQp-Ar3qtT-0=";
+  // Updated pageBg with the new Unsplash URL provided by the user
+  const pageBg = "https://images.unsplash.com/photo-1632639521806-cead484cc369?w=1920&auto=format&fit=crop&q=80";
 
   return (
     <section className="min-h-screen bg-[#fafafa] pb-32 relative">
       {/* Page-wide Cinematic Background */}
       <div 
-        className="fixed inset-0 bg-cover bg-center opacity-[0.08] pointer-events-none z-0" 
+        className="fixed inset-0 bg-cover bg-center opacity-[0.07] pointer-events-none z-0" 
         style={{ backgroundImage: `url('${pageBg}')`, backgroundAttachment: 'fixed' }}
       />
 
