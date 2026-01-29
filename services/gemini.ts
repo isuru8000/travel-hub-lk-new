@@ -1,5 +1,4 @@
-
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenAI, Type } from "@google/genai";
 import { Language } from "../types.ts";
 
 export interface GroundingLink {
@@ -13,12 +12,17 @@ export interface AIResponse {
   error?: string;
 }
 
+export interface DestinationDeepDive {
+  history: string;
+  temporalSync: string;
+  wisdom: string[];
+  hiddenEchoes: string;
+}
+
 /**
  * Initializes the GoogleGenAI client using process.env.API_KEY directly.
- * Adheres to strict guidelines for API key handling.
  */
 const getAIClient = () => {
-  // Fix: Strictly use process.env.API_KEY as per coding guidelines
   return new GoogleGenAI({ apiKey: process.env.API_KEY });
 };
 
@@ -127,7 +131,44 @@ export function createPcmBlob(data: Float32Array): { data: string; mimeType: str
 }
 
 /**
- * Main Guide Response: Uses 2.5 Flash for Maps grounding or 3 Pro for Thinking.
+ * Fetches a structured deep-dive overview for a destination.
+ */
+export const getDestinationDeepDive = async (destinationName: string, language: Language): Promise<DestinationDeepDive | null> => {
+  try {
+    const ai = getAIClient();
+    const result = await ai.models.generateContent({
+      model: 'gemini-3-flash-preview',
+      contents: `You are the "Master Archivist" for Travel Hub Sri Lanka. 
+      Provide a structured, comprehensive, high-fidelity deep-dive for: ${destinationName}. 
+      Use poetic yet informative language. Language: ${language === 'SI' ? 'Sinhala' : 'English'}.`,
+      config: {
+        responseMimeType: "application/json",
+        responseSchema: {
+          type: Type.OBJECT,
+          properties: {
+            history: { type: Type.STRING, description: "Detailed historical and mythical context (The Legend)." },
+            temporalSync: { type: Type.STRING, description: "Best time to visit and atmospheric conditions (Temporal Sync)." },
+            wisdom: { 
+              type: Type.ARRAY, 
+              items: { type: Type.STRING },
+              description: "3 unique, specific travel tips for 2026 (Voyager Wisdom)." 
+            },
+            hiddenEchoes: { type: Type.STRING, description: "Nearby lesser-known spots or hidden secrets (Hidden Echoes)." }
+          },
+          required: ["history", "temporalSync", "wisdom", "hiddenEchoes"]
+        }
+      }
+    });
+
+    return JSON.parse(result.text || "{}") as DestinationDeepDive;
+  } catch (error) {
+    console.error("Deep Dive API Error:", error);
+    return null;
+  }
+};
+
+/**
+ * Main Guide Response.
  */
 export const getLankaGuideResponse = async (
   prompt: string, 
@@ -146,7 +187,6 @@ export const getLankaGuideResponse = async (
       Always provide your main response in ${language === 'SI' ? 'Sinhala' : 'English'}.
     `;
 
-    // Use 3 Pro for thinking, 2.5 Flash for Maps
     const model = isThinkingMode ? 'gemini-3-pro-preview' : 'gemini-2.5-flash';
     const tools = isThinkingMode ? [{ googleSearch: {} }] : [{ googleMaps: {} }];
 
@@ -185,7 +225,6 @@ export const getLankaGuideResponse = async (
   } catch (error: any) {
     console.error("Gemini API Error:", error);
     const errMsg = error.message || "";
-    // Fix: Streamlined error check logic as per guidelines
     if (errMsg.includes("Requested entity was not found.") || errMsg.includes("API key not found") || errMsg.includes("403")) {
       return { text: "API_KEY_REQUIRED", links: [], error: "API_KEY_REQUIRED" };
     }
@@ -196,7 +235,7 @@ export const getLankaGuideResponse = async (
 };
 
 /**
- * Real-time Information Retrieval: Uses gemini-3-pro-preview with max thinking budget.
+ * Real-time Information Retrieval.
  */
 export const searchGrounding = async (query: string, language: Language, isThinkingMode: boolean = true): Promise<AIResponse> => {
   try {
@@ -238,7 +277,6 @@ export const searchGrounding = async (query: string, language: Language, isThink
       return { text: "API_KEY_REQUIRED", links: [], error: "API_KEY_REQUIRED" };
     }
     
-    // Fallback: try standard generation without search tool if it fails
     try {
       const ai = getAIClient();
       const fallback = await ai.models.generateContent({
@@ -253,7 +291,7 @@ export const searchGrounding = async (query: string, language: Language, isThink
 };
 
 /**
- * Poetic refinement: Uses gemini-3-flash-preview.
+ * Poetic refinement.
  */
 export const refineTravelStory = async (story: string, language: Language): Promise<string> => {
   try {
@@ -271,7 +309,7 @@ export const refineTravelStory = async (story: string, language: Language): Prom
 };
 
 /**
- * Itinerary creation: Uses gemini-3-pro-preview with max thinking.
+ * Itinerary creation.
  */
 export const generateDetailedItinerary = async (destination: string, language: Language): Promise<string> => {
   try {

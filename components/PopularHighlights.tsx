@@ -1,4 +1,3 @@
-
 import React, { useState, useRef } from 'react';
 import { Language, Destination } from '../types.ts';
 import { DESTINATIONS, UI_STRINGS } from '../constants.tsx';
@@ -82,7 +81,7 @@ const HighlightCard: React.FC<{ dest: Destination; index: number; language: Lang
             <Box size={14} className="md:w-5 md:h-5 animate-spin-slow" />
             {dest.location}
           </div>
-          <h3 className="text-3xl md:text-6xl font-heritage font-bold text-[#0a0a0a] leading-[1.1] md:leading-[1] tracking-tighter uppercase drop-shadow-lg">
+          <h3 className="text-3xl md:text-6xl font-heritage font-bold text-[#0a0a0a] leading-[1.1] md:leading-[1] tracking-tighter drop-shadow-lg">
             {dest.name[language]}
           </h3>
           <p className="text-xl md:text-3xl text-gray-400 font-light italic leading-tight border-l-[6px] md:border-l-[10px] border-[#E1306C]/20 pl-6 md:pl-12 py-2 md:py-3">
