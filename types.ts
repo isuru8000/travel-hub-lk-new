@@ -1,4 +1,3 @@
-
 export type Language = 'EN' | 'SI';
 
 export interface User {
@@ -18,6 +17,7 @@ export interface Destination {
   shortStory: { EN: string; SI: string };
   bestTime: { EN: string; SI: string };
   tips: { EN: string; SI: string }[];
+  hiddenEchoes: { EN: string; SI: string };
   location: string;
   coordinates?: { x: number; y: number };
 }

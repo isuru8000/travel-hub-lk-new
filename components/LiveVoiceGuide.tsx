@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { Mic, MicOff, X, Radio, Volume2, Sparkles, Zap, ShieldCheck, Activity, Cpu, Loader2, AlertTriangle, Key } from 'lucide-react';
 import { GoogleGenAI, LiveServerMessage, Modality } from '@google/genai';
@@ -52,10 +51,8 @@ const LiveVoiceGuide: React.FC<LiveVoiceGuideProps> = ({ language }) => {
       setError(null);
       setIsConnecting(true);
       
-      // Initialize API instance inside the interaction handler
       const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
       
-      // Request microphone access with specific constraints to help with hardware detection
       const stream = await navigator.mediaDevices.getUserMedia({ 
         audio: {
           echoCancellation: true,
@@ -74,10 +71,18 @@ const LiveVoiceGuide: React.FC<LiveVoiceGuideProps> = ({ language }) => {
 
       micStreamRef.current = stream;
 
-      const inputCtx = new (window.AudioContext || (window as any).webkitAudioContext)({ sampleRate: 16000 });
-      const outputCtx = new (window.AudioContext || (window as any).webkitAudioContext)({ sampleRate: 24000 });
+      // Safe AudioContext construction
+      const AudioContextClass = (window.AudioContext || (window as any).webkitAudioContext);
       
-      // Ensure contexts are resumed (required by some browsers even within click handlers)
+      // We check if the native AudioContext supports options. webkitAudioContext does not.
+      const inputCtx = window.AudioContext 
+        ? new AudioContext({ sampleRate: 16000 }) 
+        : new (window as any).webkitAudioContext();
+      
+      const outputCtx = window.AudioContext 
+        ? new AudioContext({ sampleRate: 24000 }) 
+        : new (window as any).webkitAudioContext();
+      
       await inputCtx.resume();
       await outputCtx.resume();
       
@@ -106,7 +111,6 @@ const LiveVoiceGuide: React.FC<LiveVoiceGuideProps> = ({ language }) => {
             scriptProcessor.connect(inputCtx.destination);
           },
           onmessage: async (message: LiveServerMessage) => {
-            // Support both text and audio parts if returned
             const modelTurnParts = message.serverContent?.modelTurn?.parts || [];
             for (const part of modelTurnParts) {
               const base64Audio = part.inlineData?.data;
@@ -152,8 +156,7 @@ const LiveVoiceGuide: React.FC<LiveVoiceGuideProps> = ({ language }) => {
           speechConfig: {
             voiceConfig: { prebuiltVoiceConfig: { voiceName: 'Zephyr' } }
           },
-          systemInstruction: `You are "Lanka Guide Live", a charismatic expert from Travel Hub Sri Lanka. 
-          Respond in ${language === 'SI' ? 'Sinhala' : 'English'}. Welcome with Ayubowan. Be poetic yet helpful.`
+          systemInstruction: `You are "Lanka Guide Live", a charismatic expert from Travel Hub Sri Lanka. Respond in ${language === 'SI' ? 'Sinhala' : 'English'}. Welcome with Ayubowan. Be poetic yet helpful.`
         }
       });
 
@@ -206,7 +209,6 @@ const LiveVoiceGuide: React.FC<LiveVoiceGuideProps> = ({ language }) => {
           <div className="absolute inset-0 bg-gradient-to-tr from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
         </button>
 
-        {/* Inline Error Toast */}
         {error && !isActive && (
           <div className="absolute bottom-full left-0 mb-6 w-80 animate-in slide-in-from-bottom-2 duration-300">
              <div className="bg-white/90 backdrop-blur-xl border border-red-100 p-6 rounded-[2rem] shadow-2xl space-y-4">

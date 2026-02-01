@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { 
   Search, 
@@ -344,8 +343,7 @@ const SearchPortal: React.FC<SearchPortalProps> = ({ language }) => {
                  <div className="relative">
                     <div className="w-20 h-20 md:w-24 md:h-24 rounded-full border-2 border-dashed border-gray-200 animate-spin-slow" />
                     <div className="absolute inset-0 flex items-center justify-center">
-                       {/* Fix: Replaced invalid Tailwind classes with standard responsive width and height classes */}
-                       {isDeepMode ? <Brain className="w-7 h-7 md:w-8 md:h-8 text-[#E1306C] animate-pulse" /> : <Cpu className="w-7 h-7 md:w-8 md:h-8 text-[#E1306C] animate-pulse" />}
+                       {isDeepMode ? <Brain size={28} className="text-[#E1306C] animate-pulse" /> : <Cpu size={28} className="text-[#E1306C] animate-pulse" />}
                     </div>
                  </div>
                  <div className="text-center space-y-3 md:space-y-4 px-6">
@@ -420,11 +418,10 @@ const SearchPortal: React.FC<SearchPortalProps> = ({ language }) => {
                        </div>
                        
                        <div className="flex items-center gap-3 md:gap-4 mb-6 md:mb-10 text-[#E1306C]">
-                          {/* Fix: Replaced invalid Tailwind classes with standard responsive width and height classes */}
-                          {isDeepMode ? <Brain className="w-4 h-4 md:w-[18px] md:h-[18px] animate-pulse" /> : <Sparkles className="w-4 h-4 md:w-[18px] md:h-[18px]" />}
+                          {isDeepMode ? <Brain size={18} className="animate-pulse" /> : <Sparkles size={18} />}
                           <span className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em] md:tracking-[0.4em]">{isDeepMode ? 'Deep_Neural_Synthesis' : 'Integrated_Synthesis'}</span>
                           <div className="ml-auto flex items-center gap-1.5 md:gap-2 text-gray-300">
-                             <Clock className="w-2.5 h-2.5 md:w-3 md:h-3" />
+                             <Clock size={12} />
                              <span className="text-[8px] md:text-[9px] font-bold uppercase">JUST NOW</span>
                           </div>
                        </div>
@@ -435,12 +432,12 @@ const SearchPortal: React.FC<SearchPortalProps> = ({ language }) => {
 
                        <div className="mt-8 md:mt-12 pt-6 md:pt-8 border-t border-gray-50 flex flex-wrap gap-4 md:gap-6 items-center">
                           <div className="flex items-center gap-2">
-                             <ShieldCheck className="w-3 h-3 md:w-3.5 md:h-3.5 text-green-500" />
+                             <ShieldCheck size={14} className="text-green-500" />
                              <span className="text-[8px] md:text-[9px] font-black text-gray-400 uppercase tracking-widest">Grounding_Verified</span>
                           </div>
                           {isDeepMode && (
                             <div className="flex items-center gap-2">
-                               <TrendingUp className="w-3 h-3 md:w-3.5 md:h-3.5 text-blue-500" />
+                               <TrendingUp size={14} className="text-blue-500" />
                                <span className="text-[8px] md:text-[9px] font-black text-gray-400 uppercase tracking-widest">Analytical_Depth: Max</span>
                             </div>
                           )}
@@ -469,13 +466,13 @@ const SearchPortal: React.FC<SearchPortalProps> = ({ language }) => {
                             >
                                <div className="flex items-center justify-between mb-0.5">
                                   <span className="text-[7px] md:text-[8px] font-black text-[#E1306C] uppercase tracking-widest">Node_Ref: {i+1}</span>
-                                  <ExternalLink className="w-2.5 h-2.5 md:w-3 md:h-3 text-gray-300 group-hover:text-[#0a0a0a] transition-colors" />
+                                  <ExternalLink size={12} className="text-gray-300 group-hover:text-[#0a0a0a] transition-colors" />
                                </div>
                                <span className="text-[10px] md:text-xs font-bold text-gray-500 group-hover:text-[#0a0a0a] leading-snug line-clamp-1">{link.title}</span>
                             </a>
                           )) : (
                             <div className="py-8 md:py-12 text-center space-y-3 md:space-y-4">
-                               <Database className="w-5 h-5 md:w-6 md:h-6 mx-auto text-gray-100" />
+                               <Database size={24} className="mx-auto text-gray-100" />
                                <p className="text-[9px] md:text-[10px] font-bold text-gray-300 italic tracking-widest uppercase">Internal Cache Only</p>
                             </div>
                           )}
@@ -507,7 +504,7 @@ const SearchPortal: React.FC<SearchPortalProps> = ({ language }) => {
             ) : (
               <div className="py-24 md:py-40 text-center space-y-6 md:space-y-8 animate-in fade-in duration-1000">
                  <div className="w-16 h-16 md:w-20 md:h-20 bg-gray-50 rounded-full flex items-center justify-center mx-auto text-gray-100 shadow-inner">
-                    <Signal className="w-7 h-7 md:w-8 md:h-8" />
+                    <Signal size={32} />
                  </div>
                  <p className="text-gray-300 font-heritage text-lg md:text-xl italic uppercase tracking-[0.2em] md:tracking-widest px-4 leading-relaxed">Awaiting Command Node Sync...</p>
               </div>
@@ -532,11 +529,11 @@ const SearchPortal: React.FC<SearchPortalProps> = ({ language }) => {
       <style dangerouslySetInnerHTML={{ __html: `
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        @keyframes spin-slow {
+        @keyframes spin {
           from { transform: rotate(0deg); }
           to { transform: rotate(360deg); }
         }
-        .animate-spin-slow { animation: spin-slow 8s linear infinite; }
+        .animate-spin-slow { animation: spin 8s linear infinite; }
       `}} />
     </div>
   );

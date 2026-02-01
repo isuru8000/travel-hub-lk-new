@@ -1,5 +1,5 @@
-
 import React, { useState, useEffect } from 'react';
+// Fix: Added implementation to Navbar.tsx to resolve module error for named export TravelHubLogo
 import { TravelHubLogo } from './Navbar.tsx';
 import { ShieldCheck, Activity, Zap, Loader2, CheckCircle2 } from 'lucide-react';
 
@@ -31,17 +31,15 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onEnter, language }) => {
       setProgress(prev => {
         if (prev >= 100) {
           clearInterval(interval);
-          // Faster transition after completion
           setTimeout(() => {
             onEnter();
-          }, 500);
+          }, 200); // Super fast transition
           return 100;
         }
-        // Increased step for faster loading
-        const step = Math.floor(Math.random() * 15) + 10;
+        const step = Math.floor(Math.random() * 25) + 15; // Rapid progress steps
         return Math.min(prev + step, 100);
       });
-    }, 120); // Faster interval
+    }, 60); // Fast interval
 
     return () => clearInterval(interval);
   }, [onEnter]);
@@ -52,95 +50,54 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onEnter, language }) => {
   }, [progress, language]);
 
   return (
-    <div className="fixed inset-0 z-[100] bg-white flex flex-col items-center justify-center p-8 overflow-hidden animate-out fade-out duration-700">
+    <div className="fixed inset-0 z-[100] bg-white flex flex-col items-center justify-center p-8 overflow-hidden animate-out fade-out duration-500">
       <div className="absolute inset-0 pattern-overlay opacity-5 pointer-events-none"></div>
       
-      <div className="relative mb-20">
-        {/* Pulsing rings */}
+      <div className="relative mb-16">
         <div className="absolute inset-0 story-ring rounded-full animate-ping opacity-10 scale-[2.5]"></div>
-        <div className="absolute inset-0 story-ring rounded-full animate-pulse opacity-20 scale-150"></div>
-        
-        {/* Central Logo Container */}
         <div className="relative">
           <TravelHubLogo size={120} className="animate-float" />
         </div>
       </div>
       
-      {/* Loading Progress & HUD */}
-      <div className="w-full max-w-sm space-y-12 text-center relative z-10">
+      <div className="w-full max-w-sm space-y-10 text-center relative z-10">
         <div className="space-y-4">
           <h2 className="text-3xl font-heritage font-bold text-[#0a0a0a] tracking-[0.4em] uppercase leading-none">
             Travel Hub
           </h2>
           <div className="flex items-center justify-center gap-4 text-[#0EA5E9] opacity-60">
              <Activity size={14} className="animate-pulse" />
-             <span className="text-[10px] font-black uppercase tracking-[0.5em]">System_Sync_V4.5</span>
+             <span className="text-[10px] font-black uppercase tracking-[0.5em]">DIRECT_SYNC_CORE</span>
           </div>
         </div>
 
-        <div className="space-y-6">
+        <div className="space-y-4">
            <div className="flex justify-between items-end px-2">
-              <div className="text-left">
-                <p className="text-[10px] font-black text-gray-300 uppercase tracking-widest mb-1">{language === 'EN' ? 'Registry Node' : 'දත්ත පද්ධතිය'}</p>
-                <p className="text-[11px] font-bold text-gray-500 italic animate-pulse">{status}</p>
-              </div>
-              <div className="text-right">
-                <span className="text-5xl font-heritage font-black text-[#0a0a0a] leading-none">{progress}%</span>
-              </div>
+              <span className="text-5xl font-heritage font-black text-[#0a0a0a] leading-none">{progress}%</span>
+              <p className="text-[10px] font-bold text-gray-400 italic animate-pulse">{status}</p>
            </div>
            
-           <div className="h-2 w-full bg-gray-100 rounded-full overflow-hidden p-[1px] border border-gray-50 shadow-inner">
+           <div className="h-2 w-full bg-gray-100 rounded-full overflow-hidden p-[1px] border border-gray-100 shadow-inner">
              <div 
                className={`h-full rounded-full transition-all duration-300 ease-out ${progress === 100 ? 'bg-green-500' : 'insta-gradient'}`}
-               style={{ 
-                 width: `${progress}%`,
-                 boxShadow: progress === 100 ? '0 0 20px rgba(34,197,94,0.5)' : '0 0 20px rgba(14,165,233,0.5)'
-               }}
+               style={{ width: `${progress}%` }}
              ></div>
            </div>
         </div>
 
-        <div className="min-h-[60px] flex flex-col items-center justify-center pt-8">
+        <div className="flex flex-col items-center justify-center pt-4">
              <div className={`flex items-center gap-4 transition-all duration-500 ${progress === 100 ? 'text-green-500' : 'text-gray-300'}`}>
-                {progress === 100 ? (
-                  <CheckCircle2 size={20} className="animate-in zoom-in duration-300" />
-                ) : (
-                  <Loader2 size={16} className="animate-spin text-[#0EA5E9]" />
-                )}
+                {progress === 100 ? <CheckCircle2 size={20} /> : <Loader2 size={16} className="animate-spin text-[#0EA5E9]" />}
                 <span className="text-[9px] font-black uppercase tracking-[0.4em]">
-                  {progress === 100 
-                    ? (language === 'EN' ? 'SYNCHRONIZED' : 'සම්බන්ධතාවය ස්ථාපිතයි') 
-                    : (language === 'EN' ? 'SYNCHRONIZING...' : 'සම්බන්ධ වෙමින්...')}
+                  {progress === 100 ? 'SYNCHRONIZED' : 'UPLINKING...'}
                 </span>
              </div>
         </div>
       </div>
       
-      {/* Decorative Bottom HUD Elements */}
-      <div className="absolute bottom-12 left-12 flex items-center gap-8 opacity-20 hidden md:flex">
-         <div className="flex items-center gap-3">
-            <ShieldCheck size={20} />
-            <span className="text-[9px] font-black uppercase tracking-widest">Secure_Layer</span>
-         </div>
-         <div className="w-1 h-1 rounded-full bg-gray-400" />
-         <div className="flex items-center gap-3">
-            <Zap size={20} />
-            <span className="text-[9px] font-black uppercase tracking-widest">Fast_Uplink</span>
-         </div>
-      </div>
-
       <style dangerouslySetInnerHTML={{ __html: `
-        .animate-float {
-          animation: float 4s ease-in-out infinite;
-        }
-        @keyframes float {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-15px); }
-        }
-        @keyframes zoom-in {
-          from { transform: scale(0.8); opacity: 0; }
-          to { transform: scale(1); opacity: 1; }
-        }
+        .animate-float { animation: float 4s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
       `}} />
     </div>
   );

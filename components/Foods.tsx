@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
-import { Language, Food } from '../types';
-import { FOODS_DATA } from '../constants';
+import { Language, Food } from '../types.ts';
+import { FOODS_DATA } from '../constants.tsx';
 import { Flame, UtensilsCrossed, Leaf, Sparkles, History, Compass, Utensils, Wheat, Candy, Waves, Crown, LayoutGrid, Search } from 'lucide-react';
 
 interface FoodsProps {
@@ -111,76 +111,68 @@ const Foods: React.FC<FoodsProps> = ({ language }) => {
 
         {/* Curated Food Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-24 gap-x-12">
-          {filteredFoods.map((food, idx) => (
-            <div 
-              key={food.id}
-              className="bg-white rounded-[4rem] overflow-hidden shadow-2xl border border-gray-100 flex flex-col group hover:-translate-y-4 transition-all duration-1000 cubic-bezier(0.23, 1, 0.32, 1) animate-in slide-in-from-bottom-8"
-              style={{ animationDelay: `${idx * 40}ms` }}
-            >
-              <div className="relative h-80 overflow-hidden">
-                <img 
-                  src={food.image} 
-                  alt={food.name[language]} 
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[6000ms]"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
-                
-                <div className="absolute top-8 left-8">
-                   <div className="bg-white/95 backdrop-blur-md px-5 py-2 rounded-full shadow-2xl flex items-center gap-2 border border-white/20">
-                      <span className="text-[9px] font-black text-[#0a0a0a] uppercase tracking-widest">{food.category} registry</span>
-                   </div>
-                </div>
+          {filteredFoods.map((food, idx) => {
+            return (
+              <div 
+                key={food.id}
+                className="bg-white rounded-[4rem] overflow-hidden shadow-2xl border border-gray-100 flex flex-col group hover:-translate-y-4 transition-all duration-1000 cubic-bezier(0.23, 1, 0.32, 1) animate-in slide-in-from-bottom-8"
+                style={{ animationDelay: `${idx * 40}ms` }}
+              >
+                <div className="relative h-80 overflow-hidden">
+                  <img 
+                    src={food.image} 
+                    alt={food.name[language]} 
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[6000ms]"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
+                  
+                  <div className="absolute top-8 left-8">
+                     <div className="bg-white/95 backdrop-blur-md px-5 py-2 rounded-full shadow-2xl flex items-center gap-2 border border-white/20">
+                        <span className="text-[9px] font-black text-[#0a0a0a] uppercase tracking-widest">{food.category} registry</span>
+                     </div>
+                  </div>
 
-                <div className="absolute top-8 right-8 flex gap-1.5 bg-black/80 backdrop-blur-md p-3 rounded-full shadow-2xl border border-white/10">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Flame 
-                      key={i} 
-                      size={14} 
-                      className={i < food.spiciness ? 'text-[#0EA5E9] fill-[#0EA5E9]' : 'text-white/20'} 
-                    />
-                  ))}
-                </div>
-                
-                <div className="absolute bottom-6 left-8">
-                   <span className="text-[10px] font-black text-white/80 uppercase tracking-[0.4em] drop-shadow-md">Archive_Node #F{idx+1}</span>
-                </div>
-              </div>
-
-              <div className="p-12 flex-grow space-y-8 flex flex-col">
-                <div className="space-y-3">
-                  <h3 className="text-3xl font-heritage font-bold text-[#0a0a0a] group-hover:insta-text-gradient transition-all leading-tight">
-                    {food.name[language]}
-                  </h3>
-                  <div className="flex items-center gap-3 text-[10px] font-black text-[#0EA5E9] uppercase tracking-[0.3em]">
-                    <UtensilsCrossed size={14} />
-                    {food.tasteProfile[language]}
+                  <div className="absolute bottom-6 left-8">
+                     <span className="text-[10px] font-black text-white/80 uppercase tracking-[0.4em] drop-shadow-md">Archive_Node #F{idx+1}</span>
                   </div>
                 </div>
 
-                <p className="text-lg text-gray-500 leading-relaxed font-light italic border-l-4 border-gray-50 pl-6">
-                  "{food.description[language]}"
-                </p>
-
-                <div className="pt-8 border-t border-gray-50 mt-auto">
-                  <div className="flex items-center gap-3 mb-6">
-                    <Leaf size={16} className="text-green-500" />
-                    <span className="text-[10px] font-black uppercase text-gray-400 tracking-widest">Heritage Components</span>
+                <div className="p-12 flex-grow space-y-8 flex flex-col">
+                  <div className="space-y-3">
+                    <h3 className="text-3xl font-heritage font-bold text-[#0a0a0a] group-hover:insta-text-gradient transition-all leading-tight">
+                      {food.name[language]}
+                    </h3>
+                    <div className="flex items-center gap-3 text-[10px] font-black text-[#0EA5E9] uppercase tracking-[0.3em]">
+                      <UtensilsCrossed size={14} />
+                      {food.tasteProfile[language]}
+                    </div>
                   </div>
-                  <div className="flex flex-wrap gap-3">
-                    {food.ingredients.map((ing, i) => (
-                      <span 
-                        key={i} 
-                        className="px-5 py-2 bg-gray-50 text-[#0a0a0a] text-[10px] font-black rounded-xl border border-gray-100 uppercase tracking-widest group-hover:bg-white group-hover:border-[#0EA5E9]/20 transition-all"
-                      >
-                        {ing[language]}
-                      </span>
-                    ))}
+
+                  <p className="text-lg text-gray-500 leading-relaxed font-light italic border-l-4 border-gray-50 pl-6">
+                    "{food.description[language]}"
+                  </p>
+
+                  <div className="pt-8 border-t border-gray-50 mt-auto">
+                    <div className="flex items-center gap-3 mb-6">
+                      <Leaf size={16} className="text-green-500" />
+                      <span className="text-[10px] font-black uppercase text-gray-400 tracking-widest">Heritage Components</span>
+                    </div>
+                    <div className="flex flex-wrap gap-3">
+                      {food.ingredients.map((ing, i) => (
+                        <span 
+                          key={i} 
+                          className="px-5 py-2 bg-gray-50 text-[#0a0a0a] text-[10px] font-black rounded-xl border border-gray-100 uppercase tracking-widest group-hover:bg-white group-hover:border-[#0EA5E9]/20 transition-all"
+                        >
+                          {ing[language]}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Empty Search State */}

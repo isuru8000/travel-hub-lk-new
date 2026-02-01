@@ -1,13 +1,12 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { Language } from '../types.ts';
-import { Layers, Box, Sparkles, Target, Radio, ArrowLeft, Gem, Wind, Zap, Lock, Loader2, Cpu, Scan, Hexagon, Binary, Shield, ZapOff, Signal, FastForward, Move, Compass, RotateCw, Activity, Cpu as CpuIcon, Database, HardDrive, Sun, ArrowDown } from 'lucide-react';
+import { Layers, Box, Sparkles, Target, Radio, ArrowLeft, Gem, Wind, Zap, Lock, Loader2, Cpu, Scan, Hexagon, Binary, Shield, ZapOff, Signal, FastForward, Move, Compass, RotateCw, Activity, Database, HardDrive, Sun, ArrowDown } from 'lucide-react';
 
 interface VRShowcaseProps {
   language: Language;
   setView: (view: any) => void;
 }
 
-// Phase 01 - High progress
 const REGISTRY_01 = [
   {
     id: 'sigiriya',
@@ -43,7 +42,6 @@ const REGISTRY_01 = [
   }
 ];
 
-// Phase 02 - Expansion
 const PHASE_02_SPACES = [
   {
     id: 'anuradhapura',
@@ -62,52 +60,23 @@ const PHASE_02_SPACES = [
     progress: 5
   },
   {
+    id: 'jaffna-vr',
+    name: { EN: 'Jaffna Royal Portal', SI: 'යාපනය රාජකීය ද්වාරය' },
+    status: 'NORTH SECTOR SYNC',
+    image: 'https://images.unsplash.com/photo-1578503117502-3162799f9392?auto=format&fit=crop&w=800&q=80',
+    type: 'NORTHERN',
+    progress: 8
+  },
+  {
     id: 'yala',
     name: { EN: 'Yala Leopard Zone', SI: 'යාල අභයභූමිය' },
     status: 'COMING SOON',
     image: 'https://images.unsplash.com/photo-1590766940554-634a7ed41450?auto=format&fit=crop&w=800&q=80',
     type: 'WILDLIFE',
     progress: 5
-  },
-  {
-    id: 'trinco',
-    name: { EN: 'Koneswaram Cliff', SI: 'කෝණේශ්වරම්' },
-    status: 'COMING SOON',
-    image: 'https://images.unsplash.com/photo-1700315303907-5b222bb8bb47?auto=format&fit=crop&w=800&q=80',
-    type: 'COASTAL',
-    progress: 5
   }
 ];
 
-// Phase 03 - Experimental
-const PHASE_03_SPACES = [
-  {
-    id: 'horton',
-    name: { EN: 'Worlds End Abyss', SI: 'ලෝකාන්තය' },
-    status: 'COMING SOON',
-    image: 'https://images.unsplash.com/photo-1671432751719-d1a032c1a369?auto=format&fit=crop&w=800&q=80',
-    type: 'NATURE',
-    progress: 2
-  },
-  {
-    id: 'adam-peak',
-    name: { EN: 'Adam\'s Peak Summit', SI: 'ශ්‍රී පාද මළුව' },
-    status: 'COMING SOON',
-    image: 'https://images.unsplash.com/photo-1705730312722-095ca8123d48?auto=format&fit=crop&w=800&q=80',
-    type: 'SACRED',
-    progress: 2
-  },
-  {
-    id: 'bentota',
-    name: { EN: 'Bentota Mangroves', SI: 'බෙන්තොට කඩොලාන' },
-    status: 'COMING SOON',
-    image: 'https://images.unsplash.com/photo-1558446791-ac5fec3caddf?auto=format&fit=crop&w=800&q=80',
-    type: 'BIOME',
-    progress: 2
-  }
-];
-
-// Phase 05 - Eternal Registry
 const PHASE_05_SPACES = [
   {
     id: 'mihintale-peak',
@@ -188,14 +157,14 @@ const VRCard: React.FC<{ space: any, language: Language, idx: number, isLocked?:
            <div className={`px-6 py-3 rounded-2xl border text-[10px] font-black uppercase tracking-widest backdrop-blur-md ${isLocked ? 'bg-white/5 border-white/10 text-white/60' : 'bg-black/80 border-white/10 text-white'}`}>
               {space.type}
            </div>
-           <div className={`w-16 h-16 rounded-2xl border flex items-center justify-center shadow-2xl backdrop-blur-md transition-all duration-500 ${isLocked ? 'bg-white/5 border-white/10 group-hover:border-white/30' : `bg-[${themeColor}]/20 border-[${themeColor}]/40`}`}>
-              {isLocked ? <Lock size={24} className="text-white/40 group-hover:text-white transition-colors animate-pulse" /> : <Scan size={24} className={`text-[${themeColor}] animate-pulse`} />}
+           <div className={`w-16 h-16 rounded-2xl border flex items-center justify-center shadow-2xl backdrop-blur-md transition-all duration-500 ${isLocked ? 'bg-white/5 border-white/10 group-hover:border-white/30' : `bg-[#E1306C]/20 border-[#E1306C]/40`}`}>
+              {isLocked ? <Lock size={24} className="text-white/40 group-hover:text-white transition-colors animate-pulse" /> : <Scan size={24} className={`text-[#E1306C] animate-pulse`} />}
            </div>
         </div>
 
         <div className="space-y-10" style={{ transform: 'translateZ(90px)' }}>
            <div className="space-y-4">
-              <p className={`text-[11px] font-black uppercase tracking-[0.5em] drop-shadow-md ${isLocked ? 'text-white/30' : `text-[${themeColor}]`}`}>
+              <p className={`text-[11px] font-black uppercase tracking-[0.5em] drop-shadow-md ${isLocked ? 'text-white/30' : `text-[#E1306C]`}`}>
                 {isLocked ? 'FUTURE_MANIFOLD_LOCKED' : 'NEURAL_MESH_ACTIVE'}
               </p>
               <h4 className="text-4xl md:text-5xl font-heritage font-bold text-white leading-tight uppercase tracking-tight group-hover:insta-text-gradient transition-all duration-500">
@@ -206,11 +175,11 @@ const VRCard: React.FC<{ space: any, language: Language, idx: number, isLocked?:
            <div className="space-y-5 pt-10 border-t border-white/10">
               <div className="flex justify-between items-center text-[10px] font-black text-white/40 uppercase tracking-widest">
                  <span>{isLocked ? 'UPLINK_STATUS' : 'SYNERGY_SYNC'}</span>
-                 <span className={isLocked ? 'text-white/60' : `text-[${themeColor}]`}>{space.status}</span>
+                 <span className={isLocked ? 'text-white/60' : `text-[#E1306C]`}>{space.status}</span>
               </div>
               <div className="h-2.5 w-full bg-white/5 rounded-full overflow-hidden p-[1.5px]">
                  <div 
-                   className={`h-full rounded-full transition-all duration-2000 ${isLocked ? 'bg-white/10 group-hover:bg-white/30' : `bg-gradient-to-r from-[${themeColor}] via-[#fd5949] to-[#f09433]`}`} 
+                   className={`h-full rounded-full transition-all duration-[2000ms] ${isLocked ? 'bg-white/10 group-hover:bg-white/30' : `bg-gradient-to-r from-[#E1306C] via-[#fd5949] to-[#f09433]`}`} 
                    style={{ width: `${space.progress || 5}%` }}
                  ></div>
               </div>
@@ -218,10 +187,9 @@ const VRCard: React.FC<{ space: any, language: Language, idx: number, isLocked?:
         </div>
       </div>
 
-      {/* Floating Scanline */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div 
-          className={`absolute top-0 left-0 w-full h-[3px] shadow-[0_0_20px_currentColor] animate-scan-slow opacity-60 ${isLocked ? 'text-white/10' : `text-[${themeColor}]`}`} 
+          className={`absolute top-0 left-0 w-full h-[3px] shadow-[0_0_20px_currentColor] animate-scan-slow opacity-60 ${isLocked ? 'text-white/10' : `text-[#E1306C]`}`} 
           style={{ animationDelay: `${idx * 2}s` }}
         ></div>
       </div>
@@ -232,16 +200,14 @@ const VRCard: React.FC<{ space: any, language: Language, idx: number, isLocked?:
 };
 
 const VRShowcase: React.FC<VRShowcaseProps> = ({ language, setView }) => {
-  // Inertia Engine State
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
   const [targetRotation, setTargetRotation] = useState({ x: 0, y: 0 });
   const [position, setPosition] = useState({ x: 0, z: 0 });
   const [velocity, setVelocity] = useState({ x: 0, z: 0 });
   
   const lastTouchRef = useRef<{ x: number, y: number } | null>(null);
-  const requestRef = useRef<number>(null);
+  const requestRef = useRef<number | null>(null);
 
-  // Physics Update Loop
   const animate = () => {
     setRotation(prev => ({
       x: prev.x + (targetRotation.x - prev.x) * 0.08,
@@ -264,11 +230,10 @@ const VRShowcase: React.FC<VRShowcaseProps> = ({ language, setView }) => {
   useEffect(() => {
     requestRef.current = requestAnimationFrame(animate);
     return () => {
-      if (requestRef.current) cancelAnimationFrame(requestRef.current);
+      if (requestRef.current !== null) cancelAnimationFrame(requestRef.current);
     };
   }, [targetRotation, velocity]);
 
-  // Global Interaction
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       const xRot = (window.innerHeight / 2 - e.pageY) / 60;
@@ -285,7 +250,6 @@ const VRShowcase: React.FC<VRShowcaseProps> = ({ language, setView }) => {
       const dx = touch.clientX - lastTouchRef.current.x;
       const dy = touch.clientY - lastTouchRef.current.y;
       
-      // Only rotate if horizontal movement is dominant, otherwise let vertical scroll happen
       if (Math.abs(dx) > Math.abs(dy)) {
         setTargetRotation(prev => ({
           x: prev.x - dy * 0.05,
@@ -297,7 +261,7 @@ const VRShowcase: React.FC<VRShowcaseProps> = ({ language, setView }) => {
   };
 
   const handleJoystickMove = (e: React.TouchEvent) => {
-    e.stopPropagation(); // CRITICAL: Stop propagation to allow joystick use without scrolling
+    e.stopPropagation();
     const touch = e.touches[0];
     const rect = e.currentTarget.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
@@ -369,7 +333,6 @@ const VRShowcase: React.FC<VRShowcaseProps> = ({ language, setView }) => {
 
       <div className="relative z-10 w-full max-w-7xl space-y-40">
         
-        {/* Navigation Interface HUD */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-12 px-4 animate-in fade-in duration-1000">
            <div className="relative w-44 h-44 rounded-full border-2 border-white/5 bg-black/40 backdrop-blur-3xl flex items-center justify-center overflow-hidden shadow-2xl group">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_40%,_rgba(225,48,108,0.05)_100%)]" />
@@ -411,7 +374,6 @@ const VRShowcase: React.FC<VRShowcaseProps> = ({ language, setView }) => {
            </div>
         </div>
         
-        {/* Main Hero Showcase */}
         <div 
           className="w-full flex justify-center animate-in zoom-in duration-1000"
           style={{ 
@@ -458,18 +420,16 @@ const VRShowcase: React.FC<VRShowcaseProps> = ({ language, setView }) => {
           </div>
         </div>
 
-        {/* Scroll Indicator */}
         <div className="flex flex-col items-center gap-6 text-white/20 animate-bounce">
            <span className="text-[9px] font-black uppercase tracking-[1em] ml-[1em]">Scroll for Hidden Nodes</span>
            <ArrowDown size={24} />
         </div>
 
-        {/* Phase 01: Active Registry */}
         <div className="space-y-24">
           <div className="flex flex-col items-center text-center space-y-8">
             <div className="flex items-center gap-6 text-[#E1306C] opacity-80">
               <div className="h-[2px] w-24 bg-gradient-to-r from-transparent to-[#E1306C]"></div>
-              <CpuIcon size={28} className="animate-spin-slow" />
+              <Activity size={28} className="animate-spin-slow" />
               <span className="text-[12px] font-black uppercase tracking-[0.8em]">Neural_Archives_01</span>
               <div className="h-[2px] w-24 bg-gradient-to-l from-transparent to-[#E1306C]"></div>
             </div>
@@ -483,7 +443,6 @@ const VRShowcase: React.FC<VRShowcaseProps> = ({ language, setView }) => {
           </div>
         </div>
 
-        {/* Phase 02 & 03: Combined Expansion */}
         <div className="space-y-32 py-40 border-t border-white/5 relative overflow-hidden">
            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-40 bg-blue-600/5 blur-[150px] -rotate-6 pointer-events-none" />
 
@@ -501,13 +460,9 @@ const VRShowcase: React.FC<VRShowcaseProps> = ({ language, setView }) => {
               {PHASE_02_SPACES.map((space, idx) => (
                 <VRCard key={space.id} space={space} language={language} idx={idx + 4} isLocked={true} themeColor="#3B82F6" />
               ))}
-              {PHASE_03_SPACES.map((space, idx) => (
-                <VRCard key={space.id} space={space} language={language} idx={idx + 8} isLocked={true} themeColor="#3B82F6" />
-              ))}
            </div>
         </div>
 
-        {/* Phase 05: Eternal Registry */}
         <div className="space-y-32 py-40 border-t border-white/5 relative overflow-hidden">
            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-60 bg-amber-600/10 blur-[180px] rotate-12 pointer-events-none" />
 
@@ -538,7 +493,6 @@ const VRShowcase: React.FC<VRShowcaseProps> = ({ language, setView }) => {
            </div>
         </div>
 
-        {/* Navigation / Return */}
         <div className="flex flex-col items-center gap-20">
            <button 
              onClick={() => setView('home')}

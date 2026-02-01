@@ -23,8 +23,11 @@ import {
   Scan,
   Zap,
   Activity,
-  Database
+  Database,
+  Brain,
+  Sparkles
 } from 'lucide-react';
+import { GoogleGenAI } from "@google/genai";
 
 const ITEMS_PER_PAGE = 6;
 
@@ -41,6 +44,8 @@ const Destinations: React.FC<DestinationsProps> = ({ language, onSelectDestinati
   const [isSearching, setIsSearching] = useState(false);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
+  const [aiInsight, setAiInsight] = useState<string | null>(null);
+  const [isGeneratingInsight, setIsGeneratingInsight] = useState(false);
   
   const searchWrapperRef = useRef<HTMLDivElement>(null);
 
@@ -64,15 +69,32 @@ const Destinations: React.FC<DestinationsProps> = ({ language, onSelectDestinati
     return ['all', ...unique];
   }, []);
 
-  const filteredDestinations = useMemo(() => {
+  // Filter based on search but NOT category yet (to show counts)
+  const searchMatches = useMemo(() => {
     return DESTINATIONS.filter(d => {
-      const matchesCategory = categoryFilter === 'all' || d.category === categoryFilter;
       const matchesLocation = locationFilter === 'all' || d.location === locationFilter;
       const matchesSearch = d.name.EN.toLowerCase().includes(search.toLowerCase()) || 
                             d.name.SI.includes(search);
-      return matchesCategory && matchesLocation && matchesSearch;
+      return matchesLocation && matchesSearch;
     });
-  }, [categoryFilter, locationFilter, search]);
+  }, [locationFilter, search]);
+
+  const categoryCounts = useMemo(() => {
+    const counts: Record<string, number> = { all: searchMatches.length };
+    categories.forEach(cat => {
+      if (cat.id !== 'all') {
+        counts[cat.id] = searchMatches.filter(d => d.category === cat.id).length;
+      }
+    });
+    return counts;
+  }, [searchMatches, categories]);
+
+  const filteredDestinations = useMemo(() => {
+    return searchMatches.filter(d => {
+      const matchesCategory = categoryFilter === 'all' || d.category === categoryFilter;
+      return matchesCategory;
+    });
+  }, [searchMatches, categoryFilter]);
 
   const dynamicSuggestions = useMemo(() => {
     if (search.length < 2) return [];
@@ -83,6 +105,30 @@ const Destinations: React.FC<DestinationsProps> = ({ language, onSelectDestinati
       )
       .slice(0, 5);
   }, [search]);
+
+  // AI Insight Generation Logic
+  useEffect(() => {
+    if (search.length > 3) {
+      const timer = setTimeout(async () => {
+        setIsGeneratingInsight(true);
+        try {
+          const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+          const response = await ai.models.generateContent({
+            model: 'gemini-3-flash-preview',
+            contents: `As an elite Sri Lanka travel archivist, provide a one-sentence high-fidelity summary about: ${search}. If it's a specific place, mention its aura. Language: ${language === 'SI' ? 'Sinhala' : 'English'}.`,
+          });
+          setAiInsight(response.text || null);
+        } catch (e) {
+          console.error("Insight generation failed", e);
+        } finally {
+          setIsGeneratingInsight(false);
+        }
+      }, 1500);
+      return () => clearTimeout(timer);
+    } else {
+      setAiInsight(null);
+    }
+  }, [search, language]);
 
   useEffect(() => {
     setCurrentPage(1);
@@ -218,12 +264,29 @@ const Destinations: React.FC<DestinationsProps> = ({ language, onSelectDestinati
       </div>
 
       <div className="max-w-7xl mx-auto px-4 -mt-12 relative z-20 space-y-12">
+        {/* Dynamic Category Filter Bar with Results Count */}
         <div className="flex flex-col md:flex-row items-center gap-6">
           <div className="flex flex-wrap items-center justify-center gap-2 bg-white/90 backdrop-blur-xl p-3 rounded-[3.5rem] shadow-xl border border-white/50">
             {categories.map(cat => (
-              <button key={cat.id} onClick={() => setCategoryFilter(cat.id)} className={`flex items-center gap-3 px-8 py-4 rounded-full transition-all text-[10px] font-black uppercase tracking-widest ${categoryFilter === cat.id ? 'bg-[#0a0a0a] text-white' : 'text-gray-400 hover:text-[#0a0a0a]'}`}>
+              <button 
+                key={cat.id} 
+                onClick={() => setCategoryFilter(cat.id)} 
+                className={`flex items-center gap-3 px-8 py-4 rounded-full transition-all text-[10px] font-black uppercase tracking-widest relative group/cat ${categoryFilter === cat.id ? 'bg-[#0a0a0a] text-white' : 'text-gray-400 hover:text-[#0a0a0a]'}`}
+              >
                 <cat.icon size={14} />
-                <span>{language === 'EN' ? cat.EN : cat.SI}</span>
+                <span className="flex items-center gap-2">
+                  {language === 'EN' ? cat.EN : cat.SI}
+                  {categoryCounts[cat.id] > 0 && (
+                    <span className={`text-[8px] px-1.5 py-0.5 rounded-md font-bold transition-all ${categoryFilter === cat.id ? 'bg-white/20 text-white' : 'bg-black/5 text-gray-400'}`}>
+                      {categoryCounts[cat.id]}
+                    </span>
+                  )}
+                </span>
+                {categoryFilter === cat.id && search && (
+                   <div className="absolute -top-2 -right-2 w-4 h-4 bg-[#0EA5E9] rounded-full flex items-center justify-center animate-bounce shadow-lg">
+                      <Zap size={8} fill="white" className="text-white" />
+                   </div>
+                )}
               </button>
             ))}
           </div>
@@ -238,35 +301,96 @@ const Destinations: React.FC<DestinationsProps> = ({ language, onSelectDestinati
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 pt-8">
-          {paginatedDestinations.map((dest, idx) => (
-            <button key={dest.id} onClick={() => onSelectDestination(dest)} className="group text-left bg-white rounded-[4.5rem] overflow-hidden shadow-xl border border-gray-100 flex flex-col hover:-translate-y-4 transition-all duration-700 animate-in slide-in-from-bottom-12" style={{ animationDelay: `${idx * 100}ms` }}>
-              <div className="relative h-[400px] overflow-hidden">
-                <img src={dest.image} alt={dest.name[language]} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[6000ms]" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                <div className="absolute bottom-10 left-10 right-10 space-y-3">
-                   <div className="flex items-center gap-3 text-[#0EA5E9]">
-                      <MapPin size={16} />
-                      <span className="text-[10px] font-black uppercase tracking-[0.4em]">{dest.location}</span>
-                   </div>
-                   <h3 className="text-4xl font-heritage font-bold text-white tracking-tight leading-tight">
-                      {dest.name[language]}
-                   </h3>
-                </div>
+        {/* AI Neural Insight Box - Integrated Search Result */}
+        {(isGeneratingInsight || aiInsight) && (
+          <div className="animate-in fade-in slide-in-from-top-4 duration-1000">
+            <div className="bg-[#0a0a0a] p-10 md:p-14 rounded-[3.5rem] relative overflow-hidden group shadow-[0_40px_100px_rgba(0,0,0,0.15)] border border-white/5">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(14,165,233,0.1)_0%,transparent_50%)] animate-pulse" />
+              <div className="absolute top-0 right-0 p-12 opacity-5 text-white group-hover:rotate-12 transition-transform duration-1000">
+                 <Brain size={160} />
               </div>
-              <div className="p-12 space-y-6 flex-grow flex flex-col justify-between">
-                <p className="text-xl text-gray-500 font-light leading-relaxed italic border-l-4 border-[#0EA5E9]/10 pl-8">
-                  "{dest.shortStory[language]}"
-                </p>
-                <div className="pt-8 border-t border-gray-50 flex items-center justify-between">
-                  <span className="text-[11px] font-black text-gray-300 uppercase tracking-widest">Protocol Synced</span>
-                  <div className="w-12 h-12 rounded-2xl bg-gray-50 flex items-center justify-center text-[#0EA5E9] group-hover:bg-[#0EA5E9] group-hover:text-white transition-all duration-500">
-                     <ArrowRight size={24} />
+              
+              <div className="relative z-10 flex flex-col md:flex-row items-center gap-10">
+                <div className="w-20 h-20 bg-white/5 backdrop-blur-3xl rounded-[1.8rem] border border-white/10 flex items-center justify-center text-[#0EA5E9] shadow-2xl relative overflow-hidden">
+                   <div className="absolute inset-0 bg-gradient-to-br from-[#0EA5E9]/20 to-transparent animate-pulse" />
+                   <Sparkles size={32} className="relative z-10" />
+                </div>
+                <div className="space-y-4 flex-grow text-center md:text-left">
+                  <div className="flex items-center justify-center md:justify-start gap-4">
+                     <span className="text-[10px] font-black text-[#0EA5E9] uppercase tracking-[0.6em]">Registry_Neural_Summary</span>
+                     <div className="h-px w-20 bg-white/10 hidden md:block" />
+                  </div>
+                  {isGeneratingInsight ? (
+                    <div className="flex items-center justify-center md:justify-start gap-4 h-12">
+                      <div className="flex gap-2">
+                        <div className="w-2 h-2 rounded-full bg-[#0EA5E9] animate-bounce [animation-delay:-0.3s]" />
+                        <div className="w-2 h-2 rounded-full bg-[#0EA5E9] animate-bounce [animation-delay:-0.15s]" />
+                        <div className="w-2 h-2 rounded-full bg-[#0EA5E9] animate-bounce" />
+                      </div>
+                      <span className="text-gray-500 font-bold italic text-sm">Synthesizing archival data...</span>
+                    </div>
+                  ) : (
+                    <h4 className="text-2xl md:text-4xl font-heritage font-medium text-white/90 leading-tight md:leading-[1.3] italic">
+                      "{aiInsight}"
+                    </h4>
+                  )}
+                </div>
+                {aiInsight && (
+                  <div className="flex flex-col items-end gap-2 text-right hidden md:flex">
+                     <p className="text-[8px] font-black text-white/20 uppercase tracking-[0.4em]">Protocol</p>
+                     <p className="text-xs font-black text-white/60 tracking-widest">GEMINI_3_FLASH</p>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 pt-8">
+          {paginatedDestinations.length > 0 ? paginatedDestinations.map((dest, idx) => {
+            return (
+              <div key={dest.id} className="group text-left bg-white rounded-[4.5rem] overflow-hidden shadow-xl border border-gray-100 flex flex-col hover:-translate-y-4 transition-all duration-700 animate-in slide-in-from-bottom-12" style={{ animationDelay: `${idx * 100}ms` }}>
+                <div className="relative h-[400px] overflow-hidden cursor-pointer" onClick={() => onSelectDestination(dest)}>
+                  <img src={dest.image} alt={dest.name[language]} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[6000ms]" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                  
+                  <div className="absolute bottom-10 left-10 right-10 space-y-3">
+                     <div className="flex items-center gap-3 text-[#0EA5E9]">
+                        <MapPin size={16} />
+                        <span className="text-[10px] font-black uppercase tracking-[0.4em]">{dest.location}</span>
+                     </div>
+                     <h3 className="text-4xl font-heritage font-bold text-white tracking-tight leading-tight">
+                        {dest.name[language]}
+                     </h3>
+                  </div>
+                </div>
+                <div className="p-12 space-y-6 flex-grow flex flex-col justify-between">
+                  <p className="text-xl text-gray-500 font-light leading-relaxed italic border-l-4 border-[#0EA5E9]/10 pl-8">
+                    "{dest.shortStory[language]}"
+                  </p>
+                  <div className="pt-8 border-t border-gray-50 flex items-center justify-between">
+                    <span className="text-[11px] font-black text-gray-300 uppercase tracking-widest">Protocol Synced</span>
+                    <button onClick={() => onSelectDestination(dest)} className="w-12 h-12 rounded-2xl bg-gray-50 flex items-center justify-center text-[#0EA5E9] group-hover:bg-[#0EA5E9] group-hover:text-white transition-all duration-500">
+                       <ArrowRight size={24} />
+                    </button>
                   </div>
                 </div>
               </div>
-            </button>
-          ))}
+            );
+          }) : (
+            <div className="col-span-full py-40 text-center space-y-8 animate-in fade-in duration-1000">
+               <div className="w-24 h-24 bg-gray-50 rounded-full flex items-center justify-center mx-auto text-gray-200">
+                  <Search size={48} />
+               </div>
+               <div className="space-y-4">
+                  <h3 className="text-3xl font-heritage font-bold text-[#0a0a0a] uppercase tracking-tighter">No Registry Matches Found</h3>
+                  <p className="text-gray-400 font-medium italic max-w-md mx-auto leading-relaxed">
+                    The requested coordinates or category synchronization returned no results for "{search}". Try clearing filters or search terms.
+                  </p>
+               </div>
+               <button onClick={resetFilters} className="px-12 py-5 bg-[#0a0a0a] text-white rounded-full font-black text-[10px] uppercase tracking-[0.4em] shadow-xl hover:scale-110 active:scale-95 transition-all">Initialize Reset</button>
+            </div>
+          )}
         </div>
 
         {totalPages > 1 && (

@@ -1,5 +1,7 @@
 
+
 import React from 'react';
+// Fix: Added implementation to Navbar.tsx to resolve module error
 import Navbar from './Navbar.tsx';
 import { Language, User } from '../types.ts';
 import { Facebook, Instagram, Youtube, MapPin, Mail, Phone, ShieldCheck, Sparkles } from 'lucide-react';
