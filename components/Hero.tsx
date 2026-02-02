@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Language, User } from '../types.ts';
 import { Box, Orbit, Layers, ShieldCheck, Activity, ChevronRight } from 'lucide-react';
@@ -32,8 +33,8 @@ const Hero: React.FC<HeroProps> = ({ language, setView, user }) => {
     };
   }, []);
 
-  // User-provided cinematic aerial view
-  const heroBgImage = "https://images.unsplash.com/photo-1647002409613-0480145f7c3f?q=80&w=1074&auto=format&fit=crop";
+  // User-provided cinematic aerial view of Sri Lanka (Updated)
+  const heroBgImage = "https://i.pinimg.com/1200x/2a/63/1d/2a631d3d6664c0c84bf78db4a758a2a9.jpg";
 
   return (
     <div className="relative h-[110vh] flex items-center justify-center overflow-hidden bg-[#020205]" style={{ perspective: '2000px' }}>
