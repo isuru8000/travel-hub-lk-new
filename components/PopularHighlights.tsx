@@ -58,7 +58,7 @@ const HighlightCard: React.FC<{ dest: Destination; index: number; language: Lang
             </div>
 
             <div className="absolute bottom-6 left-6 md:bottom-10 md:left-10 flex items-center gap-4 transform translateZ(30px) md:translateZ(60px)">
-               <div className="px-5 py-2.5 md:px-8 md:py-4 bg-[#E1306C] text-white rounded-xl md:rounded-2xl text-[8px] md:text-[10px] font-black shadow-2xl tracking-[0.3em] md:tracking-[0.5em] uppercase border border-white/30">
+               <div className="px-5 py-2.5 md:px-8 md:py-4 bg-[#0EA5E9] text-white rounded-xl md:rounded-2xl text-[8px] md:text-[10px] font-black shadow-2xl tracking-[0.3em] md:tracking-[0.5em] uppercase border border-white/30">
                   SCAN STATUS: READY
                </div>
             </div>
@@ -69,22 +69,22 @@ const HighlightCard: React.FC<{ dest: Destination; index: number; language: Lang
           className="absolute -bottom-8 -right-8 md:-bottom-12 md:-right-12 w-20 h-20 md:w-36 md:h-36 bg-white rounded-full shadow-[0_20px_60px_rgba(0,0,0,0.15)] flex items-center justify-center border border-gray-100 transition-all duration-700 group-hover:scale-110 transform translateZ(60px) md:translateZ(120px) hidden sm:flex"
         >
            <div className="relative">
-              <MapPin size={24} className="md:w-12 md:h-12 text-[#E1306C]" />
-              <div className="absolute inset-0 bg-[#E1306C]/20 blur-lg rounded-full animate-ping" />
+              <MapPin size={24} className="md:w-12 md:h-12 text-[#0EA5E9]" />
+              <div className="absolute inset-0 bg-[#0EA5E9]/20 blur-lg rounded-full animate-ping" />
            </div>
         </div>
       </div>
 
       <div className="w-full lg:w-2/5 space-y-6 md:space-y-12" style={{ transform: 'translateZ(40px)' }}>
         <div className="space-y-4 md:space-y-6">
-          <div className="flex items-center gap-4 text-[#E1306C] font-black text-[9px] md:text-[11px] tracking-[0.5em] md:tracking-[0.7em] uppercase">
+          <div className="flex items-center gap-4 text-[#0EA5E9] font-black text-[9px] md:text-[11px] tracking-[0.5em] md:tracking-[0.7em] uppercase">
             <Box size={14} className="md:w-5 md:h-5 animate-spin-slow" />
             {dest.location}
           </div>
           <h3 className="text-3xl md:text-6xl font-heritage font-bold text-[#0a0a0a] leading-[1.1] md:leading-[1] tracking-tighter drop-shadow-lg">
             {dest.name[language]}
           </h3>
-          <p className="text-xl md:text-3xl text-gray-400 font-light italic leading-tight border-l-[6px] md:border-l-[10px] border-[#E1306C]/20 pl-6 md:pl-12 py-2 md:py-3">
+          <p className="text-xl md:text-3xl text-gray-400 font-light italic leading-tight border-l-[6px] md:border-l-[10px] border-[#0EA5E9]/20 pl-6 md:pl-12 py-2 md:py-3">
             {dest.shortStory[language]}
           </p>
         </div>
@@ -98,7 +98,7 @@ const HighlightCard: React.FC<{ dest: Destination; index: number; language: Lang
             onClick={onClick}
             className="group relative flex items-center gap-6 md:gap-8 px-8 py-5 md:px-16 md:py-8 bg-[#0a0a0a] text-white rounded-[1.5rem] md:rounded-[3rem] shadow-[0_20px_60px_rgba(0,0,0,0.2)] transition-all duration-700 hover:scale-110 active:scale-95 overflow-hidden w-full sm:w-auto justify-center sm:justify-start"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-[#E1306C] to-[#f09433] opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0EA5E9] to-[#3B82F6] opacity-0 group-hover:opacity-100 transition-opacity" />
             <span className="relative z-10 text-[10px] md:text-[12px] font-black uppercase tracking-[0.4em] md:tracking-[0.6em]">
               {language === 'EN' ? 'Initialize Reality' : 'යථාර්ථය අරඹන්න'}
             </span>
@@ -113,7 +113,7 @@ const HighlightCard: React.FC<{ dest: Destination; index: number; language: Lang
 };
 
 const PopularHighlights: React.FC<PopularHighlightsProps> = ({ language, onSelectDestination, setView }) => {
-  const popularIds = ['sigiriya', 'kandy-temple', 'ella'];
+  const popularIds = ['sigiriya', 'kandy-temple', 'ella', 'galle-fort', 'yala'];
   const highlights = DESTINATIONS.filter(d => popularIds.includes(d.id));
 
   return (
@@ -124,8 +124,8 @@ const PopularHighlights: React.FC<PopularHighlightsProps> = ({ language, onSelec
              <Compass size={250} className="md:w-[400px] md:h-[400px] animate-spin-slow" />
           </div>
           <div className="inline-flex items-center gap-3 md:gap-5 px-6 md:px-10 py-2.5 md:py-4 rounded-full bg-black/5 border border-black/10 text-[#0a0a0a] text-[9px] md:text-[11px] font-black uppercase tracking-[0.4em] md:tracking-[0.7em] mb-4 md:mb-6 shadow-sm">
-            <Sparkles size={14} className="md:w-5 md:h-5 text-[#E1306C]" />
-            {language === 'EN' ? 'National Archetypes' : 'ජාතික උරුමයන්'}
+            <Sparkles size={14} className="md:w-5 md:h-5 text-[#0EA5E9]" />
+            {language === 'EN' ? 'The Best of Lanka' : 'ශ්‍රී ලංකාවේ විශිෂ්ටතම ස්ථාන'}
           </div>
           <h2 className="text-3xl md:text-7xl font-heritage font-bold text-[#0a0a0a] tracking-tighter leading-tight md:leading-[0.9] drop-shadow-2xl">
             The Crown <br/><span className="italic insta-text-gradient">Jewels.</span>
@@ -150,8 +150,8 @@ const PopularHighlights: React.FC<PopularHighlightsProps> = ({ language, onSelec
            <div className="relative p-12 md:p-32 bg-white rounded-[3rem] md:rounded-[8rem] text-center space-y-12 md:space-y-16 shadow-[0_50px_100px_rgba(0,0,0,0.1)] border border-gray-50 overflow-hidden group transform lg:hover:-translate-y-8 transition-all duration-1000">
               <div className="absolute inset-0 pattern-overlay opacity-10 group-hover:opacity-30 transition-opacity" />
               <div className="space-y-8 md:space-y-10 relative z-10">
-                <div className="w-16 h-16 md:w-28 md:h-28 bg-[#E1306C]/10 rounded-[1.2rem] md:rounded-[2.5rem] flex items-center justify-center mx-auto mb-6 md:mb-10 animate-pulse shadow-inner border border-[#E1306C]/20">
-                  <ShieldCheck size={32} className="md:w-14 md:h-14 text-[#E1306C]" />
+                <div className="w-16 h-16 md:w-28 md:h-28 bg-[#0EA5E9]/10 rounded-[1.2rem] md:rounded-[2.5rem] flex items-center justify-center mx-auto mb-6 md:mb-10 animate-pulse shadow-inner border border-[#0EA5E9]/20">
+                  <ShieldCheck size={32} className="md:w-14 md:h-14 text-[#0EA5E9]" />
                 </div>
                 <h3 className="text-3xl md:text-7xl font-heritage font-bold text-[#0a0a0a] leading-[1.1] md:leading-[0.9] tracking-tighter">
                   Beyond <br/><span className="insta-text-gradient italic">The Map.</span>
@@ -164,7 +164,7 @@ const PopularHighlights: React.FC<PopularHighlightsProps> = ({ language, onSelec
               </div>
               <button 
                 onClick={() => setView('destinations')}
-                className="relative z-10 px-10 py-6 md:px-24 md:py-10 bg-[#0a0a0a] text-white rounded-full hover:scale-110 transition-all font-black shadow-[0_30px_80px_rgba(225,48,108,0.5)] text-xs md:text-lg uppercase tracking-[0.4em] md:tracking-[0.7em] group border border-white/10"
+                className="relative z-10 px-10 py-6 md:px-24 md:py-10 bg-[#0a0a0a] text-white rounded-full hover:scale-110 transition-all font-black shadow-[0_30px_80px_rgba(14,165,233,0.5)] text-xs md:text-lg uppercase tracking-[0.4em] md:tracking-[0.7em] group border border-white/10"
               >
                 <span className="flex items-center gap-6 md:gap-8">
                   {UI_STRINGS.exploreDestinations[language]}

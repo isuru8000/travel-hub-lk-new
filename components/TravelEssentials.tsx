@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Language } from '../types.ts';
 import { TRAVEL_ESSENTIALS_DATA } from '../constants.tsx';
@@ -43,8 +44,9 @@ const TravelEssentials: React.FC<TravelEssentialsProps> = ({ language }) => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 -mt-16 relative z-10 space-y-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="max-w-7xl mx-auto px-6 md:px-8 -mt-16 relative z-10 space-y-16">
+        {/* Updated grid spacing */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-16 pt-8">
           {TRAVEL_ESSENTIALS_DATA.map((item, idx) => {
             // @ts-ignore - Dynamic lookup for icons
             const IconComponent = Icons[item.icon] || Backpack;
@@ -133,12 +135,12 @@ const TravelEssentials: React.FC<TravelEssentialsProps> = ({ language }) => {
           <div className="pt-10 flex flex-wrap items-center justify-center gap-12 opacity-30">
             <div className="flex items-center gap-3">
                <Shield size={18} className="text-green-500" />
-               <span className="text-[9px] font-black uppercase tracking-[0.8em]">Registry_Secure_Active</span>
+               <span className="text-[10px] font-black uppercase tracking-[0.8em]">Registry_Secure_Active</span>
             </div>
             <div className="w-1.5 h-1.5 rounded-full bg-gray-300" />
             <div className="flex items-center gap-3">
                <Activity size={18} className="text-blue-500" />
-               <span className="text-[9px] font-black uppercase tracking-[0.8em]">Transmission_Stable</span>
+               <span className="text-[10px] font-black uppercase tracking-[0.4em]">Transmission_Stable</span>
             </div>
           </div>
         </div>

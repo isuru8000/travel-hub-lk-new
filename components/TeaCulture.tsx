@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Language, TeaExperience } from '../types.ts';
 import { TEA_DATA } from '../constants.tsx';
@@ -103,7 +104,7 @@ const TeaCulture: React.FC<TeaCultureProps> = ({ language }) => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 -mt-24 relative z-10 space-y-20">
+      <div className="max-w-7xl mx-auto px-6 md:px-8 -mt-24 relative z-10 space-y-20">
         {/* Tea Selection HUD */}
         <div className="flex justify-center">
            <div className="bg-white/95 backdrop-blur-xl border border-emerald-100 px-12 py-8 rounded-[3rem] shadow-2xl flex flex-wrap items-center justify-center gap-12">
@@ -126,7 +127,8 @@ const TeaCulture: React.FC<TeaCultureProps> = ({ language }) => {
            </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 pt-10">
+        {/* Updated grid spacing */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-16 pt-8">
           {TEA_DATA.map((item, idx) => (
             <TeaCard key={item.id} item={item} language={language} idx={idx} />
           ))}

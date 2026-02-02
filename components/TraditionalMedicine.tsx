@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Language, TraditionalMedicine as TraditionalMedicineType } from '../types.ts';
 import { MEDICINE_DATA } from '../constants.tsx';
@@ -100,7 +101,7 @@ const TraditionalMedicine: React.FC<TraditionalMedicineProps> = ({ language }) =
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 -mt-20 relative z-10 space-y-32">
+      <div className="max-w-7xl mx-auto px-6 md:px-8 -mt-20 relative z-10 space-y-32">
         {/* Herbs Section */}
         <div className="space-y-12">
           <div className="flex items-center gap-6">
@@ -109,7 +110,8 @@ const TraditionalMedicine: React.FC<TraditionalMedicineProps> = ({ language }) =
             </h3>
             <div className="flex-grow h-px bg-gradient-to-r from-gray-200 to-transparent" />
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+          {/* Updated grid spacing */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-16 pt-8">
             {herbs.map((item) => (
               <MedicineCard key={item.id} item={item} language={language} />
             ))}
@@ -120,11 +122,12 @@ const TraditionalMedicine: React.FC<TraditionalMedicineProps> = ({ language }) =
         <div className="space-y-12">
           <div className="flex items-center gap-6">
             <h3 className="text-3xl font-heritage font-bold text-[#262626] bg-white px-8 py-3 rounded-full shadow-lg border border-gray-100">
-              {language === 'EN' ? "Healing Rituals & Therapies" : "සුව කිරීමේ චාරිත්‍ර සහ ප්‍රතිකාර"}
+              {language === 'EN' ? "drinks" : "පාන වර්ග"}
             </h3>
             <div className="flex-grow h-px bg-gradient-to-r from-gray-200 to-transparent" />
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+          {/* Updated grid spacing */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-16 pt-8">
             {treatments.map((item) => (
               <MedicineCard key={item.id} item={item} language={language} />
             ))}

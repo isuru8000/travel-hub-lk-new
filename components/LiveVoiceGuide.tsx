@@ -190,17 +190,17 @@ const LiveVoiceGuide: React.FC<LiveVoiceGuideProps> = ({ language }) => {
   return (
     <>
       <div className="fixed bottom-6 left-6 z-[60] group/live">
-        <div className={`absolute inset-0 bg-[#E1306C] rounded-full animate-ping opacity-20 scale-150 transition-opacity ${isActive ? 'opacity-40' : 'group-hover/live:opacity-0'}`}></div>
+        <div className={`absolute inset-0 bg-[#0EA5E9] rounded-full animate-ping opacity-20 scale-150 transition-opacity ${isActive ? 'opacity-40' : 'group-hover/live:opacity-0'}`}></div>
         <button 
           onClick={isActive ? stopSession : startSession}
           disabled={isConnecting}
-          className={`relative p-6 rounded-full shadow-[0_30px_70px_rgba(225,48,108,0.3)] transition-all duration-700 flex items-center gap-4 overflow-hidden border border-white/20 ${isActive ? 'bg-[#E1306C] text-white scale-110' : 'bg-[#0a0a0a] text-white hover:scale-110 active:scale-95'}`}
+          className={`relative p-6 rounded-full shadow-[0_30px_70px_rgba(14,165,233,0.3)] transition-all duration-700 flex items-center gap-4 overflow-hidden border border-white/20 ${isActive ? 'bg-[#0EA5E9] text-white scale-110' : 'bg-[#0a0a0a] text-white hover:scale-110 active:scale-95'}`}
         >
           <div className="relative z-10 flex items-center gap-4">
              {isConnecting ? (
                <Loader2 size={28} className="animate-spin text-white" />
              ) : (
-               <Mic size={28} className={`${isActive ? 'animate-pulse' : 'text-[#E1306C]'}`} />
+               <Mic size={28} className={`${isActive ? 'animate-pulse' : 'text-[#0EA5E9]'}`} />
              )}
              <span className="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-700 whitespace-nowrap font-black text-[10px] tracking-[0.4em] uppercase">
                 {isActive ? 'SYNC ACTIVE' : (isConnecting ? 'LINKING...' : 'INITIATE VOICE LINK')}
@@ -224,7 +224,7 @@ const LiveVoiceGuide: React.FC<LiveVoiceGuideProps> = ({ language }) => {
                 {error === "API_KEY_ERROR" ? (
                   <button 
                     onClick={handleKeySelection}
-                    className="w-full py-3 bg-[#0a0a0a] text-white rounded-xl text-[9px] font-black uppercase tracking-[0.3em] flex items-center justify-center gap-2 hover:bg-[#E1306C] transition-colors"
+                    className="w-full py-3 bg-[#0a0a0a] text-white rounded-xl text-[9px] font-black uppercase tracking-[0.3em] flex items-center justify-center gap-2 hover:bg-[#0EA5E9] transition-colors"
                   >
                     <Key size={14} />
                     Select Project Key
@@ -240,7 +240,7 @@ const LiveVoiceGuide: React.FC<LiveVoiceGuideProps> = ({ language }) => {
       {isActive && (
         <div className="fixed inset-0 z-[100] bg-black flex flex-col items-center justify-center p-6 animate-in fade-in duration-1000">
            <div className="absolute inset-0 pattern-overlay opacity-10 pointer-events-none"></div>
-           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(225,48,108,0.15)_0%,transparent_70%)] animate-pulse"></div>
+           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(14,165,233,0.15)_0%,transparent_70%)] animate-pulse"></div>
 
            <button 
              onClick={stopSession}
@@ -264,7 +264,7 @@ const LiveVoiceGuide: React.FC<LiveVoiceGuideProps> = ({ language }) => {
                  {[1,2,3].map(i => (
                    <div 
                      key={i}
-                     className={`absolute rounded-full border-2 border-[#E1306C]/30 transition-all duration-700 ${status === 'speaking' ? 'animate-talking-ring' : status === 'listening' ? 'animate-listening-ring' : ''}`}
+                     className={`absolute rounded-full border-2 border-[#0EA5E9]/30 transition-all duration-700 ${status === 'speaking' ? 'animate-talking-ring' : status === 'listening' ? 'animate-listening-ring' : ''}`}
                      style={{ 
                        width: `${200 + i * 80}px`, 
                        height: `${200 + i * 80}px`,
@@ -273,17 +273,17 @@ const LiveVoiceGuide: React.FC<LiveVoiceGuideProps> = ({ language }) => {
                    ></div>
                  ))}
 
-                 <div className="relative w-32 h-32 story-ring p-[2px] rounded-full shadow-[0_0_80px_rgba(225,48,108,0.4)]">
+                 <div className="relative w-32 h-32 story-ring p-[2px] rounded-full shadow-[0_0_80px_rgba(14,165,233,0.4)]">
                     <div className="w-full h-full bg-[#0a0a0a] rounded-full flex items-center justify-center overflow-hidden">
                        {status === 'speaking' ? (
                          <Volume2 size={48} className="text-white animate-bounce-slow" />
                        ) : (
-                         <Mic size={48} className="text-[#E1306C] animate-pulse" />
+                         <Mic size={48} className="text-[#0EA5E9] animate-pulse" />
                        )}
                     </div>
                     <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 flex gap-3">
                        {[1,2,3].map(i => (
-                         <div key={i} className={`w-1.5 h-1.5 rounded-full ${status === 'speaking' ? 'bg-[#E1306C] animate-bounce' : 'bg-white/20'}`} style={{ animationDelay: `${i * 0.1}s` }} />
+                         <div key={i} className={`w-1.5 h-1.5 rounded-full ${status === 'speaking' ? 'bg-[#0EA5E9] animate-bounce' : 'bg-white/20'}`} style={{ animationDelay: `${i * 0.1}s` }} />
                        ))}
                     </div>
                  </div>
@@ -297,7 +297,7 @@ const LiveVoiceGuide: React.FC<LiveVoiceGuideProps> = ({ language }) => {
                  </p>
                  <div className="flex items-center justify-center gap-6 pt-8">
                     <div className="flex items-center gap-3">
-                       <Activity size={16} className="text-[#E1306C] animate-pulse" />
+                       <Activity size={16} className="text-[#0EA5E9] animate-pulse" />
                        <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.4em]">latency_optimized</span>
                     </div>
                     <div className="h-4 w-px bg-white/10"></div>
@@ -321,7 +321,7 @@ const LiveVoiceGuide: React.FC<LiveVoiceGuideProps> = ({ language }) => {
               </div>
               <div className="flex flex-col items-end gap-3">
                  <div className="h-1 w-48 bg-white/10 rounded-full overflow-hidden">
-                    <div className="h-full bg-[#E1306C] animate-pulse" style={{ width: status === 'speaking' ? '80%' : '15%' }} />
+                    <div className="h-full bg-[#0EA5E9] animate-pulse" style={{ width: status === 'speaking' ? '80%' : '15%' }} />
                  </div>
                  <p className="text-[9px] font-black text-white/20 uppercase tracking-[0.4em]">Native_Audio_Stream_Active</p>
               </div>
@@ -331,9 +331,9 @@ const LiveVoiceGuide: React.FC<LiveVoiceGuideProps> = ({ language }) => {
 
       <style dangerouslySetInnerHTML={{ __html: `
         @keyframes talking-ring {
-          0% { transform: scale(1); opacity: 0.3; border-color: #E1306C; }
-          50% { transform: scale(1.1); opacity: 0.6; border-color: #f09433; }
-          100% { transform: scale(1); opacity: 0.3; border-color: #E1306C; }
+          0% { transform: scale(1); opacity: 0.3; border-color: #0EA5E9; }
+          50% { transform: scale(1.1); opacity: 0.6; border-color: #3B82F6; }
+          100% { transform: scale(1); opacity: 0.3; border-color: #0EA5E9; }
         }
         @keyframes listening-ring {
           0% { transform: scale(1); opacity: 0.2; }

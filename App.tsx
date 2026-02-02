@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useMemo } from 'react';
 import { Language, User, Destination } from './types.ts';
 import Layout from './components/Layout.tsx';
@@ -7,16 +8,12 @@ import Destinations from './components/Destinations.tsx';
 import Foods from './components/Foods.tsx';
 import HeritageMusic from './components/HeritageMusic.tsx';
 import TraditionalMedicine from './components/TraditionalMedicine.tsx';
-import TeaCulture from './components/TeaCulture.tsx';
-import Hiking from './components/Hiking.tsx';
 import Phrasebook from './components/Phrasebook.tsx';
 import TravelEssentials from './components/TravelEssentials.tsx';
 import Festivals from './components/Festivals.tsx';
 import CategoriesSection from './components/CategoriesSection.tsx';
-import HeritageHub from './components/HeritageHub.tsx';
 import StorySection from './components/StorySection.tsx';
 import AIModal from './components/AIModal.tsx';
-import TravelMemories from './components/TravelMemories.tsx';
 import Quiz from './components/Quiz.tsx';
 import VRExperience from './components/VRExperience.tsx';
 import VRShowcase from './components/VRShowcase.tsx';
@@ -38,7 +35,7 @@ import VRTripFuture from './components/VRTripFuture.tsx';
 import { supabase } from './lib/supabase.ts';
 import { Sparkles, Compass, ShieldCheck, Star, MapPin, ArrowRight, Database, Box, Layers, Zap, Lock, Scan, Map as MapIcon, Heart, Globe, Library } from 'lucide-react';
 
-type View = 'home' | 'destinations' | 'map' | 'hotels' | 'transport' | 'booking-destinations' | 'about' | 'foods' | 'music' | 'interests' | 'medicine' | 'tea' | 'hiking' | 'phrases' | 'essentials' | 'festivals' | 'memories' | 'quiz' | 'vr-experience' | 'vr-showcase' | 'search' | 'contact' | 'marketplace' | 'community' | 'shop' | 'destination-detail' | 'legacy-archive' | 'vr-trip';
+type View = 'home' | 'destinations' | 'map' | 'hotels' | 'transport' | 'booking-destinations' | 'about' | 'foods' | 'music' | 'interests' | 'medicine' | 'phrases' | 'essentials' | 'festivals' | 'memories' | 'quiz' | 'vr-experience' | 'vr-showcase' | 'search' | 'contact' | 'marketplace' | 'community' | 'shop' | 'destination-detail' | 'legacy-archive' | 'vr-trip';
 
 export default function App() {
   const [language, setLanguage] = useState<Language>('EN');
@@ -138,10 +135,6 @@ export default function App() {
         return <div className="pt-24"><HeritageMusic language={language} /></div>;
       case 'medicine':
         return <div className="pt-24"><TraditionalMedicine language={language} /></div>;
-      case 'tea':
-        return <div className="pt-24"><TeaCulture language={language} /></div>;
-      case 'hiking':
-        return <div className="pt-24"><Hiking language={language} setView={setView} /></div>;
       case 'phrases':
         return <div className="pt-24"><Phrasebook language={language} /></div>;
       case 'essentials':

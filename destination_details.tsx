@@ -1,3 +1,4 @@
+
 import { Destination } from './types.ts';
 
 export const DESTINATIONS_DATA: Destination[] = [
@@ -426,7 +427,7 @@ export const DESTINATIONS_DATA: Destination[] = [
     id: "nilaveli",
     name: { EN: "Nilaveli Sands", SI: "නිලාවේලි වෙරළ" },
     category: "beach",
-    image: "https://images.unsplash.com/photo-1544921603-91185f0962b1?q=80&w=1200&auto=format&fit=crop",
+    image: "https://i.pinimg.com/1200x/f6/8f/fc/f68ffcca31ff62a3724838797417a17e.jpg",
     gallery: [
       "https://images.unsplash.com/photo-1544921603-91185f0962b1?auto=format&fit=crop&w=1200&q=80",
       "https://images.unsplash.com/photo-1501534159995-5b8c9ad9479b?auto=format&fit=crop&w=1200&q=80"
@@ -446,7 +447,7 @@ export const DESTINATIONS_DATA: Destination[] = [
     id: "passikudah",
     name: { EN: "Passikudah Bay", SI: "පාසිකුඩා" },
     category: "beach",
-    image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1200&auto=format&fit=crop",
+    image: "https://i.pinimg.com/736x/38/df/43/38df4340f8099632dbb679ef2033c16a.jpg",
     gallery: [
       "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=80",
       "https://images.unsplash.com/photo-1544921603-91185f0962b1?auto=format&fit=crop&w=1200&q=80"

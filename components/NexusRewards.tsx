@@ -191,7 +191,7 @@ const NexusRewards: React.FC<NexusRewardsProps> = ({ language, user, onLogin, se
          <div 
            className="absolute inset-0 opacity-[0.1] transition-transform duration-1000 ease-out" 
            style={{ 
-             backgroundImage: `linear-gradient(#E1306C 1px, transparent 1px), linear-gradient(90deg, #E1306C 1px, transparent 1px)`, 
+             backgroundImage: `linear-gradient(#0EA5E9 1px, transparent 1px), linear-gradient(90deg, #0EA5E9 1px, transparent 1px)`, 
              backgroundSize: '100px 100px', 
              transform: `rotateX(75deg) translateY(200px) scale(3) rotateZ(${mousePos.x * 5}deg)`,
              maskImage: 'radial-gradient(ellipse at center, black 10%, transparent 80%)' 
@@ -199,16 +199,16 @@ const NexusRewards: React.FC<NexusRewardsProps> = ({ language, user, onLogin, se
          />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10 space-y-24">
+      <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10 space-y-24">
         
         {/* Community Header */}
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-12 border-b border-white/5 pb-20">
           <div className="space-y-10">
             <div className="flex flex-col items-start gap-6">
-               <div className="inline-flex items-center gap-4 px-6 py-2.5 rounded-full bg-[#E1306C]/15 border border-[#E1306C]/30 text-[#E1306C] text-[10px] font-black uppercase tracking-[0.5em] shadow-3xl animate-pulse">
+               <div className="inline-flex items-center gap-4 px-6 py-2.5 rounded-full bg-[#0EA5E9]/15 border border-[#0EA5E9]/30 text-[#0EA5E9] text-[10px] font-black uppercase tracking-[0.5em] shadow-3xl animate-pulse">
                   <Users size={14} fill="currentColor" /> Community_Hub_v4.5
                </div>
-               <div className="h-16 w-[1px] bg-gradient-to-b from-[#E1306C] to-transparent"></div>
+               <div className="h-16 w-[1px] bg-gradient-to-b from-[#0EA5E9] to-transparent"></div>
             </div>
             
             <h1 className="text-6xl md:text-[10rem] font-heritage font-bold tracking-tighter leading-[0.8] uppercase text-white">
@@ -225,12 +225,12 @@ const NexusRewards: React.FC<NexusRewardsProps> = ({ language, user, onLogin, se
               onClick={() => user ? setShowForm(true) : onLogin()}
               className="group relative px-12 py-8 bg-white border border-white/10 rounded-[3rem] shadow-[0_30px_70px_rgba(255,255,255,0.1)] hover:scale-105 transition-all overflow-hidden flex items-center gap-6"
             >
-               <div className="absolute inset-0 bg-gradient-to-tr from-[#E1306C]/5 via-transparent to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-               <div className="w-16 h-16 rounded-2xl bg-gray-50 border border-gray-100 flex items-center justify-center text-[#E1306C] shadow-inner group-hover:rotate-12 transition-transform">
+               <div className="absolute inset-0 bg-gradient-to-tr from-[#0EA5E9]/5 via-transparent to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+               <div className="w-16 h-16 rounded-2xl bg-gray-50 border border-gray-100 flex items-center justify-center text-[#0EA5E9] shadow-inner group-hover:rotate-12 transition-transform">
                   <Plus size={28} />
                </div>
                <div className="text-left space-y-1">
-                  <p className="text-[10px] font-black text-[#E1306C] uppercase tracking-[0.4em]">Initialize Registry</p>
+                  <p className="text-[10px] font-black text-[#0EA5E9] uppercase tracking-[0.4em]">Initialize Registry</p>
                   <p className="text-2xl font-heritage font-bold uppercase text-[#0a0a0a]">Upload Memoir</p>
                </div>
                <ArrowRight size={20} className="text-[#0a0a0a]/30 group-hover:translate-x-2 transition-transform" />
@@ -240,7 +240,7 @@ const NexusRewards: React.FC<NexusRewardsProps> = ({ language, user, onLogin, se
 
         {/* UPLOAD FORM SECTION */}
         {showForm && (
-          <div className="bg-white rounded-[5rem] p-10 md:p-20 shadow-[0_80px_180px_rgba(225,48,108,0.2)] border border-white animate-in slide-in-from-bottom-20 duration-1000 relative overflow-hidden">
+          <div className="bg-white rounded-[5rem] p-10 md:p-20 shadow-[0_80px_180px_rgba(14,165,233,0.2)] border border-white animate-in slide-in-from-bottom-20 duration-1000 relative overflow-hidden">
              {isSuccess && (
                 <div className="absolute inset-0 z-50 bg-white/95 backdrop-blur-md flex flex-col items-center justify-center text-center p-12 space-y-10 animate-in fade-in duration-500">
                    <div className="relative">
@@ -258,7 +258,7 @@ const NexusRewards: React.FC<NexusRewardsProps> = ({ language, user, onLogin, se
 
              <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-10 border-b border-gray-100 pb-16 mb-16">
                 <div className="space-y-6">
-                   <div className="flex items-center gap-4 text-[#E1306C]">
+                   <div className="flex items-center gap-4 text-[#0EA5E9]">
                       <Radio className="w-5 h-5 animate-pulse" />
                       <span className="text-[12px] font-black uppercase tracking-[0.6em]">Neural_Archive_Portal</span>
                    </div>
@@ -277,13 +277,13 @@ const NexusRewards: React.FC<NexusRewardsProps> = ({ language, user, onLogin, se
                       <div className="space-y-4">
                          <label className="text-[11px] font-black text-gray-400 uppercase tracking-[0.4em] ml-2">Destination Node</label>
                          <div className="relative group">
-                            <MapPin className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-300 group-focus-within:text-[#E1306C] transition-colors" size={20} />
+                            <MapPin className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-300 group-focus-within:text-[#0EA5E9] transition-colors" size={20} />
                             <input 
                                required
                                type="text" 
                                value={newMemory.location}
                                onChange={(e) => setNewMemory(p => ({...p, location: e.target.value}))}
-                               className="w-full pl-16 pr-8 py-7 bg-gray-50 border-2 border-transparent rounded-[2.5rem] focus:bg-white focus:border-[#E1306C]/20 outline-none transition-all font-bold text-lg shadow-inner text-[#0a0a0a]"
+                               className="w-full pl-16 pr-8 py-7 bg-gray-50 border-2 border-transparent rounded-[2.5rem] focus:bg-white focus:border-[#0EA5E9]/20 outline-none transition-all font-bold text-lg shadow-inner text-[#0a0a0a]"
                                placeholder="Ex: Galle Fort Lighthouse"
                             />
                          </div>
@@ -291,13 +291,13 @@ const NexusRewards: React.FC<NexusRewardsProps> = ({ language, user, onLogin, se
                       <div className="space-y-4">
                          <label className="text-[11px] font-black text-gray-400 uppercase tracking-[0.4em] ml-2">Registry Title</label>
                          <div className="relative group">
-                            <Compass className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-300 group-focus-within:text-[#E1306C] transition-colors" size={20} />
+                            <Compass className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-300 group-focus-within:text-[#0EA5E9] transition-colors" size={20} />
                             <input 
                                required
                                type="text" 
                                value={newMemory.title}
                                onChange={(e) => setNewMemory(p => ({...p, title: e.target.value}))}
-                               className="w-full pl-16 pr-8 py-7 bg-gray-50 border-2 border-transparent rounded-[2.5rem] focus:bg-white focus:border-[#E1306C]/20 outline-none transition-all font-bold text-lg shadow-inner text-[#0a0a0a]"
+                               className="w-full pl-16 pr-8 py-7 bg-gray-50 border-2 border-transparent rounded-[2.5rem] focus:bg-white focus:border-[#0EA5E9]/20 outline-none transition-all font-bold text-lg shadow-inner text-[#0a0a0a]"
                                placeholder="Poetic title of your journey..."
                             />
                          </div>
@@ -311,7 +311,7 @@ const NexusRewards: React.FC<NexusRewardsProps> = ({ language, user, onLogin, se
                            type="button" 
                            onClick={handleRefine}
                            disabled={!newMemory.story || isRefining}
-                           className="flex items-center gap-3 px-5 py-2 bg-[#E1306C]/5 text-[#E1306C] border border-[#E1306C]/20 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-[#E1306C] hover:text-white transition-all disabled:opacity-30"
+                           className="flex items-center gap-3 px-5 py-2 bg-[#0EA5E9]/5 text-[#0EA5E9] border border-[#0EA5E9]/20 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-[#0EA5E9] hover:text-white transition-all disabled:opacity-30"
                          >
                             {isRefining ? <Loader2 size={12} className="animate-spin" /> : <Wand2 size={12} />}
                             Refine with AI
@@ -324,7 +324,7 @@ const NexusRewards: React.FC<NexusRewardsProps> = ({ language, user, onLogin, se
                            rows={6}
                            value={newMemory.story}
                            onChange={(e) => setNewMemory(p => ({...p, story: e.target.value}))}
-                           className="w-full px-12 py-12 bg-gray-50 border-2 border-transparent rounded-[3.5rem] focus:bg-white focus:border-[#E1306C]/20 outline-none transition-all font-medium italic text-xl shadow-inner text-gray-600 resize-none"
+                           className="w-full px-12 py-12 bg-gray-50 border-2 border-transparent rounded-[3.5rem] focus:bg-white focus:border-[#0EA5E9]/20 outline-none transition-all font-medium italic text-xl shadow-inner text-gray-600 resize-none"
                            placeholder="Relive your steps through prose..."
                          />
                       </div>
@@ -347,7 +347,7 @@ const NexusRewards: React.FC<NexusRewardsProps> = ({ language, user, onLogin, se
                          onDrop={handleDrop}
                          onClick={() => fileInputRef.current?.click()}
                          className={`relative group h-[340px] rounded-[3.5rem] overflow-hidden border-2 border-dashed transition-all cursor-pointer flex flex-col items-center justify-center text-center p-8 ${
-                            isDragging ? 'border-[#E1306C] bg-[#E1306C]/5' : 'border-gray-200 bg-gray-50 hover:border-[#E1306C]/40 hover:bg-white'
+                            isDragging ? 'border-[#0EA5E9] bg-[#0EA5E9]/5' : 'border-gray-200 bg-gray-50 hover:border-[#0EA5E9]/40 hover:bg-white'
                          } ${newMemory.image ? 'border-solid' : ''}`}
                       >
                          {newMemory.image ? (
@@ -368,7 +368,7 @@ const NexusRewards: React.FC<NexusRewardsProps> = ({ language, user, onLogin, se
                            </>
                          ) : (
                            <div className="space-y-6">
-                              <div className="w-24 h-24 bg-white rounded-3xl shadow-xl border border-gray-100 flex items-center justify-center text-gray-300 group-hover:text-[#E1306C] group-hover:scale-110 transition-all mx-auto">
+                              <div className="w-24 h-24 bg-white rounded-3xl shadow-xl border border-gray-100 flex items-center justify-center text-gray-300 group-hover:text-[#0EA5E9] group-hover:scale-110 transition-all mx-auto">
                                  {isDragging ? <Upload size={40} className="animate-bounce" /> : <FileImage size={40} />}
                               </div>
                               <div className="space-y-2">
@@ -409,7 +409,7 @@ const NexusRewards: React.FC<NexusRewardsProps> = ({ language, user, onLogin, se
                    <button 
                      type="submit"
                      disabled={isSubmitting || !newMemory.image}
-                     className="w-full h-24 bg-[#0a0a0a] text-white rounded-[2.5rem] font-black text-sm uppercase tracking-[0.6em] flex items-center justify-center gap-8 hover:bg-[#E1306C] hover:shadow-[0_40px_80px_rgba(225,48,108,0.3)] transition-all active:scale-95 group/btn relative overflow-hidden disabled:opacity-20 disabled:cursor-not-allowed"
+                     className="w-full h-24 bg-[#0a0a0a] text-white rounded-[2.5rem] font-black text-sm uppercase tracking-[0.6em] flex items-center justify-center gap-8 hover:bg-[#0EA5E9] hover:shadow-[0_40px_80px_rgba(14,165,233,0.3)] transition-all active:scale-95 group/btn relative overflow-hidden disabled:opacity-20 disabled:cursor-not-allowed"
                    >
                       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000" />
                       {isSubmitting ? (
@@ -428,25 +428,25 @@ const NexusRewards: React.FC<NexusRewardsProps> = ({ language, user, onLogin, se
           </div>
         )}
 
-        {/* MEMOIRS GRID - All Cards now bg-white */}
+        {/* MEMOIRS GRID - Updated with gap-10 md:gap-16 pt-8 */}
         <div className="space-y-24">
            <div className="flex flex-col items-center text-center space-y-10">
-              <div className="inline-flex items-center gap-6 text-[#E1306C] opacity-80">
-                 <div className="h-[2px] w-24 bg-gradient-to-r from-transparent to-[#E1306C]"></div>
+              <div className="inline-flex items-center gap-6 text-[#0EA5E9] opacity-80">
+                 <div className="h-[2px] w-24 bg-gradient-to-r from-transparent to-[#0EA5E9]"></div>
                  <Database size={28} className="animate-spin-slow" />
                  <span className="text-[12px] font-black uppercase tracking-[0.8em]">Public_Memoir_Feed</span>
-                 <div className="h-[2px] w-24 bg-gradient-to-l from-transparent to-[#E1306C]"></div>
+                 <div className="h-[2px] w-24 bg-gradient-to-l from-transparent to-[#0EA5E9]"></div>
               </div>
               <h2 className="text-5xl md:text-[8rem] font-heritage font-bold text-white tracking-tighter uppercase leading-none">
                  LIVED <span className="insta-text-gradient italic">STORIES.</span>
               </h2>
            </div>
 
-           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-16 pt-8">
              {memories.map((m, idx) => (
                <div 
                  key={m.id}
-                 className="group relative bg-white rounded-[4rem] overflow-hidden border border-gray-100 transition-all duration-1000 hover:border-[#E1306C]/30 hover:-translate-y-4 shadow-2xl"
+                 className="group relative bg-white rounded-[4rem] overflow-hidden border border-gray-100 transition-all duration-1000 hover:border-[#0EA5E9]/30 hover:-translate-y-4 shadow-2xl"
                >
                   <div className="relative h-96 overflow-hidden">
                      <img src={m.image} className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110" alt={m.title} />
@@ -460,7 +460,7 @@ const NexusRewards: React.FC<NexusRewardsProps> = ({ language, user, onLogin, se
 
                      <div className="absolute bottom-8 left-8 flex items-center gap-4">
                         <div className="w-14 h-14 rounded-2xl border-2 border-white/40 overflow-hidden shadow-2xl bg-gray-900">
-                           <img src={`https://ui-avatars.com/api/?name=${m.userName}&background=E1306C&color=fff`} className="w-full h-full object-cover" />
+                           <img src={`https://ui-avatars.com/api/?name=${m.userName}&background=0EA5E9&color=fff`} className="w-full h-full object-cover" />
                         </div>
                         <div className="text-left">
                            <p className="text-[10px] font-black text-white uppercase tracking-widest mb-1">{m.userName}</p>
@@ -474,7 +474,7 @@ const NexusRewards: React.FC<NexusRewardsProps> = ({ language, user, onLogin, se
 
                   <div className="p-12 space-y-8">
                      <div className="space-y-3">
-                        <div className="flex items-center gap-3 text-[#E1306C]">
+                        <div className="flex items-center gap-3 text-[#0EA5E9]">
                            <MapPin size={14} />
                            <span className="text-[10px] font-black uppercase tracking-[0.4em]">{m.location}</span>
                         </div>
@@ -484,7 +484,7 @@ const NexusRewards: React.FC<NexusRewardsProps> = ({ language, user, onLogin, se
                      </div>
                      
                      <div className="relative">
-                        <Quote size={28} className="absolute -top-4 -left-4 text-[#E1306C]/10" />
+                        <Quote size={28} className="absolute -top-4 -left-4 text-[#0EA5E9]/10" />
                         <p className="text-base text-gray-500 font-light italic leading-relaxed pl-4 line-clamp-4">
                            "{m.story}"
                         </p>
@@ -492,7 +492,7 @@ const NexusRewards: React.FC<NexusRewardsProps> = ({ language, user, onLogin, se
 
                      <div className="pt-8 border-t border-gray-100 flex justify-between items-center">
                         <div className="flex items-center gap-6">
-                           <button className="flex items-center gap-2.5 text-gray-400 hover:text-[#E1306C] transition-colors group/stat">
+                           <button className="flex items-center gap-2.5 text-gray-400 hover:text-[#0EA5E9] transition-colors group/stat">
                               <Heart size={18} className="group-hover/stat:fill-current" />
                               <span className="text-[11px] font-black">{m.likes}</span>
                            </button>
@@ -501,7 +501,7 @@ const NexusRewards: React.FC<NexusRewardsProps> = ({ language, user, onLogin, se
                               <span className="text-[11px] font-black">Sync</span>
                            </button>
                         </div>
-                        <button className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center text-gray-400 hover:bg-[#E1306C] hover:text-white transition-all">
+                        <button className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center text-gray-400 hover:bg-[#0EA5E9] hover:text-white transition-all">
                            <Share2 size={16} />
                         </button>
                      </div>
@@ -513,7 +513,7 @@ const NexusRewards: React.FC<NexusRewardsProps> = ({ language, user, onLogin, se
 
         {/* REWARDS SECTION */}
         <div className="space-y-24 py-40 border-t border-white/5 relative overflow-hidden">
-           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-60 bg-[#f09433]/5 blur-[180px] rotate-12 pointer-events-none" />
+           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-60 bg-[#0EA5E9]/5 blur-[180px] rotate-12 pointer-events-none" />
 
            <div className="flex flex-col items-center text-center space-y-10 relative z-10">
               <div className="px-8 py-3 rounded-full bg-yellow-500/10 border border-yellow-500/20 text-yellow-500 text-[10px] md:text-[12px] font-black uppercase tracking-[0.6em] flex items-center gap-4 shadow-2xl backdrop-blur-md">
@@ -580,7 +580,7 @@ const NexusRewards: React.FC<NexusRewardsProps> = ({ language, user, onLogin, se
           to { transform: rotate(360deg); }
         }
         .shadow-3xl {
-          box-shadow: 0 0 50px rgba(225,48,108,0.3);
+          box-shadow: 0 0 50px rgba(14,165,233,0.3);
         }
       `}} />
     </div>

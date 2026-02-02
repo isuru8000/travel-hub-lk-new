@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Language, HeritageMusic as HeritageMusicType } from '../types.ts';
 import { HERITAGE_MUSIC_DATA } from '../constants.tsx';
@@ -102,7 +103,7 @@ const HeritageMusic: React.FC<HeritageMusicProps> = ({ language }) => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 -mt-20 relative z-10 space-y-32">
+      <div className="max-w-7xl mx-auto px-6 md:px-8 -mt-20 relative z-10 space-y-32">
         {/* Instruments Section */}
         <div className="space-y-12">
           <div className="flex items-center gap-6">
@@ -111,7 +112,8 @@ const HeritageMusic: React.FC<HeritageMusicProps> = ({ language }) => {
             </h3>
             <div className="flex-grow h-px bg-gradient-to-r from-gray-200 to-transparent" />
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+          {/* Updated grid spacing */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-16 pt-8">
             {instruments.map((music) => (
               <MusicCard key={music.id} music={music} language={language} />
             ))}
@@ -126,7 +128,8 @@ const HeritageMusic: React.FC<HeritageMusicProps> = ({ language }) => {
             </h3>
             <div className="flex-grow h-px bg-gradient-to-r from-gray-200 to-transparent" />
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+          {/* Updated grid spacing */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-16 pt-8">
             {songs.map((music) => (
               <MusicCard key={music.id} music={music} language={language} />
             ))}

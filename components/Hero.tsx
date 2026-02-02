@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Language, User } from '../types.ts';
-import { Box, Orbit, Layers, ShieldCheck, Activity } from 'lucide-react';
+import { Box, Orbit, Layers, ShieldCheck, Activity, ChevronRight } from 'lucide-react';
 
 interface HeroProps {
   language: Language;
@@ -32,213 +32,112 @@ const Hero: React.FC<HeroProps> = ({ language, setView, user }) => {
     };
   }, []);
 
-  const heroBgImage = "https://images.unsplash.com/photo-1602364481046-a5c6c3629932?q=80&w=1719&auto=format&fit=crop";
-
-  const renderHangingText = (text: string) => {
-    return text.split('').map((char, i) => (
-      <span 
-        key={i} 
-        className="hanging-letter-node"
-        style={{ 
-          animationDelay: `${i * 0.1}s`,
-          marginTop: `${(Math.sin(i) * 3)}px`
-        }}
-      >
-        <div className="ionic-tether" style={{ height: `${25 + Math.abs(Math.cos(i) * 10)}px` }} />
-        <span 
-          className="letter-face"
-          data-char={char}
-        >
-          {char === ' ' ? '\u00A0' : char}
-        </span>
-      </span>
-    ));
-  };
+  // User-provided cinematic aerial view
+  const heroBgImage = "https://images.unsplash.com/photo-1647002409613-0480145f7c3f?q=80&w=1074&auto=format&fit=crop";
 
   return (
-    <div className="relative h-[115vh] flex items-center justify-center overflow-hidden bg-[#050508]" style={{ perspective: '2000px' }}>
+    <div className="relative h-[110vh] flex items-center justify-center overflow-hidden bg-[#020205]" style={{ perspective: '2000px' }}>
       
-      {/* User Greeting Overlay */}
-      {user && (
-        <div className="absolute top-40 left-1/2 -translate-x-1/2 z-50 animate-in fade-in slide-in-from-top-4 duration-1000">
-           <div className="bg-white/10 backdrop-blur-3xl border border-white/20 px-8 py-4 rounded-full shadow-[0_40px_100px_rgba(0,0,0,0.6)] flex items-center gap-6 group">
-              <div className="relative">
-                 <div className="w-12 h-12 rounded-full border-2 border-[#0EA5E9] p-0.5 shadow-[0_0_30px_rgba(14,165,233,0.4)]">
-                    <img src={user.photo} className="w-full h-full object-cover rounded-full" alt="" />
-                 </div>
-                 <div className="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-green-500 border-2 border-[#050508] rounded-full animate-pulse" />
-              </div>
-              <div className="text-left">
-                 <div className="flex items-center gap-3">
-                    <ShieldCheck size={12} className="text-[#0EA5E9]" />
-                    <span className="text-[10px] font-black text-white/60 uppercase tracking-[0.4em]">Identity_Verified</span>
-                 </div>
-                 <p className="text-base font-heritage font-bold text-white uppercase tracking-widest mt-0.5">
-                    {language === 'EN' ? `Ayubowan, ${user.name.split(' ')[0]}` : `ආයුබෝවන්, ${user.name.split(' ')[0]}`}
-                 </p>
-              </div>
-           </div>
-        </div>
-      )}
-
-      {/* Cinematic 3D Engine */}
+      {/* Background Layer with Parallax and Enhancements */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div 
-          className="absolute inset-0 bg-cover bg-center transition-transform duration-[400ms] ease-out brightness-[0.7] saturate-[1.1] contrast-[1.05]" 
+          className="absolute inset-0 bg-cover bg-center transition-transform duration-[1200ms] ease-out brightness-[0.6] saturate-[1.15]" 
           style={{ 
             backgroundImage: `url('${heroBgImage}')`,
-            transform: `scale(${1.1 + scrollPos / 6000}) translateY(${scrollPos * 0.1}px) rotateX(${mousePos.y * 1.5}deg) rotateY(${mousePos.x * 1.5}deg)`,
+            transform: `scale(${1.1 + scrollPos / 6000}) translate3d(${mousePos.x * 25}px, ${mousePos.y * 25}px, 0)`,
             willChange: 'transform'
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-[#020205]/80 via-transparent to-[#020205]/90" />
+          {/* Multi-layered cinematic overlays */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#020205]/60 via-transparent to-[#020205]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(251,191,36,0.05)_0%,transparent_80%)]" />
         </div>
-
-        <div 
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1100px] h-[1100px] opacity-[0.2] hidden md:block"
-          style={{ 
-            transform: `translate(-50%, -50%) translate3d(${mousePos.x * 80}px, ${mousePos.y * 80}px, 120px) rotate(${scrollPos * 0.04}deg)`,
-            willChange: 'transform',
-            transformStyle: 'preserve-3d'
-          }}
-        >
-          <div className="absolute inset-0 border-[3px] border-[#0EA5E9]/40 rounded-full animate-spin-slow opacity-30 shadow-[0_0_120px_rgba(14,165,233,0.2)]" />
+        
+        {/* Floating Atmospheric Particles */}
+        <div className="absolute inset-0 opacity-30">
+           <div className="absolute top-1/3 left-1/3 w-[500px] h-[500px] bg-[#F59E0B]/10 rounded-full blur-[160px] animate-pulse" />
+           <div className="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] bg-orange-500/5 rounded-full blur-[140px] animate-pulse" style={{ animationDelay: '3s' }} />
         </div>
       </div>
 
-      {/* Main Content */}
+      {/* Hero Content */}
       <div className="relative z-30 max-w-7xl w-full px-8 flex flex-col items-center text-center">
         
-        <div className="flex flex-col items-center gap-6 mb-8 animate-in fade-in slide-in-from-top-8 duration-1000">
-           <div className="inline-flex items-center gap-5 px-8 py-3 rounded-full bg-black/60 border border-white/30 backdrop-blur-3xl text-white text-[10px] font-black uppercase tracking-[0.6em] shadow-[0_0_60px_rgba(14,165,233,0.3)]">
-             <Layers size={14} className="text-[#0EA5E9] animate-pulse" />
-             ARCHIVE_V6.0_SYNCED
+        <div className="flex flex-col items-center gap-6 mb-12 animate-in fade-in slide-in-from-top-12 duration-1000">
+           <div className="px-8 py-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-2xl text-white text-[10px] font-black uppercase tracking-[0.5em] shadow-3xl flex items-center gap-4 border border-white/20">
+             <div className="w-2 h-2 rounded-full bg-[#F59E0B] animate-ping shadow-[0_0_10px_#F59E0B]" />
+             Registry_Sync_v6.4
            </div>
         </div>
         
-        <div className="space-y-0 mb-12 animate-in fade-in zoom-in-95 duration-1000 delay-200" style={{ transform: 'translateZ(130px)' }}>
-          <h1 className="text-6xl sm:text-8xl md:text-[13rem] font-heritage font-bold leading-[0.75] tracking-tighter text-white uppercase select-none relative">
+        <div className="space-y-6 mb-16 animate-in fade-in zoom-in-95 duration-1000 delay-200">
+          <h1 className="text-5xl sm:text-7xl md:text-[11rem] font-heritage font-bold leading-[0.8] tracking-tighter uppercase select-none">
             {language === 'EN' ? (
               <>
-                <span className="block opacity-95 mb-4 tracking-[0.15em] text-3xl md:text-5xl font-light italic drop-shadow-[0_10px_40px_rgba(0,0,0,1)]">Discover the</span>
-                <div className="hanging-system">
-                   <div className="neural-branch" />
-                   <div className="flex justify-center items-start gap-2 md:gap-5">
-                     {renderHangingText("SRI LANKA")}
-                   </div>
-                </div>
+                <span className="block text-xl md:text-4xl font-light tracking-[0.3em] text-white/90 mb-6 drop-shadow-lg">Welcome To</span>
+                <span className="bg-gradient-to-b from-[#fde68a] via-[#f59e0b] to-[#b45309] bg-clip-text text-transparent drop-shadow-[0_0_50px_rgba(245,158,11,0.35)]">SRI LANKA</span>
               </>
             ) : (
               <>
-                <span className="block opacity-95 mb-4 tracking-[0.15em] text-3xl md:text-5xl font-light italic drop-shadow-[0_10px_40px_rgba(0,0,0,1)]">අත්විඳින්න</span>
-                <div className="hanging-system">
-                   <div className="neural-branch" />
-                   <div className="flex justify-center items-start gap-2 md:gap-5">
-                     {renderHangingText("ශ්‍රී ලංකාව")}
-                   </div>
-                </div>
+                <span className="block text-xl md:text-4xl font-light tracking-[0.3em] text-white/90 mb-6 drop-shadow-lg">අයුබෝවන්</span>
+                <span className="bg-gradient-to-b from-[#fde68a] via-[#f59e0b] to-[#b45309] bg-clip-text text-transparent drop-shadow-[0_0_50px_rgba(245,158,11,0.35)]">ශ්‍රී ලංකාව</span>
               </>
             )}
           </h1>
+          
+          <div className="flex flex-col items-center">
+             <div className="w-32 h-1 bg-gradient-to-r from-transparent via-[#F59E0B] to-transparent rounded-full shadow-[0_0_30px_#F59E0B] mb-10 opacity-60" />
+             <p className="font-sans text-sm md:text-lg font-bold text-white/50 max-w-2xl leading-relaxed tracking-[0.45em] uppercase drop-shadow-2xl px-4 text-center">
+               {language === 'EN' 
+                 ? "Step into a multi-dimensional reconstruction of the world's most mysterious island."
+                 : "ලොව අබිරහස් දූපතක බහු-මාන ප්‍රතිනිර්මාණයට පිවිසෙන්න."}
+             </p>
+          </div>
         </div>
-        
-        <p className="text-lg md:text-2xl text-white font-medium max-w-3xl leading-relaxed mb-16 animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-500 italic drop-shadow-[0_8px_40px_rgba(0,0,0,1)]" style={{ transform: 'translateZ(90px)' }}>
-          {language === 'EN' 
-            ? "Step into a multi-dimensional reconstruction of the world's most mysterious island." 
-            : "ලොව වඩාත් අභිරහස් දූපතේ බහුමාන ප්‍රතිනිර්මාණයකට පිවිසෙන්න."}
-        </p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-8 animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-700" style={{ transform: 'translateZ(160px)' }}>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-8 animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-500">
           <button 
             onClick={() => setView('destinations')}
-            className="group relative px-16 py-8 bg-white text-[#050508] rounded-[2.5rem] font-black text-[14px] uppercase tracking-[0.5em] transition-all duration-500 hover:scale-110 active:scale-95 shadow-[0_40px_120px_rgba(255,255,255,0.4)] overflow-hidden"
+            className="group relative px-14 py-7 bg-white text-[#050508] rounded-2xl font-black text-[13px] uppercase tracking-[0.4em] transition-all duration-500 hover:scale-110 active:scale-95 shadow-[0_40px_100px_rgba(255,255,255,0.2)] overflow-hidden"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#0EA5E9]/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-[1200ms]" />
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#F59E0B]/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-[1200ms]" />
             <span className="relative z-10 flex items-center gap-5">
               Explore
-              <Box size={22} fill="currentColor" className="text-[#0EA5E9]" />
+              <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </span>
           </button>
 
           <button 
-            onClick={() => setView('vr-showcase')}
-            className="group relative px-16 py-8 bg-black/80 backdrop-blur-3xl border border-white/30 rounded-[2.5rem] font-black text-[14px] text-white uppercase tracking-[0.5em] transition-all duration-700 hover:bg-white/10 hover:border-[#0EA5E9]/50 active:scale-95"
+            onClick={() => setView('vr-trip')}
+            className="group relative px-14 py-7 bg-white/5 backdrop-blur-3xl border border-white/20 rounded-2xl font-black text-[13px] text-white uppercase tracking-[0.4em] transition-all duration-700 hover:bg-white/10 hover:border-[#F59E0B]/50 active:scale-95 shadow-2xl"
           >
-            <div className="absolute inset-0 bg-[#0EA5E9]/10 opacity-0 group-hover:opacity-100 transition-opacity" />
             <span className="relative z-10 flex items-center gap-5">
-              Nexus 3D
-              <Orbit size={24} className="text-[#0EA5E9] animate-spin-slow" />
+              3D World
+              <Orbit size={22} className="text-[#F59E0B] animate-spin-slow" />
             </span>
           </button>
         </div>
       </div>
 
+      {/* Futuristic Grid Floor Decoration */}
+      <div className="absolute bottom-0 left-0 right-0 h-[400px] opacity-[0.08] pointer-events-none"
+           style={{ 
+             backgroundImage: `linear-gradient(#F59E0B 1.5px, transparent 1.5px), linear-gradient(90deg, #F59E0B 1.5px, transparent 1.5px)`, 
+             backgroundSize: '100px 100px',
+             transform: 'perspective(1200px) rotateX(65deg) scale(3)',
+             maskImage: 'linear-gradient(to top, black, transparent 90%)'
+           }} />
+
       <style dangerouslySetInnerHTML={{ __html: `
-        .hanging-system {
-          position: relative;
-          width: 100%;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-        }
-        
-        .neural-branch {
-          width: 70%;
-          height: 2px;
-          background: linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.8), transparent);
-          box-shadow: 0 0 30px rgba(14, 165, 233, 0.4);
-          position: absolute;
-          top: -10px;
-          border-radius: 50%;
-          opacity: 0.6;
-        }
-
-        .hanging-letter-node {
-          display: inline-flex;
-          flex-direction: column;
-          align-items: center;
-          transform-origin: top center;
-          animation: harmonic-sway 6s ease-in-out infinite;
-        }
-
-        .ionic-tether {
-          width: 1px;
-          background: linear-gradient(to bottom, rgba(14, 165, 233, 0.8) 0%, rgba(255,255,255,0.05) 100%);
-          box-shadow: 0 0 8px rgba(14, 165, 233, 0.4);
-          opacity: 0.5;
-        }
-
-        .letter-face {
-          display: block;
-          color: white;
-          font-weight: 900;
-          line-height: 0.7;
-          text-shadow: 
-            0 0 20px rgba(14, 165, 233, 0.8),
-            0 0 40px rgba(14, 165, 233, 0.4),
-            0 10px 30px rgba(0,0,0,1);
-          filter: brightness(1.2) contrast(1.1);
-          transform: translateY(-2px);
-          transition: all 0.4s ease;
-        }
-        
-        .hanging-letter-node:hover .letter-face {
-          color: #fdf497;
-          filter: brightness(1.5) drop-shadow(0 0 40px #0EA5E9);
-          transform: scale(1.05) translateY(0);
-        }
-
-        @keyframes harmonic-sway {
-          0%, 100% { transform: rotate(-1deg); }
-          50% { transform: rotate(1deg); }
-        }
-
         @keyframes spin-slow {
           from { transform: rotate(0deg); }
           to { transform: rotate(360deg); }
         }
         .animate-spin-slow {
-          animation: spin-slow 35s linear infinite;
+          animation: spin-slow 20s linear infinite;
+        }
+        .shadow-3xl {
+          box-shadow: 0 0 60px rgba(245,158,11,0.2);
         }
       `}} />
     </div>

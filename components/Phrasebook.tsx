@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Language, Phrase } from '../types.ts';
 import { PHRASEBOOK_DATA } from '../constants.tsx';
@@ -46,7 +47,7 @@ const Phrasebook: React.FC<PhrasebookProps> = ({ language }) => {
               <BookOpen size={16} className="text-[#0EA5E9] animate-pulse" />
               Linguistic_Archive_Node
             </div>
-            <h2 className="text-5xl md:text-8xl font-heritage font-bold text-white tracking-tighter uppercase leading-[0.8] drop-shadow-2xl">
+            <h2 className="text-5xl md:text-8xl font-heritage font-bold text-white tracking-tighter uppercase leading-[0.8] drop-shadow-[0_20px_60px_rgba(0,0,0,0.8)]">
               LOCAL <br/><span className="italic insta-text-gradient">GUIDE.</span>
             </h2>
             <p className="text-white/80 max-w-2xl mx-auto text-lg md:text-2xl font-light italic leading-relaxed drop-shadow-lg">
@@ -70,7 +71,7 @@ const Phrasebook: React.FC<PhrasebookProps> = ({ language }) => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 -mt-12 relative z-20 space-y-16">
+      <div className="max-w-7xl mx-auto px-6 md:px-8 -mt-12 relative z-20 space-y-16">
         <div className="flex flex-wrap gap-4 justify-center bg-white/90 backdrop-blur-xl p-4 rounded-[3rem] shadow-xl border border-gray-100 w-fit mx-auto">
           {categories.map(cat => (
             <button
@@ -88,7 +89,8 @@ const Phrasebook: React.FC<PhrasebookProps> = ({ language }) => {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 pt-10">
+        {/* Updated grid spacing */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-16 pt-8">
           {filteredPhrases.map((p, idx) => (
             <div 
               key={p.id}

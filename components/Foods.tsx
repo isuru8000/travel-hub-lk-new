@@ -1,3 +1,4 @@
+
 import React, { useState, useMemo } from 'react';
 import { Language, Food } from '../types.ts';
 import { FOODS_DATA } from '../constants.tsx';
@@ -10,7 +11,7 @@ interface FoodsProps {
 const Foods: React.FC<FoodsProps> = ({ language }) => {
   const [activeCategory, setActiveCategory] = useState<Food['category'] | 'all'>('all');
   const [searchQuery, setSearchQuery] = useState('');
-  const heroImage = "https://images.unsplash.com/photo-1543353071-10c8ba85a904?q=80&w=1920&auto=format&fit=crop";
+  const heroImage = "https://images.unsplash.com/photo-1543353071-10c8ba85a904?auto=format&fit=crop&w=1920&q=80";
 
   const categories = [
     { id: 'all', icon: <LayoutGrid size={18} />, EN: 'All Dishes', SI: 'සියල්ල' },
@@ -67,7 +68,7 @@ const Foods: React.FC<FoodsProps> = ({ language }) => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 -mt-24 relative z-10 space-y-24">
+      <div className="max-w-7xl mx-auto px-6 md:px-8 -mt-24 relative z-10 space-y-24">
         
         {/* EYE-CATCHING TAB NAVIGATION */}
         <div className="flex flex-col items-center gap-12">
@@ -109,8 +110,8 @@ const Foods: React.FC<FoodsProps> = ({ language }) => {
           </div>
         </div>
 
-        {/* Curated Food Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-24 gap-x-12">
+        {/* Curated Food Grid - Updated with gap-10 md:gap-16 pt-8 */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-16 pt-8">
           {filteredFoods.map((food, idx) => {
             return (
               <div 
