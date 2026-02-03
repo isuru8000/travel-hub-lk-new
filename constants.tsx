@@ -407,7 +407,27 @@ export const PHRASEBOOK_DATA: Phrase[] = [
   { id: 'p12', english: 'Food is delicious', sinhala: 'කෑම රසයි', transliteration: 'Kama rasai', category: 'dining' },
   { id: 'p13', english: 'Where is the washroom?', sinhala: 'වැසිකිළිය කොහේද?', transliteration: 'Vasikiliya koheda?', category: 'emergency' },
   { id: 'p14', english: 'Help me', sinhala: 'මට උදව් කරන්න', transliteration: 'Mata udau karanna', category: 'emergency' },
-  { id: 'p15', english: 'Slowly', sinhala: 'හෙමින්', transliteration: 'Hemin', category: 'greeting' }
+  { id: 'p15', english: 'Slowly', sinhala: 'හෙමින්', transliteration: 'Hemin', category: 'greeting' },
+  { id: 'p16', english: 'Good Morning', sinhala: 'සුභ උදෑසනක්', transliteration: 'Subha udasanak', category: 'greeting' },
+  { id: 'p17', english: 'Good Night', sinhala: 'සුභ රාත්‍රියක්', transliteration: 'Subha rathriyak', category: 'greeting' },
+  { id: 'p18', english: 'Yes', sinhala: 'ඔව්', transliteration: 'Ow', category: 'greeting' },
+  { id: 'p19', english: 'No', sinhala: 'නැහැ', transliteration: 'Neha', category: 'greeting' },
+  { id: 'p20', english: 'Excuse me', sinhala: 'සමාවෙන්න', transliteration: 'Sama venna', category: 'greeting' },
+  { id: 'p21', english: 'Wait a moment', sinhala: 'පොඩ්ඩක් ඉන්න', transliteration: 'Poddak inna', category: 'greeting' },
+  { id: 'p22', english: 'Delicious food', sinhala: 'හරිම රසයි', transliteration: 'Harima rasai', category: 'dining' },
+  { id: 'p23', english: 'No spicy', sinhala: 'සැර නැතුව', transliteration: 'Sara nathuwa', category: 'dining' },
+  { id: 'p24', english: 'Very spicy', sinhala: 'ගොඩක් සැරයි', transliteration: 'Godak sarai', category: 'dining' },
+  { id: 'p25', english: 'The bill please', sinhala: 'බිල දෙන්න', transliteration: 'Bill eka denna', category: 'dining' },
+  { id: 'p26', english: 'Expensive', sinhala: 'ගණන් වැඩියි', transliteration: 'Ganan vadii', category: 'shopping' },
+  { id: 'p27', english: 'Discount please', sinhala: 'අඩු කරන්න', transliteration: 'Adu karanna', category: 'shopping' },
+  { id: 'p28', english: 'I am lost', sinhala: 'අතරමං වෙලා', transliteration: 'Atharaman wela', category: 'emergency' },
+  { id: 'p29', english: 'Call a doctor', sinhala: 'දොස්තර කෙනෙක්', transliteration: 'Dosthara kenek', category: 'emergency' },
+  { id: 'p30', english: 'Police station', sinhala: 'පොලිසිය', transliteration: 'Poleesiya', category: 'emergency' },
+  { id: 'p31', english: 'Friend', sinhala: 'මිතුරා', transliteration: 'Mithura', category: 'greeting' },
+  { id: 'p32', english: 'A little bit', sinhala: 'චුට්ටක්', transliteration: 'Chuttak', category: 'greeting' },
+  { id: 'p33', english: 'I like it', sinhala: 'මම කැමතියි', transliteration: 'Mama kamathiyi', category: 'greeting' },
+  { id: 'p34', english: 'Where is the bus?', sinhala: 'බස් එක කොහේද?', transliteration: 'Bus eka koheda?', category: 'emergency' },
+  { id: 'p35', english: 'Stop here', sinhala: 'මෙතන නවත්වන්න', transliteration: 'Methana nawathwanna', category: 'greeting' }
 ];
 
 export const TRAVEL_ESSENTIALS_DATA: TravelEssential[] = [
@@ -430,7 +450,7 @@ export const FESTIVALS_DATA: Festival[] = [
   { id: 'fest3', name: { EN: 'Vesak Poya', SI: 'වෙසක් පොහොය' }, category: 'religious', date: { EN: 'May', SI: 'මැයි' }, description: { EN: 'Commemorating the birth, enlightenment, and passing of the Buddha.', SI: 'බුදුරජාණන් වහන්සේගේ තෙමඟුල සමරන පූජනීය දිනයයි.' }, image: 'https://i.pinimg.com/736x/aa/52/90/aa529011754dbc3597e01a702cd4ddf1.jpg', significance: { EN: 'Lanterns, pandals, and spiritual reflection.', SI: 'කූඩු, තොරණ සහ ආගමික වතාවත් සිදු කෙරේ.' } },
   { id: 'fest4', name: { EN: 'Poson Poya', SI: 'පොසොන් පොහොය' }, category: 'religious', date: { EN: 'June', SI: 'ජූනි' }, description: { EN: 'Celebrating the arrival of Buddhism in Sri Lanka at Mihintale.', SI: 'මිහින්තලයට බුදුදහම රැගෙන ඒම සමරන උතුම් දිනයයි.' }, image: 'https://i.pinimg.com/736x/8b/58/ad/8b58adb20cf7b4018fecf71d795e1757.jpg', significance: { EN: 'Pilgrimage to the ancient city of Anuradhapura.', SI: 'අනුරාධපුර පූජනීය නගරයට වන්දනා ගමන් සිදු කෙරේ.' } },
   { id: 'fest5', name: { EN: 'Thai Pongal', SI: 'තෛයිපොංගල්' }, category: 'harvest', date: { EN: 'January', SI: 'ජනවාරි' }, description: { EN: 'Tamil harvest festival thanking the Sun God and cattle.', SI: 'සූර්ය දෙවියන්ට සහ ගවයින්ට ස්තූති කරන දෙමළ අස්වනු උත්සවයකි.' }, image: 'https://i.pinimg.com/736x/37/0f/ff/370fff8ebc7a06e41ba3c34b226896f8.jpg', significance: { EN: 'Cooking Pongal rice and colorful floor art (Kolam).', SI: 'පොංගල් බත් පිසීම සහ කෝලම් රටා ඇඳීම මෙහි විශේෂත්වයකි.' } },
-  { id: 'fest6', name: { EN: 'Deepavali', SI: 'දීපාවලි' }, category: 'religious', date: { EN: 'October/November', SI: 'ඔක්තෝබර්/නොවැම්බර්' }, description: { EN: 'The Hindu Festival of Lights, celebrating victory of light over dark.', SI: 'අන්ධකාරය පරදා ආලෝකය ජය ගැනීම සමරන හින්දු ආගමික උත්සවයකි.' }, image: 'https://i.pinimg.com/736x/96/42/46/96424673d68d99ee45e4154e6a3261b6.jpg', significance: { EN: 'Lighting oil lamps and family gatherings.', SI: 'පහන් දැල්වීම සහ පවුලේ සාමාජිකයන් එක්වීම සිදු කෙරේ.' } },
+  { id: 'fest6', name: { EN: 'Deepavali', SI: 'දීපාවලි' }, category: 'religious', date: { EN: 'October/November', SI: 'ඔක්තෝබර්/නොවැම්බර්' }, description: { EN: 'The Hindu Festival of Lights, celebrating victory of light over dark.', SI: 'අන්ධකාරය පරදා ආලෝකය ජය ගැනීම සමරන හින්දු ආගමික උත්සවයකි.' }, image: 'https://i.pinimg.com/736x/96/42/46/96424673d68d99ee45e4154e6a3261b6.jpg', significance: { EN: 'Lighting oil lamps and family gatherings.', SI: 'පහන් දැල්වීම සහ පහල සාමාජිකයන් එක්වීම සිදු කෙරේ.' } },
   { id: 'fest11', name: { EN: 'Nallur Festival', SI: 'නල්ලූර් උත්සවය' }, category: 'religious', date: { EN: 'August/September', SI: 'අගෝස්තු/සැප්තැම්බර්' }, description: { EN: 'The longest religious festival in Jaffna lasting 25 days.', SI: 'යාපනය නල්ලූර් කෝවිලේ දින 25 ක් පුරා පැවැත්වෙන විශාලතම මංගල්‍යයයි.' }, image: 'https://i.pinimg.com/1200x/3a/67/fb/3a67fb8991a10ce030adeb1d69f3137b.jpg', significance: { EN: 'Displays Northern cultural identity.', SI: 'උතුරේ සංස්කෘතික අනන්‍යතාවය විදහා දක්වයි.' } }
 ];
 
